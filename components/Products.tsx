@@ -17,7 +17,7 @@ const Products: React.FC = () => {
               <img 
                 src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200" 
                 alt="Local Launch Kits" 
-                className="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
               />
             </div>
             <div className="p-8 md:p-10 flex flex-col flex-grow">
@@ -48,7 +48,7 @@ const Products: React.FC = () => {
               <img 
                 src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=1200" 
                 alt="Camentra App" 
-                className="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
               />
             </div>
             <div className="p-8 md:p-10 flex flex-col flex-grow">
