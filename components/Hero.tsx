@@ -17,7 +17,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-white pt-16">
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-white pt-32 md:pt-16 pb-12">
       <div className="absolute inset-0 z-0">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-tr from-gray-50 to-white rounded-full blur-3xl opacity-60"></div>
       </div>
