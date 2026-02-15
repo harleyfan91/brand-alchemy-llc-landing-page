@@ -30,7 +30,7 @@ const Hero: React.FC = () => {
           The Infrastructure <br/>for <span className="italic text-gray-400">Exceptional Brands</span>
         </h1>
         <p className="text-xl text-gray-500 max-w-2xl mx-auto mb-16 leading-relaxed font-light">
-          Brand Alchemy engineers standardized products and instructional frameworks that empower entrepreneurs to master their own marketing, branding, and digital presence.
+          We create products and instructional frameworks that empower entrepreneurs to master their own marketing, branding, and digital presence.
         </p>
         
         <div className="flex justify-center">
