@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const Products = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'google' | 'yelp'>('google');
-  const [selectedIndustry, setSelectedIndustry] = useState('Cafe');
+  const [selectedIndustry, setSelectedIndustry] = useState('');
 
   const industries = ["Cafe", "Gym & Fitness", "Spa & Beauty", "Professional Services"];
 
@@ -40,7 +40,7 @@ const Products = () => {
             <div className="p-8 md:p-10 text-left">
               <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-1">Standardized Kits</span>
               <h4 className="text-2xl font-serif text-gray-900 mb-4">Local Launch Kits</h4>
-              <p className="text-gray-500 text-sm leading-relaxed font-light mb-6"> 블루프린트 for local dominance. Choose your level—from free industry starters to full-scale pro bundles.</p>
+              <p className="text-gray-500 text-sm leading-relaxed font-light mb-6">Tiered blueprints for local dominance. Choose your level—from free industry starters to full-scale pro bundles.</p>
               <span className="text-[10px] font-bold text-black border-b border-black pb-1 uppercase tracking-widest">Explore Catalog</span>
             </div>
           </div>
@@ -65,16 +65,22 @@ const Products = () => {
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsModalOpen(false)}></div>
           
-          <div className="relative bg-white w-full max-w-5xl max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col animate-in fade-in zoom-in duration-300">
-            {/* Header */}
-            <div className="p-6 md:px-10 border-b border-gray-50 flex justify-between items-center bg-white sticky top-0 z-10">
-              <h3 className="text-2xl font-serif text-gray-900">Toolkit Catalog</h3>
-              <button onClick={() => setIsModalOpen(false)} className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg></button>
+          <div className="relative bg-white w-full max-w-5xl max-h-[90vh] rounded-3xl shadow-2xl flex flex-col animate-in fade-in zoom-in duration-300">
+            {/* Header - Fixed Position for Consistency */}
+            <div className="p-6 md:px-10 border-b border-gray-100 flex justify-between items-center bg-white rounded-t-3xl shrink-0 z-20">
+              <div className="text-left">
+                <h3 className="text-2xl font-serif text-gray-900">Toolkit Catalog</h3>
+                <p className="text-[10px] text-gray-400 uppercase tracking-widest font-bold mt-1">Infrastructure for Visibility</p>
+              </div>
+              <button onClick={() => setIsModalOpen(false)} className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+              </button>
             </div>
 
+            {/* Scrollable Content */}
             <div className="flex-grow overflow-y-auto p-6 md:p-10 space-y-12">
               
-              {/* 1. TOP: FREE TIER LEAD MAGNET (The Hook) */}
+              {/* 1. TOP: FREE TIER LEAD MAGNET */}
               <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100">
                 <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
                   <div className="max-w-xl text-left">
@@ -85,16 +91,22 @@ const Products = () => {
                     </p>
                   </div>
                   <div className="w-full lg:w-auto space-y-4">
-                    <select 
-                      value={selectedIndustry} 
-                      onChange={(e) => setSelectedIndustry(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 text-[11px] font-medium focus:outline-none focus:border-black appearance-none bg-white"
-                    >
-                      {industries.map(ind => <option key={ind} value={ind}>{ind}</option>)}
-                    </select>
-                    <div className="flex gap-2">
-                      <input type="email" placeholder="Email address" className="px-4 py-3 rounded-xl border border-gray-200 text-[11px] focus:outline-none focus:border-black flex-grow lg:w-48" />
-                      <button className="px-6 py-3 bg-black text-white rounded-xl text-[9px] font-bold uppercase tracking-widest hover:bg-gray-800 transition-all shadow-lg whitespace-nowrap">Send My Kit</button>
+                    <div className="relative">
+                      <select 
+                        value={selectedIndustry} 
+                        onChange={(e) => setSelectedIndustry(e.target.value)}
+                        className="w-full px-4 py-3 rounded-full border border-gray-200 text-[11px] font-medium focus:outline-none focus:border-black appearance-none bg-white cursor-pointer"
+                      >
+                        <option value="" disabled>Choose your sample industry...</option>
+                        {industries.map(ind => <option key={ind} value={ind}>{ind}</option>)}
+                      </select>
+                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+                      </div>
+                    </div>
+                    <div className="flex flex-col sm:flex-row gap-2">
+                      <input type="email" placeholder="Email address" className="px-6 py-3 rounded-full border border-gray-200 text-[11px] focus:outline-none focus:border-black flex-grow lg:w-48" />
+                      <button className="px-8 py-3 bg-black text-white rounded-full text-[9px] font-bold uppercase tracking-widest hover:bg-gray-800 transition-all shadow-lg whitespace-nowrap">Send My Kit</button>
                     </div>
                   </div>
                 </div>
@@ -108,7 +120,7 @@ const Products = () => {
                   <p className="text-sm text-gray-400 font-light leading-relaxed">The definitive toolkit. Combined Google & Yelp Pro kits for complete local visibility and standardized momentum.</p>
                 </div>
                 <div className="text-center md:text-right">
-                  <div className="text-4xl font-light mb-4">$229</div>
+                  <div className="text-4xl font-light mb-6">$229</div>
                   <button className="px-10 py-4 bg-white text-black rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-gray-200 transition-all">Get Full Bundle</button>
                 </div>
               </div>
@@ -126,7 +138,7 @@ const Products = () => {
                     </button>
                   ))}
                 </div>
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-2 gap-6 text-left">
                   {kits[activeTab].map((kit, i) => (
                     <div key={i} className="bg-white p-8 rounded-2xl border border-gray-100 flex flex-col hover:border-black transition-colors duration-500">
                       <span className="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-2">{kit.level}</span>
@@ -139,7 +151,7 @@ const Products = () => {
                           </li>
                         ))}
                       </ul>
-                      <button className="w-full py-4 border border-gray-200 rounded-xl text-[9px] font-bold uppercase tracking-widest hover:border-black transition-all">Select Kit</button>
+                      <button className="w-full py-4 border border-gray-200 rounded-full text-[9px] font-bold uppercase tracking-widest hover:border-black transition-all">Select Kit</button>
                     </div>
                   ))}
                 </div>
@@ -150,12 +162,12 @@ const Products = () => {
                 <h6 className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-6 text-left">Precision Add-ons</h6>
                 <div className="grid sm:grid-cols-2 gap-4">
                   {aLaCarte.map((item, i) => (
-                    <div key={i} className="p-6 rounded-xl border border-gray-100 bg-white flex justify-between items-center group hover:border-black transition-all">
+                    <div key={i} className="p-6 rounded-2xl border border-gray-100 bg-white flex justify-between items-center group hover:border-black transition-all">
                       <div className="max-w-[70%] text-left">
                         <p className="text-[11px] font-serif text-gray-900 mb-1">{item.title}</p>
                         <p className="text-[9px] text-gray-400 font-light">{item.desc}</p>
                       </div>
-                      <button className="text-[10px] font-bold">{item.price} +</button>
+                      <button className="px-4 py-2 bg-gray-50 group-hover:bg-black group-hover:text-white transition-colors rounded-full text-[10px] font-bold">{item.price} +</button>
                     </div>
                   ))}
                 </div>
