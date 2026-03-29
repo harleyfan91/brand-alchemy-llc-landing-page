@@ -1,4 +1,5 @@
 import React from 'react';
+import AlchemyMark from './AlchemyMark';
 
 const Footer: React.FC = () => {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
@@ -34,8 +35,10 @@ const Footer: React.FC = () => {
           <a href="mailto:info@brandalchemyllc.com" className="hover:text-black transition-colors">Contact</a>
         </div>
 
-        {/* Copyright: text-xs — fine for legal/utility text */}
-        <div className="text-gray-300 text-xs font-medium uppercase tracking-widest">
+        {/* Copyright + maker's mark */}
+        <div className="flex items-center gap-2.5 text-gray-300 text-xs font-medium uppercase tracking-widest">
+          <AlchemyMark size="xs" className="text-gray-300" />
+          <span className="w-px h-3 bg-gray-200" aria-hidden="true" />
           © {new Date().getFullYear()} Brand Alchemy LLC.
         </div>
       </div>
