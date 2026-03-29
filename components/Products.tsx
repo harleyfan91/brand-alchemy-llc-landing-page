@@ -21,8 +21,8 @@ const kits: Record<Platform, Record<Tier, { price: string; label: string; featur
       label: 'Google Core Kit',
       features: [
         'Step-by-step Google Business profile setup',
-        'Built-in SEO tips as you go',
-        'Light promotion & first-impression guide',
+        'Tips to help you show up higher in local search results',
+        'Starter guide to promoting your profile and attracting new customers',
         '30 review response templates',
         '12 industry photo angles',
       ],
@@ -34,7 +34,7 @@ const kits: Record<Platform, Record<Tier, { price: string; label: string; featur
         'Everything in Google Core',
         'Google Ads starter settings',
         '30 evergreen caption prompts',
-        'KPI & audit workbook',
+        'KPI and audit workbook',
         'Performance tracking sheet',
       ],
     },
@@ -45,8 +45,8 @@ const kits: Record<Platform, Record<Tier, { price: string; label: string; featur
       label: 'Yelp Core Kit',
       features: [
         'Step-by-step Yelp profile setup',
-        'Built-in SEO tips as you go',
-        'Light promotion & first-impression guide',
+        'Tips to help you show up higher in local search results',
+        'Starter guide to promoting your profile and attracting new customers',
         '30 review response templates',
         '12 industry photo angles',
       ],
@@ -75,7 +75,7 @@ const aLaCarte = [
     title: 'Seasonal Industry Photo Angles',
     subtitle: '9-Angle PDF Guide',
     price: '$7',
-    desc: 'Niche-specific framing for seasonal peaks. Know exactly which shots to capture and when — no photographer required.',
+    desc: 'Niche-specific framing for seasonal peaks. Know exactly which shots to capture and when, without needing to hire a photographer.',
     tags: ['9 Unique Angles', 'Seasonal Timing', 'Niche-Specific'],
     img: 'https://images.unsplash.com/photo-1554048612-b6a482bc67e5?auto=format&fit=crop&q=80&w=900',
   },
@@ -83,7 +83,7 @@ const aLaCarte = [
     title: 'Seasonal & Event Templates Pack',
     subtitle: 'Copy & Caption Bundle',
     price: '$39',
-    desc: "Ready-to-use copy for holidays and local events — no writer's block. Drop in your details, deploy, and post.",
+    desc: "Ready-to-use copy for holidays and local events. Drop in your details, post, and move on. No writing experience needed.",
     tags: ['30+ Captions', 'Holiday Copy', 'Event Templates'],
     img: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=900',
   },
@@ -145,7 +145,7 @@ const Products = () => {
               <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">Standardized Kits</span>
               <h4 className="text-2xl font-serif text-gray-900 mb-4">Local Launch Kits</h4>
               <p className="text-gray-500 text-sm leading-relaxed font-light mb-6">
-                Step-by-step setup kits for Google Business and Yelp. Get your profile right, show up in search, and make a strong first impression.
+                Step-by-step setup kits for Google Business and Yelp. Get your profile looking sharp, show up when local customers are searching, and make the kind of first impression that turns browsers into visitors.
               </p>
               <span className="text-xs font-bold text-black border-b border-black pb-1 uppercase tracking-widest">Explore Catalog</span>
             </div>
@@ -169,7 +169,7 @@ const Products = () => {
               <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">Mobile Application</span>
               <h4 className="text-2xl font-serif text-gray-900 mb-4">Camentra</h4>
               <p className="text-gray-500 text-sm leading-relaxed font-light mb-6">
-                A camera app with a built-in AI coach. Get better business photos every time — no photographer, no guesswork.
+                A camera app with a built-in AI coach. Get better business photos every time, without hiring a photographer or guessing what looks good.
               </p>
               <span className="text-xs font-bold text-black border-b border-black pb-1 uppercase tracking-widest">Visit Site</span>
             </div>
@@ -203,7 +203,7 @@ const Products = () => {
             {/* Scrollable body */}
             <div className="flex-grow overflow-y-auto p-6 md:p-10 space-y-12">
 
-              {/* ── FREE SAMPLE — clearly its own thing, not a kit ── */}
+              {/* ── FREE SAMPLE ── */}
               <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100">
                 <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
                   <div className="max-w-xl text-left">
@@ -212,7 +212,7 @@ const Products = () => {
                     </span>
                     <h4 className="text-3xl font-serif mt-4 mb-2">3-Shot Starter Pack</h4>
                     <p className="text-sm text-gray-500 font-light leading-relaxed">
-                      Not sure where to start? Get a free taste — 3 industry photo angles, a 3-minute profile audit you can do right now, and 3 review response templates for your niche.
+                      Not sure where to start? Get a free sample: 3 photo angles for your industry, a quick profile audit you can complete in 3 minutes, and 3 review response templates written for your niche.
                     </p>
                   </div>
                   <div className="w-full lg:w-auto space-y-3">
@@ -245,13 +245,13 @@ const Products = () => {
                 </div>
               </div>
 
-              {/* ── PLATFORM KITS (paid) ── */}
+              {/* ── PLATFORM KITS ── */}
               <div>
                 <div className="text-left mb-6">
                   <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Platform Kits</span>
-                  <h4 className="text-2xl font-serif text-gray-900 mt-1">Choose your platform & tier.</h4>
+                  <h4 className="text-2xl font-serif text-gray-900 mt-1">Choose your platform and tier.</h4>
                   <p className="text-sm text-gray-400 font-light mt-2">
-                    Each kit walks you through your full profile setup with SEO guidance, templates, and promotion tips built in.
+                    Each kit walks you through setting up your profile the right way, so you show up in local searches, make a great first impression, and know how to keep the momentum going.
                   </p>
                 </div>
 
@@ -387,7 +387,7 @@ const Products = () => {
                   <div className="text-left">
                     <p className="text-sm font-bold text-white uppercase tracking-wider">Why choose one?</p>
                     <p className="text-sm text-gray-400 font-light mt-1 leading-relaxed">
-                      Get Google + Yelp together and save $30 — your entire local presence, covered.
+                      Get Google + Yelp together and save $30. Cover every place a local customer might find you.
                     </p>
                   </div>
                   <button className="shrink-0 px-6 py-3 bg-white text-black rounded-full text-xs font-bold uppercase tracking-widest hover:bg-gray-100 transition-colors whitespace-nowrap">
