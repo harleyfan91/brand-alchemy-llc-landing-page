@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import AlchemyMark from './AlchemyMark';
 
 // ─── Text scale reference ────────────────────────────────────────────────────
 // Eyebrow labels (uppercase, decorative): text-xs font-bold
@@ -300,13 +301,23 @@ const Products = () => {
                           <div
                             key={t}
                             onClick={() => handleTierChange(t)}
-                            className="rounded-xl border bg-white cursor-pointer"
+                            className="rounded-xl border bg-white cursor-pointer relative overflow-hidden"
                             style={{
                               borderColor: isActive ? '#111' : '#e5e7eb',
                               boxShadow: isActive ? '0 4px 20px -4px rgba(0,0,0,0.12)' : 'none',
                               transition: 'border-color 0.15s ease, box-shadow 0.15s ease',
                             }}
                           >
+                            {/* Etched β△ mark — Pro card only, brightens when selected */}
+                            {t === 'pro' && (
+                              <span
+                                className="absolute top-3.5 right-4 font-bold select-none pointer-events-none text-base tracking-[0.18em] text-gray-900"
+                                style={{ opacity: isActive ? 0.13 : 0.05, transition: 'opacity 0.15s ease' }}
+                                aria-hidden="true"
+                              >
+                                β△
+                              </span>
+                            )}
                             {/* Tier header row */}
                             <div className="flex items-center justify-between px-5 pt-5 pb-4">
                               <div className="flex items-center gap-3">
