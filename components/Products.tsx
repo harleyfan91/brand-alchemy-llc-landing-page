@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 type Platform = 'google' | 'yelp';
 type Tier = 'core' | 'pro';
 
-const kits: Record<Platform, Record<Tier, { price: string; features: string[] }>> = {
+const kits: Record<Platform, Record<Tier, { price: string; label: string; features: string[] }>> = {
   google: {
     core: {
       price: '$59',
+      label: 'Google Core Kit',
       features: [
         '15-min Google Business walkthrough',
         '30 review response templates',
@@ -16,6 +17,7 @@ const kits: Record<Platform, Record<Tier, { price: string; features: string[] }>
     },
     pro: {
       price: '$129',
+      label: 'Google Pro Kit',
       features: [
         'Everything in Google Core',
         'Google Ads starter settings',
@@ -28,6 +30,7 @@ const kits: Record<Platform, Record<Tier, { price: string; features: string[] }>
   yelp: {
     core: {
       price: '$59',
+      label: 'Yelp Core Kit',
       features: [
         '15-min Yelp profile walkthrough',
         '30 review response templates',
@@ -37,6 +40,7 @@ const kits: Record<Platform, Record<Tier, { price: string; features: string[] }>
     },
     pro: {
       price: '$129',
+      label: 'Yelp Pro Kit',
       features: [
         'Everything in Yelp Core',
         'Yelp Ads starter configuration',
@@ -45,6 +49,19 @@ const kits: Record<Platform, Record<Tier, { price: string; features: string[] }>
         'Performance tracking sheet',
       ],
     },
+  },
+};
+
+const platformConfig: Record<Platform, { bg: string; tabActiveBorder: string; accent: string }> = {
+  google: {
+    bg: '#f0f4ff',
+    tabActiveBorder: '#4285F4',
+    accent: '#4285F4',
+  },
+  yelp: {
+    bg: '#fff5f5',
+    tabActiveBorder: '#d32323',
+    accent: '#d32323',
   },
 };
 
@@ -69,6 +86,12 @@ const aLaCarte = [
 
 const industries = ['Cafe', 'Gym & Fitness', 'Spa & Beauty', 'Professional Services'];
 
+const CheckIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" className="w-2.5 h-2.5 shrink-0">
+    <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
 const Products = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [platform, setPlatform] = useState<Platform>('google');
@@ -77,17 +100,18 @@ const Products = () => {
   const [selectedIndustry, setSelectedIndustry] = useState('');
 
   const activeKit = kits[platform][tier];
+  const config = platformConfig[platform];
 
   const handlePlatformChange = (p: Platform) => {
     if (p === platform) return;
     setIsTransitioning(true);
-    setTimeout(() => { setPlatform(p); setIsTransitioning(false); }, 160);
+    setTimeout(() => { setPlatform(p); setIsTransitioning(false); }, 180);
   };
 
   const handleTierChange = (t: Tier) => {
     if (t === tier) return;
     setIsTransitioning(true);
-    setTimeout(() => { setTier(t); setIsTransitioning(false); }, 160);
+    setTimeout(() => { setTier(t); setIsTransitioning(false); }, 180);
   };
 
   return (
@@ -186,71 +210,116 @@ const Products = () => {
                   <h4 className="text-2xl font-serif text-gray-900 mt-1">Choose your platform & tier.</h4>
                 </div>
 
-                <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
-                  {/* Platform Tabs — full bleed across top */}
-                  <div className="flex border-b border-gray-100">
+                {/* Card with animated background tint */}
+                <div
+                  className="rounded-2xl border border-gray-200 overflow-hidden"
+                  style={{
+                    backgroundColor: config.bg,
+                    transition: 'background-color 0.4s ease',
+                  }}
+                >
+                  {/* Platform Tabs */}
+                  <div className="flex">
                     {(['google', 'yelp'] as Platform[]).map((p) => (
                       <button
                         key={p}
                         onClick={() => handlePlatformChange(p)}
-                        className={`flex-1 py-4 text-[10px] font-bold uppercase tracking-widest transition-all duration-200 ${
-                          platform === p
-                            ? 'bg-white text-black border-b-2 border-black -mb-px'
-                            : 'bg-gray-50 text-gray-400 hover:text-gray-600'
-                        }`}
+                        className="flex-1 py-4 text-[10px] font-bold uppercase tracking-widest transition-all duration-200 relative"
+                        style={{
+                          color: platform === p ? '#111' : '#9ca3af',
+                          backgroundColor: platform === p ? 'rgba(255,255,255,0.7)' : 'transparent',
+                        }}
                       >
                         {p === 'google' ? 'Google' : 'Yelp'}
+                        {platform === p && (
+                          <span
+                            className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full"
+                            style={{ backgroundColor: config.accent, transition: 'background-color 0.4s ease' }}
+                          />
+                        )}
                       </button>
                     ))}
                   </div>
 
                   {/* Card Body */}
-                  <div className="p-8 md:p-10">
-                    {/* Price + Tier toggle */}
-                    <div className="flex items-start justify-between gap-4 mb-8">
-                      <div style={{ opacity: isTransitioning ? 0 : 1, transition: 'opacity 0.16s ease' }}>
-                        <p className="text-[9px] font-bold uppercase tracking-widest text-gray-400 mb-1">
-                          {platform === 'google' ? 'Google' : 'Yelp'} {tier === 'core' ? 'Core' : 'Pro'} Kit
-                        </p>
-                        <p className="text-5xl font-light text-gray-900 tracking-tight">{activeKit.price}</p>
-                      </div>
+                  <div className="p-6 md:p-8 bg-white/60 backdrop-blur-sm">
 
-                      {/* Core / Pro pill toggle */}
-                      <div className="flex bg-gray-100 rounded-full p-1 shrink-0 mt-1">
-                        {(['core', 'pro'] as Tier[]).map((t) => (
-                          <button
+                    {/* Vertical Tier Option Cards */}
+                    <div
+                      className="space-y-3 mb-6"
+                      style={{ opacity: isTransitioning ? 0 : 1, transition: 'opacity 0.18s ease' }}
+                    >
+                      {(['core', 'pro'] as Tier[]).map((t) => {
+                        const kit = kits[platform][t];
+                        const isActive = tier === t;
+                        return (
+                          <div
                             key={t}
                             onClick={() => handleTierChange(t)}
-                            className={`px-5 py-2 rounded-full text-[9px] font-bold uppercase tracking-widest transition-all duration-200 ${
-                              tier === t ? 'bg-white text-black shadow-sm' : 'text-gray-400 hover:text-gray-600'
-                            }`}
+                            className="rounded-xl border bg-white cursor-pointer transition-all duration-200"
+                            style={{
+                              borderColor: isActive ? '#111' : '#e5e7eb',
+                              boxShadow: isActive ? '0 4px 20px -4px rgba(0,0,0,0.12)' : 'none',
+                            }}
                           >
-                            {t === 'core' ? 'Core' : 'Pro'}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
+                            {/* Tier Header Row */}
+                            <div className="flex items-center justify-between px-5 pt-5 pb-4">
+                              <div className="flex items-center gap-3">
+                                {/* Selection indicator */}
+                                <div
+                                  className="w-4 h-4 rounded-full border flex items-center justify-center shrink-0 transition-all duration-200"
+                                  style={{
+                                    borderColor: isActive ? '#111' : '#d1d5db',
+                                    backgroundColor: isActive ? '#111' : 'transparent',
+                                    color: isActive ? '#fff' : '#9ca3af',
+                                  }}
+                                >
+                                  {isActive && <CheckIcon />}
+                                </div>
+                                <div>
+                                  <span className="text-[8px] font-bold uppercase tracking-widest text-gray-400 block">
+                                    {t === 'core' ? 'Essential' : 'Momentum'}
+                                  </span>
+                                  <h5 className="text-sm font-bold text-gray-900 uppercase tracking-wider">
+                                    {t === 'core' ? 'Core' : 'Pro'}
+                                  </h5>
+                                </div>
+                              </div>
+                              <span
+                                className="text-2xl font-light tracking-tight"
+                                style={{ color: isActive ? '#111' : '#9ca3af' }}
+                              >
+                                {kit.price}
+                              </span>
+                            </div>
 
-                    {/* Feature List */}
-                    <div
-                      style={{ opacity: isTransitioning ? 0 : 1, transition: 'opacity 0.16s ease' }}
-                      className="space-y-3 mb-8"
-                    >
-                      {activeKit.features.map((f, idx) => (
-                        <div key={idx} className="flex items-center gap-3">
-                          <div className="w-4 h-4 rounded-full border border-gray-200 flex items-center justify-center shrink-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" className="w-2.5 h-2.5">
-                              <path d="M2 6l3 3 5-5" stroke="#9ca3af" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
+                            {/* Feature List — always visible */}
+                            <div className="px-5 pb-5 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 border-t border-gray-100 pt-4">
+                              {kit.features.map((f, idx) => (
+                                <div key={idx} className="flex items-center gap-2">
+                                  <span
+                                    className="shrink-0"
+                                    style={{ color: isActive ? '#6b7280' : '#d1d5db' }}
+                                  >
+                                    <CheckIcon />
+                                  </span>
+                                  <span
+                                    className="text-[10px] font-light leading-relaxed"
+                                    style={{ color: isActive ? '#6b7280' : '#c4c8cd' }}
+                                  >
+                                    {f}
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
                           </div>
-                          <span className="text-[11px] text-gray-500 font-light">{f}</span>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
 
                     {/* CTA */}
                     <button
-                      style={{ opacity: isTransitioning ? 0 : 1, transition: 'opacity 0.16s ease' }}
+                      style={{ opacity: isTransitioning ? 0 : 1, transition: 'opacity 0.18s ease' }}
                       className="w-full py-4 bg-black text-white rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-gray-800 transition-colors"
                     >
                       Select {platform === 'google' ? 'Google' : 'Yelp'} {tier === 'core' ? 'Core' : 'Pro'} — {activeKit.price}
@@ -258,13 +327,16 @@ const Products = () => {
                   </div>
                 </div>
 
-                {/* Bundle nudge — quiet, no separate card needed */}
-                <div className="mt-4 flex items-center justify-between px-2">
-                  <p className="text-[10px] text-gray-400 font-light">
-                    Need both platforms? The Pro Bundle includes everything.
-                  </p>
-                  <button className="text-[10px] font-bold text-black uppercase tracking-widest border-b border-black pb-0.5 hover:text-gray-500 hover:border-gray-500 transition-colors whitespace-nowrap ml-4">
-                    Get Bundle — $229
+                {/* Bundle Strip — more prominent, hook-ier copy */}
+                <div className="mt-4 rounded-xl bg-gray-900 px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div className="text-left">
+                    <p className="text-[11px] font-bold text-white uppercase tracking-wider">Why settle for one?</p>
+                    <p className="text-[10px] text-gray-400 font-light mt-0.5">
+                      Get Google + Yelp Pro together and save $30 — the fastest path to full local visibility.
+                    </p>
+                  </div>
+                  <button className="shrink-0 px-6 py-2.5 bg-white text-black rounded-full text-[9px] font-bold uppercase tracking-widest hover:bg-gray-100 transition-colors whitespace-nowrap">
+                    Bundle — $229
                   </button>
                 </div>
               </div>
