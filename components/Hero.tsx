@@ -18,18 +18,17 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
-        {/* Pill — immediately signals the audience */}
         <div className="inline-block px-4 py-1.5 mb-6 border border-gray-100 rounded-full bg-gray-50/50 backdrop-blur-sm">
           <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">Built for local business owners</span>
         </div>
 
         <h1 className="text-5xl md:text-7xl font-serif text-gray-900 leading-[1.1] mb-8">
-          Your business,<br />looking its best —<br />
-          <span className="italic text-gray-400">without the agency.</span>
+          Get your business noticed.<br />
+          <span className="italic text-gray-400">We'll show you exactly how.</span>
         </h1>
 
         <p className="text-xl text-gray-500 max-w-2xl mx-auto mb-16 leading-relaxed font-light">
-          Ready-to-use guides, templates, and tools that help you build a stronger online presence — on your own time, without a marketing degree.
+          Guides, templates, and tools that help your business look great online and get found by more customers. No prior experience needed.
         </p>
 
         <div className="flex justify-center">
@@ -39,7 +38,7 @@ const Hero: React.FC = () => {
             className="group flex flex-col items-center gap-4 transition-all duration-300"
           >
             <span className="px-12 py-5 bg-black text-white rounded-full text-xs font-bold uppercase tracking-[0.2em] hover:bg-gray-800 transition-all shadow-2xl hover:translate-y-[-4px]">
-              See what we make
+              See how it works
             </span>
             <div className="mt-4 flex flex-col items-center gap-2 animate-bounce opacity-40 group-hover:opacity-100 transition-opacity">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
