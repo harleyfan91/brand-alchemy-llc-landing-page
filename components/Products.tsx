@@ -20,10 +20,11 @@ const kits: Record<Platform, Record<Tier, { price: string; label: string; featur
       price: '$59',
       label: 'Google Core Kit',
       features: [
-        '15-min Google Business walkthrough',
+        'Step-by-step Google Business profile setup',
+        'Built-in SEO tips as you go',
+        'Light promotion & first-impression guide',
         '30 review response templates',
         '12 industry photo angles',
-        'Citation checklist',
       ],
     },
     pro: {
@@ -43,10 +44,11 @@ const kits: Record<Platform, Record<Tier, { price: string; label: string; featur
       price: '$59',
       label: 'Yelp Core Kit',
       features: [
-        '15-min Yelp profile walkthrough',
+        'Step-by-step Yelp profile setup',
+        'Built-in SEO tips as you go',
+        'Light promotion & first-impression guide',
         '30 review response templates',
         '12 industry photo angles',
-        'Weekly routine guide',
       ],
     },
     pro: {
@@ -104,31 +106,24 @@ const Products = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [platform, setPlatform] = useState<Platform>('google');
   const [tier, setTier] = useState<Tier>('core');
-  // platformFading: fades only the tier card content when PLATFORM changes
-  // (feature lists are platform-specific, so content actually changes)
   const [platformFading, setPlatformFading] = useState(false);
   const [selectedIndustry, setSelectedIndustry] = useState('');
 
   const activeKit = kits[platform][tier];
   const config = platformConfig[platform];
 
-  // Platform switch: short fade because feature content changes
   const handlePlatformChange = (p: Platform) => {
     if (p === platform) return;
     setPlatformFading(true);
     setTimeout(() => { setPlatform(p); setPlatformFading(false); }, 160);
   };
 
-  // Tier switch: NO fade — both cards are always visible, just CSS state changes
-  const handleTierChange = (t: Tier) => {
-    setTier(t);
-  };
+  const handleTierChange = (t: Tier) => setTier(t);
 
   return (
     <section id="products" className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="mb-16">
-          {/* eyebrow */}
           <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400 mb-4">Current Catalog</h2>
           <h3 className="text-4xl md:text-5xl font-serif text-gray-900">The Toolkit</h3>
         </div>
@@ -150,7 +145,7 @@ const Products = () => {
               <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">Standardized Kits</span>
               <h4 className="text-2xl font-serif text-gray-900 mb-4">Local Launch Kits</h4>
               <p className="text-gray-500 text-sm leading-relaxed font-light mb-6">
-                Tiered blueprints for local dominance. Choose your level—from free industry starters to full-scale pro bundles.
+                Step-by-step setup kits for Google Business and Yelp. Get your profile right, show up in search, and make a strong first impression.
               </p>
               <span className="text-xs font-bold text-black border-b border-black pb-1 uppercase tracking-widest">Explore Catalog</span>
             </div>
@@ -174,7 +169,7 @@ const Products = () => {
               <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">Mobile Application</span>
               <h4 className="text-2xl font-serif text-gray-900 mb-4">Camentra</h4>
               <p className="text-gray-500 text-sm leading-relaxed font-light mb-6">
-                Our flagship photo coaching tool. Master composition and lighting for professional-grade self-execution.
+                A camera app with a built-in AI coach. Get better business photos every time — no photographer, no guesswork.
               </p>
               <span className="text-xs font-bold text-black border-b border-black pb-1 uppercase tracking-widest">Visit Site</span>
             </div>
@@ -193,7 +188,7 @@ const Products = () => {
             <div className="p-6 md:px-10 border-b border-gray-100 flex justify-between items-center bg-white rounded-t-3xl shrink-0">
               <div className="text-left">
                 <h3 className="text-2xl font-serif text-gray-900">Toolkit Catalog</h3>
-                <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mt-1">Infrastructure for Visibility</p>
+                <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mt-1">Find your starting point</p>
               </div>
               <button
                 onClick={() => setIsModalOpen(false)}
@@ -208,16 +203,16 @@ const Products = () => {
             {/* Scrollable body */}
             <div className="flex-grow overflow-y-auto p-6 md:p-10 space-y-12">
 
-              {/* ── TIER 1: FREE ── */}
+              {/* ── FREE SAMPLE — clearly its own thing, not a kit ── */}
               <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100">
                 <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
                   <div className="max-w-xl text-left">
                     <span className="text-xs font-bold text-black bg-white px-3 py-1 rounded-full uppercase tracking-widest border border-gray-200 shadow-sm">
-                      Get Started — $0
+                      Free Sample
                     </span>
                     <h4 className="text-3xl font-serif mt-4 mb-2">3-Shot Starter Pack</h4>
                     <p className="text-sm text-gray-500 font-light leading-relaxed">
-                      Includes 3 industry photo angles, a 3-minute local audit, and 3 review templates tailored to your niche.
+                      Not sure where to start? Get a free taste — 3 industry photo angles, a 3-minute profile audit you can do right now, and 3 review response templates for your niche.
                     </p>
                   </div>
                   <div className="w-full lg:w-auto space-y-3">
@@ -243,26 +238,29 @@ const Products = () => {
                         className="px-5 py-3 rounded-full border border-gray-200 text-sm focus:outline-none focus:border-black flex-grow lg:w-48"
                       />
                       <button className="px-7 py-3 bg-black text-white rounded-full text-xs font-bold uppercase tracking-widest hover:bg-gray-800 transition-all shadow-lg whitespace-nowrap">
-                        Send My Kit
+                        Send My Sample
                       </button>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* ── TIER 2: CONFIGURATOR ── */}
+              {/* ── PLATFORM KITS (paid) ── */}
               <div>
                 <div className="text-left mb-6">
                   <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Platform Kits</span>
                   <h4 className="text-2xl font-serif text-gray-900 mt-1">Choose your platform & tier.</h4>
+                  <p className="text-sm text-gray-400 font-light mt-2">
+                    Each kit walks you through your full profile setup with SEO guidance, templates, and promotion tips built in.
+                  </p>
                 </div>
 
-                {/* Card with animated platform tint */}
+                {/* Configurator card */}
                 <div
                   className="rounded-2xl border border-gray-200 overflow-hidden"
                   style={{ backgroundColor: config.bg, transition: 'background-color 0.4s ease' }}
                 >
-                  {/* Platform tabs — full bleed */}
+                  {/* Platform tabs */}
                   <div className="flex">
                     {(['google', 'yelp'] as Platform[]).map((p) => (
                       <button
@@ -287,9 +285,6 @@ const Products = () => {
 
                   {/* Card body */}
                   <div className="p-6 md:p-8 bg-white/60 backdrop-blur-sm">
-
-                    {/* Vertical tier option cards */}
-                    {/* platformFading only — tier switching is instant visual state change */}
                     <div
                       className="space-y-3 mb-6"
                       style={{ opacity: platformFading ? 0 : 1, transition: 'opacity 0.16s ease' }}
@@ -308,20 +303,20 @@ const Products = () => {
                               transition: 'border-color 0.15s ease, box-shadow 0.15s ease',
                             }}
                           >
-                            {/* Etched β△ mark — Pro card only, brightens when selected */}
+                            {/* Etched β△ — Pro card only */}
                             {t === 'pro' && (
                               <span
-                                className="absolute top-3.5 right-4 font-bold select-none pointer-events-none text-base tracking-[0.18em] text-gray-900"
+                                className="absolute top-3.5 right-4 font-bold select-none pointer-events-none text-base tracking-[0.18em] text-gray-900 normal-case"
                                 style={{ opacity: isActive ? 0.13 : 0.05, transition: 'opacity 0.15s ease' }}
                                 aria-hidden="true"
                               >
                                 β△
                               </span>
                             )}
-                            {/* Tier header row */}
+
+                            {/* Tier header */}
                             <div className="flex items-center justify-between px-5 pt-5 pb-4">
                               <div className="flex items-center gap-3">
-                                {/* Radio indicator */}
                                 <div
                                   className="w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0"
                                   style={{
@@ -356,7 +351,7 @@ const Products = () => {
                               </span>
                             </div>
 
-                            {/* Feature list — always visible, dims when inactive */}
+                            {/* Features */}
                             <div className="px-5 pb-5 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5 border-t border-gray-100 pt-4">
                               {kit.features.map((f, idx) => (
                                 <div key={idx} className="flex items-center gap-2.5">
@@ -377,7 +372,7 @@ const Products = () => {
                       })}
                     </div>
 
-                    {/* CTA — label reflects current selection */}
+                    {/* CTA */}
                     <button
                       style={{ opacity: platformFading ? 0 : 1, transition: 'opacity 0.16s ease' }}
                       className="w-full py-4 bg-black text-white rounded-full text-xs font-bold uppercase tracking-widest hover:bg-gray-800 transition-colors"
@@ -387,12 +382,12 @@ const Products = () => {
                   </div>
                 </div>
 
-                {/* Bundle strip — prominent, hooks on the $30 savings */}
+                {/* Bundle strip */}
                 <div className="mt-4 rounded-xl bg-gray-900 px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
                   <div className="text-left">
-                    <p className="text-sm font-bold text-white uppercase tracking-wider">Why settle for one?</p>
+                    <p className="text-sm font-bold text-white uppercase tracking-wider">Why choose one?</p>
                     <p className="text-sm text-gray-400 font-light mt-1 leading-relaxed">
-                      Stack Google + Yelp Pro and save $30 — one bundle, full local visibility, zero gaps.
+                      Get Google + Yelp together and save $30 — your entire local presence, covered.
                     </p>
                   </div>
                   <button className="shrink-0 px-6 py-3 bg-white text-black rounded-full text-xs font-bold uppercase tracking-widest hover:bg-gray-100 transition-colors whitespace-nowrap">
@@ -401,14 +396,14 @@ const Products = () => {
                 </div>
               </div>
 
-              {/* ── TIER 3: PRECISION ADD-ONS ── */}
+              {/* ── PRECISION ADD-ONS ── */}
               <div className="pt-2">
                 <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 pb-6 border-b border-gray-100">
                   <div className="text-left">
                     <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Precision Add-ons</span>
                     <h4 className="text-2xl font-serif text-gray-900 mt-1.5">Build your own stack.</h4>
                     <p className="text-sm text-gray-400 font-light mt-2 max-w-sm leading-relaxed">
-                      Not every business needs the full kit on day one. Start with exactly what you need — and layer in more as you grow.
+                      Not ready for a full kit? Start with one thing and build from there.
                     </p>
                   </div>
                   <span className="text-xs font-bold text-gray-400 uppercase tracking-widest whitespace-nowrap pb-1">2 Available</span>
@@ -430,17 +425,13 @@ const Products = () => {
                           <span className="text-xs font-bold text-gray-900">{item.price}</span>
                         </div>
                       </div>
-
                       <div className="p-6 flex flex-col flex-grow text-left">
                         <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-1.5">{item.subtitle}</span>
                         <h6 className="text-lg font-serif text-gray-900 mb-2 leading-snug">{item.title}</h6>
                         <p className="text-sm text-gray-500 font-light leading-relaxed mb-5 flex-grow">{item.desc}</p>
                         <div className="flex flex-wrap gap-1.5 mb-5">
                           {item.tags.map((tag, idx) => (
-                            <span
-                              key={idx}
-                              className="text-[10px] font-bold uppercase tracking-wider bg-gray-50 text-gray-400 px-2.5 py-1 rounded-full border border-gray-100"
-                            >
+                            <span key={idx} className="text-[10px] font-bold uppercase tracking-wider bg-gray-50 text-gray-400 px-2.5 py-1 rounded-full border border-gray-100">
                               {tag}
                             </span>
                           ))}
