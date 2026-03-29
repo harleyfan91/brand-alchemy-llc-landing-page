@@ -1,14 +1,12 @@
-
 import React, { useState, useEffect } from 'react';
+import AlchemyMark from './AlchemyMark';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScrollEvent = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScrollEvent = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScrollEvent);
     return () => window.removeEventListener('scroll', handleScrollEvent);
   }, []);
@@ -19,45 +17,46 @@ const Header: React.FC = () => {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
     closeMenu();
-    
     const element = document.getElementById(targetId);
     if (element) {
-      const offset = 80; // Offset for fixed header
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      const offset = 80;
+      const offsetPosition = element.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
     }
   };
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || isMenuOpen ? 'bg-white/95 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-        <a 
-          href="#" 
-          onClick={(e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            closeMenu();
-          }} 
-          className="flex items-center group"
+
+        {/* ── Lockup: β△ [rule] BRAND ALCHEMY ── */}
+        <a
+          href="#"
+          onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); closeMenu(); }}
+          className="flex items-center gap-3 group"
         >
-          <span className="text-xl font-bold tracking-tight text-gray-900 uppercase transition-colors group-hover:text-gray-500">Brand Alchemy</span>
+          {/* The mark */}
+          <AlchemyMark size="sm" className="text-gray-900 group-hover:text-gray-400 transition-colors" />
+
+          {/* Thin vertical rule — more intentional than a pipe character */}
+          <span className="w-px h-4 bg-gray-300 shrink-0" aria-hidden="true" />
+
+          {/* Brand name */}
+          <span className="text-xl font-bold tracking-tight text-gray-900 uppercase transition-colors group-hover:text-gray-500">
+            Brand Alchemy
+          </span>
         </a>
-        
-        {/* Desktop Navigation */}
+
+        {/* Desktop nav */}
         <nav className="hidden md:flex space-x-10 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
           <a href="#services" onClick={(e) => handleNavClick(e, 'services')} className="hover:text-black transition-colors">Solutions</a>
           <a href="#products" onClick={(e) => handleNavClick(e, 'products')} className="hover:text-black transition-colors">Products</a>
           <a href="mailto:info@brandalchemyllc.com" className="hover:text-black transition-colors">Contact</a>
         </nav>
 
-        {/* Mobile Menu Toggle */}
+        {/* Mobile toggle */}
         <div className="md:hidden">
-          <button 
+          <button
             onClick={toggleMenu}
             className="text-gray-900 p-2 focus:outline-none transition-transform active:scale-90"
             aria-label="Toggle menu"
@@ -75,7 +74,7 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation Overlay */}
+      {/* Mobile nav overlay */}
       <div className={`md:hidden absolute top-full left-0 w-full bg-white border-t border-gray-100 transition-all duration-300 ease-in-out overflow-hidden shadow-2xl ${isMenuOpen ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'}`}>
         <nav className="flex flex-col p-8 space-y-8 text-center text-[11px] font-bold uppercase tracking-[0.4em] text-gray-400">
           <a href="#services" onClick={(e) => handleNavClick(e, 'services')} className="hover:text-black transition-colors">Solutions</a>
