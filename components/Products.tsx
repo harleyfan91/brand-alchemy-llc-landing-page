@@ -8,8 +8,22 @@ const Products = () => {
   const industries = ["Cafe", "Gym & Fitness", "Spa & Beauty", "Professional Services"];
 
   const aLaCarte = [
-    { title: "Seasonal Industry Photo Angles (9-angle PDF)", price: "$7", desc: "Niche-specific framing for seasonal peaks." },
-    { title: "Seasonal & Event Templates Pack", price: "$39", desc: "Ready-to-use copy for holidays and local events." }
+    {
+      title: "Seasonal Industry Photo Angles",
+      subtitle: "9-Angle PDF Guide",
+      price: "$7",
+      desc: "Niche-specific framing for seasonal peaks. Know exactly which shots to capture and when — no photographer required.",
+      tags: ["9 Unique Angles", "Seasonal Timing", "Niche-Specific"],
+      img: "https://images.unsplash.com/photo-1542038374305-31e39c9ddaa6?auto=format&fit=crop&q=80&w=900"
+    },
+    {
+      title: "Seasonal & Event Templates Pack",
+      subtitle: "Copy & Caption Bundle",
+      price: "$39",
+      desc: "Ready-to-use copy for holidays and local events — no writer's block. Just drop in your details, deploy, and post.",
+      tags: ["30+ Captions", "Holiday Copy", "Event Templates"],
+      img: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=900"
+    }
   ];
 
   const kits = {
@@ -64,9 +78,9 @@ const Products = () => {
       {isModalOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsModalOpen(false)}></div>
-          
-          <div className="relative bg-white w-full max-w-5xl max-h-[90vh] rounded-3xl shadow-2xl flex flex-col animate-in fade-in zoom-in duration-300">
-            {/* Header - Fixed Position for Consistency */}
+
+          <div className="relative bg-white w-full max-w-5xl max-h-[90vh] rounded-3xl shadow-2xl flex flex-col">
+            {/* Modal Header */}
             <div className="p-6 md:px-10 border-b border-gray-100 flex justify-between items-center bg-white rounded-t-3xl shrink-0 z-20">
               <div className="text-left">
                 <h3 className="text-2xl font-serif text-gray-900">Toolkit Catalog</h3>
@@ -79,8 +93,8 @@ const Products = () => {
 
             {/* Scrollable Content */}
             <div className="flex-grow overflow-y-auto p-6 md:p-10 space-y-12">
-              
-              {/* 1. TOP: FREE TIER LEAD MAGNET */}
+
+              {/* TIER 1: FREE */}
               <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100">
                 <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
                   <div className="max-w-xl text-left">
@@ -92,8 +106,8 @@ const Products = () => {
                   </div>
                   <div className="w-full lg:w-auto space-y-4">
                     <div className="relative">
-                      <select 
-                        value={selectedIndustry} 
+                      <select
+                        value={selectedIndustry}
                         onChange={(e) => setSelectedIndustry(e.target.value)}
                         className="w-full px-4 py-3 rounded-full border border-gray-200 text-[11px] font-medium focus:outline-none focus:border-black appearance-none bg-white cursor-pointer"
                       >
@@ -112,25 +126,16 @@ const Products = () => {
                 </div>
               </div>
 
-              {/* 2. THE ANCHOR: PRO BUNDLE */}
-              <div className="bg-gray-900 rounded-2xl p-8 md:p-12 text-white flex flex-col md:flex-row justify-between items-center gap-8 shadow-xl">
-                <div className="max-w-md text-left">
-                  <span className="text-[9px] font-bold text-gray-400 uppercase tracking-[0.3em]">Full Infrastructure</span>
-                  <h4 className="text-3xl font-serif mt-2 mb-4">The Pro Bundle</h4>
-                  <p className="text-sm text-gray-400 font-light leading-relaxed">The definitive toolkit. Combined Google & Yelp Pro kits for complete local visibility and standardized momentum.</p>
-                </div>
-                <div className="text-center md:text-right">
-                  <div className="text-4xl font-light mb-6">$229</div>
-                  <button className="px-10 py-4 bg-white text-black rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-gray-200 transition-all">Get Full Bundle</button>
-                </div>
-              </div>
-
-              {/* 3. PLATFORM SELECTION */}
+              {/* TIER 2: PLATFORM KITS */}
               <div className="space-y-8">
-                <div className="flex justify-center border-b border-gray-100">
+                <div className="text-left">
+                  <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-gray-400">Choose Your Platform</span>
+                  <h4 className="text-2xl font-serif text-gray-900 mt-1">Platform Kits</h4>
+                </div>
+                <div className="flex justify-start border-b border-gray-100">
                   {['google', 'yelp'].map((p) => (
-                    <button 
-                      key={p} 
+                    <button
+                      key={p}
                       onClick={() => setActiveTab(p as 'google' | 'yelp')}
                       className={`px-8 py-4 text-[10px] font-bold uppercase tracking-widest transition-all ${activeTab === p ? 'border-b-2 border-black text-black' : 'text-gray-400 hover:text-gray-600'}`}
                     >
@@ -147,7 +152,7 @@ const Products = () => {
                       <ul className="space-y-3 mb-8 flex-grow">
                         {kit.features.map((f, idx) => (
                           <li key={idx} className="text-[9px] uppercase tracking-wider text-gray-400 flex items-center gap-2">
-                            <span className="w-1 h-1 rounded-full bg-gray-300"></span> {f}
+                            <span className="w-1 h-1 rounded-full bg-gray-300 shrink-0"></span> {f}
                           </li>
                         ))}
                       </ul>
@@ -157,17 +162,76 @@ const Products = () => {
                 </div>
               </div>
 
-              {/* 4. A LA CARTE */}
-              <div className="pt-8 border-t border-gray-100">
-                <h6 className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-6 text-left">Precision Add-ons</h6>
-                <div className="grid sm:grid-cols-2 gap-4">
+              {/* TIER 3: PRO BUNDLE */}
+              <div className="bg-gray-900 rounded-2xl p-8 md:p-12 text-white flex flex-col md:flex-row justify-between items-center gap-8 shadow-xl">
+                <div className="max-w-md text-left">
+                  <span className="text-[9px] font-bold text-gray-400 uppercase tracking-[0.3em]">Full Infrastructure</span>
+                  <h4 className="text-3xl font-serif mt-2 mb-4">The Pro Bundle</h4>
+                  <p className="text-sm text-gray-400 font-light leading-relaxed">The definitive toolkit. Combined Google & Yelp Pro kits for complete local visibility and standardized momentum.</p>
+                </div>
+                <div className="text-center md:text-right shrink-0">
+                  <div className="text-4xl font-light mb-6">$229</div>
+                  <button className="px-10 py-4 bg-white text-black rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-gray-200 transition-all">Get Full Bundle</button>
+                </div>
+              </div>
+
+              {/* TIER 4: PRECISION ADD-ONS — Redesigned */}
+              <div className="pt-2">
+                {/* Section header with framing copy */}
+                <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 pb-6 border-b border-gray-100">
+                  <div className="text-left">
+                    <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-gray-400">Precision Add-ons</span>
+                    <h4 className="text-2xl font-serif text-gray-900 mt-1.5">Build your own stack.</h4>
+                    <p className="text-sm text-gray-400 font-light mt-1.5 max-w-sm">
+                      Not every business needs the full kit on day one. Start with exactly what you need — and layer in more as you grow.
+                    </p>
+                  </div>
+                  <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest whitespace-nowrap pb-1">2 Available</span>
+                </div>
+
+                {/* Add-on Cards — image-forward, product-shelf style */}
+                <div className="grid sm:grid-cols-2 gap-6">
                   {aLaCarte.map((item, i) => (
-                    <div key={i} className="p-6 rounded-2xl border border-gray-100 bg-white flex justify-between items-center group hover:border-black transition-all">
-                      <div className="max-w-[70%] text-left">
-                        <p className="text-[11px] font-serif text-gray-900 mb-1">{item.title}</p>
-                        <p className="text-[9px] text-gray-400 font-light">{item.desc}</p>
+                    <div
+                      key={i}
+                      className="group bg-white rounded-2xl border border-gray-100 overflow-hidden flex flex-col hover:border-gray-300 hover:shadow-[0_16px_40px_-12px_rgba(0,0,0,0.08)] transition-all duration-500"
+                    >
+                      {/* Image with price badge overlay */}
+                      <div className="aspect-[16/9] overflow-hidden bg-gray-100 relative">
+                        <img
+                          src={item.img}
+                          alt={item.title}
+                          className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                        />
+                        {/* Price badge */}
+                        <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm rounded-full px-3 py-1.5 shadow-md">
+                          <span className="text-[10px] font-bold text-gray-900">{item.price}</span>
+                        </div>
                       </div>
-                      <button className="px-4 py-2 bg-gray-50 group-hover:bg-black group-hover:text-white transition-colors rounded-full text-[10px] font-bold">{item.price} +</button>
+
+                      {/* Content */}
+                      <div className="p-6 flex flex-col flex-grow text-left">
+                        <span className="text-[8px] font-bold uppercase tracking-widest text-gray-400 mb-1.5">{item.subtitle}</span>
+                        <h6 className="text-base font-serif text-gray-900 mb-2 leading-snug">{item.title}</h6>
+                        <p className="text-[11px] text-gray-400 font-light leading-relaxed mb-5 flex-grow">{item.desc}</p>
+
+                        {/* Included tags */}
+                        <div className="flex flex-wrap gap-1.5 mb-5">
+                          {item.tags.map((tag, idx) => (
+                            <span
+                              key={idx}
+                              className="text-[8px] font-bold uppercase tracking-wider bg-gray-50 text-gray-400 px-2.5 py-1 rounded-full border border-gray-100"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+
+                        {/* CTA */}
+                        <button className="w-full py-3.5 border border-gray-200 rounded-full text-[9px] font-bold uppercase tracking-widest group-hover:border-black group-hover:bg-black group-hover:text-white transition-all duration-300">
+                          Add to Kit — {item.price}
+                        </button>
+                      </div>
                     </div>
                   ))}
                 </div>
