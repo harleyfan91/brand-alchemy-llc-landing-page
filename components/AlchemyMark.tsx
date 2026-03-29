@@ -10,7 +10,7 @@ import React from 'react';
 //   <AlchemyMark className="opacity-20 text-white" />  — etched / watermark
 
 interface AlchemyMarkProps {
-  size?: 'xs' | 'sm' | 'md';
+  size?: 'xs' | 'sm' | 'md' | 'lg';
   className?: string;
 }
 
@@ -18,6 +18,7 @@ const sizeMap = {
   xs: 'text-xs tracking-[0.12em]',
   sm: 'text-sm tracking-[0.15em]',
   md: 'text-base tracking-[0.18em]',
+  lg: 'text-xl tracking-[0.18em]',
 };
 
 const AlchemyMark: React.FC<AlchemyMarkProps> = ({ size = 'sm', className = '' }) => (
