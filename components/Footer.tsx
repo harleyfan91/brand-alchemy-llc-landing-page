@@ -37,8 +37,7 @@ const Footer: React.FC = () => {
 
         {/* Copyright + maker's mark */}
         <div className="flex items-center gap-2.5 text-gray-300 text-xs font-medium uppercase tracking-widest">
-          <AlchemyMark size="xs" className="text-gray-300" />
-          <span className="w-px h-3 bg-gray-200" aria-hidden="true" />
+          <AlchemyMark size="xs" className="text-gray-300 normal-case" />
           © {new Date().getFullYear()} Brand Alchemy LLC.
         </div>
       </div>
