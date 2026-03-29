@@ -35,13 +35,7 @@ const Header: React.FC = () => {
           onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); closeMenu(); }}
           className="flex items-center gap-3 group"
         >
-          {/* The mark */}
-          <AlchemyMark size="sm" className="text-gray-900 group-hover:text-gray-400 transition-colors" />
-
-          {/* Thin vertical rule — more intentional than a pipe character */}
-          <span className="w-px h-4 bg-gray-300 shrink-0" aria-hidden="true" />
-
-          {/* Brand name */}
+          <AlchemyMark size="lg" className="text-gray-900 group-hover:text-gray-400 transition-colors" />
           <span className="text-xl font-bold tracking-tight text-gray-900 uppercase transition-colors group-hover:text-gray-500">
             Brand Alchemy
           </span>
