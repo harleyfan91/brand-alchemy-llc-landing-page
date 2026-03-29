@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const solutions = [
@@ -36,17 +35,20 @@ const Services: React.FC = () => {
     <section id="services" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-20">
-          <h2 className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400 mb-4 text-center">Empowerment through Design</h2>
+          {/* eyebrow: text-xs — matches scale standard */}
+          <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400 mb-4 text-center">Empowerment through Design</h2>
           <h3 className="text-4xl md:text-5xl font-serif text-gray-900 text-center">Built for Self-Execution</h3>
         </div>
-        
+
         <div className="grid md:grid-cols-3 gap-16">
           {solutions.map((solution, index) => (
             <div key={index} className="flex flex-col">
               <div className="w-10 h-10 text-gray-900 mb-8">
                 {solution.icon}
               </div>
-              <h4 className="text-lg font-bold mb-4 text-gray-900 uppercase tracking-wider">{solution.title}</h4>
+              {/* title: text-sm → text-base for better readability on mobile */}
+              <h4 className="text-base font-bold mb-4 text-gray-900 uppercase tracking-wider">{solution.title}</h4>
+              {/* description: text-sm — matches scale standard */}
               <p className="text-gray-500 leading-relaxed font-light text-sm">
                 {solution.description}
               </p>
