@@ -4,7 +4,6 @@ import React, { useEffect, useRef } from 'react';
 const clamp = (v: number, min: number, max: number) =>
   Math.min(Math.max(v, min), max);
 
-// Maps a value from [inMin, inMax] to [outMin, outMax], clamped
 const mapRange = (
   value: number,
   inMin: number, inMax: number,
@@ -16,35 +15,15 @@ const mapRange = (
 
 // ─── SVG Symbols ──────────────────────────────────────────────────────────────
 
-// Upward equilateral triangle
 const FireTriangle: React.FC = () => (
-  <svg
-    viewBox="0 0 100 87"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className="w-full h-full"
-  >
-    <polygon
-      points="50,1 99,86 1,86"
-      stroke="currentColor"
-      strokeWidth="0.5"
-      strokeLinejoin="round"
-      fill="none"
-    />
+  <svg viewBox="0 0 100 87" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+    <polygon points="50,1 99,86 1,86" stroke="currentColor" strokeWidth="0.5" strokeLinejoin="round" fill="none" />
   </svg>
 );
 
-// Alchemical sun (☉) — Simplified to standard circle with a dot. 
 const AlchemicalSun: React.FC = () => (
-  <svg
-    viewBox="0 0 100 100"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className="w-full h-full"
-  >
-    {/* Outer ring */}
+  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
     <circle cx="50" cy="50" r="33" stroke="currentColor" strokeWidth="0.5" fill="none" />
-    {/* Center dot */}
     <circle cx="50" cy="50" r="3.5" fill="currentColor" />
   </svg>
 );
@@ -62,14 +41,11 @@ const AlchemyBackground: React.FC = () => {
       const p = scrollY / maxScroll; // 0 = top, 1 = bottom
 
       // ── Fire Triangle ────────────────────────────────────────────────────
-      // Visible at start on right side. Zooms to 1.6x and rotates 90 degrees IN PLACE.
-      // At p = 0.30, stops rotating/zooming, pans to the right off-screen.
-      const triScale = p < 0.30 ? mapRange(p, 0, 0.30, 1.0, 1.4) : 1.4;
-      const triX     = p < 0.30 ? 25 : mapRange(p, 0.30, 0.45, 25, 120); // Pans off screen right
-      const triY     = 0; // Stays vertically centered
+      const triScale = p < 0.30 ? mapRange(p, 0, 0.30, 1.0, 1.3) : 1.3;
+      const triX     = p < 0.30 ? 25 : mapRange(p, 0.30, 0.45, 25, 120); // Exits between 0.30 and 0.45
+      const triY     = 0; 
       const triRot   = p < 0.30 ? mapRange(p, 0, 0.30, 0, 90) : 90; 
 
-      // Fades out gracefully as it pans off screen
       const triOpacity = p < 0.35 ? 0.14 : mapRange(p, 0.35, 0.45, 0.14, 0);
 
       if (triRef.current) {
@@ -80,18 +56,20 @@ const AlchemyBackground: React.FC = () => {
       }
 
       // ── Alchemical Sun ───────────────────────────────────────────────────
-      // Starts entering earlier (0.28) and closer to the screen edge (-50vw) so it overlaps 
-      // with the triangle exiting. Moves across to the right (40vw). 
       const sunScale = 1.0; 
       const sunRot   = 0;   
       const sunY     = 0;   
-      const sunX     = mapRange(p, 0.28, 0.90, -50, 40); 
+      
+      // Starts completely off-screen left (-100vw) at 0.20, moves to right (40vw)
+      const sunX     = mapRange(p, 0.20, 0.85, -100, 40); 
 
       const sunOpacity =
-        p < 0.28 ? 0 :
-        p < 0.35 ? mapRange(p, 0.28, 0.35, 0, 0.12) : // fast fade in as it enters
-        p < 0.85 ? 0.12 :                             // hold visibility across screen
-                   mapRange(p, 0.85, 0.95, 0.12, 0);  // ramp down at the very bottom
+        p < 0.20 ? 0 :
+        // Fades in completely between 0.20 and 0.25 while it is STILL hidden off-screen left
+        // By the time it reaches the visible screen edge, it is fully faded in, purely scrolling.
+        p < 0.25 ? mapRange(p, 0.20, 0.25, 0, 0.12) : 
+        p < 0.85 ? 0.12 :                             
+                   mapRange(p, 0.85, 0.95, 0.12, 0);  
 
       if (sunRef.current) {
         sunRef.current.style.transform =
@@ -109,10 +87,9 @@ const AlchemyBackground: React.FC = () => {
   return (
     <div
       className="fixed inset-0 pointer-events-none overflow-hidden"
-      style={{ zIndex: 10 }} // Sits over the standard page backgrounds but below the z-20 content
+      style={{ zIndex: 10 }}
       aria-hidden="true"
     >
-      {/* Fire Triangle */}
       <div
         ref={triRef}
         className="absolute text-gray-900"
@@ -128,14 +105,12 @@ const AlchemyBackground: React.FC = () => {
         <FireTriangle />
       </div>
 
-      {/* Alchemical Sun */}
       <div
         ref={sunRef}
         className="absolute text-gray-900"
         style={{
           top: '50%',
           left: '50%',
-          // Increased size from 62vmin to 85vmin
           width: '85vmin',
           height: '85vmin',
           opacity: 0,
