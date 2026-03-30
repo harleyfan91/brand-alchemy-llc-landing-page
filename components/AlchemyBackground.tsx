@@ -35,8 +35,8 @@ const FireTriangle: React.FC = () => (
   </svg>
 );
 
-// Alchemical sun (☉) — outer circle, center dot, 8 rays.
-// Classical symbol for gold and perfection — used in the Products/Contact phase.
+// Alchemical sun (☉) — Classical symbol for gold and perfection.
+// Simplified to standard circle with a dot. 
 const AlchemicalSun: React.FC = () => (
   <svg
     viewBox="0 0 100 100"
@@ -48,27 +48,10 @@ const AlchemicalSun: React.FC = () => (
     <circle cx="50" cy="50" r="33" stroke="currentColor" strokeWidth="0.5" fill="none" />
     {/* Center dot */}
     <circle cx="50" cy="50" r="3.5" fill="currentColor" />
-    {/* Cardinal rays */}
-    <line x1="50" y1="8"  x2="50" y2="14" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
-    <line x1="50" y1="86" x2="50" y2="92" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
-    <line x1="8"  y1="50" x2="14" y2="50" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
-    <line x1="86" y1="50" x2="92" y2="50" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
-    {/* Diagonal rays */}
-    <line x1="17" y1="17" x2="22" y2="22" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
-    <line x1="78" y1="78" x2="83" y2="83" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
-    <line x1="83" y1="17" x2="78" y2="22" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
-    <line x1="17" y1="83" x2="22" y2="78" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
   </svg>
 );
 
 // ─── Background Layer ─────────────────────────────────────────────────────────
-// Renders a fixed overlay at z-49 (above content, below header z-50 and modals z-100).
-// Both symbols are manipulated via direct ref mutation on scroll — no React state
-// updates — so animation is GPU-composited and never causes re-renders.
-//
-// Scroll phases (as fraction of total page scroll 0→1):
-//   Triangle: visible 0%–42% — fades in, grows, drifts top-right, exits
-//   Sun:      visible 30%–90% — enters bottom-left, drifts center-right, exits
 
 const AlchemyBackground: React.FC = () => {
   const triRef = useRef<HTMLDivElement>(null);
@@ -81,17 +64,15 @@ const AlchemyBackground: React.FC = () => {
       const p = scrollY / maxScroll; // 0 = top, 1 = bottom
 
       // ── Fire Triangle ────────────────────────────────────────────────────
-      // Starts centered in hero, zooms and drifts to top-right corner, then exits
-      const triScale = mapRange(p, 0,    0.42, 0.88, 3.2);
-      const triX     = mapRange(p, 0,    0.42, 0,   22);   // vw rightward
-      const triY     = mapRange(p, 0,    0.42, 0,  -30);   // vh upward
-      const triRot   = mapRange(p, 0,    0.42, 0,   16);   // degrees CW
+      // Phase 1 (0 to 0.30): Visible at start on right side. Zooms slightly and rotates dramatically IN PLACE.
+      // Phase 2 (0.30 to 0.45): Stops rotating/zooming, pans to the right off-screen.
+      const triScale = p < 0.30 ? mapRange(p, 0, 0.30, 1.0, 1.3) : 1.3;
+      const triX     = p < 0.30 ? 25 : mapRange(p, 0.30, 0.45, 25, 100); // 25vw (right) then pans off-screen
+      const triY     = 0; // Stays vertically centered
+      const triRot   = p < 0.30 ? mapRange(p, 0, 0.30, 0, 180) : 180; 
 
-      // Opacity envelope: fade in → hold → fade out
-      const triOpacity =
-        p < 0.04 ? mapRange(p, 0,    0.04, 0,    0.14) :  // ramp up on load
-        p < 0.20 ? 0.14 :                                   // hold at peak
-                   mapRange(p, 0.20, 0.42, 0.14, 0);        // ramp down
+      // Stays visible until panning off screen
+      const triOpacity = p < 0.30 ? 0.14 : mapRange(p, 0.30, 0.45, 0.14, 0);
 
       if (triRef.current) {
         triRef.current.style.transform =
@@ -101,17 +82,18 @@ const AlchemyBackground: React.FC = () => {
       }
 
       // ── Alchemical Sun ───────────────────────────────────────────────────
-      // Enters from bottom-left as triangle exits, drifts to center-right, then fades
-      const sunScale = mapRange(p, 0.30, 0.75, 0.5,  1.4);
-      const sunX     = mapRange(p, 0.30, 0.86, -16,  12);  // vw rightward
-      const sunY     = mapRange(p, 0.30, 0.86,  14, -12);  // vh upward
-      const sunRot   = mapRange(p, 0.30, 0.86, -14,  22);  // degrees CW
+      // Enters from off-screen left as triangle exits right, moves across to the right. 
+      // No zooming or rotation.
+      const sunScale = 1.0; 
+      const sunRot   = 0;   
+      const sunY     = 0;   // Centered vertically
+      const sunX     = mapRange(p, 0.30, 0.90, -80, 40); // Pans from left (-80vw) to right (40vw)
 
       const sunOpacity =
         p < 0.30 ? 0 :
-        p < 0.46 ? mapRange(p, 0.30, 0.46, 0,    0.12) :  // ramp up
-        p < 0.72 ? 0.12 :                                   // hold
-                   mapRange(p, 0.72, 0.90, 0.12, 0);        // ramp down
+        p < 0.35 ? mapRange(p, 0.30, 0.35, 0, 0.12) : // fast fade in as it enters
+        p < 0.85 ? 0.12 :                             // hold visibility across screen
+                   mapRange(p, 0.85, 0.95, 0.12, 0);  // ramp down at the very bottom
 
       if (sunRef.current) {
         sunRef.current.style.transform =
@@ -129,10 +111,10 @@ const AlchemyBackground: React.FC = () => {
   return (
     <div
       className="fixed inset-0 pointer-events-none overflow-hidden"
-      style={{ zIndex: 49 }}
+      style={{ zIndex: 0 }} // Moved down to z-0 so main content correctly overlaps it
       aria-hidden="true"
     >
-      {/* Fire Triangle — hero phase */}
+      {/* Fire Triangle */}
       <div
         ref={triRef}
         className="absolute text-gray-900"
@@ -148,7 +130,7 @@ const AlchemyBackground: React.FC = () => {
         <FireTriangle />
       </div>
 
-      {/* Alchemical Sun — products/contact phase */}
+      {/* Alchemical Sun */}
       <div
         ref={sunRef}
         className="absolute text-gray-900"
