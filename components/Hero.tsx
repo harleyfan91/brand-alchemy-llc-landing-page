@@ -17,15 +17,16 @@ const Hero: React.FC = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-tr from-gray-50 to-white rounded-full blur-3xl opacity-60" />
       </div>
 
-      <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
-        {/* Definition badge — serif italic, reads like a dictionary or apothecary entry */}
-        <div className="inline-block px-5 py-2 mb-8 border border-gray-200 rounded-full bg-gray-50/50 backdrop-blur-sm">
-          <span className="font-serif italic text-sm text-gray-400 tracking-normal normal-case">
-            al·che·my — the transformation of something ordinary into something exceptional
-          </span>
+      {/* Maintained relative z-20 so your text sits securely above the background graphics */}
+      <div className="relative z-20 max-w-5xl mx-auto px-4 text-center">
+        
+        {/* Floating Dictionary Definition */}
+        <div className="mb-10 text-sm font-serif italic tracking-normal normal-case text-gray-500">
+          <span className="font-bold text-gray-700">alchemy</span>
+          <span className="font-normal text-gray-400"> al·che·my (n.): a seemingly magical process of transformation, creation, or combination</span>
         </div>
 
-        {/* Headline — uppercase minimal sans, the brand's authoritative statement */}
+        {/* Headline */}
         <h1 className="text-5xl md:text-7xl font-bold uppercase tracking-tight text-gray-900 leading-[1.1] mb-8">
           You built something<br />worth showing off.<br />
           <span className="text-gray-300">Brand Alchemy</span><br />
