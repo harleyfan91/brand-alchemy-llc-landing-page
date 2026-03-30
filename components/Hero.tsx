@@ -17,7 +17,8 @@ const Hero: React.FC = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-tr from-gray-50 to-white rounded-full blur-3xl opacity-60" />
       </div>
 
-      <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
+      {/* CHANGED: Lifted from z-10 to z-20 to sit above the fixed background graphics */}
+      <div className="relative z-20 max-w-5xl mx-auto px-4 text-center">
         <div className="inline-block px-4 py-1.5 mb-6 border border-gray-100 rounded-full bg-gray-50/50 backdrop-blur-sm">
           <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">Built for local business owners</span>
         </div>
