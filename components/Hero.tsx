@@ -18,16 +18,18 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
-        {/* Definition badge — explains the brand name, sets up the transformation promise */}
-        <div className="inline-block px-4 py-1.5 mb-6 border border-gray-100 rounded-full bg-gray-50/50 backdrop-blur-sm">
-          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">
+        {/* Definition badge — serif italic, reads like a dictionary or apothecary entry */}
+        <div className="inline-block px-5 py-2 mb-8 border border-gray-200 rounded-full bg-gray-50/50 backdrop-blur-sm">
+          <span className="font-serif italic text-sm text-gray-400 tracking-normal normal-case">
             al·che·my — the transformation of something ordinary into something exceptional
           </span>
         </div>
 
-        <h1 className="text-5xl md:text-7xl font-serif text-gray-900 leading-[1.1] mb-8">
-          You built something worth showing off.<br />
-          <span className="italic text-gray-400">Brand Alchemy helps you prove it.</span>
+        {/* Headline — uppercase minimal sans, the brand's authoritative statement */}
+        <h1 className="text-5xl md:text-7xl font-bold uppercase tracking-tight text-gray-900 leading-[1.1] mb-8">
+          You built something<br />worth showing off.<br />
+          <span className="text-gray-300">Brand Alchemy</span><br />
+          <span className="text-gray-500">helps you prove it.</span>
         </h1>
 
         <p className="text-xl text-gray-500 max-w-2xl mx-auto mb-16 leading-relaxed font-light">
