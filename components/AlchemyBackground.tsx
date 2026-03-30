@@ -13,36 +13,38 @@ const mapRange = (
   return outMin + (outMax - outMin) * t;
 };
 
-// ─── SVG Symbols (All sharing 100x100 viewBox and 0.5 stroke) ────────────────
+// ─── SVG Symbols (Strictly centered horizontally and vertically) ──────────────
 
+// Fire (🜂) - Leader
 const FireTriangle: React.FC = () => (
-  <svg viewBox="0 0 100 87" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-    <polygon points="50,1 99,86 1,86" stroke="currentColor" strokeWidth="0.5" strokeLinejoin="round" />
+  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+    <polygon points="50,20 85,80 15,80" stroke="currentColor" strokeWidth="0.5" strokeLinejoin="round" />
   </svg>
 );
 
+// Sun (☉) - Gold / Perfection
 const AlchemicalSun: React.FC = () => (
   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-    <circle cx="50" cy="50" r="33" stroke="currentColor" strokeWidth="0.5" />
+    <circle cx="50" cy="50" r="30" stroke="currentColor" strokeWidth="0.5" />
     <circle cx="50" cy="50" r="3.5" fill="currentColor" />
   </svg>
 );
 
-// Mercury (☿) - Communication / fluid messaging 
+// Mercury (☿) - Communication / fluid messaging
 const Mercury: React.FC = () => (
   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-    <path d="M 35 25 C 35 38, 65 38, 65 25" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
-    <circle cx="50" cy="50" r="15" stroke="currentColor" strokeWidth="0.5" />
-    <line x1="50" y1="65" x2="50" y2="85" stroke="currentColor" strokeWidth="0.5" />
-    <line x1="40" y1="75" x2="60" y2="75" stroke="currentColor" strokeWidth="0.5" />
+    <path d="M 34 20 C 34 36, 66 36, 66 20" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
+    <circle cx="50" cy="44" r="16" stroke="currentColor" strokeWidth="0.5" />
+    <line x1="50" y1="60" x2="50" y2="80" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
+    <line x1="38" y1="70" x2="62" y2="70" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
   </svg>
 );
 
 // Air (🜁) - Broadcast / expanding reach
 const Air: React.FC = () => (
   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-    <polygon points="50,15 85,75 15,75" stroke="currentColor" strokeWidth="0.5" strokeLinejoin="round" />
-    <line x1="33" y1="35" x2="67" y2="35" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
+    <polygon points="50,20 85,80 15,80" stroke="currentColor" strokeWidth="0.5" strokeLinejoin="round" />
+    <line x1="33" y1="40" x2="67" y2="40" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
   </svg>
 );
 
@@ -57,20 +59,20 @@ const Salt: React.FC = () => (
 // Earth (🜃) - The Local Base / grounded placement
 const Earth: React.FC = () => (
   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-    <polygon points="15,25 85,25 50,85" stroke="currentColor" strokeWidth="0.5" strokeLinejoin="round" />
-    <line x1="33" y1="65" x2="67" y2="65" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
+    <polygon points="15,20 85,20 50,80" stroke="currentColor" strokeWidth="0.5" strokeLinejoin="round" />
+    <line x1="33" y1="60" x2="67" y2="60" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
   </svg>
 );
 
 // ─── Sequence Configuration ───────────────────────────────────────────────────
-// We loop the sequence once so it stretches deep into the page scroll.
+
 const sequence = [
   AlchemicalSun, Mercury, Air, Salt, Earth,
   AlchemicalSun, Mercury, Air, Salt, Earth
 ];
 
-// Distance between each symbol in viewport width units
-const SYMBOL_SPACING_VW = 55; 
+// Distance between each symbol. 35vw keeps them tight and cohesive with the leader.
+const SYMBOL_SPACING_VW = 35; 
 
 // ─── Background Layer Component ───────────────────────────────────────────────
 
@@ -84,34 +86,33 @@ const AlchemyBackground: React.FC = () => {
       const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
       const p = scrollY / maxScroll; // 0 = top, 1 = bottom
 
-      // ── 1. Fire Triangle ─────────────────────────────────────────────────
-      const triScale = p < 0.30 ? mapRange(p, 0, 0.30, 1.0, 1.6) : 1.6;
-      const triX     = p < 0.30 ? 25 : mapRange(p, 0.30, 0.45, 25, 120); 
-      const triY     = 0; 
-      const triRot   = p < 0.30 ? mapRange(p, 0, 0.30, 0, 90) : 90; 
-      const triOpacity = p < 0.35 ? 0.14 : mapRange(p, 0.35, 0.45, 0.14, 0);
+      // Phase 1 (0 -> 0.30): Triangle rotates 90deg in place. Train fades in securely behind it.
+      // Phase 2 (0.30 -> 1.0): Rotation stops. The entire group (Triangle + Train) pans right.
+      
+      const baseX  = p < 0.30 ? 25 : mapRange(p, 0.30, 1.0, 25, 400); 
+      const triRot = p < 0.30 ? mapRange(p, 0, 0.30, 0, 90) : 90; 
 
+      // Triangle Opacity (fades in on page load, stays visible endlessly)
+      const baseOpacity = p < 0.04 ? mapRange(p, 0, 0.04, 0, 0.14) : 0.14;
+
+      // Train Opacity (fades in right as the rotation finishes, matching the triangle)
+      const trainOpacity = 
+        p < 0.25 ? 0 : 
+        p < 0.30 ? mapRange(p, 0.25, 0.30, 0, 0.14) : 
+        0.14;
+
+      // Update Triangle (The Leader)
       if (triRef.current) {
-        triRef.current.style.transform =
-          `translate(calc(-50% + ${triX}vw), calc(-50% + ${triY}vh)) ` +
-          `scale(${triScale}) rotate(${triRot}deg)`;
-        triRef.current.style.opacity = String(clamp(triOpacity, 0, 0.15));
+        triRef.current.style.transform = 
+          `translate(calc(-50% + ${baseX}vw), -50%) rotate(${triRot}deg)`;
+        triRef.current.style.opacity = String(clamp(baseOpacity, 0, 0.15));
       }
 
-      // ── 2. The Toolkit Sequence (Train) ──────────────────────────────────
-      // Train starts off-screen left (-60vw) at 0.20. 
-      // It moves far right (+500vw) so all 10 symbols get pulled across the screen.
-      const trainX = mapRange(p, 0.20, 1.0, -60, 500); 
-
-      // Fades in cleanly overlapping the triangle exit, holds opacity to the footer
-      const trainOpacity =
-        p < 0.20 ? 0 :
-        p < 0.25 ? mapRange(p, 0.20, 0.25, 0, 0.12) : 
-        0.12; 
-
+      // Update Train (The Followers - mathematically locked to the leader)
       if (trainRef.current) {
-        trainRef.current.style.transform = `translate(calc(-50% + ${trainX}vw), -50%)`;
-        trainRef.current.style.opacity = String(clamp(trainOpacity, 0, 0.13));
+        // Anchored to the exact same baseX coordinate as the triangle
+        trainRef.current.style.transform = `translate(calc(-50% + ${baseX}vw), -50%)`;
+        trainRef.current.style.opacity = String(clamp(trainOpacity, 0, 0.15));
       }
     };
 
@@ -149,7 +150,7 @@ const AlchemyBackground: React.FC = () => {
         style={{
           top: '50%',
           left: '50%',
-          width: 0, // Container is just an anchor point
+          width: 0, // Wrapper is just an anchor point matching the triangle's center
           height: 0,
           opacity: 0,
           willChange: 'transform, opacity',
@@ -160,10 +161,10 @@ const AlchemyBackground: React.FC = () => {
             key={index}
             className="absolute"
             style={{
-              width: '85vmin',
-              height: '85vmin',
-              // Space them out progressively to the left (so they pull in one by one)
-              transform: `translate(calc(-50% - ${index * SYMBOL_SPACING_VW}vw), -50%)`
+              width: '72vmin',
+              height: '72vmin',
+              // Space them progressively to the left (-X) of the leader
+              transform: `translate(calc(-50% - ${(index + 1) * SYMBOL_SPACING_VW}vw), -50%)`
             }}
           >
             <Symbol />
