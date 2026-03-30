@@ -123,16 +123,18 @@ const Products = () => {
   return (
     <section id="products" className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="mb-16">
+        {/* CHANGED: Added relative z-20 so the text remains readable if the graphic passes under */}
+        <div className="relative z-20 mb-16">
           <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400 mb-4">Current Catalog</h2>
           <h3 className="text-4xl md:text-5xl font-serif text-gray-900">The Toolkit</h3>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {/* Local Launch Kits trigger card */}
+          {/* CHANGED: Added relative z-20 so entire card sits securely above the background graphics */}
           <div
             onClick={() => setIsModalOpen(true)}
-            className="bg-white group rounded-2xl overflow-hidden border border-gray-100 flex flex-col transition-all duration-500 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] cursor-pointer"
+            className="relative z-20 bg-white group rounded-2xl overflow-hidden border border-gray-100 flex flex-col transition-all duration-500 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] cursor-pointer"
           >
             <div className="aspect-[16/10] overflow-hidden bg-gray-100">
               <img
@@ -152,11 +154,12 @@ const Products = () => {
           </div>
 
           {/* Camentra card */}
+          {/* CHANGED: Added relative z-20 so entire card sits securely above the background graphics */}
           <a
             href="https://www.camentra.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-white group rounded-2xl overflow-hidden border border-gray-100 flex flex-col transition-all duration-500 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] no-underline"
+            className="relative z-20 bg-white group rounded-2xl overflow-hidden border border-gray-100 flex flex-col transition-all duration-500 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] no-underline"
           >
             <div className="aspect-[16/10] overflow-hidden bg-gray-100">
               <img
