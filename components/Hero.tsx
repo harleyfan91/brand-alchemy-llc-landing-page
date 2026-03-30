@@ -17,19 +17,21 @@ const Hero: React.FC = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-tr from-gray-50 to-white rounded-full blur-3xl opacity-60" />
       </div>
 
-      {/* CHANGED: Lifted from z-10 to z-20 to sit above the fixed background graphics */}
-      <div className="relative z-20 max-w-5xl mx-auto px-4 text-center">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
+        {/* Definition badge — explains the brand name, sets up the transformation promise */}
         <div className="inline-block px-4 py-1.5 mb-6 border border-gray-100 rounded-full bg-gray-50/50 backdrop-blur-sm">
-          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">Built for local business owners</span>
+          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">
+            al·che·my — the transformation of something ordinary into something exceptional
+          </span>
         </div>
 
         <h1 className="text-5xl md:text-7xl font-serif text-gray-900 leading-[1.1] mb-8">
-          Get your business noticed.<br />
-          <span className="italic text-gray-400">We'll show you exactly how.</span>
+          You built something worth showing off.<br />
+          <span className="italic text-gray-400">Brand Alchemy helps you prove it.</span>
         </h1>
 
         <p className="text-xl text-gray-500 max-w-2xl mx-auto mb-16 leading-relaxed font-light">
-          Guides, templates, and tools that help your business look great online and get found by more customers. No prior experience needed.
+          Step-by-step guides, templates, and tools that help local business owners look more professional online — without the complexity, the cost, or the learning curve.
         </p>
 
         <div className="flex justify-center">
