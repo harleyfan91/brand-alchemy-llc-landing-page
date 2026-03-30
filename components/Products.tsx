@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import AlchemyMark from './AlchemyMark';
 
 // ─── Text scale reference ────────────────────────────────────────────────────
 // Eyebrow labels (uppercase, decorative): text-xs font-bold
@@ -123,7 +122,6 @@ const Products = () => {
   return (
     <section id="products" className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* CHANGED: Added relative z-20 so the text remains readable if the graphic passes under */}
         <div className="relative z-20 mb-16">
           <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400 mb-4">Current Catalog</h2>
           <h3 className="text-4xl md:text-5xl font-serif text-gray-900">The Toolkit</h3>
@@ -131,7 +129,6 @@ const Products = () => {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {/* Local Launch Kits trigger card */}
-          {/* CHANGED: Added relative z-20 so entire card sits securely above the background graphics */}
           <div
             onClick={() => setIsModalOpen(true)}
             className="relative z-20 bg-white group rounded-2xl overflow-hidden border border-gray-100 flex flex-col transition-all duration-500 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] cursor-pointer"
@@ -154,7 +151,6 @@ const Products = () => {
           </div>
 
           {/* Camentra card */}
-          {/* CHANGED: Added relative z-20 so entire card sits securely above the background graphics */}
           <a
             href="https://www.camentra.com"
             target="_blank"
@@ -306,17 +302,6 @@ const Products = () => {
                               transition: 'border-color 0.15s ease, box-shadow 0.15s ease',
                             }}
                           >
-                            {/* Etched β△ — Pro card only */}
-                            {t === 'pro' && (
-                              <span
-                                className="absolute top-3.5 right-4 font-bold select-none pointer-events-none text-base tracking-[0.18em] text-gray-900 normal-case"
-                                style={{ opacity: isActive ? 0.13 : 0.05, transition: 'opacity 0.15s ease' }}
-                                aria-hidden="true"
-                              >
-                                β△
-                              </span>
-                            )}
-
                             {/* Tier header */}
                             <div className="flex items-center justify-between px-5 pt-5 pb-4">
                               <div className="flex items-center gap-3">
@@ -332,12 +317,6 @@ const Products = () => {
                                   {isActive && <CheckIcon size="sm" />}
                                 </div>
                                 <div>
-                                  <span
-                                    className="text-[10px] font-bold uppercase tracking-widest block"
-                                    style={{ color: isActive ? '#9ca3af' : '#c4c8cd', transition: 'color 0.15s ease' }}
-                                  >
-                                    {t === 'core' ? 'Essential' : 'Momentum'}
-                                  </span>
                                   <h5
                                     className="text-base font-bold uppercase tracking-wider"
                                     style={{ color: isActive ? '#111' : '#6b7280', transition: 'color 0.15s ease' }}
