@@ -38,10 +38,10 @@ const AlchemyBackground: React.FC = () => {
       const p = scrollY / maxScroll;
 
       // ── Fire Triangle ──
-      const triScale = p < 0.30 ? mapRange(p, 0, 0.30, 1.0, 1.3) : 1.3;
+      const triScale = p < 0.30 ? mapRange(p, 0, 0.30, 1.0, 1.6) : 1.6;
       const triX     = p < 0.30 ? 25 : mapRange(p, 0.30, 0.45, 25, 120); 
       const triY     = 0; 
-      const triRot   = p < 0.30 ? mapRange(p, 0, 0.30, 0, 180) : 180; 
+      const triRot   = p < 0.30 ? mapRange(p, 0, 0.30, 0, 90) : 90; 
       const triOpacity = p < 0.35 ? 0.14 : mapRange(p, 0.35, 0.45, 0.14, 0);
 
       if (triRef.current) {
