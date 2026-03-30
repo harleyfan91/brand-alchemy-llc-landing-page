@@ -15,11 +15,11 @@ const mapRange = (
 
 // ─── SVG Symbols (Strictly standardized & mathematically aligned) ─────────────
 
-// Beta (β) - Rebuilt to perfectly match the geometric β△ brand mark
+// Beta (β) - Rebuilt as a strict geometric sans-serif to perfectly match the logo
 const BetaSymbol: React.FC = () => (
   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
     <path 
-      d="M 32 84 V 24 C 57 24, 57 50, 32 50 C 67 50, 67 78, 32 78" 
+      d="M 36 92 L 36 28 C 36 16, 58 20, 58 36 C 58 48, 44 50, 36 50 C 72 50, 72 76, 36 76" 
       stroke="currentColor" 
       strokeWidth="0.5" 
       strokeLinecap="round" 
@@ -43,23 +43,21 @@ const AlchemicalSun: React.FC = () => (
   </svg>
 );
 
-// Mercury (☿) - Rebuilt so horns rest perfectly on the circle edge
+// Mercury (☿) - Communication / fluid messaging
 const Mercury: React.FC = () => (
   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-    {/* Horns touch down perfectly at y=35 */}
     <path d="M 34 20 C 34 40, 66 40, 66 20" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
-    {/* Circle top starts exactly at y=35 (49 - 14 = 35) */}
     <circle cx="50" cy="49" r="14" stroke="currentColor" strokeWidth="0.5" />
     <line x1="50" y1="63" x2="50" y2="83" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
     <line x1="36" y1="73" x2="64" y2="73" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
   </svg>
 );
 
-// Air (🜁) - Broadcast / expanding reach
+// Air (🜁) - Broadcast / expanding reach (Line properly extends past edges)
 const Air: React.FC = () => (
   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
     <polygon points="50,24 80,76 20,76" stroke="currentColor" strokeWidth="0.5" strokeLinejoin="round" />
-    <line x1="35" y1="50" x2="65" y2="50" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
+    <line x1="28" y1="50" x2="72" y2="50" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
   </svg>
 );
 
@@ -71,11 +69,11 @@ const Salt: React.FC = () => (
   </svg>
 );
 
-// Earth (🜃) - The Local Base / grounded placement
+// Earth (🜃) - The Local Base / grounded placement (Line properly extends past edges)
 const Earth: React.FC = () => (
   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
     <polygon points="20,24 80,24 50,76" stroke="currentColor" strokeWidth="0.5" strokeLinejoin="round" />
-    <line x1="35" y1="50" x2="65" y2="50" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
+    <line x1="28" y1="50" x2="72" y2="50" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
   </svg>
 );
 
@@ -88,8 +86,8 @@ const sequence = [
 
 const SYMBOL_SPACING_VW = 48; 
 
-// Master target opacity (lowered from 0.14 to 0.08 for a subtler effect)
-const MAX_OPACITY = 0.08;
+// Master target opacity (lowered from 0.08 to 0.06 for a subtler, watermark effect)
+const MAX_OPACITY = 0.06;
 
 // ─── Background Layer Component ───────────────────────────────────────────────
 
