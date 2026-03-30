@@ -13,13 +13,13 @@ const mapRange = (
   return outMin + (outMax - outMin) * t;
 };
 
-// ─── SVG Symbols (Strictly standardized to equal visual weight and width) ─────
+// ─── SVG Symbols (Strictly standardized & mathematically aligned) ─────────────
 
-// Beta (β) - Brand Mark / The Beginning
+// Beta (β) - Rebuilt to perfectly match the geometric β△ brand mark
 const BetaSymbol: React.FC = () => (
   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
     <path 
-      d="M 38 85 V 25 C 38 15, 62 15, 62 32 C 62 44, 45 48, 38 48 C 50 48, 66 54, 66 67 C 66 82, 38 80, 38 80" 
+      d="M 32 84 V 24 C 57 24, 57 50, 32 50 C 67 50, 67 78, 32 78" 
       stroke="currentColor" 
       strokeWidth="0.5" 
       strokeLinecap="round" 
@@ -43,13 +43,15 @@ const AlchemicalSun: React.FC = () => (
   </svg>
 );
 
-// Mercury (☿) - Communication / fluid messaging
+// Mercury (☿) - Rebuilt so horns rest perfectly on the circle edge
 const Mercury: React.FC = () => (
   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-    <path d="M 26 24 C 26 44, 74 44, 74 24" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
-    <circle cx="50" cy="48" r="16" stroke="currentColor" strokeWidth="0.5" />
-    <line x1="50" y1="64" x2="50" y2="84" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
-    <line x1="26" y1="74" x2="74" y2="74" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
+    {/* Horns touch down perfectly at y=35 */}
+    <path d="M 34 20 C 34 40, 66 40, 66 20" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
+    {/* Circle top starts exactly at y=35 (49 - 14 = 35) */}
+    <circle cx="50" cy="49" r="14" stroke="currentColor" strokeWidth="0.5" />
+    <line x1="50" y1="63" x2="50" y2="83" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
+    <line x1="36" y1="73" x2="64" y2="73" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
   </svg>
 );
 
@@ -84,8 +86,10 @@ const sequence = [
   AlchemicalSun, Mercury, Air, Salt, Earth
 ];
 
-// The "Middle Ground" spacing (48vw looks balanced between tight and loose)
 const SYMBOL_SPACING_VW = 48; 
+
+// Master target opacity (lowered from 0.14 to 0.08 for a subtler effect)
+const MAX_OPACITY = 0.08;
 
 // ─── Background Layer Component ───────────────────────────────────────────────
 
@@ -100,33 +104,32 @@ const AlchemyBackground: React.FC = () => {
       const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
       const p = scrollY / maxScroll; // 0 = top, 1 = bottom
 
-      // ── Beta Symbol (Static left side, fades out early) ──
-      const betaOpacity = p < 0.15 ? 0.14 : mapRange(p, 0.15, 0.25, 0.14, 0);
+      // ── Beta Symbol ──
+      const betaOpacity = p < 0.15 ? MAX_OPACITY : mapRange(p, 0.15, 0.25, MAX_OPACITY, 0);
 
       if (betaRef.current) {
-        betaRef.current.style.transform = `translate(calc(-50% - 25vw), -50%)`; // -25vw perfectly mirrors Triangle's +25vw
-        betaRef.current.style.opacity = String(clamp(betaOpacity, 0, 0.15));
+        betaRef.current.style.transform = `translate(calc(-50% - 25vw), -50%)`; 
+        betaRef.current.style.opacity = String(clamp(betaOpacity, 0, MAX_OPACITY));
       }
 
-      // ── Triangle & Train (Phase 1: Rotate in place. Phase 2: Pan right) ──
+      // ── Triangle & Train ──
       const baseX  = p < 0.30 ? 25 : mapRange(p, 0.30, 1.0, 25, 600); 
       const triRot = p < 0.30 ? mapRange(p, 0, 0.30, 0, 90) : 90; 
 
-      // Train fades in only after Beta is completely gone (0.25 -> 0.30)
+      // Train fades in only after Beta is completely gone
       const trainOpacity = 
         p < 0.25 ? 0 : 
-        p < 0.30 ? mapRange(p, 0.25, 0.30, 0, 0.14) : 
-        0.14;
+        p < 0.30 ? mapRange(p, 0.25, 0.30, 0, MAX_OPACITY) : 
+        MAX_OPACITY;
 
       if (triRef.current) {
         triRef.current.style.transform = 
           `translate(calc(-50% + ${baseX}vw), -50%) rotate(${triRot}deg)`;
-        triRef.current.style.opacity = "0.14";
       }
 
       if (trainRef.current) {
         trainRef.current.style.transform = `translate(calc(-50% + ${baseX}vw), -50%)`;
-        trainRef.current.style.opacity = String(clamp(trainOpacity, 0, 0.15));
+        trainRef.current.style.opacity = String(clamp(trainOpacity, 0, MAX_OPACITY));
       }
     };
 
@@ -150,7 +153,7 @@ const AlchemyBackground: React.FC = () => {
           left: '50%',
           width: '72vmin',
           height: '72vmin',
-          opacity: 0.14,
+          opacity: MAX_OPACITY,
           willChange: 'transform, opacity',
         }}
       >
@@ -166,7 +169,7 @@ const AlchemyBackground: React.FC = () => {
           left: '50%',
           width: '72vmin',
           height: '72vmin',
-          opacity: 0.14,
+          opacity: MAX_OPACITY,
           willChange: 'transform, opacity',
         }}
       >
