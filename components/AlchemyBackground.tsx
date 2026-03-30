@@ -13,12 +13,12 @@ const mapRange = (
   return outMin + (outMax - outMin) * t;
 };
 
-// ─── SVG Symbols (Strictly centered horizontally and vertically) ──────────────
+// ─── SVG Symbols (Strictly standardized to equal visual weight and width) ─────
 
 // Fire (🜂) - Leader
 const FireTriangle: React.FC = () => (
   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-    <polygon points="50,20 85,80 15,80" stroke="currentColor" strokeWidth="0.5" strokeLinejoin="round" />
+    <polygon points="50,24 80,76 20,76" stroke="currentColor" strokeWidth="0.5" strokeLinejoin="round" />
   </svg>
 );
 
@@ -33,18 +33,21 @@ const AlchemicalSun: React.FC = () => (
 // Mercury (☿) - Communication / fluid messaging
 const Mercury: React.FC = () => (
   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-    <path d="M 34 20 C 34 36, 66 36, 66 20" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
-    <circle cx="50" cy="44" r="16" stroke="currentColor" strokeWidth="0.5" />
-    <line x1="50" y1="60" x2="50" y2="80" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
-    <line x1="38" y1="70" x2="62" y2="70" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
+    {/* Horns */}
+    <path d="M 26 24 C 26 44, 74 44, 74 24" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
+    {/* Head */}
+    <circle cx="50" cy="48" r="16" stroke="currentColor" strokeWidth="0.5" />
+    {/* Body & Crossbar */}
+    <line x1="50" y1="64" x2="50" y2="84" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
+    <line x1="26" y1="74" x2="74" y2="74" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
   </svg>
 );
 
 // Air (🜁) - Broadcast / expanding reach
 const Air: React.FC = () => (
   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-    <polygon points="50,20 85,80 15,80" stroke="currentColor" strokeWidth="0.5" strokeLinejoin="round" />
-    <line x1="33" y1="40" x2="67" y2="40" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
+    <polygon points="50,24 80,76 20,76" stroke="currentColor" strokeWidth="0.5" strokeLinejoin="round" />
+    <line x1="35" y1="50" x2="65" y2="50" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
   </svg>
 );
 
@@ -59,8 +62,8 @@ const Salt: React.FC = () => (
 // Earth (🜃) - The Local Base / grounded placement
 const Earth: React.FC = () => (
   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-    <polygon points="15,20 85,20 50,80" stroke="currentColor" strokeWidth="0.5" strokeLinejoin="round" />
-    <line x1="33" y1="60" x2="67" y2="60" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
+    <polygon points="20,24 80,24 50,76" stroke="currentColor" strokeWidth="0.5" strokeLinejoin="round" />
+    <line x1="35" y1="50" x2="65" y2="50" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
   </svg>
 );
 
@@ -71,8 +74,8 @@ const sequence = [
   AlchemicalSun, Mercury, Air, Salt, Earth
 ];
 
-// Distance between each symbol. 35vw keeps them tight and cohesive with the leader.
-const SYMBOL_SPACING_VW = 35; 
+// Increased spacing significantly so symbols have breathing room and don't overlap
+const SYMBOL_SPACING_VW = 65; 
 
 // ─── Background Layer Component ───────────────────────────────────────────────
 
@@ -89,13 +92,11 @@ const AlchemyBackground: React.FC = () => {
       // Phase 1 (0 -> 0.30): Triangle rotates 90deg in place. Train fades in securely behind it.
       // Phase 2 (0.30 -> 1.0): Rotation stops. The entire group (Triangle + Train) pans right.
       
-      const baseX  = p < 0.30 ? 25 : mapRange(p, 0.30, 1.0, 25, 400); 
+      // Increased the pan distance (700) so the whole sequence is dragged across
+      const baseX  = p < 0.30 ? 25 : mapRange(p, 0.30, 1.0, 25, 700); 
       const triRot = p < 0.30 ? mapRange(p, 0, 0.30, 0, 90) : 90; 
 
-      // Triangle Opacity (fades in on page load, stays visible endlessly)
-      const baseOpacity = p < 0.04 ? mapRange(p, 0, 0.04, 0, 0.14) : 0.14;
-
-      // Train Opacity (fades in right as the rotation finishes, matching the triangle)
+      // Train Opacity (fades in right as the rotation finishes)
       const trainOpacity = 
         p < 0.25 ? 0 : 
         p < 0.30 ? mapRange(p, 0.25, 0.30, 0, 0.14) : 
@@ -105,12 +106,12 @@ const AlchemyBackground: React.FC = () => {
       if (triRef.current) {
         triRef.current.style.transform = 
           `translate(calc(-50% + ${baseX}vw), -50%) rotate(${triRot}deg)`;
-        triRef.current.style.opacity = String(clamp(baseOpacity, 0, 0.15));
+        // Fixed at 0.14 so it is completely visible on page load!
+        triRef.current.style.opacity = "0.14";
       }
 
       // Update Train (The Followers - mathematically locked to the leader)
       if (trainRef.current) {
-        // Anchored to the exact same baseX coordinate as the triangle
         trainRef.current.style.transform = `translate(calc(-50% + ${baseX}vw), -50%)`;
         trainRef.current.style.opacity = String(clamp(trainOpacity, 0, 0.15));
       }
@@ -127,7 +128,7 @@ const AlchemyBackground: React.FC = () => {
       style={{ zIndex: 10 }}
       aria-hidden="true"
     >
-      {/* Exiting Triangle Layer */}
+      {/* Triangle Leader Layer */}
       <div
         ref={triRef}
         className="absolute text-gray-900"
@@ -136,7 +137,7 @@ const AlchemyBackground: React.FC = () => {
           left: '50%',
           width: '72vmin',
           height: '72vmin',
-          opacity: 0,
+          opacity: 0.14,
           willChange: 'transform, opacity',
         }}
       >
@@ -150,7 +151,7 @@ const AlchemyBackground: React.FC = () => {
         style={{
           top: '50%',
           left: '50%',
-          width: 0, // Wrapper is just an anchor point matching the triangle's center
+          width: 0, 
           height: 0,
           opacity: 0,
           willChange: 'transform, opacity',
@@ -163,7 +164,7 @@ const AlchemyBackground: React.FC = () => {
             style={{
               width: '72vmin',
               height: '72vmin',
-              // Space them progressively to the left (-X) of the leader
+              // Exact geometric spacing based on index behind the leader
               transform: `translate(calc(-50% - ${(index + 1) * SYMBOL_SPACING_VW}vw), -50%)`
             }}
           >
