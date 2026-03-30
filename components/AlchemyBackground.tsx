@@ -53,7 +53,7 @@ const Mercury: React.FC = () => (
   </svg>
 );
 
-// Air (🜁) - Broadcast / expanding reach (Line properly extends past edges)
+// Air (🜁) - Broadcast / expanding reach 
 const Air: React.FC = () => (
   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
     <polygon points="50,24 80,76 20,76" stroke="currentColor" strokeWidth="0.5" strokeLinejoin="round" />
@@ -69,7 +69,7 @@ const Salt: React.FC = () => (
   </svg>
 );
 
-// Earth (🜃) - The Local Base / grounded placement (Line properly extends past edges)
+// Earth (🜃) - The Local Base / grounded placement 
 const Earth: React.FC = () => (
   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
     <polygon points="20,24 80,24 50,76" stroke="currentColor" strokeWidth="0.5" strokeLinejoin="round" />
@@ -86,7 +86,7 @@ const sequence = [
 
 const SYMBOL_SPACING_VW = 48; 
 
-// Master target opacity (lowered from 0.08 to 0.06 for a subtler, watermark effect)
+// Master target opacity
 const MAX_OPACITY = 0.06;
 
 // ─── Background Layer Component ───────────────────────────────────────────────
@@ -111,18 +111,24 @@ const AlchemyBackground: React.FC = () => {
       }
 
       // ── Triangle & Train ──
-      const baseX  = p < 0.30 ? 25 : mapRange(p, 0.30, 1.0, 25, 600); 
+      // Slowed down the horizontal panning significantly (from 600 down to 350)
+      const baseX  = p < 0.30 ? 25 : mapRange(p, 0.30, 1.0, 25, 350); 
       const triRot = p < 0.30 ? mapRange(p, 0, 0.30, 0, 90) : 90; 
 
-      // Train fades in only after Beta is completely gone
+      // Triangle Opacity (Holds steady until 85% down the page, then fades out into contact section)
+      const triOpacity = p < 0.85 ? MAX_OPACITY : mapRange(p, 0.85, 0.95, MAX_OPACITY, 0);
+
+      // Train Opacity (Fades in early, holds, then fades out identically to triangle)
       const trainOpacity = 
         p < 0.25 ? 0 : 
         p < 0.30 ? mapRange(p, 0.25, 0.30, 0, MAX_OPACITY) : 
-        MAX_OPACITY;
+        p < 0.85 ? MAX_OPACITY :
+                   mapRange(p, 0.85, 0.95, MAX_OPACITY, 0);
 
       if (triRef.current) {
         triRef.current.style.transform = 
           `translate(calc(-50% + ${baseX}vw), -50%) rotate(${triRot}deg)`;
+        triRef.current.style.opacity = String(clamp(triOpacity, 0, MAX_OPACITY));
       }
 
       if (trainRef.current) {
