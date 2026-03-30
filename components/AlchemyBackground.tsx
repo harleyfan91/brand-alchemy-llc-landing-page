@@ -16,8 +16,7 @@ const mapRange = (
 
 // ─── SVG Symbols ──────────────────────────────────────────────────────────────
 
-// Upward equilateral triangle — alchemical fire / transformation.
-// Mirrors the △ half of the β△ brand mark.
+// Upward equilateral triangle
 const FireTriangle: React.FC = () => (
   <svg
     viewBox="0 0 100 87"
@@ -35,8 +34,7 @@ const FireTriangle: React.FC = () => (
   </svg>
 );
 
-// Alchemical sun (☉) — Classical symbol for gold and perfection.
-// Simplified to standard circle with a dot. 
+// Alchemical sun (☉) — Simplified to standard circle with a dot. 
 const AlchemicalSun: React.FC = () => (
   <svg
     viewBox="0 0 100 100"
@@ -64,15 +62,15 @@ const AlchemyBackground: React.FC = () => {
       const p = scrollY / maxScroll; // 0 = top, 1 = bottom
 
       // ── Fire Triangle ────────────────────────────────────────────────────
-      // Phase 1 (0 to 0.30): Visible at start on right side. Zooms slightly and rotates dramatically IN PLACE.
-      // Phase 2 (0.30 to 0.45): Stops rotating/zooming, pans to the right off-screen.
+      // Visible at start on right side. Zooms slightly and rotates dramatically IN PLACE.
+      // At p = 0.30, stops rotating/zooming, pans to the right off-screen.
       const triScale = p < 0.30 ? mapRange(p, 0, 0.30, 1.0, 1.3) : 1.3;
-      const triX     = p < 0.30 ? 25 : mapRange(p, 0.30, 0.45, 25, 100); // 25vw (right) then pans off-screen
+      const triX     = p < 0.30 ? 25 : mapRange(p, 0.30, 0.45, 25, 120); // Pans off screen right
       const triY     = 0; // Stays vertically centered
       const triRot   = p < 0.30 ? mapRange(p, 0, 0.30, 0, 180) : 180; 
 
-      // Stays visible until panning off screen
-      const triOpacity = p < 0.30 ? 0.14 : mapRange(p, 0.30, 0.45, 0.14, 0);
+      // Fades out gracefully as it pans off screen
+      const triOpacity = p < 0.35 ? 0.14 : mapRange(p, 0.35, 0.45, 0.14, 0);
 
       if (triRef.current) {
         triRef.current.style.transform =
@@ -82,12 +80,12 @@ const AlchemyBackground: React.FC = () => {
       }
 
       // ── Alchemical Sun ───────────────────────────────────────────────────
-      // Enters from off-screen left as triangle exits right, moves across to the right. 
+      // Enters from off-screen left (-100vw) and moves across to the right. 
       // No zooming or rotation.
       const sunScale = 1.0; 
       const sunRot   = 0;   
-      const sunY     = 0;   // Centered vertically
-      const sunX     = mapRange(p, 0.30, 0.90, -80, 40); // Pans from left (-80vw) to right (40vw)
+      const sunY     = 0;   
+      const sunX     = mapRange(p, 0.30, 0.90, -100, 40); 
 
       const sunOpacity =
         p < 0.30 ? 0 :
@@ -103,7 +101,7 @@ const AlchemyBackground: React.FC = () => {
       }
     };
 
-    tick(); // set initial state before first scroll
+    tick(); 
     window.addEventListener('scroll', tick, { passive: true });
     return () => window.removeEventListener('scroll', tick);
   }, []);
@@ -111,7 +109,7 @@ const AlchemyBackground: React.FC = () => {
   return (
     <div
       className="fixed inset-0 pointer-events-none overflow-hidden"
-      style={{ zIndex: 0 }} // Moved down to z-0 so main content correctly overlaps it
+      style={{ zIndex: 0 }} // Sits correctly above base background but behind content
       aria-hidden="true"
     >
       {/* Fire Triangle */}
