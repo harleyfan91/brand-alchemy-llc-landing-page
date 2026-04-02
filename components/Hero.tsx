@@ -28,7 +28,7 @@ const Hero: React.FC = () => {
 
         {/* Headline */}
         <h1 className="text-5xl md:text-7xl font-bold uppercase tracking-tight text-gray-900 leading-[1.1] mb-8">
-          Turn your brand<br />into one people remember.<br />
+          Turn your brand into<br />one people remember.<br />
           <span className="text-gray-300">Brand Alchemy</span><br />
           <span className="text-gray-500">gets you there fast.</span>
         </h1>
