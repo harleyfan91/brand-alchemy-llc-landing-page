@@ -28,13 +28,13 @@ const Hero: React.FC = () => {
 
         {/* Headline */}
         <h1 className="text-5xl md:text-7xl font-bold uppercase tracking-tight text-gray-900 leading-[1.1] mb-8">
-          You built something<br />worth showing off.<br />
+          Turn your brand<br />into one people remember.<br />
           <span className="text-gray-300">Brand Alchemy</span><br />
-          <span className="text-gray-500">helps you prove it.</span>
+          <span className="text-gray-500">gets you there fast.</span>
         </h1>
 
         <p className="text-xl text-gray-500 max-w-2xl mx-auto mb-16 leading-relaxed font-light">
-          Step-by-step guides, templates, and tools that help local business owners look more professional online — without the complexity, the cost, or the learning curve.
+          Tools, templates, and step-by-step guides for small business owners who want to reach more customer and show up consistently — without hiring a marketing team.
         </p>
 
         <div className="flex justify-center">
