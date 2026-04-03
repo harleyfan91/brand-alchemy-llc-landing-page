@@ -425,10 +425,10 @@ const Products = () => {
   );
 
   return (
-    <section id="products" className="scroll-mt-20 snap-start bg-white py-24">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 text-center">
-        <div className="relative z-20 mb-16 max-w-3xl mx-auto">
-          <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400 mb-4">Products</h2>
+    <section id="products" className="scroll-mt-20 snap-start bg-white py-10 md:py-24">
+      <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+        <div className="relative z-20 mx-auto mb-6 max-w-3xl md:mb-16">
+          <h2 className="mb-2 text-xs font-bold uppercase tracking-[0.3em] text-gray-400 md:mb-4">Products</h2>
           <h3 className="text-4xl md:text-5xl font-serif text-gray-900">The Toolkit</h3>
           <p className="text-gray-500 text-sm md:text-base font-light leading-relaxed mt-5">
             Practical downloads to help you look sharp online—brand voice, Google and Yelp setup, photo guides, and copy for social and email. Built for owners and small teams who want professional results without a big-agency budget.
