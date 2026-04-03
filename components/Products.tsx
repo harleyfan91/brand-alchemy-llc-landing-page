@@ -85,7 +85,8 @@ function catalogAccent(selection: CatalogPlatform | null, columnId: CatalogPlatf
   return '#111';
 }
 
-const aLaCarte = [
+/** Standalone downloads (photo guides, copy packs)—buy any pack on its own; not framed as “add-ons” to kits */
+const contentPacks = [
   {
     title: 'Seasonal Industry Photo Angles',
     subtitle: '9-Angle PDF Guide',
@@ -95,12 +96,28 @@ const aLaCarte = [
     img: 'https://images.unsplash.com/photo-1554048612-b6a482bc67e5?auto=format&fit=crop&q=80&w=900',
   },
   {
-    title: 'Seasonal & Event Templates Pack',
-    subtitle: 'Copy & Caption Bundle',
+    title: 'Seasonal & Event Copy Pack',
+    subtitle: 'Holidays & Local Events',
     price: '$39',
-    desc: "Ready-to-use copy for holidays and local events. Drop in your details, post, and move on. No writing experience needed.",
+    desc: 'Ready-to-use copy for holidays and local events. Drop in your details, post, and move on. No writing experience needed.',
     tags: ['30+ Captions', 'Holiday Copy', 'Event Templates'],
     img: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=900',
+  },
+  {
+    title: 'Social CTA Pack',
+    subtitle: 'Captions & Hooks',
+    price: '$19',
+    desc: 'Hooks, CTAs, and short prompts for feed and stories—publish without staring at a blank screen.',
+    tags: ['Feed & Stories', 'CTAs', 'Fill-in-the-blank'],
+    img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=900',
+  },
+  {
+    title: 'Email List Copy Pack',
+    subtitle: 'Welcome & Nurture',
+    price: '$29',
+    desc: 'Welcome and list-building copy you can adapt to your voice—no email marketing background required.',
+    tags: ['Welcome Series', 'Lead Magnets', 'Tone-Ready'],
+    img: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=900',
   },
 ];
 
@@ -142,27 +159,28 @@ const CATALOG_COLUMNS: {
     id: 'both',
     label: 'Both',
     teaser: `${BUNDLE_PRICE} · Save $30`,
-    shortDescription: 'Google + Yelp together—save $30, one checkout.',
+    shortDescription: 'Google + Yelp together—save $30, one purchase.',
     previewItems: [{ label: 'Bundle' }],
   },
 ];
 
 /**
  * Modal catalog CTAs: imperative, short, uppercase tracking.
+ * Direct purchase (no cart): next step is checkout / pay for this line item.
  * Price always lives in the tier/add-on/bundle header row (or tier row), not on the button.
  */
 const catalogCta = {
   getSample: 'Get sample',
-  addKit: 'Add kit',
-  addBundle: 'Add bundle',
-  addItem: 'Add item',
+  addKit: 'Buy now',
+  addBundle: 'Buy bundle',
+  addItem: 'Buy now',
 } as const;
 
-/**
- * Shared category line for Identity Kit + Local Launch Kits (both are downloadable kit products).
- * Swap the string if you standardize on another label (e.g. “PDF kits”).
- */
-const KIT_CATEGORY_LABEL = 'Digital kits';
+/** Eyebrow on Identity Kit card */
+const IDENTITY_CARD_EYEBROW = 'Brand & voice';
+
+/** Eyebrow on toolkit catalog card (launch kits, content packs, and more) */
+const CATALOG_CARD_EYEBROW = 'Local business';
 
 /** Flip to `false` when Identity Kit is live; link uses URL below */
 const IDENTITY_KIT_COMING_SOON = true;
@@ -409,9 +427,12 @@ const Products = () => {
   return (
     <section id="products" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 text-center">
-        <div className="relative z-20 mb-16">
-          <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400 mb-4">Current Catalog</h2>
+        <div className="relative z-20 mb-16 max-w-3xl mx-auto">
+          <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400 mb-4">For local businesses</h2>
           <h3 className="text-4xl md:text-5xl font-serif text-gray-900">The Toolkit</h3>
+          <p className="text-gray-500 text-sm md:text-base font-light leading-relaxed mt-5">
+            Practical downloads to help you look sharp online—brand voice, Google and Yelp setup, photo guides, and copy for social and email. Built for owners and small teams who want professional results without a big-agency budget.
+          </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
@@ -429,7 +450,7 @@ const Products = () => {
                 />
               </div>
               <div className="p-8 md:p-10 text-left">
-                <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">{KIT_CATEGORY_LABEL}</span>
+                <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">{IDENTITY_CARD_EYEBROW}</span>
                 <h4 className="text-2xl font-serif text-gray-900 mb-4">Identity Kit</h4>
                 <p className="text-gray-500 text-sm leading-relaxed font-light mb-6">{identityKitDescription}</p>
                 <span className="inline-block rounded-full border border-gray-200 bg-gray-50 px-4 py-2.5 text-xs font-bold uppercase tracking-widest text-gray-400 cursor-default">
@@ -452,7 +473,7 @@ const Products = () => {
                 />
               </div>
               <div className="p-8 md:p-10 text-left">
-                <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">{KIT_CATEGORY_LABEL}</span>
+                <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">{IDENTITY_CARD_EYEBROW}</span>
                 <h4 className="text-2xl font-serif text-gray-900 mb-4">Identity Kit</h4>
                 <p className="text-gray-500 text-sm leading-relaxed font-light mb-6">{identityKitDescription}</p>
                 <span className="text-xs font-bold text-black border-b border-black pb-1 uppercase tracking-widest">Open Identity Kit</span>
@@ -460,7 +481,7 @@ const Products = () => {
             </a>
           )}
 
-          {/* Local Launch Kits trigger card */}
+          {/* Toolkit catalog trigger (Launch Kits, Content Packs, etc.) */}
           <div
             onClick={() => setIsModalOpen(true)}
             className="relative z-20 bg-white group rounded-2xl overflow-hidden border border-gray-100 flex flex-col transition-all duration-500 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] cursor-pointer"
@@ -468,15 +489,15 @@ const Products = () => {
             <div className="aspect-[16/10] overflow-hidden bg-gray-100">
               <img
                 src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200"
-                alt="Local Launch Kits"
+                alt="Toolkit catalog — guides and downloads for local businesses"
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
               />
             </div>
             <div className="p-8 md:p-10 text-left">
-              <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">{KIT_CATEGORY_LABEL}</span>
-              <h4 className="text-2xl font-serif text-gray-900 mb-4">Local Launch Kits</h4>
+              <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">{CATALOG_CARD_EYEBROW}</span>
+              <h4 className="text-2xl font-serif text-gray-900 mb-4">Toolkit Catalog</h4>
               <p className="text-gray-500 text-sm leading-relaxed font-light mb-6">
-                Step-by-step setup kits for Google Business and Yelp. Get your profile looking sharp, show up when local customers are searching, and make the kind of first impression that turns browsers into visitors.
+                Launch kits for Google and Yelp, content packs for photos and social, email prompts, and more—everything in one place so you can show up locally and keep your marketing consistent.
               </p>
               <span className="text-xs font-bold text-black border-b border-black pb-1 uppercase tracking-widest">Explore Catalog</span>
             </div>
@@ -543,7 +564,7 @@ const Products = () => {
                     </span>
                     <h4 className="text-2xl sm:text-3xl font-serif mt-3 mb-2">3-Shot Starter Pack</h4>
                     <p className="text-sm text-gray-500 font-light leading-relaxed">
-                      Interested in our Local Launch Kits? We&apos;ll send you a free sample: 3 photo angles for your industry, a quick profile audit you can complete in 3 minutes, and 3 review response templates written for your niche.
+                      Interested in our guides for local businesses? We&apos;ll send you a free sample: 3 photo angles for your industry, a quick profile audit you can complete in 3 minutes, and 3 review response templates written for your niche.
                     </p>
                   </div>
                   <div className="w-full lg:w-auto space-y-3">
@@ -579,13 +600,13 @@ const Products = () => {
                 </div>
               </div>
 
-              {/* ── PLATFORM KITS ── */}
+              {/* ── LAUNCH KITS (Google / Yelp / both) ── */}
               <div>
                 <div className="text-left mb-4 md:mb-5">
-                  <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Platform Kits</span>
+                  <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Launch Kits</span>
                   <h4 className="text-xl sm:text-2xl font-serif text-gray-900 mt-1">Choose your platform and tier.</h4>
                   <p className="text-sm text-gray-400 font-light mt-2">
-                    Each kit walks you through setting up your profile the right way, so you show up in local searches, make a great first impression, and know how to keep the momentum going.
+                    Step-by-step setup for Google Business and Yelp—so you show up in local search, make a strong first impression, and keep momentum after you launch.
                   </p>
                 </div>
 
@@ -772,21 +793,23 @@ const Products = () => {
                 </div>
               </div>
 
-              {/* ── PRECISION ADD-ONS ── */}
+              {/* ── CONTENT PACKS (standalone photo & copy products) ── */}
               <div className="pt-1">
                 <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-5 pb-4 border-b border-gray-100">
                   <div className="text-left">
-                    <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Precision Add-ons</span>
-                    <h4 className="text-xl sm:text-2xl font-serif text-gray-900 mt-1.5">Build your own stack.</h4>
-                    <p className="text-sm text-gray-400 font-light mt-2 max-w-sm leading-relaxed">
-                      Not ready for a full kit? Start with one thing and build from there.
+                    <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Content Packs</span>
+                    <h4 className="text-xl sm:text-2xl font-serif text-gray-900 mt-1.5">Photo guides and copy for every channel.</h4>
+                    <p className="text-sm text-gray-400 font-light mt-2 max-w-xl leading-relaxed">
+                      Seasonal photo angles, event and social copy, email list prompts—each pack is its own purchase. Buy what you need when you need it; no kit required.
                     </p>
                   </div>
-                  <span className="text-xs font-bold text-gray-400 uppercase tracking-widest whitespace-nowrap pb-1">2 Available</span>
+                  <span className="text-xs font-bold text-gray-400 uppercase tracking-widest whitespace-nowrap pb-1">
+                    {contentPacks.length} packs
+                  </span>
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-3 sm:gap-5">
-                  {aLaCarte.map((item, i) => (
+                  {contentPacks.map((item, i) => (
                     <div
                       key={i}
                       className="group bg-white rounded-xl sm:rounded-2xl border border-gray-100 overflow-hidden flex flex-row sm:flex-col items-stretch hover:border-gray-300 hover:shadow-[0_16px_40px_-12px_rgba(0,0,0,0.08)] transition-all duration-500"
