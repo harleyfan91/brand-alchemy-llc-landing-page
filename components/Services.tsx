@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const solutions = [
   {
@@ -36,12 +36,56 @@ const steps = solutions.map((s, index) => ({
 }));
 
 const Services: React.FC = () => {
+  const mobileDeckRef = useRef<HTMLDivElement>(null);
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const root = mobileDeckRef.current;
+    if (!root) return;
+    const slides = root.querySelectorAll('[data-solution-slide]');
+    if (slides.length === 0) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        let bestIdx = 0;
+        let bestRatio = 0;
+        for (const entry of entries) {
+          if (entry.intersectionRatio > bestRatio) {
+            bestRatio = entry.intersectionRatio;
+            const idx = Number((entry.target as HTMLElement).dataset.solutionSlide);
+            if (!Number.isNaN(idx)) bestIdx = idx;
+          }
+        }
+        if (bestRatio > 0) setActiveSlide(bestIdx);
+      },
+      { root, rootMargin: '0px', threshold: [0, 0.2, 0.4, 0.6, 0.8, 1] }
+    );
+
+    slides.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
+  const scrollToProducts = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const element = document.getElementById('products');
+    if (element) {
+      const offset = 80;
+      const offsetPosition = element.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section id="services" className="py-24 bg-transparent relative overflow-visible z-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-16 text-center">
-          <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400 mb-4">How it works</h2>
-          <h3 className="text-4xl md:text-5xl font-serif text-gray-900">Simple tools. Real results.</h3>
+    <section
+      id="services"
+      className="relative z-20 scroll-mt-20 snap-start snap-always overflow-visible bg-transparent py-10 md:py-24"
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-6 text-center md:mb-16">
+          <h2 className="mb-2 text-xs font-bold uppercase tracking-[0.3em] text-gray-400 md:mb-4">
+            Solutions
+          </h2>
+          <h3 className="font-serif text-4xl text-gray-900 md:text-5xl">Simple tools. Real results.</h3>
         </div>
       </div>
 
@@ -52,23 +96,42 @@ const Services: React.FC = () => {
           // Inline styles to guarantee the blur works in dev (Tailwind CDN sometimes misses backdrop-filter utilities).
           style={{
             backgroundColor: 'rgba(255,255,255,0.01)',
-            backdropFilter: 'blur(8px)',
-            WebkitBackdropFilter: 'blur(8px)',
+            backdropFilter: 'blur(3px)',
+            WebkitBackdropFilter: 'blur(3px)',
           }}
         />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          {/* Mobile: swipe deck */}
-          <div className="md:hidden flex gap-6 overflow-x-auto pb-2 snap-x snap-mandatory">
-            {steps.map((s) => (
-              <div key={s.step} className="snap-start shrink-0 w-[85%] sm:w-[360px]">
-                <div className="px-2">
-                  <div className="text-gray-200 text-5xl font-bold leading-none mb-6">{s.step}</div>
-                  <h4 className="text-base font-bold text-gray-900 mb-4">{s.title}</h4>
-                  <p className="text-gray-500 leading-relaxed font-light text-sm">{s.description}</p>
+        <div className="relative mx-auto max-w-7xl px-4 py-4 sm:px-6 md:py-16 lg:px-8">
+          {/* Mobile: horizontal deck + minimal dots (replaces edge gradients) */}
+          <div className="md:hidden">
+            <div
+              ref={mobileDeckRef}
+              className="flex gap-6 overflow-x-auto pb-2 snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+            >
+              {steps.map((s, i) => (
+                <div
+                  key={s.step}
+                  data-solution-slide={i}
+                  className="snap-start shrink-0 w-[85%] sm:w-[360px]"
+                >
+                  <div className="px-2">
+                    <div className="text-gray-200 text-5xl font-bold leading-none mb-6">{s.step}</div>
+                    <h4 className="text-base font-bold text-gray-900 mb-4">{s.title}</h4>
+                    <p className="text-gray-500 leading-relaxed font-light text-sm">{s.description}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+            <div className="mt-4 flex justify-center gap-2" aria-hidden>
+              {steps.map((s, i) => (
+                <span
+                  key={s.step}
+                  className={`h-1.5 w-1.5 rounded-full transition-colors duration-200 ${
+                    i === activeSlide ? 'bg-gray-900' : 'bg-gray-300'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
 
           {/* Desktop: 3-up row with arrows between */}
@@ -91,6 +154,27 @@ const Services: React.FC = () => {
             ))}
           </div>
         </div>
+      </div>
+
+      <div className="mx-auto mt-8 flex max-w-7xl justify-center px-4 sm:px-6 md:mt-12 lg:px-8">
+        <a
+          href="#products"
+          onClick={scrollToProducts}
+          className="group inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500 transition-colors hover:text-gray-900 md:gap-2.5 md:text-xs"
+        >
+          <span>See the toolkit</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="h-4 w-4 shrink-0 transition-transform group-hover:translate-y-0.5 md:h-5 md:w-5"
+            aria-hidden
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
+          </svg>
+        </a>
       </div>
     </section>
   );
