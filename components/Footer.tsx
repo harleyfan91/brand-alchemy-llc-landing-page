@@ -1,14 +1,13 @@
 import React from 'react';
 import AlchemyMark from './AlchemyMark';
+import { scrollToSection } from '../utils/scrollToSection';
 
 const Footer: React.FC = () => {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     const element = document.getElementById(targetId);
     if (element) {
       e.preventDefault();
-      const offset = 80;
-      const offsetPosition = element.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      scrollToSection(targetId);
     }
   };
 

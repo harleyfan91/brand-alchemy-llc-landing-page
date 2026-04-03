@@ -1,20 +1,16 @@
 import React from 'react';
+import { scrollToSection } from '../utils/scrollToSection';
 
 const Hero: React.FC = () => {
   const scrollToSolutions = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const element = document.getElementById('services');
-    if (element) {
-      const offset = 80;
-      const offsetPosition = element.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-    }
+    scrollToSection('services');
   };
 
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen min-h-[100svh] flex-col justify-start overflow-hidden bg-white pt-24 pb-8 max-md:snap-start md:min-h-[90vh] md:justify-center md:pt-16 md:pb-12"
+      className="relative flex min-h-screen min-h-[100svh] flex-col justify-start overflow-hidden bg-white pt-24 pb-8 md:min-h-[90vh] md:justify-center md:pt-16 md:pb-12"
     >
       <div className="absolute inset-0 z-0">
         <div className="absolute top-1/2 left-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-tr from-gray-50 to-white opacity-60 blur-3xl" />
@@ -52,7 +48,7 @@ const Hero: React.FC = () => {
           <span className="text-gray-500">gets you there fast.</span>
         </h1>
 
-        <p className="mx-auto mb-7 max-w-2xl px-1 text-lg font-light leading-relaxed text-gray-500 md:mb-16 md:text-xl">
+        <p className="mx-auto mb-8 max-w-2xl px-1 text-base font-light leading-relaxed text-gray-500 md:mb-16 md:text-xl">
           Tools, templates, and step-by-step guides for small business owners who want to reach more customers and show up
           consistently — without hiring a marketing team.
         </p>

@@ -425,7 +425,7 @@ const Products = () => {
   );
 
   return (
-    <section id="products" className="scroll-mt-20 snap-start bg-white py-10 md:py-24">
+    <section id="products" className="scroll-mt-20 bg-white py-10 md:py-24">
       <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
         <div className="relative z-20 mx-auto mb-6 max-w-3xl md:mb-16">
           <h2 className="mb-2 text-xs font-bold uppercase tracking-[0.3em] text-gray-400 md:mb-4">Products</h2>

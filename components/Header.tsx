@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AlchemyMark from './AlchemyMark';
+import { scrollToSection } from '../utils/scrollToSection';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,12 +18,7 @@ const Header: React.FC = () => {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
     closeMenu();
-    const element = document.getElementById(targetId);
-    if (element) {
-      const offset = 80;
-      const offsetPosition = element.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-    }
+    scrollToSection(targetId);
   };
 
   return (

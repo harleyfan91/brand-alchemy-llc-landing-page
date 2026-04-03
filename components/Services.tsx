@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { scrollToSection } from '../utils/scrollToSection';
 
 const solutions = [
   {
@@ -67,18 +68,13 @@ const Services: React.FC = () => {
 
   const scrollToProducts = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const element = document.getElementById('products');
-    if (element) {
-      const offset = 80;
-      const offsetPosition = element.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-    }
+    scrollToSection('products');
   };
 
   return (
     <section
       id="services"
-      className="relative z-20 scroll-mt-20 snap-start snap-always overflow-visible bg-transparent py-10 md:py-24"
+      className="relative z-20 scroll-mt-20 overflow-visible bg-transparent py-10 md:py-24"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-6 text-center md:mb-16">
