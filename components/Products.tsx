@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 // ─── Text scale reference ────────────────────────────────────────────────────
 // Eyebrow labels (uppercase, decorative): text-xs font-bold
@@ -69,6 +69,22 @@ const platformConfig: Record<Platform, { bg: string; accent: string }> = {
   yelp:   { bg: '#fff5f5', accent: '#d32323' },
 };
 
+/** Google / Yelp / Both in the catalog modal — `null` = equal columns, teaser only until user picks */
+type CatalogPlatform = 'google' | 'yelp' | 'both';
+
+function catalogCardBackground(selection: CatalogPlatform | null): string {
+  if (selection === null) return '#f3f4f6';
+  if (selection === 'both') return '#f1f2f4';
+  return platformConfig[selection].bg;
+}
+
+function catalogAccent(selection: CatalogPlatform | null, columnId: CatalogPlatform): string {
+  if (selection !== columnId) return 'transparent';
+  if (columnId === 'google') return platformConfig.google.accent;
+  if (columnId === 'yelp') return platformConfig.yelp.accent;
+  return '#111';
+}
+
 const aLaCarte = [
   {
     title: 'Seasonal Industry Photo Angles',
@@ -92,6 +108,44 @@ const industries = ['Cafe', 'Gym & Fitness', 'Spa & Beauty', 'Professional Servi
 
 /** Bundle price — shown in header row; CTA is verb-only (matches catalog pattern) */
 const BUNDLE_PRICE = '$229';
+
+const BUNDLE_FEATURES = [
+  'Google and Yelp launch kits together in one checkout',
+  'Save $30 compared to buying each platform separately',
+  'Templates, photo angles, and review guides for both platforms',
+];
+
+const CATALOG_COLUMNS: {
+  id: CatalogPlatform;
+  label: string;
+  teaser: string;
+  /** Short line for compact / mobile */
+  shortDescription: string;
+  /** Tier / bundle labels only — peek uses skeleton lines instead of prices */
+  previewItems: { label: string }[];
+}[] = [
+  {
+    id: 'google',
+    label: 'Google',
+    teaser: 'From $59',
+    shortDescription: 'Google Business setup, templates, and photo angles for local search.',
+    previewItems: [{ label: 'Core' }, { label: 'Pro' }],
+  },
+  {
+    id: 'yelp',
+    label: 'Yelp',
+    teaser: 'From $59',
+    shortDescription: 'Yelp profile, visibility, and review response templates.',
+    previewItems: [{ label: 'Core' }, { label: 'Pro' }],
+  },
+  {
+    id: 'both',
+    label: 'Both',
+    teaser: `${BUNDLE_PRICE} · Save $30`,
+    shortDescription: 'Google + Yelp together—save $30, one checkout.',
+    previewItems: [{ label: 'Bundle' }],
+  },
+];
 
 /**
  * Modal catalog CTAs: imperative, short, uppercase tracking.
@@ -136,23 +190,221 @@ const CheckIcon = ({ size = 'sm' }: { size?: 'sm' | 'md' }) => (
   </svg>
 );
 
+/**
+ * Default-state peek (sm+ only) — aligned with Identity Kit ReviewScreen teaser tiles:
+ * soft panel, semibold label, blurred skeleton lines (no prices). Mobile collapsed rows omit tiles.
+ */
+const KitPeekSkeletonLines = () => (
+  <div className="mt-2.5 space-y-1.5">
+    <div className="h-2.5 w-[85%] rounded bg-gray-200/90 blur-[1px]" />
+    <div className="h-2.5 w-[66%] rounded bg-gray-200/85 blur-[1px]" />
+    <div className="h-2.5 w-[78%] rounded bg-gray-200/85 blur-[1px]" />
+  </div>
+);
+
+const CatalogColumnPreviewPeek = ({ col }: { col: (typeof CATALOG_COLUMNS)[number] }) => {
+  const n = col.previewItems.length;
+  return (
+    <div className="flex min-h-0 flex-1 flex-col justify-between">
+      <p className="shrink-0 text-xs text-gray-600 font-light leading-snug sm:text-[13px] md:text-sm">
+        {col.shortDescription}
+      </p>
+      <div
+        className={`mt-3 grid w-full gap-2 sm:mt-auto ${n === 1 ? 'grid-cols-1' : 'grid-cols-2'}`}
+        aria-hidden="true"
+      >
+        {col.previewItems.map((item) => (
+          <div
+            key={`${col.id}-${item.label}`}
+            className="flex min-h-[5.5rem] flex-col overflow-hidden rounded-xl border border-gray-200 bg-gray-50/80 p-2.5 sm:min-h-[6rem] sm:p-3"
+          >
+            <p className="text-[10px] font-semibold leading-tight text-gray-800 sm:text-xs">{item.label}</p>
+            <KitPeekSkeletonLines />
+          </div>
+        ))}
+      </div>
+      <span className="sr-only">
+        {n} {col.id === 'both' ? 'bundle' : 'kit tiers'} in this group
+      </span>
+    </div>
+  );
+};
+
 const Products = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [platform, setPlatform] = useState<Platform>('google');
+  /** `null` — no committed selection; equal columns show peek (copy + tier chips) until user picks one */
+  const [catalogSelection, setCatalogSelection] = useState<CatalogPlatform | null>(null);
   const [tier, setTier] = useState<Tier>('core');
   const [platformFading, setPlatformFading] = useState(false);
   const [selectedIndustry, setSelectedIndustry] = useState('');
 
-  const activeKit = kits[platform][tier];
-  const config = platformConfig[platform];
+  /** Mobile accordion rows — scroll target into view (refs on each row) */
+  const mobileCatalogRowRefs = useRef<Partial<Record<CatalogPlatform, HTMLDivElement | null>>>({});
 
-  const handlePlatformChange = (p: Platform) => {
-    if (p === platform) return;
+  const scrollMobileCatalogRow = (id: CatalogPlatform, behavior: ScrollBehavior) => {
+    if (typeof window === 'undefined') return;
+    if (!window.matchMedia('(max-width: 639px)').matches) return;
+    const el = mobileCatalogRowRefs.current[id];
+    if (!el) return;
+    el.scrollIntoView({ behavior, block: 'start', inline: 'nearest' });
+  };
+
+  const selectCatalogPlatform = (p: CatalogPlatform) => {
+    if (p === catalogSelection) return;
+
+    // Same pattern as many mobile accordions / filter sheets: scroll on tap, not after async layout + extra delay.
+    scrollMobileCatalogRow(p, 'smooth');
+
     setPlatformFading(true);
-    setTimeout(() => { setPlatform(p); setPlatformFading(false); }, 160);
+    window.setTimeout(() => {
+      setCatalogSelection(p);
+      setPlatformFading(false);
+      // After expand paints, snap scroll so tall tier lists aren’t left off-screen (instant = no second “smooth” wait).
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => {
+          scrollMobileCatalogRow(p, 'auto');
+        });
+      });
+    }, 160);
   };
 
   const handleTierChange = (t: Tier) => setTier(t);
+
+  const fadeStyle = { opacity: platformFading ? 0 : 1, transition: 'opacity 0.16s ease' } as const;
+
+  const renderTierCardsFor = (p: Platform) => (
+    <>
+      <div className="space-y-3 mb-5" style={fadeStyle}>
+        {(['core', 'pro'] as Tier[]).map((t) => {
+          const kit = kits[p][t];
+          const isActive = tier === t;
+          return (
+            <div
+              key={t}
+              role="button"
+              tabIndex={0}
+              onClick={() => handleTierChange(t)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  handleTierChange(t);
+                }
+              }}
+              className="rounded-lg sm:rounded-xl border bg-white cursor-pointer relative overflow-hidden"
+              style={{
+                borderColor: isActive ? '#111' : '#e5e7eb',
+                boxShadow: isActive ? '0 4px 20px -4px rgba(0,0,0,0.12)' : 'none',
+                transition: 'border-color 0.15s ease, box-shadow 0.15s ease',
+              }}
+            >
+              <div className="flex items-center justify-between px-4 pt-4 pb-3 sm:px-5 sm:pt-4 sm:pb-3">
+                <div className="flex items-center gap-2.5 sm:gap-3">
+                  <div
+                    className="w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0"
+                    style={{
+                      borderColor: isActive ? '#111' : '#d1d5db',
+                      backgroundColor: isActive ? '#111' : 'transparent',
+                      color: '#fff',
+                      transition: 'border-color 0.15s ease, background-color 0.15s ease',
+                    }}
+                  >
+                    {isActive && <CheckIcon size="sm" />}
+                  </div>
+                  <div>
+                    <h5
+                      className="text-sm sm:text-base font-bold uppercase tracking-wider"
+                      style={{ color: isActive ? '#111' : '#6b7280', transition: 'color 0.15s ease' }}
+                    >
+                      {t === 'core' ? 'Core' : 'Pro'}
+                    </h5>
+                  </div>
+                </div>
+                <span
+                  className="text-2xl sm:text-3xl font-light tracking-tight"
+                  style={{ color: isActive ? '#111' : '#9ca3af', transition: 'color 0.15s ease' }}
+                >
+                  {kit.price}
+                </span>
+              </div>
+              <div className="px-4 pb-4 sm:px-5 sm:pb-4 grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2 border-t border-gray-100 pt-3">
+                {kit.features.map((f, idx) => (
+                  <div key={idx} className="flex items-center gap-2.5">
+                    <span style={{ color: isActive ? '#6b7280' : '#d1d5db', transition: 'color 0.15s ease' }}>
+                      <CheckIcon size="md" />
+                    </span>
+                    <span
+                      className="text-sm font-normal leading-snug"
+                      style={{ color: isActive ? '#374151' : '#c4c8cd', transition: 'color 0.15s ease' }}
+                    >
+                      {f}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <button
+        type="button"
+        style={fadeStyle}
+        className="w-full py-3 sm:py-3.5 bg-black text-white rounded-full text-xs font-bold uppercase tracking-widest hover:bg-gray-800 transition-colors"
+      >
+        {catalogCta.addKit}
+      </button>
+    </>
+  );
+
+  /** Same card chrome as a single Core/Pro tier row — one selectable “Bundle” option */
+  const renderBundleColumnContent = () => (
+    <>
+      <div className="space-y-3 mb-5" style={fadeStyle}>
+        <div
+          className="rounded-lg sm:rounded-xl border bg-white relative overflow-hidden"
+          style={{
+            borderColor: '#111',
+            boxShadow: '0 4px 20px -4px rgba(0,0,0,0.12)',
+          }}
+        >
+          <div className="flex items-center justify-between px-4 pt-4 pb-3 sm:px-5 sm:pt-4 sm:pb-3">
+            <div className="flex items-center gap-2.5 sm:gap-3">
+              <div
+                className="w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0"
+                style={{
+                  borderColor: '#111',
+                  backgroundColor: '#111',
+                  color: '#fff',
+                }}
+              >
+                <CheckIcon size="sm" />
+              </div>
+              <div>
+                <h5 className="text-sm sm:text-base font-bold uppercase tracking-wider text-gray-900">Bundle</h5>
+              </div>
+            </div>
+            <span className="text-2xl sm:text-3xl font-light tracking-tight text-gray-900 tabular-nums">{BUNDLE_PRICE}</span>
+          </div>
+          <div className="px-4 pb-4 sm:px-5 sm:pb-4 grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2 border-t border-gray-100 pt-3">
+            {BUNDLE_FEATURES.map((f, idx) => (
+              <div key={idx} className="flex items-center gap-2.5">
+                <span className="text-gray-600">
+                  <CheckIcon size="md" />
+                </span>
+                <span className="text-sm font-normal leading-snug text-gray-700">{f}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <button
+        type="button"
+        style={fadeStyle}
+        className="w-full py-3 sm:py-3.5 bg-black text-white rounded-full text-xs font-bold uppercase tracking-widest hover:bg-gray-800 transition-colors"
+      >
+        {catalogCta.addBundle}
+      </button>
+    </>
+  );
 
   return (
     <section id="products" className="py-24 bg-white">
@@ -258,13 +510,13 @@ const Products = () => {
 
       {/* ── MODAL ── */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-6">
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsModalOpen(false)} />
 
-          <div className="relative bg-white w-full max-w-4xl max-h-[90vh] rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col">
+          <div className="relative bg-white w-full max-w-4xl max-h-[92vh] sm:max-h-[90vh] rounded-xl sm:rounded-3xl shadow-2xl flex flex-col min-h-0">
 
             {/* Modal header */}
-            <div className="px-4 py-4 sm:px-6 md:px-8 border-b border-gray-100 flex justify-between items-center bg-white rounded-t-2xl sm:rounded-t-3xl shrink-0">
+            <div className="px-3 py-3 sm:px-6 md:px-8 sm:py-4 border-b border-gray-100 flex justify-between items-center bg-white rounded-t-xl sm:rounded-t-3xl shrink-0">
               <div className="text-left">
                 <h3 className="text-2xl font-serif text-gray-900">Toolkit Catalog</h3>
                 <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mt-1">Find your starting point</p>
@@ -279,11 +531,11 @@ const Products = () => {
               </button>
             </div>
 
-            {/* Scrollable body */}
-            <div className="flex-grow overflow-y-auto px-4 py-5 sm:px-6 sm:py-6 md:px-8 md:py-8 space-y-8 md:space-y-10">
+            {/* Scrollable body — tighter horizontal padding on small screens for more usable width */}
+            <div className="flex-grow overflow-y-auto px-3 py-4 sm:px-6 sm:py-6 md:px-8 md:py-8 space-y-6 sm:space-y-8 md:space-y-10">
 
               {/* ── FREE SAMPLE ── */}
-              <div className="bg-gray-50 rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-gray-100">
+              <div className="bg-gray-50 rounded-lg sm:rounded-2xl p-4 sm:p-6 border border-gray-100">
                 <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-5 lg:gap-6">
                   <div className="max-w-xl text-left">
                     <span className="text-xs font-bold text-black bg-white px-3 py-1 rounded-full uppercase tracking-widest border border-gray-200 shadow-sm">
@@ -337,137 +589,185 @@ const Products = () => {
                   </p>
                 </div>
 
-                {/* Configurator card */}
+                {/* Configurator: three columns on sm+ (equal until one expands); stacked accordion on small screens */}
                 <div
                   className="rounded-xl sm:rounded-2xl border border-gray-200 overflow-hidden"
-                  style={{ backgroundColor: config.bg, transition: 'background-color 0.4s ease' }}
+                  style={{ backgroundColor: catalogCardBackground(catalogSelection), transition: 'background-color 0.4s ease' }}
                 >
-                  {/* Platform tabs */}
-                  <div className="flex">
-                    {(['google', 'yelp'] as Platform[]).map((p) => (
-                      <button
-                        key={p}
-                        onClick={() => handlePlatformChange(p)}
-                        className="flex-1 py-3 sm:py-3.5 text-xs font-bold uppercase tracking-widest transition-all duration-200 relative"
-                        style={{
-                          color: platform === p ? '#111' : '#9ca3af',
-                          backgroundColor: platform === p ? 'rgba(255,255,255,0.75)' : 'transparent',
-                        }}
-                      >
-                        {p === 'google' ? 'Google' : 'Yelp'}
-                        {platform === p && (
-                          <span
-                            className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full"
-                            style={{ backgroundColor: config.accent, transition: 'background-color 0.4s ease' }}
-                          />
-                        )}
-                      </button>
-                    ))}
-                  </div>
-
-                  {/* Card body — generous inset so tier rows + CTA aren’t flush to the tinted frame */}
-                  <div className="p-6 sm:p-7 md:p-8 bg-white/60 backdrop-blur-sm">
-                    <div
-                      className="space-y-3 mb-5"
-                      style={{ opacity: platformFading ? 0 : 1, transition: 'opacity 0.16s ease' }}
-                    >
-                      {(['core', 'pro'] as Tier[]).map((t) => {
-                        const kit = kits[platform][t];
-                        const isActive = tier === t;
-                        return (
-                          <div
-                            key={t}
-                            onClick={() => handleTierChange(t)}
-                            className="rounded-lg sm:rounded-xl border bg-white cursor-pointer relative overflow-hidden"
-                            style={{
-                              borderColor: isActive ? '#111' : '#e5e7eb',
-                              boxShadow: isActive ? '0 4px 20px -4px rgba(0,0,0,0.12)' : 'none',
-                              transition: 'border-color 0.15s ease, box-shadow 0.15s ease',
-                            }}
-                          >
-                            {/* Tier header */}
-                            <div className="flex items-center justify-between px-4 pt-4 pb-3 sm:px-5 sm:pt-4 sm:pb-3">
-                              <div className="flex items-center gap-2.5 sm:gap-3">
-                                <div
-                                  className="w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0"
-                                  style={{
-                                    borderColor: isActive ? '#111' : '#d1d5db',
-                                    backgroundColor: isActive ? '#111' : 'transparent',
-                                    color: '#fff',
-                                    transition: 'border-color 0.15s ease, background-color 0.15s ease',
-                                  }}
-                                >
-                                  {isActive && <CheckIcon size="sm" />}
-                                </div>
-                                <div>
-                                  <h5
-                                    className="text-sm sm:text-base font-bold uppercase tracking-wider"
-                                    style={{ color: isActive ? '#111' : '#6b7280', transition: 'color 0.15s ease' }}
-                                  >
-                                    {t === 'core' ? 'Core' : 'Pro'}
-                                  </h5>
-                                </div>
+                  <div
+                    className={`sm:hidden border-b border-gray-200/80 backdrop-blur-sm transition-colors duration-300 ${
+                      catalogSelection === null ? 'bg-white/50' : 'bg-white/25'
+                    }`}
+                  >
+                    {CATALOG_COLUMNS.map((col) => {
+                      const expanded = catalogSelection === col.id;
+                      return (
+                        <div
+                          key={col.id}
+                          ref={(el) => {
+                            mobileCatalogRowRefs.current[col.id] = el;
+                          }}
+                          className={`scroll-mt-3 border-b border-gray-200/80 last:border-b-0 transition-colors duration-200 ${
+                            expanded ? 'bg-white/75' : 'bg-white/60'
+                          }`}
+                        >
+                          {catalogSelection === null ? (
+                            <button
+                              type="button"
+                              role="radio"
+                              aria-checked={false}
+                              onClick={() => selectCatalogPlatform(col.id)}
+                              className="w-full px-3 py-3.5 text-left hover:bg-white/85 active:bg-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2 sm:px-4"
+                            >
+                              <div className="flex items-center justify-between gap-3">
+                                <span className="text-xs font-bold uppercase tracking-widest text-gray-900">{col.label}</span>
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400 shrink-0 max-w-[55%] text-right leading-snug">
+                                  {col.teaser}
+                                </span>
                               </div>
-                              <span
-                                className="text-2xl sm:text-3xl font-light tracking-tight"
-                                style={{ color: isActive ? '#111' : '#9ca3af', transition: 'color 0.15s ease' }}
+                            </button>
+                          ) : (
+                            <>
+                              <button
+                                type="button"
+                                role="radio"
+                                aria-expanded={expanded}
+                                aria-checked={expanded}
+                                onClick={() => selectCatalogPlatform(col.id)}
+                                className={`relative w-full flex items-center justify-between gap-3 px-3 py-3.5 text-left transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2 sm:px-4 ${
+                                  expanded
+                                    ? 'hover:bg-white/80'
+                                    : 'text-gray-500 hover:bg-white/55'
+                                }`}
+                                style={
+                                  expanded
+                                    ? { backgroundColor: 'rgba(255,255,255,0.78)' }
+                                    : undefined
+                                }
                               >
-                                {kit.price}
-                              </span>
-                            </div>
-
-                            {/* Features */}
-                            <div className="px-4 pb-4 sm:px-5 sm:pb-4 grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2 border-t border-gray-100 pt-3">
-                              {kit.features.map((f, idx) => (
-                                <div key={idx} className="flex items-center gap-2.5">
-                                  <span style={{ color: isActive ? '#6b7280' : '#d1d5db', transition: 'color 0.15s ease' }}>
-                                    <CheckIcon size="md" />
-                                  </span>
+                                <span
+                                  className={`text-xs font-bold uppercase tracking-widest ${
+                                    expanded ? 'text-gray-900' : 'text-gray-500'
+                                  }`}
+                                >
+                                  {col.label}
+                                </span>
+                                <span
+                                  className={`text-[10px] font-bold uppercase tracking-wider shrink-0 max-w-[55%] text-right leading-snug ${
+                                    expanded ? 'text-gray-400' : 'text-gray-400/80'
+                                  }`}
+                                >
+                                  {col.teaser}
+                                </span>
+                                {expanded && catalogSelection && (
                                   <span
-                                    className="text-sm font-normal leading-snug"
-                                    style={{ color: isActive ? '#374151' : '#c4c8cd', transition: 'color 0.15s ease' }}
-                                  >
-                                    {f}
-                                  </span>
+                                    className="absolute bottom-0 left-3 right-3 h-0.5 rounded-full"
+                                    style={{ backgroundColor: catalogAccent(catalogSelection, col.id) }}
+                                  />
+                                )}
+                              </button>
+                              {expanded && (
+                                <div className="px-3 pb-5 pt-2 border-t border-gray-100 bg-white/70 sm:px-4">
+                                  {col.id === 'both' ? renderBundleColumnContent() : renderTierCardsFor(col.id)}
                                 </div>
-                              ))}
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-
-                    {/* CTA */}
-                    <button
-                      type="button"
-                      style={{ opacity: platformFading ? 0 : 1, transition: 'opacity 0.16s ease' }}
-                      className="w-full py-3 sm:py-3.5 bg-black text-white rounded-full text-xs font-bold uppercase tracking-widest hover:bg-gray-800 transition-colors"
-                    >
-                      {catalogCta.addKit}
-                    </button>
+                              )}
+                            </>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
-                </div>
 
-                {/* Bundle strip — headline row matches tier layout (title | price top-right); CTA below */}
-                <div className="mt-3 rounded-lg sm:rounded-xl bg-gray-900 px-4 py-4 sm:px-5 sm:py-4">
-                  <div className="flex justify-between items-start gap-4">
-                    <p className="text-sm font-bold text-white uppercase tracking-wider text-left min-w-0">
-                      Why choose one?
-                    </p>
-                    <span className="text-2xl sm:text-3xl font-light text-white tabular-nums shrink-0 leading-none pt-0.5">
-                      {BUNDLE_PRICE}
-                    </span>
-                  </div>
-                  <p className="text-sm text-gray-400 font-light mt-2 leading-relaxed text-left">
-                    Get Google + Yelp together and save $30. Cover every place a local customer might find you.
-                  </p>
-                  <div className="mt-4 flex justify-end">
-                    <button
-                      type="button"
-                      className="px-6 py-3 bg-white text-black rounded-full text-xs font-bold uppercase tracking-widest hover:bg-gray-100 transition-colors whitespace-nowrap"
-                    >
-                      {catalogCta.addBundle}
-                    </button>
+                  <div
+                    className="hidden sm:flex sm:flex-row min-h-[min(320px,50vh)]"
+                    role="radiogroup"
+                    aria-label="Choose Google, Yelp, or both platforms"
+                  >
+                    {CATALOG_COLUMNS.map((col) => {
+                      const expanded = catalogSelection === col.id;
+                      const equal = catalogSelection === null;
+                      const slim = !equal && !expanded;
+                      const flexClass = equal ? 'flex-1 min-w-0' : expanded ? 'flex-[4] min-w-0' : 'flex-1 basis-0 min-w-[4.75rem]';
+                      const headerBar = (
+                        <>
+                          <span className={`font-bold uppercase tracking-widest ${slim ? 'text-[10px] leading-tight' : 'text-xs'}`}>
+                            {col.label}
+                          </span>
+                          <span
+                            className={`font-bold uppercase text-gray-400 ${slim ? 'text-[9px] leading-tight px-0.5' : 'text-[10px] tracking-wider'}`}
+                          >
+                            {col.teaser}
+                          </span>
+                          {expanded && (
+                            <span
+                              className="absolute bottom-0 left-3 right-3 h-0.5 rounded-full"
+                              style={{ backgroundColor: catalogAccent(catalogSelection, col.id) }}
+                            />
+                          )}
+                        </>
+                      );
+                      return (
+                        <div
+                          key={col.id}
+                          className={`flex flex-col border-r border-gray-200/80 last:border-r-0 transition-[flex-grow,flex-shrink,flex-basis] duration-300 ease-out min-h-0 ${flexClass}`}
+                        >
+                          {equal ? (
+                            <button
+                              type="button"
+                              role="radio"
+                              aria-checked={false}
+                              onClick={() => selectCatalogPlatform(col.id)}
+                              className="group relative flex flex-1 min-h-0 min-w-0 flex-col text-left rounded-none border-0 transition-colors hover:bg-white/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gray-900"
+                              style={{
+                                color: '#111',
+                                backgroundColor: 'rgba(255,255,255,0.5)',
+                              }}
+                            >
+                              <div className="relative shrink-0 py-3 sm:py-3.5 px-4 flex flex-col items-stretch gap-1">
+                                {headerBar}
+                              </div>
+                              <div className="flex-1 flex flex-col min-h-0 min-w-0 px-3 sm:px-4 pb-4 sm:pb-5 pt-2 border-t border-gray-100/90 bg-white/60 backdrop-blur-sm overflow-y-auto">
+                                <CatalogColumnPreviewPeek col={col} />
+                              </div>
+                            </button>
+                          ) : slim ? (
+                            <button
+                              type="button"
+                              role="radio"
+                              aria-checked={false}
+                              onClick={() => selectCatalogPlatform(col.id)}
+                              className="relative flex flex-1 min-h-0 min-w-0 flex-col items-center justify-center gap-2 py-5 px-1.5 text-center transition-colors text-gray-600 hover:bg-white/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gray-900"
+                            >
+                              <span className="text-[10px] font-bold uppercase tracking-widest leading-tight text-gray-900">{col.label}</span>
+                              <span className="text-[9px] font-bold uppercase leading-tight px-0.5 text-gray-400">{col.teaser}</span>
+                            </button>
+                          ) : (
+                            <>
+                              <button
+                                type="button"
+                                role="radio"
+                                aria-checked={expanded}
+                                onClick={() => selectCatalogPlatform(col.id)}
+                                className={`relative w-full shrink-0 transition-colors py-3 sm:py-3.5 px-4 text-left flex flex-col items-stretch gap-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gray-900 ${
+                                  expanded ? '' : ''
+                                }`}
+                                style={{
+                                  color: '#111',
+                                  backgroundColor: expanded ? 'rgba(255,255,255,0.78)' : 'transparent',
+                                }}
+                              >
+                                {headerBar}
+                              </button>
+                              {expanded && (
+                                <div className="flex-1 flex flex-col min-h-0 min-w-0 px-4 sm:px-5 pb-5 sm:pb-6 pt-2 border-t border-gray-100/90 bg-white/60 backdrop-blur-sm overflow-y-auto">
+                                  {col.id === 'both' ? renderBundleColumnContent() : renderTierCardsFor(col.id)}
+                                </div>
+                              )}
+                            </>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
