@@ -107,7 +107,7 @@ const contentPacks = [
     title: 'Social CTA Pack',
     subtitle: 'Captions & Hooks',
     price: '$19',
-    desc: 'Hooks, CTAs, and short prompts for feed and stories—publish without staring at a blank screen.',
+    desc: 'Hooks, CTAs, and short prompts for feed and stories, so you can publish without staring at a blank screen.',
     tags: ['Feed & Stories', 'CTAs', 'Fill-in-the-blank'],
     img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=900',
   },
@@ -115,7 +115,7 @@ const contentPacks = [
     title: 'Email List Copy Pack',
     subtitle: 'Welcome & Nurture',
     price: '$29',
-    desc: 'Welcome and list-building copy you can adapt to your voice—no email marketing background required.',
+    desc: 'Welcome and list-building copy you can adapt to your voice. No email marketing background required.',
     tags: ['Welcome Series', 'Lead Magnets', 'Tone-Ready'],
     img: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=900',
   },
@@ -159,7 +159,7 @@ const CATALOG_COLUMNS: {
     id: 'both',
     label: 'Both',
     teaser: `${BUNDLE_PRICE} · Save $30`,
-    shortDescription: 'Google + Yelp together—save $30, one purchase.',
+    shortDescription: 'Google + Yelp together: save $30, one purchase.',
     previewItems: [{ label: 'Bundle' }],
   },
 ];
@@ -431,7 +431,7 @@ const Products = () => {
           <h2 className="mb-2 text-xs font-bold uppercase tracking-[0.3em] text-gray-400 md:mb-4">Products</h2>
           <h3 className="text-4xl md:text-5xl font-serif text-gray-900">The Toolkit</h3>
           <p className="text-gray-500 text-sm md:text-base font-light leading-relaxed mt-5">
-            Practical downloads to help you look sharp online—brand voice, Google and Yelp setup, photo guides, and copy for social and email. Built for owners and small teams who want professional results without a big-agency budget.
+            Practical downloads to help you look sharp online: brand voice, Google and Yelp setup, photo guides, and copy for social and email. Built for owners and small teams who want professional results without a big-agency budget.
           </p>
         </div>
 
@@ -440,7 +440,7 @@ const Products = () => {
           {IDENTITY_KIT_COMING_SOON ? (
             <div
               className="relative z-20 bg-white group rounded-2xl overflow-hidden border border-gray-100 flex flex-col transition-all duration-500 shadow-none"
-              aria-label="Identity Kit — coming soon"
+              aria-label="Identity Kit, coming soon"
             >
               <div className="aspect-[16/10] overflow-hidden bg-gray-100">
                 <img
@@ -489,7 +489,7 @@ const Products = () => {
             <div className="aspect-[16/10] overflow-hidden bg-gray-100">
               <img
                 src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200"
-                alt="Toolkit catalog — guides and downloads for local businesses"
+                alt="Toolkit catalog: guides and downloads for local businesses"
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
               />
             </div>
@@ -497,7 +497,7 @@ const Products = () => {
               <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">{CATALOG_CARD_EYEBROW}</span>
               <h4 className="text-2xl font-serif text-gray-900 mb-4">Toolkit Catalog</h4>
               <p className="text-gray-500 text-sm leading-relaxed font-light mb-6">
-                Launch kits for Google and Yelp, content packs for photos and social, email prompts, and more—everything in one place so you can show up locally and keep your marketing consistent.
+                Launch kits for Google and Yelp, content packs for photos and social, email prompts, and more: everything in one place so you can show up locally and keep your marketing consistent.
               </p>
               <span className="text-xs font-bold text-black border-b border-black pb-1 uppercase tracking-widest">Explore Catalog</span>
             </div>
@@ -606,7 +606,7 @@ const Products = () => {
                   <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Launch Kits</span>
                   <h4 className="text-xl sm:text-2xl font-serif text-gray-900 mt-1">Choose your platform and tier.</h4>
                   <p className="text-sm text-gray-400 font-light mt-2">
-                    Step-by-step setup for Google Business and Yelp—so you show up in local search, make a strong first impression, and keep momentum after you launch.
+                    Step-by-step setup for Google Business and Yelp, so you show up in local search, make a strong first impression, and keep momentum after you launch.
                   </p>
                 </div>
 
@@ -800,7 +800,7 @@ const Products = () => {
                     <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Content Packs</span>
                     <h4 className="text-xl sm:text-2xl font-serif text-gray-900 mt-1.5">Photo guides and copy for every channel.</h4>
                     <p className="text-sm text-gray-400 font-light mt-2 max-w-xl leading-relaxed">
-                      Seasonal photo angles, event and social copy, email list prompts—each pack is its own purchase. Buy what you need when you need it; no kit required.
+                      Seasonal photo angles, event and social copy, email list prompts. Each pack is its own purchase. Buy what you need when you need it; no kit required.
                     </p>
                   </div>
                   <span className="text-xs font-bold text-gray-400 uppercase tracking-widest whitespace-nowrap pb-1">

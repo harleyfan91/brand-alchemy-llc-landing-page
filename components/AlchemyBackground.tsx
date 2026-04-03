@@ -35,6 +35,20 @@ const FireTriangle: React.FC = () => (
   </svg>
 );
 
+// Sulfur — identity-kit paths, −8 on y and 100×100 viewBox so it scales and centers like the other glyphs
+const Sulfur: React.FC = () => (
+  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+    <polygon
+      points="50,20 74,56 26,56"
+      stroke="currentColor"
+      strokeWidth="0.5"
+      strokeLinejoin="round"
+    />
+    <line x1="50" y1="56" x2="50" y2="80" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
+    <line x1="26" y1="69" x2="74" y2="69" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
+  </svg>
+);
+
 // Sun (☉) - Gold / Perfection
 const AlchemicalSun: React.FC = () => (
   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
@@ -79,12 +93,25 @@ const Earth: React.FC = () => (
 
 // ─── Sequence Configuration ───────────────────────────────────────────────────
 
-const sequence = [
-  AlchemicalSun, Mercury, Air, Salt, Earth,
-  AlchemicalSun, Mercury, Air, Salt, Earth
-];
+// Matches identity-kit left strip arm toward center: leftSide[21]…leftSide[12]
+// (earth → sulfur → mercury → fire → sun → air → salt → earth → sulfur → mercury) ×2
+const oneCycle = [
+  Earth,
+  Sulfur,
+  Mercury,
+  FireTriangle,
+  AlchemicalSun,
+  Air,
+  Salt,
+  Earth,
+  Sulfur,
+  Mercury,
+] as const;
 
-const SYMBOL_SPACING_VW = 48; 
+const sequence = [...oneCycle, ...oneCycle];
+
+const SYMBOL_SPACING = 'clamp(36vw, 56vmin, 72vw)';
+const SCROLL_PAN_MAX_VW = 180; 
 
 // Master target opacity
 const MAX_OPACITY = 0.06;
@@ -111,19 +138,18 @@ const AlchemyBackground: React.FC = () => {
       }
 
       // ── Triangle & Train ──
-      // Slowed down the horizontal panning significantly (from 600 down to 350)
-      const baseX  = p < 0.30 ? 25 : mapRange(p, 0.30, 1.0, 25, 350); 
+      const baseX =
+        p < 0.30 ? 25 : mapRange(p, 0.30, 1.0, 25, SCROLL_PAN_MAX_VW); 
       const triRot = p < 0.30 ? mapRange(p, 0, 0.30, 0, 90) : 90; 
 
       // Triangle Opacity (Holds steady until 85% down the page, then fades out into contact section)
       const triOpacity = p < 0.85 ? MAX_OPACITY : mapRange(p, 0.85, 0.95, MAX_OPACITY, 0);
 
-      // Train Opacity (Fades in early, holds, then fades out identically to triangle)
-      const trainOpacity = 
-        p < 0.25 ? 0 : 
-        p < 0.30 ? mapRange(p, 0.25, 0.30, 0, MAX_OPACITY) : 
-        p < 0.85 ? MAX_OPACITY :
-                   mapRange(p, 0.85, 0.95, MAX_OPACITY, 0);
+      // Train Opacity (fades in early, then holds through the bottom of the page)
+      const trainOpacity =
+        p < 0.25 ? 0 :
+        p < 0.30 ? mapRange(p, 0.25, 0.30, 0, MAX_OPACITY) :
+        MAX_OPACITY;
 
       if (triRef.current) {
         triRef.current.style.transform = 
@@ -200,7 +226,7 @@ const AlchemyBackground: React.FC = () => {
             style={{
               width: '72vmin',
               height: '72vmin',
-              transform: `translate(calc(-50% - ${(index + 1) * SYMBOL_SPACING_VW}vw), -50%)`
+              transform: `translate(calc(-50% - ${index + 1} * ${SYMBOL_SPACING}), -50%)`
             }}
           >
             <Symbol />

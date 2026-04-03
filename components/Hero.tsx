@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
           </span>
         </div>
 
-        {/* Headline — mobile large enough to lead; still steps up on md+ */}
+        {/* Headline: mobile large enough to lead; still steps up on md+ */}
         <h1 className="mb-5 text-3xl font-bold uppercase leading-[1.08] tracking-tight text-gray-900 sm:text-4xl md:mb-8 md:text-5xl md:leading-[1.1] lg:text-6xl xl:text-7xl">
           <span className="md:hidden">
             Turn your brand
@@ -41,7 +41,7 @@ const Hero: React.FC = () => {
             <br />
             one people remember.
           </span>
-          {/* Mobile: first chunk is inline — need a break. Desktop: chunk is `md:block`, so an extra <br> would add a blank line. */}
+          {/* Mobile: first chunk is inline (needs a break). Desktop: chunk is md:block, so an extra br would add a blank line. */}
           <br className="md:hidden" aria-hidden />
           <span className="text-gray-300">Brand Alchemy</span>
           <br />
@@ -49,8 +49,8 @@ const Hero: React.FC = () => {
         </h1>
 
         <p className="mx-auto mb-8 max-w-2xl px-1 text-base font-light leading-relaxed text-gray-500 md:mb-16 md:text-xl">
-          Tools, templates, and step-by-step guides for small business owners who want to reach more customers and show up
-          consistently — without hiring a marketing team.
+          Tools, templates, and step-by-step guides for people building something of their own, so you can show up consistently
+          and reach more customers without hiring a marketing team.
         </p>
 
         <div className="flex justify-center">
@@ -59,7 +59,7 @@ const Hero: React.FC = () => {
             onClick={scrollToSolutions}
             className="group inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500 transition-colors hover:text-gray-900 md:gap-2.5 md:text-xs"
           >
-            <span>See how it works</span>
+            <span>See the approach</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
