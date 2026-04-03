@@ -127,28 +127,42 @@ const AlchemyBackground: React.FC = () => {
     const tick = () => {
       const scrollY = window.scrollY;
       const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-      const p = scrollY / maxScroll; // 0 = top, 1 = bottom
+      const pRaw = scrollY / maxScroll; // 0 = top, 1 = bottom
 
-      // ── Beta Symbol ──
-      const betaOpacity = p < 0.15 ? MAX_OPACITY : mapRange(p, 0.15, 0.25, MAX_OPACITY, 0);
+      // Mobile: advance triangle/train/beta timing with pAnim so layers stay in sync vs page scroll.
+      const narrow = window.matchMedia('(max-width: 767px)').matches;
+      const MOBILE_ANIM_BOOST = 2.75;
+      const pAnim = narrow ? Math.min(1, pRaw * MOBILE_ANIM_BOOST) : pRaw;
+
+      const triPhaseEnd = 0.3;
+      const trainFadeStart = 0.25;
+
+      // ── Beta Symbol (on mobile use pAnim so fade completes before train ramps in at ~0.25) ──
+      const betaOpacity = narrow
+        ? pAnim < 0.05
+          ? MAX_OPACITY
+          : mapRange(pAnim, 0.05, 0.22, MAX_OPACITY, 0)
+        : pRaw < 0.15
+          ? MAX_OPACITY
+          : mapRange(pRaw, 0.15, 0.25, MAX_OPACITY, 0);
 
       if (betaRef.current) {
         betaRef.current.style.transform = `translate(calc(-50% - 25vw), -50%)`; 
         betaRef.current.style.opacity = String(clamp(betaOpacity, 0, MAX_OPACITY));
       }
 
-      // ── Triangle & Train ──
+      // ── Triangle & Train (use pAnim so mobile can finish rotation + pan sooner) ──
       const baseX =
-        p < 0.30 ? 25 : mapRange(p, 0.30, 1.0, 25, SCROLL_PAN_MAX_VW); 
-      const triRot = p < 0.30 ? mapRange(p, 0, 0.30, 0, 90) : 90; 
+        pAnim < triPhaseEnd ? 25 : mapRange(pAnim, triPhaseEnd, 1.0, 25, SCROLL_PAN_MAX_VW);
+      const triRot = pAnim < triPhaseEnd ? mapRange(pAnim, 0, triPhaseEnd, 0, 90) : 90;
 
       // Triangle Opacity (Holds steady until 85% down the page, then fades out into contact section)
-      const triOpacity = p < 0.85 ? MAX_OPACITY : mapRange(p, 0.85, 0.95, MAX_OPACITY, 0);
+      const triOpacity = pRaw < 0.85 ? MAX_OPACITY : mapRange(pRaw, 0.85, 0.95, MAX_OPACITY, 0);
 
       // Train Opacity (fades in early, then holds through the bottom of the page)
       const trainOpacity =
-        p < 0.25 ? 0 :
-        p < 0.30 ? mapRange(p, 0.25, 0.30, 0, MAX_OPACITY) :
+        pAnim < trainFadeStart ? 0 :
+        pAnim < triPhaseEnd ? mapRange(pAnim, trainFadeStart, triPhaseEnd, 0, MAX_OPACITY) :
         MAX_OPACITY;
 
       if (triRef.current) {
@@ -163,9 +177,13 @@ const AlchemyBackground: React.FC = () => {
       }
     };
 
-    tick(); 
+    tick();
     window.addEventListener('scroll', tick, { passive: true });
-    return () => window.removeEventListener('scroll', tick);
+    window.addEventListener('resize', tick, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', tick);
+      window.removeEventListener('resize', tick);
+    };
   }, []);
 
   return (

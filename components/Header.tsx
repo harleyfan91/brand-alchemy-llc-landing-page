@@ -29,10 +29,11 @@ const Header: React.FC = () => {
         <a
           href="#"
           onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); closeMenu(); }}
-          className="flex items-center gap-3 group"
+          className="group flex items-center gap-3"
+          aria-label="Brand Alchemy, back to top"
         >
-          <AlchemyMark size="lg" className="text-gray-900 group-hover:text-gray-400 transition-colors" />
-          <span className="text-xl font-bold tracking-tight text-gray-900 uppercase transition-colors group-hover:text-gray-500">
+          <AlchemyMark size="lg" className="text-gray-900 transition-colors group-hover:text-gray-400" />
+          <span className="hidden text-xl font-bold uppercase tracking-tight text-gray-900 transition-colors group-hover:text-gray-500 md:inline">
             Brand Alchemy
           </span>
         </a>
