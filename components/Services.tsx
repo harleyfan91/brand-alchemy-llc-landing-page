@@ -30,25 +30,66 @@ const solutions = [
   }
 ];
 
+const steps = solutions.map((s, index) => ({
+  ...s,
+  step: String(index + 1).padStart(2, '0'),
+}));
+
 const Services: React.FC = () => {
   return (
-    <section id="services" className="py-24 bg-white">
+    <section id="services" className="py-24 bg-transparent relative overflow-visible z-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-20">
-          <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400 mb-4 text-center">What we make</h2>
-          <h3 className="text-4xl md:text-5xl font-serif text-gray-900 text-center">Simple tools. Real results.</h3>
+        <div className="mb-16 text-center">
+          <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400 mb-4">How it works</h2>
+          <h3 className="text-4xl md:text-5xl font-serif text-gray-900">Simple tools. Real results.</h3>
         </div>
+      </div>
 
-        <div className="grid md:grid-cols-3 gap-16">
-          {solutions.map((solution, index) => (
-            <div key={index} className="flex flex-col">
-              <div className="w-10 h-10 text-gray-900 mb-8">
-                {solution.icon}
+      {/* One frosted band spanning full width (kept intentionally subtle/transparent) */}
+      <div className="relative w-screen left-1/2 -translate-x-1/2">
+        <div
+          className="absolute inset-0 pointer-events-none"
+          // Inline styles to guarantee the blur works in dev (Tailwind CDN sometimes misses backdrop-filter utilities).
+          style={{
+            backgroundColor: 'rgba(255,255,255,0.01)',
+            backdropFilter: 'blur(8px)',
+            WebkitBackdropFilter: 'blur(8px)',
+          }}
+        />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          {/* Mobile: swipe deck */}
+          <div className="md:hidden flex gap-6 overflow-x-auto pb-2 snap-x snap-mandatory">
+            {steps.map((s) => (
+              <div key={s.step} className="snap-start shrink-0 w-[85%] sm:w-[360px]">
+                <div className="px-2">
+                  <div className="text-gray-200 text-5xl font-bold leading-none mb-6">{s.step}</div>
+                  <h4 className="text-base font-bold text-gray-900 mb-4">{s.title}</h4>
+                  <p className="text-gray-500 leading-relaxed font-light text-sm">{s.description}</p>
+                </div>
               </div>
-              <h4 className="text-base font-bold mb-4 text-gray-900 uppercase tracking-wider">{solution.title}</h4>
-              <p className="text-gray-500 leading-relaxed font-light text-sm">{solution.description}</p>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          {/* Desktop: 3-up row with arrows between */}
+          <div className="hidden md:flex items-start justify-between gap-10">
+            {steps.map((s, index) => (
+              <React.Fragment key={s.step}>
+                <div className="flex-1 min-w-0">
+                  <div className="text-gray-200 text-5xl font-bold leading-none mb-6">{s.step}</div>
+                  <h4 className="text-base font-bold text-gray-900 mb-4">{s.title}</h4>
+                  <p className="text-gray-500 leading-relaxed font-light text-sm">{s.description}</p>
+                </div>
+                {index < steps.length - 1 && (
+                  <div className="w-10 flex items-center justify-center pt-6 text-gray-300 flex-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5" aria-hidden="true">
+                      <path d="M9 18l6-6-6-6" />
+                    </svg>
+                  </div>
+                )}
+              </React.Fragment>
+            ))}
+          </div>
         </div>
       </div>
     </section>

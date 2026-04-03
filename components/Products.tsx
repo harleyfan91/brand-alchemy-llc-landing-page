@@ -155,7 +155,7 @@ const Products = () => {
   const handleTierChange = (t: Tier) => setTier(t);
 
   return (
-    <section id="products" className="py-24 bg-gray-50">
+    <section id="products" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 text-center">
         <div className="relative z-20 mb-16">
           <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400 mb-4">Current Catalog</h2>
