@@ -104,12 +104,12 @@ const contentPacks = [
     img: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=900',
   },
   {
-    title: 'Social CTA Pack',
-    subtitle: 'Captions & Hooks',
+    title: 'Social post starters',
+    subtitle: 'Captions & ideas',
     price: '$19',
-    desc: 'Hooks, CTAs, and short prompts for feed and stories, so you can publish without staring at a blank screen.',
-    tags: ['Feed & Stories', 'CTAs', 'Fill-in-the-blank'],
-    img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=900',
+    desc: 'Short lines and fill-in-the-blank ideas for feed and stories—copy, tweak, and post without starting from scratch.',
+    tags: ['Feed & stories', 'Ready to use', 'Fill-in-the-blank'],
+    img: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=900',
   },
   {
     title: 'Email List Copy Pack',
@@ -179,8 +179,11 @@ const catalogCta = {
 /** Eyebrow on Identity Kit card */
 const IDENTITY_CARD_EYEBROW = 'Brand & voice';
 
-/** Eyebrow on toolkit catalog card (launch kits, content packs, and more) */
+/** Eyebrow on guides & kits card (launch kits, content packs, and more) */
 const CATALOG_CARD_EYEBROW = 'Local business';
+
+/** User-facing name for the Google/Yelp/packs modal (avoid “catalog” / internal-sounding labels) */
+const GUIDES_KITS_TITLE = 'Guides & launch kits';
 
 /** Flip to `false` when Identity Kit is live; link uses URL below */
 const IDENTITY_KIT_COMING_SOON = true;
@@ -481,25 +484,25 @@ const Products = () => {
             </a>
           )}
 
-          {/* Toolkit catalog trigger (Launch Kits, Content Packs, etc.) */}
+          {/* Guides & launch kits — opens modal (Google/Yelp kits, content packs, etc.) */}
           <div
             onClick={() => setIsModalOpen(true)}
             className="relative z-20 bg-white group rounded-2xl overflow-hidden border border-gray-100 flex flex-col transition-all duration-500 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] cursor-pointer"
           >
             <div className="aspect-[16/10] overflow-hidden bg-gray-100">
               <img
-                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200"
-                alt="Toolkit catalog: guides and downloads for local businesses"
+                src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=1200"
+                alt="Local business: owner helping a customer at the counter"
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
               />
             </div>
             <div className="p-8 md:p-10 text-left">
               <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">{CATALOG_CARD_EYEBROW}</span>
-              <h4 className="text-2xl font-serif text-gray-900 mb-4">Toolkit Catalog</h4>
+              <h4 className="text-2xl font-serif text-gray-900 mb-4">{GUIDES_KITS_TITLE}</h4>
               <p className="text-gray-500 text-sm leading-relaxed font-light mb-6">
-                Launch kits for Google and Yelp, content packs for photos and social, email prompts, and more: everything in one place so you can show up locally and keep your marketing consistent.
+                Step-by-step kits for Google and Yelp, photo guides, ideas for social posts and email, and more—all in one place so you can show up locally and look professional online.
               </p>
-              <span className="text-xs font-bold text-black border-b border-black pb-1 uppercase tracking-widest">Explore Catalog</span>
+              <span className="text-xs font-bold text-black border-b border-black pb-1 uppercase tracking-widest">Browse guides and kits</span>
             </div>
           </div>
 
@@ -539,7 +542,7 @@ const Products = () => {
             {/* Modal header */}
             <div className="px-3 py-3 sm:px-6 md:px-8 sm:py-4 border-b border-gray-100 flex justify-between items-center bg-white rounded-t-xl sm:rounded-t-3xl shrink-0">
               <div className="text-left">
-                <h3 className="text-2xl font-serif text-gray-900">Toolkit Catalog</h3>
+                <h3 className="text-2xl font-serif text-gray-900">{GUIDES_KITS_TITLE}</h3>
                 <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mt-1">Find your starting point</p>
               </div>
               <button
