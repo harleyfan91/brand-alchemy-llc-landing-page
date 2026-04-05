@@ -2,41 +2,77 @@
 
 **Purpose:** Canonical reference for **typography, color, imagery, symbols, and UI weight** on the Brand Alchemy site (and for matching off-site assets). Implementation lives in `index.html`, `App.tsx`, and `components/` — update this doc when those change.
 
-**Related:** [BRAND_PLAYBOOK.md](BRAND_PLAYBOOK.md) (tone, audience, products), [TARGET_AUDIENCE.md](TARGET_AUDIENCE.md).
+**Related:** [BRAND_PLAYBOOK.md](BRAND_PLAYBOOK.md) (tone, audience, products), [TARGET_AUDIENCE.md](TARGET_AUDIENCE.md), [CATALOG_TIER_TEXT_STYLES.md](CATALOG_TIER_TEXT_STYLES.md) (Core/Pro modal labels — handoff for other projects).
 
 ---
 
 ## Typography
 
-### Font families
+### Font families (loaded weights)
 
-| Role | Family | Where loaded / applied |
-|------|--------|-------------------------|
-| **Body & UI** | **Inter** | Google Fonts in `index.html`; `body { font-family: 'Inter', sans-serif; }` |
-| **Display / section titles** | **Playfair Display** | Google Fonts in `index.html`; utility class `.font-serif` maps to Playfair |
+| Family | Weights linked | Use |
+|--------|----------------|-----|
+| **Inter** | 300, 400, 500, 600, 700 | Body, UI, sans headlines (hero H1), buttons, nav |
+| **Source Serif 4** | 400, 600, 700 + italic (same weights) | Section titles, product names, editorial serif (`.font-serif`). **Default display weight is `font-normal` (400):** this family reads heavier than the old Apple system serif fallback at the same *numerical* weight, so we keep serifs light for a similar feel. Use `font-semibold` / `font-bold` only for small accents (e.g. one word). Always set weight explicitly (preflight resets heading weight). |
 
-### Weights in use
+Loaded in `index.html`; `body` is Inter; `.font-serif` → **Source Serif 4**.
 
-- **Inter:** `300`, `400`, `500`, `600`, `700` are linked in `index.html` (use **light** body copy, **semibold/bold** for emphasis and UI chrome).
-- **Playfair Display:** **`700`** is linked for headlines and serif moments (e.g. section titles, “Have questions?”).
+---
 
-### Type scale patterns (Tailwind)
+### Typography by role (font, weight, size, color)
 
-These match how the live components are built; use them for new sections so the site stays one system.
+Use this table when adding or auditing blocks so hero vs section vs body stay distinct. **Tailwind classes** are the contract; match breakpoints when you mirror an existing pattern.
 
-| Use | Typical classes | Notes |
-|-----|-----------------|--------|
-| **Section eyebrow** | `text-xs font-bold uppercase tracking-[0.3em] text-gray-400` | e.g. “Products”, “The approach” |
-| **Nav links** | `text-[10px] font-bold uppercase tracking-[0.2em]` | Minimal, wide tracking |
-| **Hero H1** | `font-bold uppercase tracking-tight text-gray-900` stepping `text-3xl` → `xl:text-7xl` | Accent lines may use `text-gray-300` / `text-gray-500` |
-| **Section H3 (serif)** | `text-4xl md:text-5xl font-serif text-gray-900` | “The Toolkit”, contact headline |
-| **Card / product titles** | `text-2xl font-serif text-gray-900` | Identity / catalog cards |
-| **Body / descriptions** | `text-sm` or `text-base`, `font-light` or `font-normal`, `text-gray-500` or `text-gray-600`, `leading-relaxed` | Readable, not heavy |
-| **Dictionary / aside** | `font-serif italic text-gray-500` (hero definition line) | Editorial, smaller than H1 |
-| **Tags / pills** | `text-[10px] font-bold uppercase` | Catalog tags |
-| **Primary CTA buttons** | `text-xs font-bold uppercase tracking-widest` | On `rounded-full` black buttons |
+#### Hero (`components/Hero.tsx`)
 
-**Source of truth for catalog typography:** comment block at top of `components/Products.tsx`.
+| Block | Font | Weight | Size (mobile → large) | Color | Case / tracking / leading |
+|-------|------|--------|-------------------------|-------|---------------------------|
+| **Definition line** (dictionary) | Source Serif 4 | italic body: **normal** (400); word “alchemy”: **semibold** (600) | `text-xs` → `md:text-sm` | Wrapper `text-gray-500`; emphasized word `text-gray-700`; definition text `text-gray-400` | `normal-case`, `tracking-normal`, `leading-snug` |
+| **Hero H1** (main headline) | Inter | **bold** (700) | `text-3xl` → `sm:text-4xl` → `md:text-5xl` → `lg:text-6xl` → `xl:text-7xl` | Primary lines `text-gray-900`; secondary line e.g. brand name `text-gray-300`; tertiary e.g. tagline `text-gray-500` | **UPPERCASE** (CSS via content), `tracking-tight`, `leading-[1.08]` → `md:leading-[1.1]` |
+| **Hero subhead** (paragraph under H1) | Inter | **light** (300) | `text-base` → `md:text-xl` | `text-gray-500` | Sentence case, `leading-relaxed` |
+| **Hero text link CTA** (“See the approach”) | Inter | **bold** (700) | `text-[10px]` → `md:text-xs` | `text-gray-500`, hover `text-gray-900` | **UPPERCASE**, `tracking-[0.2em]` (not a filled button; arrow paired in component) |
+
+#### Section header stack (e.g. Services, Products intros — `Services.tsx`, `Products.tsx`)
+
+| Block | Font | Weight | Size | Color | Case / tracking / leading |
+|-------|------|--------|------|-------|---------------------------|
+| **Section eyebrow** (label above title) | Inter | **bold** (700) | `text-xs` | `text-gray-400` | **UPPERCASE**, `tracking-[0.3em]` |
+| **Section title** (main heading for the section) | Source Serif 4 | **normal** (400) — class `font-normal` | `text-4xl` → `md:text-5xl` | `text-gray-900` | Title case (normal), default tracking |
+| **Section intro / supporting line** (if present) | Inter | **light** (300) | `text-sm` → `md:text-base` | `text-gray-500` | Sentence case, `leading-relaxed` |
+
+#### In-section content (cards, solutions, contact)
+
+| Block | Font | Weight | Size | Color | Case / tracking / leading |
+|-------|------|--------|------|-------|---------------------------|
+| **Card / product title** (e.g. Camentra, Identity Kit) | Source Serif 4 | **normal** (400) — `font-normal` | `text-2xl` (modal lines may be `text-xl`–`text-3xl`) | `text-gray-900` | Title case |
+| **Solution / step title** (Services) | Inter | **bold** (700) | `text-base` | `text-gray-900` | Title case |
+| **Step index number** (Services mobile) | Inter | **bold** (700) | `text-5xl` | `text-gray-200` | Numeric, `leading-none` |
+| **Body / descriptions** (cards, features, solutions) | Inter | **light** (300) or **normal** (400) for lists | `text-sm` (often `md:text-base` for intros) | `text-gray-500`–`text-gray-600` | Sentence case, `leading-relaxed` |
+| **Contact headline** | Source Serif 4 | **normal** (400) — `font-normal` | `text-4xl` → `md:text-5xl` | `text-gray-900` | Title case |
+| **Content pack card title** (catalog) | Source Serif 4 | **normal** (400) — `font-normal` | `text-sm` → `sm:text-lg` | `text-gray-900` | Title case, `leading-snug` |
+| **Modal section title** (e.g. guides/kits `h3`) | Source Serif 4 | **normal** (400) — `font-normal` | `text-2xl` | `text-gray-900` | Title case |
+| **Contact body** | Inter | **light** (300) | `text-lg` | `text-gray-500` | `leading-relaxed`; link `text-gray-900`, hover `text-gray-500` |
+
+#### UI chrome
+
+| Block | Font | Weight | Size | Color | Case / tracking / leading |
+|-------|------|--------|------|-------|---------------------------|
+| **Header wordmark** “Brand Alchemy” | Inter | **bold** (700) | `text-xl` | `text-gray-900` (hover `text-gray-500`) | **UPPERCASE**, `tracking-tight` |
+| **Nav links** | Inter | **bold** (700) | `text-[10px]` | `text-gray-400` (hover `text-black`) | **UPPERCASE**, `tracking-[0.2em]` |
+| **Primary CTA button** (label) | Inter | **bold** (700) | `text-xs` | `text-white` on `bg-black` | **UPPERCASE**, `tracking-widest` |
+| **Tags / pills** (catalog) | Inter | **bold** (700) | `text-[10px]` | varies; often `text-gray-400` / `text-gray-800` | **UPPERCASE** |
+| **Footer tagline** | Inter | **medium** (500) | `text-[11px]` → `md:text-xs` | `text-gray-400` | **UPPERCASE**, `tracking-widest` |
+
+---
+
+### Quick decision guide
+
+- **Largest sans headline (all caps)?** → Hero H1 only — Inter bold, tight tracking, gray-900 with lighter gray accents.
+- **Largest serif headline (title case)?** → Section title or contact — Source Serif 4 + **`font-normal` (400)**, `text-4xl` / `md:text-5xl`, gray-900.
+- **Muted label above a serif title?** → Section eyebrow — Inter bold xs, uppercase, wide tracking, gray-400.
+- **Paragraphs readers actually read?** → Inter light (or normal for dense lists), gray-500, relaxed leading; bump size one step for hero subhead only.
+
+**Catalog-specific scale** (modal, kit cards, feature lines): comment block at top of `components/Products.tsx` — keep in sync with this doc when you change those tokens.
 
 ---
 
@@ -93,9 +129,9 @@ Used for Google vs Yelp column styling in `Products.tsx` (keep aligned if those 
 - **Mark only:** `components/AlchemyMark.tsx` — characters **β△** (beta + triangle), **`font-bold`**, size tokens `xs` | `sm` | `md` | `lg` with matching `tracking-*`. Inherits `currentColor` via `className` (e.g. `text-gray-900`, footer `text-gray-300`).
 - **Do not** stretch, replace glyphs with different characters, or add outlines that break the monoline feel of the UI mark without updating this doc and the component.
 
-### Favicon (generator recipe)
+### Favicon
 
-Documented in `index.html`: text **β△**, font **Playfair Display Medium 500**, **BG `#000000`**, **FG `#ffffff`** — regenerate at [favicon.io](https://favicon.io/favicon-generator/) if the mark changes.
+Shipped as **`/favicon.ico`**. Regeneration settings for a consistent mark are documented **only** in the HTML comment above `<link rel="icon">` in **`index.html`** (not duplicated here).
 
 ### Background alchemical SVGs
 

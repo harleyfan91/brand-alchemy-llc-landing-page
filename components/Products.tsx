@@ -432,7 +432,7 @@ const Products = () => {
       <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
         <div className="relative z-20 mx-auto mb-6 max-w-3xl md:mb-16">
           <h2 className="mb-2 text-xs font-bold uppercase tracking-[0.3em] text-gray-400 md:mb-4">Products</h2>
-          <h3 className="text-4xl md:text-5xl font-serif text-gray-900">The Toolkit</h3>
+          <h3 className="text-4xl md:text-5xl font-serif font-normal text-gray-900">The Toolkit</h3>
           <p className="text-gray-500 text-sm md:text-base font-light leading-relaxed mt-5">
             Practical downloads to help you look sharp online: brand voice, Google and Yelp setup, photo guides, and copy for social and email. Built for owners and small teams who want professional results without a big-agency budget.
           </p>
@@ -454,7 +454,7 @@ const Products = () => {
               </div>
               <div className="p-8 md:p-10 text-left">
                 <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">{IDENTITY_CARD_EYEBROW}</span>
-                <h4 className="text-2xl font-serif text-gray-900 mb-4">Identity Kit</h4>
+                <h4 className="text-2xl font-serif font-normal text-gray-900 mb-4">Identity Kit</h4>
                 <p className="text-gray-500 text-sm leading-relaxed font-light mb-6">{identityKitDescription}</p>
                 <span className="inline-block rounded-full border border-gray-200 bg-gray-50 px-4 py-2.5 text-xs font-bold uppercase tracking-widest text-gray-400 cursor-default">
                   Coming soon
@@ -477,7 +477,7 @@ const Products = () => {
               </div>
               <div className="p-8 md:p-10 text-left">
                 <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">{IDENTITY_CARD_EYEBROW}</span>
-                <h4 className="text-2xl font-serif text-gray-900 mb-4">Identity Kit</h4>
+                <h4 className="text-2xl font-serif font-normal text-gray-900 mb-4">Identity Kit</h4>
                 <p className="text-gray-500 text-sm leading-relaxed font-light mb-6">{identityKitDescription}</p>
                 <span className="text-xs font-bold text-black border-b border-black pb-1 uppercase tracking-widest">Open Identity Kit</span>
               </div>
@@ -498,7 +498,7 @@ const Products = () => {
             </div>
             <div className="p-8 md:p-10 text-left">
               <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">{CATALOG_CARD_EYEBROW}</span>
-              <h4 className="text-2xl font-serif text-gray-900 mb-4">{GUIDES_KITS_TITLE}</h4>
+              <h4 className="text-2xl font-serif font-normal text-gray-900 mb-4">{GUIDES_KITS_TITLE}</h4>
               <p className="text-gray-500 text-sm leading-relaxed font-light mb-6">
                 Step-by-step kits for Google and Yelp, photo guides, ideas for social posts and email, and more—all in one place so you can show up locally and look professional online.
               </p>
@@ -522,7 +522,7 @@ const Products = () => {
             </div>
             <div className="p-8 md:p-10 text-left">
               <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">Mobile Application</span>
-              <h4 className="text-2xl font-serif text-gray-900 mb-4">Camentra</h4>
+              <h4 className="text-2xl font-serif font-normal text-gray-900 mb-4">Camentra</h4>
               <p className="text-gray-500 text-sm leading-relaxed font-light mb-6">
                 Our flagship camera app with a live AI-powered coach. Get better business photos every time, without hiring a photographer or guessing what looks good.
               </p>
@@ -542,7 +542,7 @@ const Products = () => {
             {/* Modal header */}
             <div className="px-3 py-3 sm:px-6 md:px-8 sm:py-4 border-b border-gray-100 flex justify-between items-center bg-white rounded-t-xl sm:rounded-t-3xl shrink-0">
               <div className="text-left">
-                <h3 className="text-2xl font-serif text-gray-900">{GUIDES_KITS_TITLE}</h3>
+                <h3 className="text-2xl font-serif font-normal text-gray-900">{GUIDES_KITS_TITLE}</h3>
                 <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mt-1">Find your starting point</p>
               </div>
               <button
@@ -565,7 +565,7 @@ const Products = () => {
                     <span className="text-xs font-bold text-black bg-white px-3 py-1 rounded-full uppercase tracking-widest border border-gray-200 shadow-sm">
                       Free Sample
                     </span>
-                    <h4 className="text-2xl sm:text-3xl font-serif mt-3 mb-2">3-Shot Starter Pack</h4>
+                    <h4 className="text-2xl sm:text-3xl font-serif font-normal mt-3 mb-2">3-Shot Starter Pack</h4>
                     <p className="text-sm text-gray-500 font-light leading-relaxed">
                       Interested in our guides for local businesses? We&apos;ll send you a free sample: 3 photo angles for your industry, a quick profile audit you can complete in 3 minutes, and 3 review response templates written for your niche.
                     </p>
@@ -607,7 +607,7 @@ const Products = () => {
               <div>
                 <div className="text-left mb-4 md:mb-5">
                   <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Launch Kits</span>
-                  <h4 className="text-xl sm:text-2xl font-serif text-gray-900 mt-1">Choose your platform and tier.</h4>
+                  <h4 className="text-xl sm:text-2xl font-serif font-normal text-gray-900 mt-1">Choose your platform and tier.</h4>
                   <p className="text-sm text-gray-400 font-light mt-2">
                     Step-by-step setup for Google Business and Yelp, so you show up in local search, make a strong first impression, and keep momentum after you launch.
                   </p>
@@ -801,7 +801,7 @@ const Products = () => {
                 <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-5 pb-4 border-b border-gray-100">
                   <div className="text-left">
                     <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Content Packs</span>
-                    <h4 className="text-xl sm:text-2xl font-serif text-gray-900 mt-1.5">Photo guides and copy for every channel.</h4>
+                    <h4 className="text-xl sm:text-2xl font-serif font-normal text-gray-900 mt-1.5">Photo guides and copy for every channel.</h4>
                     <p className="text-sm text-gray-400 font-light mt-2 max-w-xl leading-relaxed">
                       Seasonal photo angles, event and social copy, email list prompts. Each pack is its own purchase. Buy what you need when you need it; no kit required.
                     </p>
@@ -831,7 +831,7 @@ const Products = () => {
                       <div className="min-w-0 flex-1 p-3 sm:p-5 flex flex-col flex-grow text-left justify-center sm:justify-start border-l border-gray-100 sm:border-l-0 sm:border-t">
                         <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-1">{item.subtitle}</span>
                         <div className="flex items-start justify-between gap-3 mb-1 sm:mb-2">
-                          <h6 className="text-sm sm:text-lg font-serif text-gray-900 leading-snug min-w-0">{item.title}</h6>
+                          <h6 className="text-sm sm:text-lg font-serif font-normal text-gray-900 leading-snug min-w-0">{item.title}</h6>
                           <span className="text-xl sm:text-2xl font-light tracking-tight text-gray-900 tabular-nums shrink-0 leading-none pt-0.5">
                             {item.price}
                           </span>

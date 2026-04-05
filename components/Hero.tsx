@@ -20,7 +20,7 @@ const Hero: React.FC = () => {
       <div className="relative z-20 mx-auto w-full max-w-5xl px-4 text-center">
         {/* Floating Dictionary Definition */}
         <div className="mb-4 text-xs font-serif italic leading-snug tracking-normal text-gray-500 normal-case md:mb-10 md:text-sm">
-          <span className="font-bold text-gray-700">alchemy</span>
+          <span className="font-semibold text-gray-700">alchemy</span>
           <span className="font-normal text-gray-400">
             {' '}
             al·che·my (n.): a seemingly magical process of transformation, creation, or combination

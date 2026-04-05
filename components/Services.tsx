@@ -84,7 +84,7 @@ const Services: React.FC = () => {
           <h2 className="mb-2 text-xs font-bold uppercase tracking-[0.3em] text-gray-400 md:mb-4">
             The approach
           </h2>
-          <h3 className="font-serif text-4xl text-gray-900 md:text-5xl">Simple tools. Real results.</h3>
+          <h3 className="font-serif font-normal text-4xl text-gray-900 md:text-5xl">Simple tools. Real results.</h3>
         </div>
       </div>
 
