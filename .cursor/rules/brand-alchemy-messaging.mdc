@@ -1,0 +1,14 @@
+---
+description: Brand Alchemy — audience, tone, copy, and visual system (always on)
+alwaysApply: true
+---
+
+# Brand Alchemy messaging & visuals
+
+When adding or editing **user-facing copy**, **marketing content**, or **visual styling** (typography, color, buttons, cards, marks) for this project:
+
+1. **`docs/TARGET_AUDIENCE.md`** — who we serve; not technical users, not pro marketers, not agencies.
+2. **`docs/BRAND_PLAYBOOK.md`** — tone, products, engagement / CTAs, living product table.
+3. **`docs/BRAND_GUIDELINES.md`** — fonts, colors, imagery, β△ symbol, radius, layout width, weight.
+
+Prefer plain language and concrete outcomes. If copy sounds aimed at SaaS founders, growth marketers, or agencies, reset using those docs. Keep new UI aligned with the guidelines doc so the site stays one system. This rule is **always applied** so you do not need a `.tsx` file open for brand context to load.

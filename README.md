@@ -6,6 +6,12 @@
 
 This contains everything you need to run your app locally.
 
+**Brand / content:**
+
+- [Target audience](docs/TARGET_AUDIENCE.md) — who the site is for (and not for).
+- [Brand playbook](docs/BRAND_PLAYBOOK.md) — tone, products catalog, engagement; includes how this ties to `.cursor/rules/brand-alchemy-messaging.mdc`.
+- [Brand guidelines](docs/BRAND_GUIDELINES.md) — fonts, colors, imagery, symbols, layout, UI weight.
+
 View your app in AI Studio: https://ai.studio/apps/drive/1aLEDTVJDCShTzADcliM0t6-BlWFA13VI
 
 ## Run Locally
