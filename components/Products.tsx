@@ -1,5 +1,34 @@
 import React, { useRef, useState } from 'react';
 
+/** Accordion / column affordances — decorative; labels stay on buttons for SRs */
+const ChevronRightMicro = ({ className = '' }: { className?: string }) => (
+  <svg className={className} width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
+    <path
+      d="M9 18l6-6-6-6"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+const ChevronDownMicro = ({ className = '' }: { className?: string }) => (
+  <svg className={className} width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
+    <path
+      d="M6 9l6 6 6-6"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+/** Fixed third column so chevrons align when teaser length differs (e.g. Both vs Google). */
+const mobileCatalogRowGrid =
+  'grid w-full grid-cols-[minmax(0,auto)_minmax(0,1fr)_2rem] items-center gap-x-2';
+
 // ─── Text scale reference ────────────────────────────────────────────────────
 // Eyebrow labels (uppercase, decorative): text-xs font-bold
 // Body / descriptions:                    text-sm font-light
@@ -272,7 +301,12 @@ const Products = () => {
   };
 
   const selectCatalogPlatform = (p: CatalogPlatform) => {
-    if (p === catalogSelection) return;
+    /** Second tap on the active column collapses back to the equal / unselected state. */
+    if (p === catalogSelection) {
+      setCatalogSelection(null);
+      setPlatformFading(false);
+      return;
+    }
 
     // Same pattern as many mobile accordions / filter sheets: scroll on tap, not after async layout + extra delay.
     scrollMobileCatalogRow(p, 'smooth');
@@ -573,47 +607,62 @@ const Products = () => {
             {/* Scrollable body — tighter horizontal padding on small screens for more usable width */}
             <div className="flex-grow overflow-y-auto px-3 py-4 sm:px-6 sm:py-6 md:px-8 md:py-8 space-y-6 sm:space-y-8 md:space-y-10">
 
-              {/* ── FREE SAMPLE ── */}
-              <div className="bg-gray-50 rounded-lg sm:rounded-2xl p-4 sm:p-6 border border-gray-100">
-                <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-5 lg:gap-6">
-                  <div className="max-w-xl text-left">
-                    <span className="text-xs font-bold text-black bg-white px-3 py-1 rounded-full uppercase tracking-widest border border-gray-200 shadow-sm">
-                      Free Sample
-                    </span>
-                    <h4 className="text-2xl sm:text-3xl font-serif font-normal mt-3 mb-2">3-Shot Starter Pack</h4>
-                    <p className="text-sm text-gray-500 font-light leading-relaxed">
-                      Interested in our guides for local businesses? We&apos;ll send you a free sample: 3 photo angles for your industry, a quick profile audit you can complete in 3 minutes, and 3 review response templates written for your niche.
-                    </p>
+              {/* ── FREE SAMPLE: one flat panel; controls in one row on md+ to save height ── */}
+              <div className="rounded-xl border border-gray-100 bg-gray-50 p-4 sm:rounded-2xl sm:p-5">
+                <div className="text-left">
+                  <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Free sample</span>
+                  <h4 className="mt-1 font-serif text-xl font-normal text-gray-900 sm:text-2xl">
+                    3-Shot Starter Pack
+                  </h4>
+                  <p className="mt-1.5 text-sm font-light leading-snug text-gray-500">
+                    Interested in our guides for local businesses? We&apos;ll send you a free sample with: 3 photo angles for your industry, a quick profile audit you can complete in 3 minutes, and 3 review response templates written for your niche.
+                  </p>
+                </div>
+
+                <div className="mt-3 flex flex-col gap-2 md:mt-3.5 md:flex-row md:items-stretch md:gap-2.5">
+                  <div className="relative min-w-0 md:w-[12.5rem] md:flex-shrink-0">
+                    <label htmlFor="catalog-free-sample-industry" className="sr-only">
+                      Industry
+                    </label>
+                    <select
+                      id="catalog-free-sample-industry"
+                      value={selectedIndustry}
+                      onChange={(e) => setSelectedIndustry(e.target.value)}
+                      className="h-full w-full min-h-[2.75rem] cursor-pointer appearance-none rounded-full border border-gray-200 bg-white px-3.5 py-2 text-sm font-normal text-gray-900 focus:border-black focus:outline-none"
+                    >
+                      <option value="" disabled>
+                        Industry…
+                      </option>
+                      {industries.map((ind) => (
+                        <option key={ind} value={ind}>
+                          {ind}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-4 w-4">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                      </svg>
+                    </div>
                   </div>
-                  <div className="w-full lg:w-auto space-y-3">
-                    <div className="relative">
-                      <select
-                        value={selectedIndustry}
-                        onChange={(e) => setSelectedIndustry(e.target.value)}
-                        className="w-full px-4 py-3 rounded-full border border-gray-200 text-sm font-normal focus:outline-none focus:border-black appearance-none bg-white cursor-pointer"
-                      >
-                        <option value="" disabled>Choose your industry...</option>
-                        {industries.map(ind => <option key={ind} value={ind}>{ind}</option>)}
-                      </select>
-                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                        </svg>
-                      </div>
-                    </div>
-                    <div className="flex flex-col sm:flex-row gap-2">
-                      <input
-                        type="email"
-                        placeholder="Email address"
-                        className="px-5 py-3 rounded-full border border-gray-200 text-sm focus:outline-none focus:border-black flex-grow lg:w-48"
-                      />
-                      <button
-                        type="button"
-                        className="px-7 py-3 bg-black text-white rounded-full text-xs font-bold uppercase tracking-widest hover:bg-gray-800 transition-all shadow-lg whitespace-nowrap"
-                      >
-                        {catalogCta.getSample}
-                      </button>
-                    </div>
+
+                  <div className="flex min-w-0 flex-1 flex-col gap-2 sm:flex-row sm:items-stretch sm:gap-2.5">
+                    <label htmlFor="catalog-free-sample-email" className="sr-only">
+                      Email address
+                    </label>
+                    <input
+                      id="catalog-free-sample-email"
+                      type="email"
+                      placeholder="you@business.com"
+                      autoComplete="email"
+                      className="min-h-[2.75rem] min-w-0 w-full flex-1 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm text-gray-900 placeholder:text-gray-400 focus:border-black focus:outline-none"
+                    />
+                    <button
+                      type="button"
+                      className="min-h-[2.75rem] w-full shrink-0 rounded-full bg-black px-5 py-2 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-gray-800 sm:w-auto sm:min-w-[8.25rem]"
+                    >
+                      {catalogCta.getSample}
+                    </button>
                   </div>
                 </div>
               </div>
@@ -625,6 +674,9 @@ const Products = () => {
                   <h4 className="text-xl sm:text-2xl font-serif font-normal text-gray-900 mt-1">Choose your platform and tier.</h4>
                   <p className="text-sm text-gray-400 font-light mt-2">
                     Step-by-step setup for Google Business and Yelp, so you show up in local search, make a strong first impression, and keep momentum after you launch.
+                  </p>
+                  <p className="sm:hidden text-xs text-gray-500 font-light mt-2.5">
+                    Tap a platform to see Core and Pro options.
                   </p>
                 </div>
 
@@ -655,13 +707,22 @@ const Products = () => {
                               type="button"
                               role="radio"
                               aria-checked={false}
+                              aria-label={`${col.label} — show tiers and pricing`}
                               onClick={() => selectCatalogPlatform(col.id)}
-                              className="w-full px-3 py-3.5 text-left hover:bg-white/85 active:bg-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2 sm:px-4"
+                              className="group w-full px-3 py-3.5 text-left hover:bg-white/90 active:bg-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2 sm:px-4"
                             >
-                              <div className="flex items-center justify-between gap-3">
-                                <span className="text-xs font-bold uppercase tracking-widest text-gray-900">{col.label}</span>
-                                <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400 shrink-0 max-w-[55%] text-right leading-snug">
+                              <div className={mobileCatalogRowGrid}>
+                                <span className="min-w-0 text-xs font-bold uppercase tracking-widest text-gray-900">
+                                  {col.label}
+                                </span>
+                                <span className="min-w-0 justify-self-end text-right text-[10px] font-bold uppercase leading-tight tracking-wider text-gray-400">
                                   {col.teaser}
+                                </span>
+                                <span
+                                  className="flex h-8 w-8 items-center justify-center justify-self-end rounded-full border border-gray-200/90 bg-white/95 text-gray-500 shadow-sm transition-all group-active:scale-[0.98] group-hover:border-gray-300 group-hover:text-gray-800"
+                                  aria-hidden
+                                >
+                                  <ChevronDownMicro className="h-3.5 w-3.5" />
                                 </span>
                               </div>
                             </button>
@@ -672,8 +733,13 @@ const Products = () => {
                                 role="radio"
                                 aria-expanded={expanded}
                                 aria-checked={expanded}
+                                aria-label={
+                                  expanded
+                                    ? `${col.label} — collapse`
+                                    : `${col.label} — show tiers and pricing`
+                                }
                                 onClick={() => selectCatalogPlatform(col.id)}
-                                className={`relative w-full flex items-center justify-between gap-3 px-3 py-3.5 text-left transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2 sm:px-4 ${
+                                className={`group relative w-full px-3 py-3.5 text-left transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2 sm:px-4 ${
                                   expanded
                                     ? 'hover:bg-white/80'
                                     : 'text-gray-500 hover:bg-white/55'
@@ -684,20 +750,30 @@ const Products = () => {
                                     : undefined
                                 }
                               >
-                                <span
-                                  className={`text-xs font-bold uppercase tracking-widest ${
-                                    expanded ? 'text-gray-900' : 'text-gray-500'
-                                  }`}
-                                >
-                                  {col.label}
-                                </span>
-                                <span
-                                  className={`text-[10px] font-bold uppercase tracking-wider shrink-0 max-w-[55%] text-right leading-snug ${
-                                    expanded ? 'text-gray-400' : 'text-gray-400/80'
-                                  }`}
-                                >
-                                  {col.teaser}
-                                </span>
+                                <div className={mobileCatalogRowGrid}>
+                                  <span
+                                    className={`min-w-0 text-xs font-bold uppercase tracking-widest ${
+                                      expanded ? 'text-gray-900' : 'text-gray-500'
+                                    }`}
+                                  >
+                                    {col.label}
+                                  </span>
+                                  <span
+                                    className={`min-w-0 justify-self-end text-right text-[10px] font-bold uppercase leading-tight tracking-wider ${
+                                      expanded ? 'text-gray-400' : 'text-gray-400/80'
+                                    }`}
+                                  >
+                                    {col.teaser}
+                                  </span>
+                                  <span
+                                    className={`flex h-8 w-8 items-center justify-center justify-self-end rounded-full border border-gray-200/80 bg-white/90 text-gray-500 transition-transform duration-200 ${
+                                      expanded ? 'rotate-180' : ''
+                                    }`}
+                                    aria-hidden
+                                  >
+                                    <ChevronDownMicro className="h-3.5 w-3.5" />
+                                  </span>
+                                </div>
                                 {expanded && catalogSelection && (
                                   <span
                                     className="absolute bottom-0 left-3 right-3 h-0.5 rounded-full"
@@ -755,17 +831,29 @@ const Products = () => {
                               type="button"
                               role="radio"
                               aria-checked={false}
+                              aria-label={`${col.label} — show tiers and pricing`}
                               onClick={() => selectCatalogPlatform(col.id)}
-                              className="group relative flex flex-1 min-h-0 min-w-0 flex-col text-left rounded-none border-0 transition-colors hover:bg-white/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gray-900"
+                              className="group relative flex flex-1 min-h-0 min-w-0 flex-col text-left rounded-none border-0 transition-all duration-200 ease-out hover:bg-white/92 hover:shadow-[0_12px_36px_-14px_rgba(0,0,0,0.16)] hover:ring-1 hover:ring-gray-200/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gray-900"
                               style={{
                                 color: 'var(--ba-catalog-emphasis)',
                                 backgroundColor: 'rgba(255,255,255,0.5)',
                               }}
                             >
-                              <div className="relative shrink-0 py-3 sm:py-3.5 px-4 flex flex-col items-stretch gap-1">
-                                {headerBar}
+                              <div className="relative flex shrink-0 flex-row items-start justify-between gap-2 px-3 py-3 sm:py-3.5 sm:px-4">
+                                <div className="flex min-w-0 flex-col gap-1 pr-1">
+                                  <span className="text-xs font-bold uppercase tracking-widest">{col.label}</span>
+                                  <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400">
+                                    {col.teaser}
+                                  </span>
+                                </div>
+                                <span
+                                  className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-gray-200/90 bg-white/95 text-gray-500 shadow-sm transition-all duration-200 group-hover:border-gray-300 group-hover:text-gray-900 group-hover:shadow-md"
+                                  aria-hidden
+                                >
+                                  <ChevronRightMicro className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-px" />
+                                </span>
                               </div>
-                              <div className="flex-1 flex flex-col min-h-0 min-w-0 px-3 sm:px-4 pb-4 sm:pb-5 pt-2 border-t border-gray-100/90 bg-white/60 backdrop-blur-sm overflow-y-auto">
+                              <div className="flex min-h-0 flex-1 flex-col overflow-y-auto border-t border-gray-100/90 bg-white/60 px-3 pb-4 pt-2 backdrop-blur-sm sm:px-4 sm:pb-5">
                                 <CatalogColumnPreviewPeek col={col} />
                               </div>
                             </button>
@@ -774,8 +862,9 @@ const Products = () => {
                               type="button"
                               role="radio"
                               aria-checked={false}
+                              aria-label={`${col.label} — switch to this platform`}
                               onClick={() => selectCatalogPlatform(col.id)}
-                              className="relative flex flex-1 min-h-0 min-w-0 flex-col items-center justify-center gap-2 py-5 px-1.5 text-center transition-colors text-gray-600 hover:bg-white/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gray-900"
+                              className="relative flex flex-1 min-h-0 min-w-0 flex-col items-center justify-center gap-2 px-1.5 py-5 text-center text-gray-600 transition-all hover:bg-white/55 hover:ring-1 hover:ring-gray-200/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gray-900"
                             >
                               <span className="text-[10px] font-bold uppercase tracking-widest leading-tight text-gray-900">{col.label}</span>
                               <span className="text-[9px] font-bold uppercase leading-tight px-0.5 text-gray-400">{col.teaser}</span>
@@ -786,10 +875,9 @@ const Products = () => {
                                 type="button"
                                 role="radio"
                                 aria-checked={expanded}
+                                aria-label={`${col.label} — collapse`}
                                 onClick={() => selectCatalogPlatform(col.id)}
-                                className={`relative w-full shrink-0 transition-colors py-3 sm:py-3.5 px-4 text-left flex flex-col items-stretch gap-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gray-900 ${
-                                  expanded ? '' : ''
-                                }`}
+                                className="relative flex w-full shrink-0 flex-col items-stretch gap-1 px-4 py-3 text-left transition-colors sm:py-3.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gray-900"
                                 style={{
                                   color: 'var(--ba-catalog-emphasis)',
                                   backgroundColor: expanded ? 'rgba(255,255,255,0.78)' : 'transparent',
