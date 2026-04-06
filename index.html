@@ -8,12 +8,13 @@
     <!--
       Favicon — regenerate at https://favicon.io/favicon-generator/ when you need a new icon.
       Keep settings consistent: Text = β△ | Font = Playfair Display Medium 500 Normal | BG = #000000 | FG = #ffffff
-      Save as /public/favicon.ico (or replace /favicon.ico). Live site body uses Inter + Source Serif 4 only; Playfair is for this generated asset.
+      Output can live at the project root or under public/ so Vite serves it as /favicon.ico. Live site body uses Inter + Source Serif 4 only; Playfair is for this generated asset.
     -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/brand-tokens.css" />
     <style>
         body {
             font-family: 'Inter', sans-serif;

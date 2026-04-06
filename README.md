@@ -6,11 +6,13 @@
 
 This contains everything you need to run your app locally.
 
-**Brand / content:**
+**Brand / content (single source of truth for the parent brand):**
 
+- **[Brand source of truth](docs/BRAND_SOURCE_OF_TRUTH.md)** — how sister sites and products should use these docs; drift reporting; when to add shared tokens/assets.
 - [Target audience](docs/TARGET_AUDIENCE.md) — who the site is for (and not for).
 - [Brand playbook](docs/BRAND_PLAYBOOK.md) — tone, products catalog, engagement; includes how this ties to `.cursor/rules/brand-alchemy-messaging.mdc`.
 - [Brand guidelines](docs/BRAND_GUIDELINES.md) — fonts, colors, imagery, symbols, layout, UI weight.
+- [Design tokens](public/brand-tokens.css) — CSS variables for sister sites (copy from this repo; see guidelines).
 
 View your app in AI Studio: https://ai.studio/apps/drive/1aLEDTVJDCShTzADcliM0t6-BlWFA13VI
 

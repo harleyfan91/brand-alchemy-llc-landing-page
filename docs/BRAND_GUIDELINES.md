@@ -1,8 +1,8 @@
 # Brand guidelines (visual system)
 
-**Purpose:** Canonical reference for **typography, color, imagery, symbols, and UI weight** on the Brand Alchemy site (and for matching off-site assets). Implementation lives in `index.html`, `App.tsx`, and `components/` — update this doc when those change.
+**Purpose:** Canonical reference for **typography, color, imagery, symbols, and UI weight** on the Brand Alchemy site (and for matching off-site assets). Implementation lives in `index.html`, `public/brand-tokens.css`, `App.tsx`, and `components/` — update this doc (and the token file when neutrals, primary chrome, or catalog platform colors change) when those change.
 
-**Related:** [BRAND_PLAYBOOK.md](BRAND_PLAYBOOK.md) (tone, audience, products), [TARGET_AUDIENCE.md](TARGET_AUDIENCE.md), [CATALOG_TIER_TEXT_STYLES.md](CATALOG_TIER_TEXT_STYLES.md) (Core/Pro modal labels — handoff for other projects).
+**Related:** [BRAND_PLAYBOOK.md](BRAND_PLAYBOOK.md) (tone, audience, products), [TARGET_AUDIENCE.md](TARGET_AUDIENCE.md), [BRAND_SOURCE_OF_TRUTH.md](BRAND_SOURCE_OF_TRUTH.md) (sister sites, drift), [CATALOG_TIER_TEXT_STYLES.md](CATALOG_TIER_TEXT_STYLES.md) (Core/Pro modal labels — handoff for other projects).
 
 ---
 
@@ -100,9 +100,15 @@ Use this table when adding or auditing blocks so hero vs section vs body stay di
 - **Hero glow:** soft blob `bg-gradient-to-tr from-gray-50 to-white` with blur (see `Hero.tsx`).
 - **Frosted bands (subtle):** near-white rgba + `backdrop-filter: blur(3px)` where inline styles are used (Services / Contact) so blur is reliable with the Tailwind CDN build.
 
+### Design tokens (machine-readable)
+
+**File:** [`public/brand-tokens.css`](../public/brand-tokens.css) — CSS custom properties for font stacks, Tailwind-aligned **gray** neutrals, text/border/surface roles, primary button colors, scrim, and **catalog platform** tints (Google / Yelp / both). Linked from `index.html` so the variables are available if you add custom CSS; **Tailwind utility classes remain the day-to-day contract** on this site. `components/Products.tsx` uses `var(--ba-…)` for catalog inline styles so hex values are not duplicated outside this file.
+
+**Sister sites:** copy or vendor this file from this repository and keep it aligned when the guidelines change. Product-specific accents stay in the product codebase.
+
 ### Platform accents (catalog only)
 
-Used for Google vs Yelp column styling in `Products.tsx` (keep aligned if those UIs change):
+Used for Google vs Yelp column styling in `Products.tsx` — values also live as `--ba-catalog-*` in [`public/brand-tokens.css`](../public/brand-tokens.css) (keep table, token file, and TS in sync):
 
 | Platform | Background tint | Accent |
 |----------|-----------------|--------|
@@ -164,6 +170,6 @@ Shipped as **`/favicon.ico`**. Regeneration settings for a consistent mark are d
 
 ## Maintaining this doc
 
-When you change fonts, grays, button styles, the β△ mark, or platform accent hex values in code, **update this file in the same PR** so designers, contractors, and AI tools stay aligned.
+When you change fonts, grays, button styles, the β△ mark, or platform accent hex values in code, **update this file in the same PR** so designers, contractors, and AI tools stay aligned. If **core neutrals, primary chrome, or catalog platform colors** change, update [`public/brand-tokens.css`](../public/brand-tokens.css) in the same PR (catalog UI in `Products.tsx` reads those variables) and remind downstream repos to refresh their copy.
 
 **Cursor:** The messaging rule should list this file — see [`.cursor/rules/brand-alchemy-messaging.mdc`](../.cursor/rules/brand-alchemy-messaging.mdc).

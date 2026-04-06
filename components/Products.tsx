@@ -64,17 +64,18 @@ const kits: Record<Platform, Record<Tier, { price: string; label: string; featur
   },
 };
 
+/** Inline styles use CSS vars from `public/brand-tokens.css` — keep in sync with BRAND_GUIDELINES platform table */
 const platformConfig: Record<Platform, { bg: string; accent: string }> = {
-  google: { bg: '#f0f4ff', accent: '#4285F4' },
-  yelp:   { bg: '#fff5f5', accent: '#d32323' },
+  google: { bg: 'var(--ba-catalog-google-bg)', accent: 'var(--ba-catalog-google-accent)' },
+  yelp: { bg: 'var(--ba-catalog-yelp-bg)', accent: 'var(--ba-catalog-yelp-accent)' },
 };
 
 /** Google / Yelp / Both in the catalog modal — `null` = equal columns, teaser only until user picks */
 type CatalogPlatform = 'google' | 'yelp' | 'both';
 
 function catalogCardBackground(selection: CatalogPlatform | null): string {
-  if (selection === null) return '#f3f4f6';
-  if (selection === 'both') return '#f1f2f4';
+  if (selection === null) return 'var(--ba-catalog-neutral-bg)';
+  if (selection === 'both') return 'var(--ba-catalog-both-bg)';
   return platformConfig[selection].bg;
 }
 
@@ -82,7 +83,7 @@ function catalogAccent(selection: CatalogPlatform | null, columnId: CatalogPlatf
   if (selection !== columnId) return 'transparent';
   if (columnId === 'google') return platformConfig.google.accent;
   if (columnId === 'yelp') return platformConfig.yelp.accent;
-  return '#111';
+  return 'var(--ba-catalog-emphasis)';
 }
 
 /** Standalone downloads (photo guides, copy packs)—buy any pack on its own; not framed as “add-ons” to kits */
@@ -313,7 +314,7 @@ const Products = () => {
               }}
               className="rounded-lg sm:rounded-xl border bg-white cursor-pointer relative overflow-hidden"
               style={{
-                borderColor: isActive ? '#111' : '#e5e7eb',
+                borderColor: isActive ? 'var(--ba-catalog-emphasis)' : 'var(--ba-gray-200)',
                 boxShadow: isActive ? '0 4px 20px -4px rgba(0,0,0,0.12)' : 'none',
                 transition: 'border-color 0.15s ease, box-shadow 0.15s ease',
               }}
@@ -323,9 +324,9 @@ const Products = () => {
                   <div
                     className="w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0"
                     style={{
-                      borderColor: isActive ? '#111' : '#d1d5db',
-                      backgroundColor: isActive ? '#111' : 'transparent',
-                      color: '#fff',
+                      borderColor: isActive ? 'var(--ba-catalog-emphasis)' : 'var(--ba-gray-300)',
+                      backgroundColor: isActive ? 'var(--ba-catalog-emphasis)' : 'transparent',
+                      color: 'var(--ba-color-on-primary)',
                       transition: 'border-color 0.15s ease, background-color 0.15s ease',
                     }}
                   >
@@ -334,7 +335,10 @@ const Products = () => {
                   <div>
                     <h5
                       className="text-sm sm:text-base font-bold uppercase tracking-wider"
-                      style={{ color: isActive ? '#111' : '#6b7280', transition: 'color 0.15s ease' }}
+                      style={{
+                        color: isActive ? 'var(--ba-catalog-emphasis)' : 'var(--ba-gray-500)',
+                        transition: 'color 0.15s ease',
+                      }}
                     >
                       {t === 'core' ? 'Core' : 'Pro'}
                     </h5>
@@ -342,7 +346,10 @@ const Products = () => {
                 </div>
                 <span
                   className="text-2xl sm:text-3xl font-light tracking-tight"
-                  style={{ color: isActive ? '#111' : '#9ca3af', transition: 'color 0.15s ease' }}
+                  style={{
+                    color: isActive ? 'var(--ba-catalog-emphasis)' : 'var(--ba-gray-400)',
+                    transition: 'color 0.15s ease',
+                  }}
                 >
                   {kit.price}
                 </span>
@@ -350,12 +357,20 @@ const Products = () => {
               <div className="px-4 pb-4 sm:px-5 sm:pb-4 grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2 border-t border-gray-100 pt-3">
                 {kit.features.map((f, idx) => (
                   <div key={idx} className="flex items-center gap-2.5">
-                    <span style={{ color: isActive ? '#6b7280' : '#d1d5db', transition: 'color 0.15s ease' }}>
+                    <span
+                      style={{
+                        color: isActive ? 'var(--ba-gray-500)' : 'var(--ba-gray-300)',
+                        transition: 'color 0.15s ease',
+                      }}
+                    >
                       <CheckIcon size="md" />
                     </span>
                     <span
                       className="text-sm font-normal leading-snug"
-                      style={{ color: isActive ? '#374151' : '#c4c8cd', transition: 'color 0.15s ease' }}
+                      style={{
+                        color: isActive ? 'var(--ba-gray-700)' : 'var(--ba-catalog-feature-inactive)',
+                        transition: 'color 0.15s ease',
+                      }}
                     >
                       {f}
                     </span>
@@ -383,7 +398,7 @@ const Products = () => {
         <div
           className="rounded-lg sm:rounded-xl border bg-white relative overflow-hidden"
           style={{
-            borderColor: '#111',
+            borderColor: 'var(--ba-catalog-emphasis)',
             boxShadow: '0 4px 20px -4px rgba(0,0,0,0.12)',
           }}
         >
@@ -392,9 +407,9 @@ const Products = () => {
               <div
                 className="w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0"
                 style={{
-                  borderColor: '#111',
-                  backgroundColor: '#111',
-                  color: '#fff',
+                  borderColor: 'var(--ba-catalog-emphasis)',
+                  backgroundColor: 'var(--ba-catalog-emphasis)',
+                  color: 'var(--ba-color-on-primary)',
                 }}
               >
                 <CheckIcon size="sm" />
@@ -743,7 +758,7 @@ const Products = () => {
                               onClick={() => selectCatalogPlatform(col.id)}
                               className="group relative flex flex-1 min-h-0 min-w-0 flex-col text-left rounded-none border-0 transition-colors hover:bg-white/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gray-900"
                               style={{
-                                color: '#111',
+                                color: 'var(--ba-catalog-emphasis)',
                                 backgroundColor: 'rgba(255,255,255,0.5)',
                               }}
                             >
@@ -776,7 +791,7 @@ const Products = () => {
                                   expanded ? '' : ''
                                 }`}
                                 style={{
-                                  color: '#111',
+                                  color: 'var(--ba-catalog-emphasis)',
                                   backgroundColor: expanded ? 'rgba(255,255,255,0.78)' : 'transparent',
                                 }}
                               >

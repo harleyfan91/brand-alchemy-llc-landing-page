@@ -13,6 +13,7 @@
 | Naming and listing products | This file — *Products & offerings* |
 | CTAs, contact, relationship posture | This file — *Engagement* |
 | Fonts, colors, imagery, β△ mark, UI weight | [BRAND_GUIDELINES.md](BRAND_GUIDELINES.md) |
+| Sister sites / products: canonical home, drift, Phase A | [BRAND_SOURCE_OF_TRUTH.md](BRAND_SOURCE_OF_TRUTH.md) |
 
 ---
 
