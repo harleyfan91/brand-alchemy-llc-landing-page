@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "generate": "node src/generate-sample-pdf.mjs"
+    "generate": "node src/generate-sample-pdf.mjs",
+    "generate:cafe": "node src/generate-cafe-review-pdf.mjs"
   },
   "dependencies": {
     "@brand-alchemy/pdf-layout-primitives": "file:../pdf-layout-primitives",
