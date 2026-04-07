@@ -4,7 +4,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 
 import { createElement as h } from 'react'
 
-import { BRAND_PDF_PARENT_UI, createLayoutPrimitives } from '@brand-alchemy/pdf-layout-primitives'
+import { createLayoutPrimitives } from '@brand-alchemy/pdf-layout-primitives'
 import {
   BRAND_PDF_COLORS,
   PageFooterChrome,
@@ -30,7 +30,7 @@ const L = createLayoutPrimitives({
 })
 
 const outDir = join(__dirname, '..', 'output')
-const outFile = join(outDir, 'cafe-review-replies.pdf')
+const outFile = join(outDir, 'gym-review-replies.pdf')
 const appIconPath = join(repoRoot, 'public', 'camentra-app-icon-ios.png')
 
 const S = StyleSheet.create({
@@ -57,12 +57,8 @@ const S = StyleSheet.create({
     color: BRAND_PDF_COLORS.bodyText,
     marginBottom: 10,
   },
-  sectionWrap: {
-    marginBottom: 14,
-  },
-  sectionContentWrap: {
-    paddingTop: 8,
-  },
+  sectionWrap: { marginBottom: 14 },
+  sectionContentWrap: { paddingTop: 8 },
   calloutWrap: {
     borderWidth: 1,
     borderColor: '#E5E7EB',
@@ -70,18 +66,7 @@ const S = StyleSheet.create({
     padding: 10,
     backgroundColor: '#FAFAFA',
   },
-  promoPlacement: {
-    flexGrow: 1,
-    justifyContent: 'center',
-  },
-  promoTopText: {
-    fontSize: 10,
-    lineHeight: 1.62,
-    color: BRAND_PDF_COLORS.bodyText,
-    fontFamily: 'Inter',
-    fontWeight: 400,
-    textAlign: 'left',
-  },
+  promoPlacement: { flexGrow: 1, justifyContent: 'center' },
   promoLeadText: {
     fontSize: 14,
     lineHeight: 1.28,
@@ -98,11 +83,6 @@ const S = StyleSheet.create({
     fontFamily: 'Inter',
     fontWeight: 300,
     textAlign: 'left',
-  },
-  promoEmphasis: {
-    fontFamily: 'Inter',
-    fontWeight: 700,
-    color: BRAND_PDF_COLORS.black,
   },
   promoEmphasisSoft: {
     fontFamily: 'Inter',
@@ -205,13 +185,6 @@ const S = StyleSheet.create({
     marginRight: 10,
     flexShrink: 0,
   },
-  calloutText: {
-    fontSize: 8.8,
-    lineHeight: 1.55,
-    color: BRAND_PDF_COLORS.bodyText,
-    fontFamily: 'Inter',
-    fontWeight: 300,
-  },
   addonRow: {
     marginTop: 8,
     justifyContent: 'center',
@@ -233,9 +206,7 @@ const S = StyleSheet.create({
     lineHeight: 1.55,
     color: BRAND_PDF_COLORS.bodyText,
   },
-  disclaimerWrap: {
-    marginTop: 4,
-  },
+  disclaimerWrap: { marginTop: 4 },
   disclaimerText: {
     fontSize: 8.2,
     fontFamily: 'Inter',
@@ -254,33 +225,33 @@ const sectionColors = {
 }
 
 const content = {
-  title: 'Copy & Paste Review Replies: Café',
+  title: 'Copy & Paste Review Replies: Gym',
   goal:
     'Goal: Respond to 3 reviews this month, target recent reviews and aim to respond within 72h',
   positive: {
     header: 'Positive Review',
     template:
-      'Thanks so much, [Name]! Glad you loved the [drink/pastry]. We look forward to seeing you again!',
+      'Thanks so much, [Name]! We’re thrilled you enjoyed the [class/service]. Can’t wait to see you back for you next workout!',
     example:
-      '“Thanks so much, Mika! Glad you loved the matcha latte. We look forward to seeing you again!”',
+      '“Thanks so much, Mika! We’re thrilled you enjoyed the spin class. Can’t wait to see you back for your next workout!”',
     addOnLabel: 'Add on (optional):',
-    addOnText: '“P.S. Ask for [signature add-on] next time, it’s a staff fav!”',
+    addOnText: '“P.S. Next time, check out our [signature program], it’s a member favorite!”',
   },
   mixed: {
     header: 'Mixed Review',
     template:
-      'Appreciate the feedback, [Name]. We’re happy you enjoyed [positive detail] and we’re working on [issue], thanks for calling it out. Hope to see you again soon.',
+      'Appreciate your feedback, [Name]. Glad you enjoyed the [positive detail]. We’re working on [issue] and your note helps us improve. Hope to see you again soon.',
     example:
-      '“Appreciate the feedback, Ken. We’re happy you enjoyed the croissants and we’re working on the slow weekend line, thanks for calling it out. Hope to see you again soon.”',
+      '“Appreciate your feedback, Alex. Glad you enjoyed the free weights area. We’re working on adding more evening classes and your note helps us improve. Hope to see you again soon.”',
   },
   poor: {
     header: 'Poor Review',
     template:
       'Sorry about your experience, [Name]. This isn’t the standard we aim for. I’m [Owner/Manager], please message us at [contact] so we can make it right.',
     privateTemplate:
-      'Thanks for reaching out, [Name]. I would like to make this right. Can you share the visit time and order so I can investigate? I’ll come back with a fix.',
+      'Thanks for reaching out, [Name]. I’d like to make this right. Can you share the class date and trainer so I can investigate? I’ll follow up with a solution.',
     disclaimer:
-      'Follow up privately to avoid public\nconfrontation and retain the customer',
+      'Follow up privately to avoid public\nconfrontation and retain the client',
   },
   promoTrial:
     'Bonus with purchase: Get the Camentra App FREE for 14 Days. Make your photos look professional, consistent, and intentional across your entire online presence.',
@@ -337,7 +308,7 @@ function SectionBlock({
   )
 }
 
-function CafeReviewDoc() {
+function GymReviewDoc() {
   return h(
     Document,
     { title: content.title },
@@ -385,11 +356,7 @@ function CafeReviewDoc() {
             h(
               View,
               { style: S.promoLeftCol },
-              h(
-                Text,
-                { style: S.promoLeadText },
-                'Stop DIYing. Get the System that Scales.',
-              ),
+              h(Text, { style: S.promoLeadText }, 'Stop DIYing. Get the System that Scales.'),
               h(
                 Text,
                 { style: S.promoSupportText },
@@ -427,8 +394,8 @@ function CafeReviewDoc() {
             h(
               Text,
               { style: S.promoTrialText },
-                h(Text, { style: S.promoTrialLead }, 'Bonus with purchase: Get the Camentra App FREE for 14 Days. '),
-                '\nMake your photos look professional, consistent, and intentional across your entire online presence.',
+              h(Text, { style: S.promoTrialLead }, 'Bonus with purchase: Get the Camentra App FREE for 14 Days. '),
+              '\nMake your photos look professional, consistent, and intentional across your entire online presence.',
             ),
           ),
         ),
@@ -439,7 +406,7 @@ function CafeReviewDoc() {
 }
 
 registerBrandPdfFonts()
-const buf = await renderToBuffer(h(CafeReviewDoc))
+const buf = await renderToBuffer(h(GymReviewDoc))
 mkdirSync(outDir, { recursive: true })
 writeFileSync(outFile, buf)
 console.log(`Wrote ${outFile}`)
