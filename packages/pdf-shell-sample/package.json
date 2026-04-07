@@ -1,0 +1,19 @@
+{
+  "name": "@brand-alchemy/pdf-shell-sample",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "generate": "node src/generate-sample-pdf.mjs"
+  },
+  "dependencies": {
+    "@brand-alchemy/pdf-layout-primitives": "file:../pdf-layout-primitives",
+    "@identity-kit/brand-assets": "file:../../../identity-kit/packages/brand-assets",
+    "@identity-kit/pdf-chrome": "file:../../../identity-kit/packages/pdf-chrome",
+    "react": "^19.2.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.2.0"
+  }
+}

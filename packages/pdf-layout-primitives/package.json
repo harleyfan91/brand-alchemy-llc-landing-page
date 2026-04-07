@@ -1,0 +1,17 @@
+{
+  "name": "@brand-alchemy/pdf-layout-primitives",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Reusable @react-pdf/layout patterns aligned with Identity Kit PDFs (formatting only; no product copy).",
+  "exports": {
+    ".": "./src/index.mjs"
+  },
+  "peerDependencies": {
+    "@identity-kit/pdf-chrome": "*",
+    "react": "^18 || ^19"
+  },
+  "dependencies": {
+    "@identity-kit/pdf-chrome": "file:../../../identity-kit/packages/pdf-chrome"
+  }
+}

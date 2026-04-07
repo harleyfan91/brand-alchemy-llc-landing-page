@@ -18,6 +18,8 @@ Other properties—product landing pages, microsites, apps—should **follow the
 
 Implementation on **this** site lives in `index.html`, `public/brand-tokens.css`, `App.tsx`, and `components/`. When you change fonts, colors, or the mark here, **update [BRAND_GUIDELINES.md](BRAND_GUIDELINES.md) (and playbook if copy rules change) in the same change**, so the written record stays true. When **shared neutrals, primary chrome, or catalog platform tints** change, update [`public/brand-tokens.css`](../public/brand-tokens.css) and keep `components/Products.tsx` (and the platform table below in the guidelines) aligned.
 
+**PDFs** (lead magnets, internal deliverables, Identity Kit outputs): shared `@react-pdf/renderer` chrome—fonts, symbol-strip footer, PDF neutrals—lives in the **identity-kit** repo as **`@identity-kit/pdf-chrome`**. Reusable **layout blocks** (nav strip, section bands, Do/Avoid formatting, two-column rule, chips, pills, numbered bullets) live in this repo as **`@brand-alchemy/pdf-layout-primitives`**. See [PDF_CHROME.md](PDF_CHROME.md). Identity Kit’s customer-facing PDF pipeline uses pdf-chrome so print and web stay aligned.
+
 ---
 
 ## What sister repos should do (Phase A)
