@@ -1,0 +1,64 @@
+/**
+ * One-shot dark sweep on “Brand Alchemy” — gradient is clipped to the glyphs
+ * (background-clip: text), so nothing paints outside the wordmark. No mix-blend-mode.
+ *
+ * Sweep speed: set --hero-brand-sweep-duration on .hero-brand-shine (default 3.5s).
+ */
+
+@keyframes hero-brand-dark-sweep {
+  from {
+    background-position: 130% 50%;
+  }
+  to {
+    background-position: -130% 50%;
+  }
+}
+
+.hero-brand-shine {
+  --hero-brand-sweep-duration: 3.5s;
+
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+/**
+ * Duplicate line — transparent fill, animated dark gradient clipped to text shape.
+ * Sits on top of the base gray wordmark for the duration of the animation only.
+ */
+.hero-brand-shine__gloss {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(
+    100deg,
+    rgb(0 0 0 / 0) 0%,
+    rgb(0 0 0 / 0) 42%,
+    rgb(0 0 0 / 0.42) 50%,
+    rgb(0 0 0 / 0) 58%,
+    rgb(0 0 0 / 0) 100%
+  );
+  background-size: 260% 100%;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-brand-shine__gloss--play {
+  animation: hero-brand-dark-sweep var(--hero-brand-sweep-duration) cubic-bezier(0.35, 0.05, 0.2, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-brand-shine__gloss--play {
+    animation: none !important;
+    opacity: 0;
+  }
+}
