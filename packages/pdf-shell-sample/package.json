@@ -7,7 +7,8 @@
     "generate": "node src/generate-sample-pdf.mjs",
     "generate:cafe": "node src/generate-cafe-review-pdf.mjs",
     "generate:gym": "node src/generate-gym-review-pdf.mjs",
-    "generate:services": "node src/generate-services-review-pdf.mjs"
+    "generate:services": "node src/generate-services-review-pdf.mjs",
+    "generate:spa": "node src/generate-spa-review-pdf.mjs"
   },
   "dependencies": {
     "@brand-alchemy/pdf-layout-primitives": "file:../pdf-layout-primitives",

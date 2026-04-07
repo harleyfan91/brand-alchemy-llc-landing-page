@@ -14,7 +14,8 @@
     "pdf:sample": "npm run generate --workspace=@brand-alchemy/pdf-shell-sample",
     "pdf:cafe": "npm run generate:cafe --workspace=@brand-alchemy/pdf-shell-sample",
     "pdf:gym": "npm run generate:gym --workspace=@brand-alchemy/pdf-shell-sample",
-    "pdf:services": "npm run generate:services --workspace=@brand-alchemy/pdf-shell-sample"
+    "pdf:services": "npm run generate:services --workspace=@brand-alchemy/pdf-shell-sample",
+    "pdf:spa": "npm run generate:spa --workspace=@brand-alchemy/pdf-shell-sample"
   },
   "dependencies": {
     "react": "^19.2.4",
