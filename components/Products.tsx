@@ -496,10 +496,10 @@ const Products = () => {
             </div>
           </Link>
 
-          {/* Guides & launch kits — opens modal (Google/Yelp kits, content packs, etc.) */}
-          <div
-            onClick={() => setIsModalOpen(true)}
-            className="relative z-20 bg-white group rounded-xl sm:rounded-2xl overflow-hidden border border-gray-100 flex flex-col transition-all duration-500 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] cursor-pointer"
+          {/* Guides & launch kits — dedicated product page */}
+          <Link
+            to="/guides-and-kits"
+            className="relative z-20 bg-white group rounded-xl sm:rounded-2xl overflow-hidden border border-gray-100 flex flex-col transition-all duration-500 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] no-underline text-inherit"
           >
             <div className="aspect-[16/10] overflow-hidden bg-gray-100">
               <img
@@ -517,9 +517,9 @@ const Products = () => {
                 place.
               </p>
               <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-6">{CATALOG_CARD_PRICE_LINE}</p>
-              <span className="text-xs font-bold text-black border-b border-black pb-1 uppercase tracking-widest">Browse guides and kits</span>
+              <span className="text-xs font-bold text-black border-b border-black pb-1 uppercase tracking-widest">View guides and kits</span>
             </div>
-          </div>
+          </Link>
 
           {/* Camentra card */}
           <a
