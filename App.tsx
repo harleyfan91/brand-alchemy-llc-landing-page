@@ -4,10 +4,12 @@ import Header from './components/Header';
 import HomePage from './components/HomePage';
 import IdentityKitPage from './pages/IdentityKitPage';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="min-h-screen flex flex-col selection:bg-black selection:text-white">
         <Header />
         <Routes>
