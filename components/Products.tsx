@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import CheckIcon from './CheckIcon';
 
 /** Accordion / column affordances — decorative; labels stay on buttons for SRs */
 const ChevronRightMicro = ({ className = '' }: { className?: string }) => (
@@ -227,17 +228,6 @@ const GUIDES_KITS_TITLE = 'Guides & launch kits';
 
 const identityKitDescription =
   "A personalized kit that defines your brand voice, look, and feel, so you always sound and look like you. Answer a few questions to download yours today.";
-
-const CheckIcon = ({ size = 'sm' }: { size?: 'sm' | 'md' }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 12 12"
-    fill="none"
-    className={size === 'md' ? 'w-3.5 h-3.5 shrink-0' : 'w-2.5 h-2.5 shrink-0'}
-  >
-    <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
 
 /**
  * Default-state peek (sm+ only) — aligned with Identity Kit ReviewScreen teaser tiles:

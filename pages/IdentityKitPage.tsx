@@ -1,6 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CatalogStyleTierCards from '../components/CatalogStyleTierCards';
 import { getIdentityKitStartUrl } from '../utils/identityKitUrls';
+
+/** Mirrors SKU copy in `docs/ACQUISITION_FUNNEL_AND_SKU_MAP.md` and `identity-kit` tiers. */
+const IDENTITY_KIT_TIERS = {
+  core: {
+    price: '$49',
+    features: [
+      'Brand Brief',
+      'Style Guide',
+      'Voice & Content Playbook',
+      '30-Day Quick Start Checklist',
+    ],
+  },
+  pro: {
+    price: '$99',
+    features: [
+      'Everything in Core',
+      'Deeper personalization',
+      'Content Starter Pack (homepage directions, bios, captions, prompts)',
+    ],
+  },
+} as const;
 
 /**
  * Dedicated Identity Kit offer page on the main domain (`/identity-kit`).
@@ -51,39 +73,7 @@ const IdentityKitPage: React.FC = () => {
       </div>
 
       <div className="mx-auto mt-5 max-w-2xl px-4 sm:px-6 lg:px-8 md:mt-12">
-        <div className="grid grid-cols-2 gap-2 md:gap-6">
-          <div className="rounded-xl border border-gray-100 bg-gray-50/80 p-3 text-left md:rounded-2xl md:p-6">
-            <p className="text-[9px] font-bold uppercase tracking-widest text-gray-400 md:text-[10px]">Core</p>
-            <p className="mt-1 font-serif text-2xl font-normal text-gray-900 tabular-nums md:mt-2 md:text-3xl">$49</p>
-            <ul className="mt-2 space-y-0.5 text-[11px] font-light leading-tight text-gray-600 md:mt-4 md:space-y-2 md:text-sm md:leading-relaxed">
-              <li>Brand Brief</li>
-              <li>Style Guide</li>
-              <li>Voice &amp; Content Playbook</li>
-              <li>
-                <span className="md:hidden">30-Day Quick Start</span>
-                <span className="hidden md:inline">30-Day Quick Start Checklist</span>
-              </li>
-            </ul>
-          </div>
-          <div className="rounded-xl border border-gray-900 bg-white p-3 text-left shadow-sm md:rounded-2xl md:p-6">
-            <p className="text-[9px] font-bold uppercase tracking-widest text-gray-400 md:text-[10px]">Pro</p>
-            <p className="mt-1 font-serif text-2xl font-normal text-gray-900 tabular-nums md:mt-2 md:text-3xl">$99</p>
-            <p className="mt-1.5 text-[10px] font-light leading-tight text-gray-500 md:mt-2 md:text-xs md:leading-normal">
-              <span className="md:hidden">Core + Starter Pack &amp; more.</span>
-              <span className="hidden md:inline">
-                Everything in Core, plus deeper personalization and a Content Starter Pack.
-              </span>
-            </p>
-            <ul className="mt-2 space-y-0.5 text-[11px] font-light leading-tight text-gray-600 md:mt-4 md:space-y-2 md:text-sm md:leading-relaxed">
-              <li>
-                <span className="md:hidden">Content Starter Pack</span>
-                <span className="hidden md:inline">
-                  Content Starter Pack (homepage directions, bios, captions, prompts)
-                </span>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <CatalogStyleTierCards core={IDENTITY_KIT_TIERS.core} pro={IDENTITY_KIT_TIERS.pro} />
 
         <div className="mt-5 flex justify-center md:mt-10">
           <a

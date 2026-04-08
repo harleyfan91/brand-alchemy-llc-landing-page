@@ -72,7 +72,7 @@ Use this table when adding or auditing blocks so hero vs section vs body stay di
 - **Muted label above a serif title?** → Section eyebrow — Inter bold xs, uppercase, wide tracking, gray-400.
 - **Paragraphs readers actually read?** → Inter light (or normal for dense lists), gray-500, relaxed leading; bump size one step for hero subhead only.
 
-**Catalog-specific scale** (modal, kit cards, feature lines): comment block at top of `components/Products.tsx` — keep in sync with this doc when you change those tokens.
+**Catalog-specific scale** (modal, kit cards, feature lines): comment block at top of `components/Products.tsx` — keep in sync with this doc when you change those tokens. **Standalone pages** that show the same Core/Pro tier chrome (e.g. `/identity-kit`) use `components/CatalogStyleTierCards.tsx`, which matches the modal’s tier row pattern and `public/brand-tokens.css` variables.
 
 ---
 

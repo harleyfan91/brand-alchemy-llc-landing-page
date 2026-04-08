@@ -5,7 +5,7 @@
 **Code / product references**
 
 - Marketing catalog (Google/Yelp kits, content packs, bundle): `components/Products.tsx`
-- Site routing (homepage + `/identity-kit`): `App.tsx`, `components/HomePage.tsx`, `components/ScrollToTop.tsx` (scroll-to-top on route change), `pages/IdentityKitPage.tsx`; optional kit URLs: `utils/identityKitUrls.ts`, `.env.example`
+- Site routing (homepage + `/identity-kit`): `App.tsx`, `components/HomePage.tsx`, `components/ScrollToTop.tsx` (scroll-to-top on route change), `pages/IdentityKitPage.tsx`, `components/CatalogStyleTierCards.tsx` (Core/Pro tier chrome aligned with catalog modal); optional kit URLs: `utils/identityKitUrls.ts`, `.env.example`
 - Identity Kit tiers and deliverables: `identity-kit` repo — `README.md`, `IDENTITY_KIT_PRD.md`, `apps/web/src/data/tiers.ts`
 - Camentra subscription model: `Camentra` repo — `docs/features/subscription/SUBSCRIPTION_SYSTEM_COMPLETE_GUIDE.md`, `app/screens/PaywallScreen.tsx`
 

@@ -71,3 +71,5 @@
 3. Stack: **Inter** (or document any substitute).
 
 **Code references:** `Products.tsx` — search `CatalogColumnPreviewPeek`, `renderTierCardsFor`, `previewItems`.
+
+**Standalone parity:** `components/CatalogStyleTierCards.tsx` reuses the same tier row structure and token colors for static two-tier blocks (Identity Kit marketing page). Decorative radio dots mirror the modal; tier labels use the **expanded** row treatment (bold uppercase, Inter).
