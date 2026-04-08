@@ -38,6 +38,7 @@ const Hero: React.FC = () => {
     return () => mq.removeEventListener('change', onChange);
   }, []);
 
+
   useEffect(() => {
     if (reduceMotion) {
       setIntroOn(true);
@@ -131,7 +132,7 @@ const Hero: React.FC = () => {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen min-h-[100svh] flex-col justify-start overflow-hidden bg-white pt-24 pb-8 md:min-h-[90vh] md:justify-center md:pt-16 md:pb-12"
+      className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden bg-white pt-24 pb-8 md:min-h-[90vh] md:pt-16 md:pb-12"
     >
       <div className="absolute inset-0 z-0">
         <div className="absolute top-1/2 left-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-tr from-gray-50 to-white opacity-60 blur-3xl" />
@@ -143,7 +144,7 @@ const Hero: React.FC = () => {
         aria-hidden={scrollMuted}
       >
         <div className={blockClass(0)} style={blockStyle(0)}>
-          <div className="mb-4 text-xs font-serif italic leading-snug tracking-normal text-gray-500 normal-case md:mb-10 md:text-sm">
+          <div className="mb-4 text-[clamp(0.82rem,2.2vw,0.95rem)] font-serif italic leading-snug tracking-normal text-gray-500 normal-case md:mb-10 md:text-sm">
             <span className="font-semibold text-gray-700">alchemy</span>
             <span className="font-normal text-gray-400">
               {' '}
@@ -153,7 +154,7 @@ const Hero: React.FC = () => {
         </div>
 
         <div className={blockClass(1)} style={blockStyle(1)}>
-          <h1 className="mb-5 text-3xl font-bold uppercase leading-[1.08] tracking-tight text-gray-900 sm:text-4xl md:mb-8 md:text-5xl md:leading-[1.1] lg:text-6xl xl:text-7xl">
+          <h1 className="mb-5 text-[clamp(2rem,8.4vw,2.4rem)] font-bold uppercase leading-[1.08] tracking-tight text-gray-900 sm:text-4xl md:mb-8 md:text-5xl md:leading-[1.1] lg:text-6xl xl:text-7xl">
             <span className="md:hidden">
               Turn your brand
               <br />
@@ -188,7 +189,7 @@ const Hero: React.FC = () => {
         </div>
 
         <div className={blockClass(2)} style={blockStyle(2)}>
-          <p className="mx-auto mb-8 max-w-2xl px-1 text-base font-light leading-relaxed text-gray-500 md:mb-16 md:text-xl">
+          <p className="mx-auto mb-8 max-w-2xl px-1 text-[clamp(1.02rem,4.2vw,1.15rem)] font-light leading-relaxed text-gray-500 md:mb-16 md:text-xl">
             Tools, templates, and step-by-step guides for people building something of their own, so you can show up
             consistently and reach more customers without hiring a marketing team.
           </p>
@@ -198,7 +199,7 @@ const Hero: React.FC = () => {
               href="#services"
               onClick={scrollToSolutions}
               tabIndex={scrollMuted ? -1 : undefined}
-              className="group inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500 transition-colors hover:text-gray-900 md:gap-2.5 md:text-xs"
+              className="group inline-flex items-center gap-2 text-[clamp(0.72rem,2.7vw,0.8rem)] font-bold uppercase tracking-[0.2em] text-gray-500 transition-colors hover:text-gray-900 md:gap-2.5 md:text-xs"
             >
               <span>See the approach</span>
               <svg

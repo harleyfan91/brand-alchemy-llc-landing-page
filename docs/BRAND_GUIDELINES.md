@@ -27,10 +27,10 @@ Use this table when adding or auditing blocks so hero vs section vs body stay di
 
 | Block | Font | Weight | Size (mobile → large) | Color | Case / tracking / leading |
 |-------|------|--------|-------------------------|-------|---------------------------|
-| **Definition line** (dictionary) | Source Serif 4 | italic body: **normal** (400); word “alchemy”: **semibold** (600) | `text-xs` → `md:text-sm` | Wrapper `text-gray-500`; emphasized word `text-gray-700`; definition text `text-gray-400` | `normal-case`, `tracking-normal`, `leading-snug` |
-| **Hero H1** (main headline) | Inter | **bold** (700) | `text-3xl` → `sm:text-4xl` → `md:text-5xl` → `lg:text-6xl` → `xl:text-7xl` | Primary lines `text-gray-900`; secondary line e.g. brand name `text-gray-300`; tertiary e.g. tagline `text-gray-500` | **UPPERCASE** (CSS via content), `tracking-tight`, `leading-[1.08]` → `md:leading-[1.1]` |
-| **Hero subhead** (paragraph under H1) | Inter | **light** (300) | `text-base` → `md:text-xl` | `text-gray-500` | Sentence case, `leading-relaxed` |
-| **Hero text link CTA** (“See the approach”) | Inter | **bold** (700) | `text-[10px]` → `md:text-xs` | `text-gray-500`, hover `text-gray-900` | **UPPERCASE**, `tracking-[0.2em]` (not a filled button; arrow paired in component) |
+| **Definition line** (dictionary) | Source Serif 4 | italic body: **normal** (400); word “alchemy”: **semibold** (600) | `text-[clamp(0.82rem,2.2vw,0.95rem)]` → `md:text-sm` | Wrapper `text-gray-500`; emphasized word `text-gray-700`; definition text `text-gray-400` | `normal-case`, `tracking-normal`, `leading-snug` |
+| **Hero H1** (main headline) | Inter | **bold** (700) | `text-[clamp(2rem,8.4vw,2.4rem)]` → `sm:text-4xl` → `md:text-5xl` → `lg:text-6xl` → `xl:text-7xl` | Primary lines `text-gray-900`; secondary line e.g. brand name `text-gray-300`; tertiary e.g. tagline `text-gray-500` | **UPPERCASE** (CSS via content), `tracking-tight`, `leading-[1.08]` → `md:leading-[1.1]` |
+| **Hero subhead** (paragraph under H1) | Inter | **light** (300) | `text-[clamp(1.02rem,4.2vw,1.15rem)]` → `md:text-xl` | `text-gray-500` | Sentence case, `leading-relaxed` |
+| **Hero text link CTA** (“See the approach”) | Inter | **bold** (700) | `text-[clamp(0.72rem,2.7vw,0.8rem)]` → `md:text-xs` | `text-gray-500`, hover `text-gray-900` | **UPPERCASE**, `tracking-[0.2em]` (not a filled button; arrow paired in component) |
 
 #### Section header stack (e.g. Services, Products intros — `Services.tsx`, `Products.tsx`)
 
@@ -157,6 +157,63 @@ Shipped as **`/favicon.ico`**. Regeneration settings for a consistent mark are d
 | **Primary buttons** | `rounded-full`, generous vertical padding (`py-3`–`py-3.5`) |
 
 **Visual weight:** Favor **white space, light type weights, and thin borders** over heavy boxes. Black is for **decision moments** (primary CTA, selection), not large fills.
+
+### Mobile section rhythm (hybrid standard)
+
+Use a **hybrid** layout model on this site:
+
+- **Natural vertical document flow** for page sections (hero, services, products, guides, contact).
+- **Snap only for horizontal carousels** (cards/tiles), not full-page vertical lock-step sections.
+- Keep each section readable in one pass without forcing users into section-by-section swipes.
+
+#### Why this over full-page vertical snapping
+
+Full-page snap (`scroll-snap-type: y mandatory` + `100vh` panels) creates rigid pacing and can feel premium on narrative microsites, but it is usually less forgiving for owner-operator audiences scanning practical info. Our audience benefits more from smooth, interruptible scroll with clear structure.
+
+#### Viewport bands (mobile)
+
+Use these width bands when tuning mobile typography/spacing:
+
+| Band | Width | Typical devices | Guidance |
+|------|-------|------------------|----------|
+| **Small mobile** | `<= 399px` | iPhone 12/13/14 Pro class | Prioritize readable floors; avoid aggressive down-scaling |
+| **Mid mobile** | `400px - 430px` | iPhone 15/16 Pro class | Slightly tighten display type to preserve line breaks |
+| **Large mobile** | `>= 431px` and `< md` | Plus/Max class | Return to base mobile sizes unless content wraps poorly |
+
+#### Height model (mobile)
+
+- **Hero:** target first-view composition that reads as “single screen” using `min-h-[100svh]` and centered content; avoid custom per-device `vh` arithmetic unless required by a reproducible bug.
+- **Hero safe area:** when CTA or interactive copy sits near the lower edge, include bottom-safe padding using `env(safe-area-inset-bottom)` (for Dynamic Island / notch devices) so content never feels clipped by browser chrome or gesture areas.
+- **Non-hero sections:** do **not** force `100vh`. Let content define height.
+- **Non-hero floor:** keep a minimum mobile rhythm floor of `py-8` (or visually equivalent spacing) so short sections do not collapse into a sliver between larger blocks.
+- Prefer section spacing consistency (`py-*`) over per-device overrides in multiple components.
+
+#### Section header stack rules (mobile)
+
+For section intro blocks (eyebrow + serif heading + support text):
+
+1. Scale as a **stack** (all three roles together), not one heading in isolation.
+2. Keep proportion stable across bands (eyebrow smallest, heading dominant, support readable).
+3. Centralize width-band overrides in shared CSS tokens/classes (not one-off inline utility edits per section).
+4. **Policy:** section intro stack uses **band-based shared classes** (predictable and auditable). Hero remains the exception and uses `clamp(...)` because it is most viewport-sensitive.
+
+#### Do / Don't
+
+- **Do:** centralize band-specific typography in shared classes/tokens.
+- **Do:** tune line-break outcomes on known narrow and mid bands.
+- **Do:** validate on at least one device/emulator per band before merging.
+- **Do:** maintain a migration checklist of which sections use shared header classes.
+- **Don't:** patch one section/device repeatedly with ad hoc classes.
+- **Don't:** combine vertical snap panels with long card sections unless there is a strong product reason.
+
+#### Shared header class migration checklist
+
+Track these before merging typography changes:
+
+- `Services` — migrated
+- `Guides` — migrated
+- `Products` — migrated
+- `Contact` — migrated (uses eyebrow + shared header classes)
 
 ### Z-index & stacking (canonical)
 

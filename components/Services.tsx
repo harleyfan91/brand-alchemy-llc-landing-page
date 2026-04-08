@@ -77,14 +77,14 @@ const Services: React.FC = () => {
   return (
     <section
       id="services"
-      className="relative z-20 scroll-mt-20 overflow-visible bg-transparent py-10 md:py-24"
+      className="relative z-20 scroll-mt-20 overflow-visible bg-transparent py-8 md:py-24"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-6 text-center md:mb-16">
-          <h2 className="mb-2 text-xs font-bold uppercase tracking-[0.3em] text-gray-400 md:mb-4">
+          <h2 className="ba-section-eyebrow mb-2 text-xs font-bold uppercase tracking-[0.3em] text-gray-400 md:mb-4">
             The path
           </h2>
-          <h3 className="font-serif font-normal text-4xl text-gray-900 md:text-5xl">Start with the brand. Then put it to work.</h3>
+          <h3 className="ba-section-display-title font-serif font-normal text-4xl text-gray-900 md:text-5xl">Start with the brand. Then put it to work.</h3>
         </div>
       </div>
 
@@ -155,7 +155,7 @@ const Services: React.FC = () => {
         </div>
       </div>
 
-      <div className="mx-auto mt-8 flex max-w-7xl justify-center px-4 sm:px-6 md:mt-12 lg:px-8">
+      <div className="mx-auto mt-6 flex max-w-7xl justify-center px-4 sm:px-6 md:mt-12 lg:px-8">
         <a
           href="#products"
           onClick={scrollToProducts}

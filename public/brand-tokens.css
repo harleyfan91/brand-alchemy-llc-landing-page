@@ -61,3 +61,25 @@
   /** Inactive catalog feature lines (between Tailwind gray-300 and gray-400) */
   --ba-catalog-feature-inactive: #c4c8cd;
 }
+
+
+/*
+ * Section header typography scale for 16 Pro-like widths.
+ * Keep 12 Pro (390px) at default; rebalance heading + eyebrow + support copy together.
+ */
+@media (min-width: 400px) and (max-width: 430px) {
+  .ba-section-eyebrow {
+    font-size: 0.72rem !important;
+    letter-spacing: 0.26em;
+  }
+
+  .ba-section-display-title {
+    font-size: 1.9rem !important;
+    line-height: 1.08;
+  }
+
+  .ba-section-support {
+    font-size: 0.92rem !important;
+    line-height: 1.55;
+  }
+}

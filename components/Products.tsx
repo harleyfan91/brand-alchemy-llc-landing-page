@@ -465,12 +465,12 @@ const Products = () => {
   );
 
   return (
-    <section id="products" className="scroll-mt-20 bg-white py-10 md:py-24">
+    <section id="products" className="scroll-mt-20 bg-white py-8 md:py-24">
       <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
         <div className="relative z-20 mx-auto mb-6 max-w-3xl md:mb-16">
-          <h2 className="mb-2 text-xs font-bold uppercase tracking-[0.3em] text-gray-400 md:mb-4">Products</h2>
-          <h3 className="text-4xl md:text-5xl font-serif font-normal text-gray-900">The Toolkit</h3>
-          <p className="text-gray-500 text-sm md:text-base font-light leading-relaxed mt-5">
+          <h2 className="ba-section-eyebrow mb-2 text-xs font-bold uppercase tracking-[0.3em] text-gray-400 md:mb-4">Products</h2>
+          <h3 className="ba-section-display-title text-4xl md:text-5xl font-serif font-normal text-gray-900">The Toolkit</h3>
+          <p className="ba-section-support text-gray-500 text-sm md:text-base font-light leading-relaxed mt-5">
             Start with the Identity Kit to define how your business sounds and looks. Then choose the guides,
             kits, and copy packs that help you know what to say, what to post, what to improve first, and how
             to stay consistent. Camentra supports the visual side when you want help taking better photos and
@@ -478,10 +478,10 @@ const Products = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8 max-w-7xl mx-auto">
           <Link
             to="/identity-kit"
-            className="relative z-20 bg-white group rounded-2xl overflow-hidden border border-gray-100 flex flex-col transition-all duration-500 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] no-underline text-inherit"
+            className="relative z-20 bg-white group rounded-xl sm:rounded-2xl overflow-hidden border border-gray-100 flex flex-col transition-all duration-500 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] no-underline text-inherit"
           >
             <div className="aspect-[16/10] overflow-hidden bg-gray-100">
               <img
@@ -490,7 +490,7 @@ const Products = () => {
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
               />
             </div>
-            <div className="p-8 md:p-10 text-left">
+            <div className="p-5 sm:p-8 md:p-10 text-left">
               <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">{IDENTITY_CARD_EYEBROW}</span>
               <h4 className="text-2xl font-serif font-normal text-gray-900 mb-4">Identity Kit</h4>
               <p className="text-gray-500 text-sm leading-relaxed font-light mb-4">{identityKitDescription}</p>
@@ -502,7 +502,7 @@ const Products = () => {
           {/* Guides & launch kits — opens modal (Google/Yelp kits, content packs, etc.) */}
           <div
             onClick={() => setIsModalOpen(true)}
-            className="relative z-20 bg-white group rounded-2xl overflow-hidden border border-gray-100 flex flex-col transition-all duration-500 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] cursor-pointer"
+            className="relative z-20 bg-white group rounded-xl sm:rounded-2xl overflow-hidden border border-gray-100 flex flex-col transition-all duration-500 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] cursor-pointer"
           >
             <div className="aspect-[16/10] overflow-hidden bg-gray-100">
               <img
@@ -511,7 +511,7 @@ const Products = () => {
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
               />
             </div>
-            <div className="p-8 md:p-10 text-left">
+            <div className="p-5 sm:p-8 md:p-10 text-left">
               <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">{CATALOG_CARD_EYEBROW}</span>
               <h4 className="text-2xl font-serif font-normal text-gray-900 mb-4">{GUIDES_KITS_TITLE}</h4>
               <p className="text-gray-500 text-sm leading-relaxed font-light mb-6">
@@ -529,7 +529,7 @@ const Products = () => {
             href="https://www.camentra.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="relative z-20 bg-white group rounded-2xl overflow-hidden border border-gray-100 flex flex-col transition-all duration-500 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] no-underline"
+            className="relative z-20 bg-white group rounded-xl sm:rounded-2xl overflow-hidden border border-gray-100 flex flex-col transition-all duration-500 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] no-underline"
           >
             <div className="aspect-[16/10] overflow-hidden bg-gray-100">
               <img
@@ -538,7 +538,7 @@ const Products = () => {
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
               />
             </div>
-            <div className="p-8 md:p-10 text-left">
+            <div className="p-5 sm:p-8 md:p-10 text-left">
               <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">{CAMENTRA_CARD_EYEBROW}</span>
               <h4 className="text-2xl font-serif font-normal text-gray-900 mb-4">Camentra</h4>
               <p className="text-gray-500 text-sm leading-relaxed font-light mb-4">
