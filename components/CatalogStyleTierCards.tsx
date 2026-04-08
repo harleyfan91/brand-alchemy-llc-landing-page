@@ -1,5 +1,6 @@
 import React from 'react';
 import CheckIcon from './CheckIcon';
+import ProFeatureSparkIcon from './ProFeatureSparkIcon';
 
 /**
  * Static Core / Pro tier pair using the same chrome as the guides & kits catalog modal
@@ -12,6 +13,11 @@ export type TierContent = {
   features: string[];
   /** Full-width rule before this index (e.g. `4` after Core PDFs when Pro lists core + add-ons). */
   dividerBeforeFeatureIndex?: number;
+  /**
+   * After `dividerBeforeFeatureIndex`, use spark icon for Pro-only lines (matches `identity-kit` TierSelector
+   * when Pro is selected: checks for Core PDFs, sparks for Pro additions).
+   */
+  useSparkIconAfterDivider?: boolean;
 };
 
 export type CatalogStyleTierCardsProps = {
@@ -73,32 +79,39 @@ const CatalogStyleTierCards: React.FC<CatalogStyleTierCardsProps> = ({ core, pro
             </span>
           </div>
           <div className="grid grid-cols-1 gap-x-5 gap-y-2 border-t border-gray-100 px-4 pb-4 pt-3 sm:grid-cols-2 sm:px-5 sm:pb-4">
-            {kit.features.map((f, idx) => (
-              <React.Fragment key={`${id}-${idx}-${f.slice(0, 24)}`}>
-                {kit.dividerBeforeFeatureIndex !== undefined && idx === kit.dividerBeforeFeatureIndex ? (
-                  <div
-                    className="col-span-1 my-1 border-t border-gray-100 pt-2 sm:col-span-2"
-                    role="presentation"
-                  >
-                    <span className="sr-only">Pro additions</span>
+            {kit.features.map((f, idx) => {
+              const divIdx = kit.dividerBeforeFeatureIndex;
+              const useSpark =
+                Boolean(kit.useSparkIconAfterDivider && divIdx !== undefined && idx >= divIdx && isActive);
+              const iconColor = useSpark
+                ? 'var(--ba-catalog-emphasis)'
+                : isActive
+                  ? 'var(--ba-gray-500)'
+                  : 'var(--ba-gray-300)';
+              const textColor = useSpark
+                ? 'var(--ba-gray-900)'
+                : isActive
+                  ? 'var(--ba-gray-700)'
+                  : 'var(--ba-catalog-feature-inactive)';
+
+              return (
+                <React.Fragment key={`${id}-${idx}-${f.slice(0, 24)}`}>
+                  {divIdx !== undefined && idx === divIdx ? (
+                    <div className="col-span-1 my-1 border-t border-gray-100 pt-2 sm:col-span-2" role="presentation">
+                      <span className="sr-only">Pro additions</span>
+                    </div>
+                  ) : null}
+                  <div className="flex items-start gap-2.5">
+                    <span className="mt-0.5 shrink-0" style={{ color: iconColor }}>
+                      {useSpark ? <ProFeatureSparkIcon /> : <CheckIcon size="md" />}
+                    </span>
+                    <span className="text-sm font-normal leading-snug" style={{ color: textColor }}>
+                      {f}
+                    </span>
                   </div>
-                ) : null}
-                <div className="flex items-start gap-2.5">
-                  <span
-                    className="mt-0.5 shrink-0"
-                    style={{ color: isActive ? 'var(--ba-gray-500)' : 'var(--ba-gray-300)' }}
-                  >
-                    <CheckIcon size="md" />
-                  </span>
-                  <span
-                    className="text-sm font-normal leading-snug"
-                    style={{ color: isActive ? 'var(--ba-gray-700)' : 'var(--ba-catalog-feature-inactive)' }}
-                  >
-                    {f}
-                  </span>
-                </div>
-              </React.Fragment>
-            ))}
+                </React.Fragment>
+              );
+            })}
           </div>
         </div>
       ))}
