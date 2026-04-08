@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 /** Accordion / column affordances — decorative; labels stay on buttons for SRs */
 const ChevronRightMicro = ({ className = '' }: { className?: string }) => (
@@ -45,18 +46,18 @@ type Tier = 'core' | 'pro';
 const kits: Record<Platform, Record<Tier, { price: string; label: string; features: string[] }>> = {
   google: {
     core: {
-      price: '$59',
+      price: '$39',
       label: 'Google Core Kit',
       features: [
-        'Step-by-step Google Business profile setup',
-        'Tips to help you show up higher in local search results',
-        'Starter guide to promoting your profile and attracting new customers',
-        '30 review response templates',
-        '12 industry photo angles',
+        '30 review response templates—personalize them with your Identity Kit Voice & Content Playbook',
+        'Reply and post starters so searches and reviews turn into real conversations',
+        'Step-by-step Google Business profile walkthrough (the checklist behind a free listing)',
+        '12 industry photo angles—use Camentra on your phone to line up each shot',
+        'Plain tips for showing up clearly in local search (not a ranking guarantee)',
       ],
     },
     pro: {
-      price: '$129',
+      price: '$79',
       label: 'Google Pro Kit',
       features: [
         'Everything in Google Core',
@@ -69,18 +70,18 @@ const kits: Record<Platform, Record<Tier, { price: string; label: string; featur
   },
   yelp: {
     core: {
-      price: '$59',
+      price: '$39',
       label: 'Yelp Core Kit',
       features: [
-        'Step-by-step Yelp profile setup',
-        'Tips to help you show up higher in local search results',
-        'Starter guide to promoting your profile and attracting new customers',
-        '30 review response templates',
-        '12 industry photo angles',
+        '30 review response templates—personalize them with your Identity Kit Voice & Content Playbook',
+        'Reply and post starters so searches and reviews turn into real conversations',
+        'Step-by-step Yelp profile walkthrough (the checklist behind a free profile)',
+        '12 industry photo angles—use Camentra on your phone to line up each shot',
+        'Plain tips for showing up clearly in local search (not a ranking guarantee)',
       ],
     },
     pro: {
-      price: '$129',
+      price: '$79',
       label: 'Yelp Pro Kit',
       features: [
         'Everything in Yelp Core',
@@ -153,13 +154,16 @@ const contentPacks = [
 
 const industries = ['Cafe', 'Gym & Fitness', 'Spa & Beauty', 'Professional Services'];
 
-/** Bundle price — shown in header row; CTA is verb-only (matches catalog pattern) */
-const BUNDLE_PRICE = '$229';
+/**
+ * Both-platform bundle = two Pro-tier conversion libraries (Google + Yelp).
+ * Priced below buying each Pro kit alone; see docs/ACQUISITION_FUNNEL_AND_SKU_MAP.md if tiers change.
+ */
+const BUNDLE_PRICE = '$129';
 
 const BUNDLE_FEATURES = [
-  'Google and Yelp launch kits together in one checkout',
-  'Save $30 compared to buying each platform separately',
-  'Templates, photo angles, and review guides for both platforms',
+  'Google and Yelp Pro conversion libraries together in one checkout',
+  'Save $29 compared to buying each platform’s Pro kit separately',
+  'Templates, photo angles, review replies, and ads-ready extras on both platforms',
 ];
 
 const CATALOG_COLUMNS: {
@@ -174,22 +178,22 @@ const CATALOG_COLUMNS: {
   {
     id: 'google',
     label: 'Google',
-    teaser: 'From $59',
-    shortDescription: 'Google Business setup, templates, and photo angles for local search.',
+    teaser: 'From $39',
+    shortDescription: 'Conversion-ready templates, review replies, walkthrough, and photo angles for Google.',
     previewItems: [{ label: 'Core' }, { label: 'Pro' }],
   },
   {
     id: 'yelp',
     label: 'Yelp',
-    teaser: 'From $59',
-    shortDescription: 'Yelp profile, visibility, and review response templates.',
+    teaser: 'From $39',
+    shortDescription: 'Conversion-ready templates, review replies, walkthrough, and photo angles for Yelp.',
     previewItems: [{ label: 'Core' }, { label: 'Pro' }],
   },
   {
     id: 'both',
     label: 'Both',
-    teaser: `${BUNDLE_PRICE} · Save $30`,
-    shortDescription: 'Google + Yelp together: save $30, one purchase.',
+    teaser: `${BUNDLE_PRICE} · Save $29`,
+    shortDescription: 'Google + Yelp Pro together: save $29, one purchase.',
     previewItems: [{ label: 'Bundle' }],
   },
 ];
@@ -208,24 +212,18 @@ const catalogCta = {
 
 /** Eyebrow on Identity Kit card */
 const IDENTITY_CARD_EYEBROW = 'Brand & voice';
+const IDENTITY_CARD_PRICE_LINE = 'Core $49 · Pro $99';
 
 /** Eyebrow on guides & kits card (launch kits, content packs, and more) */
 const CATALOG_CARD_EYEBROW = 'Local business';
+const CATALOG_CARD_PRICE_LINE = 'From $19 · Core kits from $39';
+
+/** Eyebrow on Camentra card */
+const CAMENTRA_CARD_EYEBROW = 'Ongoing support';
+const CAMENTRA_CARD_PRICE_LINE = 'About $10/mo or $80/yr';
 
 /** User-facing name for the Google/Yelp/packs modal (avoid “catalog” / internal-sounding labels) */
 const GUIDES_KITS_TITLE = 'Guides & launch kits';
-
-/** Flip to `false` when Identity Kit is live; link uses URL below */
-const IDENTITY_KIT_COMING_SOON = true;
-
-/**
- * Identity Kit app (`identity-kit` repo) — override with `VITE_IDENTITY_KIT_URL` in `.env`
- * @see https://kit.brandalchemyllc.com (production target)
- */
-const identityKitUrl =
-  (typeof import.meta !== 'undefined' &&
-    (import.meta as { env?: { VITE_IDENTITY_KIT_URL?: string } }).env?.VITE_IDENTITY_KIT_URL) ||
-  'https://kit.brandalchemyllc.com';
 
 const identityKitDescription =
   "A personalized kit that defines your brand voice, look, and feel, so you always sound and look like you. Answer a few questions to download yours today.";
@@ -483,55 +481,33 @@ const Products = () => {
           <h2 className="mb-2 text-xs font-bold uppercase tracking-[0.3em] text-gray-400 md:mb-4">Products</h2>
           <h3 className="text-4xl md:text-5xl font-serif font-normal text-gray-900">The Toolkit</h3>
           <p className="text-gray-500 text-sm md:text-base font-light leading-relaxed mt-5">
-            Practical downloads to help you look sharp online: brand voice, Google and Yelp setup, photo guides, and copy for social and email. Built for owners and small teams who want professional results without a big-agency budget.
+            Start with the Identity Kit to define how your business sounds and looks. Then choose the guides,
+            kits, and copy packs that help you know what to say, what to post, what to improve first, and how
+            to stay consistent. Camentra supports the visual side when you want help taking better photos and
+            keeping things polished in the real world.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {/* Identity Kit — `IDENTITY_KIT_COMING_SOON`: no link until launch */}
-          {IDENTITY_KIT_COMING_SOON ? (
-            <div
-              className="relative z-20 bg-white group rounded-2xl overflow-hidden border border-gray-100 flex flex-col transition-all duration-500 shadow-none"
-              aria-label="Identity Kit, coming soon"
-            >
-              <div className="aspect-[16/10] overflow-hidden bg-gray-100">
-                <img
-                  src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=1200"
-                  alt="Identity Kit"
-                  className="w-full h-full object-cover grayscale opacity-90"
-                />
-              </div>
-              <div className="p-8 md:p-10 text-left">
-                <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">{IDENTITY_CARD_EYEBROW}</span>
-                <h4 className="text-2xl font-serif font-normal text-gray-900 mb-4">Identity Kit</h4>
-                <p className="text-gray-500 text-sm leading-relaxed font-light mb-6">{identityKitDescription}</p>
-                <span className="inline-block rounded-full border border-gray-200 bg-gray-50 px-4 py-2.5 text-xs font-bold uppercase tracking-widest text-gray-400 cursor-default">
-                  Coming soon
-                </span>
-              </div>
+          <Link
+            to="/identity-kit"
+            className="relative z-20 bg-white group rounded-2xl overflow-hidden border border-gray-100 flex flex-col transition-all duration-500 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] no-underline text-inherit"
+          >
+            <div className="aspect-[16/10] overflow-hidden bg-gray-100">
+              <img
+                src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=1200"
+                alt="Identity Kit"
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+              />
             </div>
-          ) : (
-            <a
-              href={identityKitUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative z-20 bg-white group rounded-2xl overflow-hidden border border-gray-100 flex flex-col transition-all duration-500 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] no-underline"
-            >
-              <div className="aspect-[16/10] overflow-hidden bg-gray-100">
-                <img
-                  src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=1200"
-                  alt="Identity Kit"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
-                />
-              </div>
-              <div className="p-8 md:p-10 text-left">
-                <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">{IDENTITY_CARD_EYEBROW}</span>
-                <h4 className="text-2xl font-serif font-normal text-gray-900 mb-4">Identity Kit</h4>
-                <p className="text-gray-500 text-sm leading-relaxed font-light mb-6">{identityKitDescription}</p>
-                <span className="text-xs font-bold text-black border-b border-black pb-1 uppercase tracking-widest">Open Identity Kit</span>
-              </div>
-            </a>
-          )}
+            <div className="p-8 md:p-10 text-left">
+              <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">{IDENTITY_CARD_EYEBROW}</span>
+              <h4 className="text-2xl font-serif font-normal text-gray-900 mb-4">Identity Kit</h4>
+              <p className="text-gray-500 text-sm leading-relaxed font-light mb-4">{identityKitDescription}</p>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-6">{IDENTITY_CARD_PRICE_LINE}</p>
+              <span className="text-xs font-bold text-black border-b border-black pb-1 uppercase tracking-widest">View Identity Kit</span>
+            </div>
+          </Link>
 
           {/* Guides & launch kits — opens modal (Google/Yelp kits, content packs, etc.) */}
           <div
@@ -549,8 +525,11 @@ const Products = () => {
               <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">{CATALOG_CARD_EYEBROW}</span>
               <h4 className="text-2xl font-serif font-normal text-gray-900 mb-4">{GUIDES_KITS_TITLE}</h4>
               <p className="text-gray-500 text-sm leading-relaxed font-light mb-6">
-                Step-by-step kits for Google and Yelp, photo guides, ideas for social posts and email, and more—all in one place so you can show up locally and look professional online.
+                Pick the help that solves the next bottleneck: clearer profiles, stronger replies, easier content,
+                better photos, or a simpler place to start. Everything works better once your Identity Kit is in
+                place.
               </p>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-6">{CATALOG_CARD_PRICE_LINE}</p>
               <span className="text-xs font-bold text-black border-b border-black pb-1 uppercase tracking-widest">Browse guides and kits</span>
             </div>
           </div>
@@ -570,11 +549,14 @@ const Products = () => {
               />
             </div>
             <div className="p-8 md:p-10 text-left">
-              <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">Mobile Application</span>
+              <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">{CAMENTRA_CARD_EYEBROW}</span>
               <h4 className="text-2xl font-serif font-normal text-gray-900 mb-4">Camentra</h4>
-              <p className="text-gray-500 text-sm leading-relaxed font-light mb-6">
-                Our flagship camera app with a live AI-powered coach. Get better business photos every time, without hiring a photographer or guessing what looks good.
+              <p className="text-gray-500 text-sm leading-relaxed font-light mb-4">
+                The pocket companion for the photo angles in our kits: templates on-screen, light retouch tools,
+                and an AI coach so you nail the shot. Pro is about $10/month or $80/year in the app—see the site
+                for current pricing.
               </p>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-6">{CAMENTRA_CARD_PRICE_LINE}</p>
               <span className="text-xs font-bold text-black border-b border-black pb-1 uppercase tracking-widest">Visit Site</span>
             </div>
           </a>
@@ -670,10 +652,16 @@ const Products = () => {
               {/* ── LAUNCH KITS (Google / Yelp / both) ── */}
               <div>
                 <div className="text-left mb-4 md:mb-5">
-                  <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Launch Kits</span>
-                  <h4 className="text-xl sm:text-2xl font-serif font-normal text-gray-900 mt-1">Choose your platform and tier.</h4>
+                  <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">
+                    Local conversion libraries
+                  </span>
+                  <h4 className="text-xl sm:text-2xl font-serif font-normal text-gray-900 mt-1">
+                    Choose Google, Yelp, or both.
+                  </h4>
                   <p className="text-sm text-gray-400 font-light mt-2">
-                    Step-by-step setup for Google Business and Yelp, so you show up in local search, make a strong first impression, and keep momentum after you launch.
+                    These kits are execution modules: templates, replies, and angles—not a pitch to “buy setup.”
+                    Use your Identity Kit Voice & Content Playbook to tailor the wording. The bundle is both
+                    platforms at Pro tier.
                   </p>
                   <p className="sm:hidden text-xs text-gray-500 font-light mt-2.5">
                     Tap a platform to see Core and Pro options.

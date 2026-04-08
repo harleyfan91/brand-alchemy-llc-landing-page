@@ -14,6 +14,7 @@
 | CTAs, contact, relationship posture | This file — *Engagement* |
 | Fonts, colors, imagery, β△ mark, UI weight | [BRAND_GUIDELINES.md](BRAND_GUIDELINES.md) |
 | Sister sites / products: canonical home, drift, Phase A | [BRAND_SOURCE_OF_TRUTH.md](BRAND_SOURCE_OF_TRUTH.md) |
+| Acquisition funnel, SKU map, bump/retain strategy | [ACQUISITION_FUNNEL_AND_SKU_MAP.md](ACQUISITION_FUNNEL_AND_SKU_MAP.md) |
 
 ---
 
@@ -54,9 +55,11 @@
 | Brand Standards (solution) | Owner-operated businesses wanting consistency | Clear visual + voice standards without a big agency | Guides, not unlimited custom design |
 | Ready-to-Use Toolkits (solution) | DIY operators | Plain steps + real templates | No assumption of marketing experience |
 | Get Found (solution) | Local / profile-driven businesses | Setup + visibility for profiles people actually check | Walkthroughs, not guaranteed placement |
-| Google Core / Pro kits | Local businesses using Google | Profile setup, local visibility, optional ads starter | See `Products.tsx` for feature lists |
+| Google Core / Pro kits | Local businesses using Google | Conversion library (templates, replies, walkthrough, angles)—not “paid setup” | Prices/features in `Products.tsx`; ladder in [ACQUISITION_FUNNEL_AND_SKU_MAP.md](ACQUISITION_FUNNEL_AND_SKU_MAP.md) |
 | Yelp Core / Pro kits | Businesses using Yelp | Same pattern as Google | Keep parity honest per platform |
 | Content packs (e.g. seasonal photo / copy) | Owners creating their own content | Specific deliverable (PDF, prompts, angles) | Framed as standalone, not confusing “add-on” language |
+| Identity Kit (Core / Pro) | Owners who want brand voice + look on paper | Guided intake → PDFs by email | Core $49 / Pro $99 in identity-kit repo; funnel role in [ACQUISITION_FUNNEL_AND_SKU_MAP.md](ACQUISITION_FUNNEL_AND_SKU_MAP.md) |
+| Camentra (app) | Owners taking business photos | Templates, guidance, AI coach (Pro) | Subscription via app store; optional post-kit Pro promo — see funnel map |
 
 Add a row for **each new SKU or service line** so the table stays the checklist before publishing copy.
 

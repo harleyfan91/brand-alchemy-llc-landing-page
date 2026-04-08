@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import AlchemyMark from './AlchemyMark';
 import { scrollToSection } from '../utils/scrollToSection';
 
 /**
- * Nav: in-page #anchors for the marketing homepage. When standalone routes ship (e.g. /guides,
- * /guides/:slug), add Link/href to those URLs here and keep section anchors for returning visitors
- * who land on home — or use one primary “Guides” destination and drop duplicate anchors.
+ * Nav: home uses in-page #anchors; `/identity-kit` is a dedicated route.
+ * When standalone guide routes ship (e.g. `/guides/:slug`), add them here.
  */
 
 const Header: React.FC = () => {
+  const location = useLocation();
+  const isHome = location.pathname === '/';
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -24,7 +26,19 @@ const Header: React.FC = () => {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
     closeMenu();
+    if (!isHome) {
+      window.location.assign(`/#${targetId}`);
+      return;
+    }
     scrollToSection(targetId);
+  };
+
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    closeMenu();
+    if (isHome) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (
@@ -32,23 +46,24 @@ const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
 
         {/* ── Lockup: β△ [rule] BRAND ALCHEMY ── */}
-        <a
-          href="#"
-          onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); closeMenu(); }}
+        <Link
+          to="/"
+          onClick={handleLogoClick}
           className="group flex items-center gap-3"
-          aria-label="Brand Alchemy, back to top"
+          aria-label="Brand Alchemy, home"
         >
           <AlchemyMark size="lg" className="text-gray-900 transition-colors group-hover:text-gray-400" />
           <span className="hidden text-xl font-bold uppercase tracking-tight text-gray-900 transition-colors group-hover:text-gray-500 md:inline">
             Brand Alchemy
           </span>
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex space-x-10 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
-          <a href="#services" onClick={(e) => handleNavClick(e, 'services')} className="hover:text-black transition-colors">Solutions</a>
-          <a href="#products" onClick={(e) => handleNavClick(e, 'products')} className="hover:text-black transition-colors">Products</a>
-          <a href="#guides" onClick={(e) => handleNavClick(e, 'guides')} className="hover:text-black transition-colors">Guides</a>
+          <a href={isHome ? '#services' : '/#services'} onClick={(e) => handleNavClick(e, 'services')} className="hover:text-black transition-colors">Solutions</a>
+          <a href={isHome ? '#products' : '/#products'} onClick={(e) => handleNavClick(e, 'products')} className="hover:text-black transition-colors">Products</a>
+          <Link to="/identity-kit" className="hover:text-black transition-colors">Identity Kit</Link>
+          <a href={isHome ? '#guides' : '/#guides'} onClick={(e) => handleNavClick(e, 'guides')} className="hover:text-black transition-colors">Guides</a>
           <a href="mailto:info@brandalchemyllc.com" className="hover:text-black transition-colors">Contact</a>
         </nav>
 
@@ -73,11 +88,12 @@ const Header: React.FC = () => {
       </div>
 
       {/* Mobile nav overlay */}
-      <div className={`md:hidden absolute top-full left-0 w-full bg-white border-t border-gray-100 transition-all duration-300 ease-in-out overflow-hidden shadow-2xl ${isMenuOpen ? 'max-h-[380px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'}`}>
+      <div className={`md:hidden absolute top-full left-0 w-full bg-white border-t border-gray-100 transition-all duration-300 ease-in-out overflow-hidden shadow-2xl ${isMenuOpen ? 'max-h-[420px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'}`}>
         <nav className="flex flex-col p-8 space-y-8 text-center text-[11px] font-bold uppercase tracking-[0.4em] text-gray-400">
-          <a href="#services" onClick={(e) => handleNavClick(e, 'services')} className="hover:text-black transition-colors">Solutions</a>
-          <a href="#products" onClick={(e) => handleNavClick(e, 'products')} className="hover:text-black transition-colors">Products</a>
-          <a href="#guides" onClick={(e) => handleNavClick(e, 'guides')} className="hover:text-black transition-colors">Guides</a>
+          <a href={isHome ? '#services' : '/#services'} onClick={(e) => handleNavClick(e, 'services')} className="hover:text-black transition-colors">Solutions</a>
+          <a href={isHome ? '#products' : '/#products'} onClick={(e) => handleNavClick(e, 'products')} className="hover:text-black transition-colors">Products</a>
+          <Link to="/identity-kit" onClick={closeMenu} className="hover:text-black transition-colors">Identity Kit</Link>
+          <a href={isHome ? '#guides' : '/#guides'} onClick={(e) => handleNavClick(e, 'guides')} className="hover:text-black transition-colors">Guides</a>
           <a href="mailto:info@brandalchemyllc.com" onClick={closeMenu} className="hover:text-black transition-colors">Contact</a>
         </nav>
       </div>
