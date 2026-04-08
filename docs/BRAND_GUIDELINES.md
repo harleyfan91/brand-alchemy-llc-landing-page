@@ -142,7 +142,7 @@ Shipped as **`/favicon.ico`**. Regeneration settings for a consistent mark are d
 ### Background alchemical SVGs
 
 - **Component:** `components/AlchemyBackground.tsx` — geometric β, triangle, and train of standard alchemical-style icons (Earth, Sulfur, Mercury, Fire, Sun, Air, Salt, etc.).
-- **Treatment:** `currentColor` with `text-gray-900`, peak opacity **`~0.06`** — **decorative only**, fixed behind content (`z-index` below header/modals). Not intended as full-strength logo substitutes in print or ads unless deliberately redesigned for contrast.
+- **Treatment:** `currentColor` with `text-gray-900`, peak opacity **`~0.06`** — **decorative only**, fixed behind content at **`z-index: 10`** (see **Layout → Z-index & stacking**). Not intended as full-strength logo substitutes in print or ads unless deliberately redesigned for contrast.
 
 ---
 
@@ -155,9 +155,25 @@ Shipped as **`/favicon.ico`**. Regeneration settings for a consistent mark are d
 | **Section rhythm** | `py-10 md:py-24` or `py-24` for major blocks; `scroll-mt-20` for hash targets |
 | **Cards** | `rounded-2xl`, `border border-gray-100`, optional hover shadow `hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)]` |
 | **Primary buttons** | `rounded-full`, generous vertical padding (`py-3`–`py-3.5`) |
-| **Z-index stack (reference)** | Background symbols ≈ `10`, content sections `20`, header `50`, modals `100` |
 
 **Visual weight:** Favor **white space, light type weights, and thin borders** over heavy boxes. Black is for **decision moments** (primary CTA, selection), not large fills.
+
+### Z-index & stacking (canonical)
+
+There **was** a one-line note in the layout table; the trouble we hit on Guides (atmosphere showing “through” controls, then over-correcting with a whole-section layer) came from **not** applying this consistently. Use **only** these bands unless you have a documented exception:
+
+| Layer | Typical value | Used for (this repo) |
+|--------|----------------|----------------------|
+| **Page / hero back** | `0` | Hero decorative layers under copy (`Hero.tsx` absolute `z-0`) |
+| **Atmosphere** | `10` | `AlchemyBackground` — `position: fixed`, `pointer-events-none`, low-opacity SVGs only |
+| **Section foreground** | `20` | Major in-flow content that must read above the fixed atmosphere: section shells (`Services`, `Contact`), hero copy container, section intros, dense grids (e.g. `Products` cards), carousel tiles (`Guides` `article`). Optional **`isolate`** where stacking with siblings/overflow gets confusing. |
+| **Local controls** | `20` (same band) | Small interactive controls that sit in a flex row **beside** `overflow-*` tracks (e.g. Guides prev/next): give the **control** `position: relative` + `z-index: 20` — **not** the whole section — so they stack above `z-10` without flattening the whole block. |
+| **Header** | `50` | `Header` — fixed nav above page content |
+| **Modals** | `100` | Full-screen scrim + dialog (`Products` kit modal, `Guides` coming-soon). **Use `z-[100]` for all** so layers stay predictable. |
+
+**Why it was confusing:** `AlchemyBackground` is a **sibling** of `main` (both under the app root), not a child of each section. A white **section** (`bg-white`) still leaves **flex children** (e.g. carousel arrows vs `overflow-x-auto` track) in subtle stacking orders; a control without `z-index` can end up **under** the fixed `z-10` layer in some compositions. Raising **`z-20` on an entire section** fixes that but also **hides the atmosphere for the whole band** — too heavy. Prefer **targeted** `relative` + `z-20` on the element that needs it.
+
+**Tailwind CDN caveat (buttons):** Preflight can reset `button` backgrounds in ways that fight plain inline `backgroundColor` alone. Prefer **defined surfaces** (white or gray fills), **visible borders**, **soft shadows**, and **icon color** for contrast on white sections — or scoped CSS / non-`button` patterns if needed. Example: `Guides` carousel controls stay **white** with gray-600/900 border and chevron weight for separation from the page.
 
 ---
 
