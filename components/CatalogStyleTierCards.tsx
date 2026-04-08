@@ -10,18 +10,28 @@ import CheckIcon from './CheckIcon';
 export type TierContent = {
   price: string;
   features: string[];
+  /** Full-width rule before this index (e.g. `4` after Core PDFs when Pro lists core + add-ons). */
+  dividerBeforeFeatureIndex?: number;
 };
 
 export type CatalogStyleTierCardsProps = {
   core: TierContent;
   pro: TierContent;
+  /** `pro-first` matches `identity-kit` TierSelector (`tierOptions` order). Default `core-first`. */
+  order?: 'core-first' | 'pro-first';
 };
 
-const CatalogStyleTierCards: React.FC<CatalogStyleTierCardsProps> = ({ core, pro }) => {
-  const tiers: { id: 'core' | 'pro'; label: string; kit: TierContent; isActive: boolean }[] = [
-    { id: 'core', label: 'Core', kit: core, isActive: false },
-    { id: 'pro', label: 'Pro', kit: pro, isActive: true },
-  ];
+const CatalogStyleTierCards: React.FC<CatalogStyleTierCardsProps> = ({ core, pro, order = 'core-first' }) => {
+  const tiers =
+    order === 'pro-first'
+      ? [
+          { id: 'pro' as const, label: 'Pro', kit: pro, isActive: true },
+          { id: 'core' as const, label: 'Core', kit: core, isActive: false },
+        ]
+      : [
+          { id: 'core' as const, label: 'Core', kit: core, isActive: false },
+          { id: 'pro' as const, label: 'Pro', kit: pro, isActive: true },
+        ];
 
   return (
     <section aria-label="Pricing tiers" className="mb-5 space-y-3">
@@ -64,20 +74,30 @@ const CatalogStyleTierCards: React.FC<CatalogStyleTierCardsProps> = ({ core, pro
           </div>
           <div className="grid grid-cols-1 gap-x-5 gap-y-2 border-t border-gray-100 px-4 pb-4 pt-3 sm:grid-cols-2 sm:px-5 sm:pb-4">
             {kit.features.map((f, idx) => (
-              <div key={`${id}-${idx}`} className="flex items-start gap-2.5">
-                <span
-                  className="mt-0.5 shrink-0"
-                  style={{ color: isActive ? 'var(--ba-gray-500)' : 'var(--ba-gray-300)' }}
-                >
-                  <CheckIcon size="md" />
-                </span>
-                <span
-                  className="text-sm font-normal leading-snug"
-                  style={{ color: isActive ? 'var(--ba-gray-700)' : 'var(--ba-catalog-feature-inactive)' }}
-                >
-                  {f}
-                </span>
-              </div>
+              <React.Fragment key={`${id}-${idx}-${f.slice(0, 24)}`}>
+                {kit.dividerBeforeFeatureIndex !== undefined && idx === kit.dividerBeforeFeatureIndex ? (
+                  <div
+                    className="col-span-1 my-1 border-t border-gray-100 pt-2 sm:col-span-2"
+                    role="presentation"
+                  >
+                    <span className="sr-only">Pro additions</span>
+                  </div>
+                ) : null}
+                <div className="flex items-start gap-2.5">
+                  <span
+                    className="mt-0.5 shrink-0"
+                    style={{ color: isActive ? 'var(--ba-gray-500)' : 'var(--ba-gray-300)' }}
+                  >
+                    <CheckIcon size="md" />
+                  </span>
+                  <span
+                    className="text-sm font-normal leading-snug"
+                    style={{ color: isActive ? 'var(--ba-gray-700)' : 'var(--ba-catalog-feature-inactive)' }}
+                  >
+                    {f}
+                  </span>
+                </div>
+              </React.Fragment>
             ))}
           </div>
         </div>

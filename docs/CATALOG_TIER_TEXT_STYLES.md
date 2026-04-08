@@ -72,4 +72,4 @@
 
 **Code references:** `Products.tsx` — search `CatalogColumnPreviewPeek`, `renderTierCardsFor`, `previewItems`.
 
-**Standalone parity:** `components/CatalogStyleTierCards.tsx` reuses the same tier row structure and token colors for static two-tier blocks (Identity Kit marketing page). Decorative radio dots mirror the modal; tier labels use the **expanded** row treatment (bold uppercase, Inter).
+**Standalone parity:** `components/CatalogStyleTierCards.tsx` reuses the same tier row structure and token colors for static two-tier blocks (Identity Kit marketing page). Decorative radio dots mirror the modal; tier labels use the **expanded** row treatment (bold uppercase, Inter). Optional props: `order="pro-first"` (matches `identity-kit` `tierOptions` array order) and `dividerBeforeFeatureIndex` on a tier when listing **Core + Pro** lines in one card (same idea as `TierSelector` when Pro is selected and bullets combine).
