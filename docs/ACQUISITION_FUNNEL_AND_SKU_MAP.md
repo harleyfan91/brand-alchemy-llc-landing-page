@@ -132,6 +132,11 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
 
 - [x] Update the **homepage narrative below the hero** so the page clearly makes **Identity Kit** the first recommended step.
 - [x] Rework `components/Services.tsx` so the three steps reflect the ladder more directly: **foundation → execution → ongoing support**.
+- [x] Reframe the homepage section above the catalog as **System** instead of **Solutions / The path** so it explains the Brand Alchemy model rather than acting like a loose process explainer.
+  Current structure:
+  - **Brand foundation** → Identity Kit as the starting point
+  - **Marketing tools & kits** → growing catalog of practical products
+  - **Visibility & growth** → the business outcome layer the system supports
 - [ ] Review the **Hero** section and decide whether the primary CTA should point to **Identity Kit** first instead of the broader catalog. *(Deferred for now; keep hero untouched in this pass.)*
 - [x] Refine the **Products** section so the visual hierarchy makes the order clearer: Identity Kit first, local kits second, Camentra third.
 - [x] Decide whether the current homepage should stay a **single broad catalog page** or whether Identity Kit needs its own more focused landing page before paid traffic.

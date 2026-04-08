@@ -201,7 +201,7 @@ const Hero: React.FC = () => {
               tabIndex={scrollMuted ? -1 : undefined}
               className="group inline-flex items-center gap-2 text-[clamp(0.72rem,2.7vw,0.8rem)] font-bold uppercase tracking-[0.2em] text-gray-500 transition-colors hover:text-gray-900 md:gap-2.5 md:text-xs"
             >
-              <span>See the approach</span>
+              <span>See the system</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

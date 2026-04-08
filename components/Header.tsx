@@ -61,7 +61,7 @@ const Header: React.FC = () => {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex space-x-10 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
-          <a href={isHome ? '#services' : '/#services'} onClick={(e) => handleNavClick(e, 'services')} className="hover:text-black transition-colors">Solutions</a>
+          <a href={isHome ? '#services' : '/#services'} onClick={(e) => handleNavClick(e, 'services')} className="hover:text-black transition-colors">System</a>
           <a href={isHome ? '#products' : '/#products'} onClick={(e) => handleNavClick(e, 'products')} className="hover:text-black transition-colors">Products</a>
           <Link
             to="/identity-kit"
@@ -97,7 +97,7 @@ const Header: React.FC = () => {
       {/* Mobile nav overlay */}
       <div className={`md:hidden absolute top-full left-0 w-full bg-white border-t border-gray-100 transition-all duration-300 ease-in-out overflow-hidden shadow-2xl ${isMenuOpen ? 'max-h-[420px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'}`}>
         <nav className="flex flex-col p-8 space-y-8 text-center text-[11px] font-bold uppercase tracking-[0.4em] text-gray-400">
-          <a href={isHome ? '#services' : '/#services'} onClick={(e) => handleNavClick(e, 'services')} className="hover:text-black transition-colors">Solutions</a>
+          <a href={isHome ? '#services' : '/#services'} onClick={(e) => handleNavClick(e, 'services')} className="hover:text-black transition-colors">System</a>
           <a href={isHome ? '#products' : '/#products'} onClick={(e) => handleNavClick(e, 'products')} className="hover:text-black transition-colors">Products</a>
           <Link
             to="/identity-kit"

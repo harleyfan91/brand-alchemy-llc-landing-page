@@ -127,8 +127,8 @@ const GuidesAndKitsPage: React.FC = () => {
             Guides &amp; launch kits
           </h1>
           <p className="mt-3 max-w-3xl text-sm font-light leading-relaxed text-gray-600 sm:text-base">
-            Pick the help that solves your next bottleneck: clearer profiles, stronger replies, easier content, better
-            photos, or a simpler place to start.
+            Practical products for local businesses that want to show up more clearly online. They help with profiles,
+            replies, content, photos, and the everyday marketing work that brings in more customers.
           </p>
         </section>
 

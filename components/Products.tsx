@@ -220,10 +220,9 @@ const CATALOG_CARD_EYEBROW = 'Local business';
 const CATALOG_CARD_PRICE_LINE = 'From $19 · Core kits from $39';
 
 /** Eyebrow on Camentra card */
-const CAMENTRA_CARD_EYEBROW = 'Ongoing support';
-const CAMENTRA_CARD_PRICE_LINE = 'About $10/mo or $80/yr';
+const CAMENTRA_CARD_EYEBROW = 'iOS App';
 
-/** User-facing name for the Google/Yelp/packs modal (avoid “catalog” / internal-sounding labels) */
+/** User-facing name for the Google/Yelp/packs page/category. */
 const GUIDES_KITS_TITLE = 'Guides & launch kits';
 
 const identityKitDescription =
@@ -498,7 +497,7 @@ const Products = () => {
 
           {/* Guides & launch kits — dedicated product page */}
           <Link
-            to="/guides-and-kits"
+            to="/local-business"
             className="relative z-20 bg-white group rounded-xl sm:rounded-2xl overflow-hidden border border-gray-100 flex flex-col transition-all duration-500 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] no-underline text-inherit"
           >
             <div className="aspect-[16/10] overflow-hidden bg-gray-100">
@@ -512,9 +511,8 @@ const Products = () => {
               <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">{CATALOG_CARD_EYEBROW}</span>
               <h4 className="text-2xl font-serif font-normal text-gray-900 mb-4">{GUIDES_KITS_TITLE}</h4>
               <p className="text-gray-500 text-sm leading-relaxed font-light mb-6">
-                Pick the help that solves the next bottleneck: clearer profiles, stronger replies, easier content,
-                better photos, or a simpler place to start. Everything works better once your Identity Kit is in
-                place.
+                Practical products for local businesses that want to show up more clearly online. They help with
+                profiles, replies, content, photos, and the everyday marketing work that brings in more customers.
               </p>
               <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-6">{CATALOG_CARD_PRICE_LINE}</p>
               <span className="text-xs font-bold text-black border-b border-black pb-1 uppercase tracking-widest">View guides and kits</span>
@@ -539,11 +537,9 @@ const Products = () => {
               <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">{CAMENTRA_CARD_EYEBROW}</span>
               <h4 className="text-2xl font-serif font-normal text-gray-900 mb-4">Camentra</h4>
               <p className="text-gray-500 text-sm leading-relaxed font-light mb-4">
-                The pocket companion for the photo angles in our kits: templates on-screen, light retouch tools,
-                and an AI coach so you nail the shot. Pro is about $10/month or $80/year in the app—see the site
-                for current pricing.
+                The photo coach in your pocket: live on-screen blueprints and real-time, AI powered coaching so you nail the shot every time.
+                See the site for current pricing.
               </p>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-6">{CAMENTRA_CARD_PRICE_LINE}</p>
               <span className="text-xs font-bold text-black border-b border-black pb-1 uppercase tracking-widest">Visit Site</span>
             </div>
           </a>
