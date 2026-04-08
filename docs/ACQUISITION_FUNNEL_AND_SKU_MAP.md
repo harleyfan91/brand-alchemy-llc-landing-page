@@ -5,7 +5,7 @@
 **Code / product references**
 
 - Marketing catalog (Google/Yelp kits, content packs, bundle): `components/Products.tsx`
-- Site routing (homepage + `/identity-kit`): `App.tsx`, `components/HomePage.tsx`, `components/ScrollToTop.tsx` (scroll-to-top on route change), `pages/IdentityKitPage.tsx`, `components/CatalogStyleTierCards.tsx` (Core/Pro tier chrome aligned with catalog modal); optional kit URLs: `utils/identityKitUrls.ts`, `.env.example`
+- Site routing (homepage + `/identity-kit`): `App.tsx`, `components/HomePage.tsx`, `components/ScrollToTop.tsx` (scroll-to-top on route change), `pages/IdentityKitPage.tsx`, `components/MarketingComparisonCards.tsx` (marketing-first Core/Pro comparison for offer pages); optional kit URLs: `utils/identityKitUrls.ts`, `.env.example`
 - Identity Kit tiers and deliverables: `identity-kit` repo — `README.md`, `IDENTITY_KIT_PRD.md`, `apps/web/src/data/tiers.ts`
 - Camentra subscription model: `Camentra` repo — `docs/features/subscription/SUBSCRIPTION_SYSTEM_COMPLETE_GUIDE.md`, `app/screens/PaywallScreen.tsx`
 
@@ -126,6 +126,7 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
 - [x] Added the **Identity Kit → local kits** and **local kits → Camentra** integration language to the site catalog copy.
 - [x] Linked this doc into the broader brand/product documentation so it can act as the working reference.
 - [x] Shipped **client-side routes** for `/` and `/identity-kit`, Identity Kit **marketing page**, and **nav** link; fixed production issues (**no** incompatible `ScrollRestoration` on `BrowserRouter`; **no** catch-all `_redirects` on Cloudflare Pages).
+- [x] Refined the `/identity-kit` page into a clearer **marketing comparison** pattern for mobile: **Pro first**, concise card summaries, anchored CTA below the cards, and a subtle **AI Enhanced** peek tab on the featured Pro card instead of faux selection UI.
 
 ### Next steps
 
@@ -174,7 +175,7 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
   **Shipped:** `BrowserRouter` + `Routes` — `/` → homepage (`HomePage`), `/identity-kit` → `IdentityKitPage`. Do **not** use `<ScrollRestoration>` with `BrowserRouter` in React Router v7 (it requires a data router and will white-screen the app).
   **Still to plan:** `/guides` and `/guides/:slug` when guide pages ship.
 - [x] Build the **Identity Kit marketing page** in the main Brand Alchemy site (`pages/IdentityKitPage.tsx`).
-  Purpose: introduce the offer, tiers, and outcomes before the app. Primary CTA: **Start my Identity Kit** (breadcrumb **Home** + header logo/nav for wayfinding — no second action beside the CTA).
+  Purpose: introduce the offer, tiers, and outcomes before the app. Current page pattern: short hero + **marketing comparison block** (Pro first, clearer summaries, anchored CTA below the cards, subtle **AI Enhanced** peek tab on Pro) rather than a pseudo-selector.
   Intake remains in the `identity-kit` repo; target URL is `VITE_IDENTITY_KIT_START_URL` or `VITE_IDENTITY_KIT_URL` / default kit host until `/identity-kit/start` is routed on the apex.
 - [ ] Keep the **Identity Kit intake app** in the separate repo, but prepare it for subpath hosting under the main domain.
   Technical note: the current Vite app in `identity-kit/apps/web` has no subpath base configured yet. If it will live at `/identity-kit/start`, asset loading and build config will need to support that base path.

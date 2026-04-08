@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import CatalogStyleTierCards from '../components/CatalogStyleTierCards';
-import FloatingIdentityKitCta from '../components/FloatingIdentityKitCta';
-import type { TierContent } from '../components/CatalogStyleTierCards';
+import MarketingComparisonCards from '../components/MarketingComparisonCards';
+import type { MarketingComparisonCard } from '../components/MarketingComparisonCards';
 import { getIdentityKitStartUrl } from '../utils/identityKitUrls';
 
 /**
@@ -27,17 +26,25 @@ const PRO_ADD_ONS = [
   'CTA language suggestions',
 ] as const;
 
-const coreTier: TierContent = {
-  price: '$49',
-  features: [...CORE_DELIVERABLES],
-};
-
-const proTier: TierContent = {
-  price: '$99',
-  dividerBeforeFeatureIndex: CORE_DELIVERABLES.length,
-  useSparkIconAfterDivider: true,
-  features: [...CORE_DELIVERABLES, ...PRO_ADD_ONS],
-};
+const comparisonCards: MarketingComparisonCard[] = [
+  {
+    name: 'Pro',
+    price: '$99',
+    tabLabel: 'AI Enhanced',
+    emphasis: true,
+    icon: 'spark',
+    summary:
+      'Our flagship kit for a more tailored brand foundation, plus extra content and messaging tools for day-to-day use.',
+    features: [PRO_ADD_ONS[0], PRO_ADD_ONS[1], PRO_ADD_ONS[2], PRO_ADD_ONS[4]],
+  },
+  {
+    name: 'Core',
+    price: '$49',
+    icon: 'check',
+    summary: 'A clear brand foundation with practical documents and next steps you can use right away.',
+    features: [...CORE_DELIVERABLES],
+  },
+] as const;
 
 /**
  * Dedicated Identity Kit offer page on the main domain (`/identity-kit`).
@@ -56,7 +63,7 @@ const IdentityKitPage: React.FC = () => {
     })();
 
   return (
-    <main className="flex-grow scroll-mt-20 bg-white pb-28 pt-20 md:pb-32 md:pt-28">
+    <main className="flex-grow scroll-mt-20 bg-white pb-10 pt-20 md:pb-16 md:pt-28">
       <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
         <nav aria-label="Breadcrumb" className="mb-4 md:mb-5">
           <ol className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-[10px] font-medium uppercase tracking-[0.18em] text-gray-400 md:text-xs md:tracking-[0.2em]">
@@ -80,22 +87,30 @@ const IdentityKitPage: React.FC = () => {
         </h1>
 
         <p className="mx-auto mt-4 max-w-xl text-sm font-light leading-relaxed text-gray-600 sm:mt-5 sm:text-base">
-          Our kits help define how you sound and look so you can show up consistently—without starting from scratch every
-          time you write, update your site, or brief someone else. Answer a guided flow, then receive your documents by
-          email.
+          The kit helps define how your brand sounds and looks so you can show up consistently, without starting from
+          scratch every time you write, update your site, or post. Take a short guided quiz to unlock your brand&apos;s
+          identity.
         </p>
       </div>
 
-      <div className="mx-auto mt-8 max-w-2xl px-4 sm:px-6 lg:px-8 md:mt-12">
-        <CatalogStyleTierCards core={coreTier} pro={proTier} order="pro-first" />
+      <div className="mx-auto mt-7 max-w-2xl px-4 sm:px-6 lg:px-8 md:mt-12">
+        <MarketingComparisonCards cards={comparisonCards} />
 
-        <p className="mx-auto mt-8 max-w-xl text-center text-[10px] font-light leading-snug text-gray-400 md:mt-10 md:text-xs md:leading-relaxed">
+        <div className="mt-6 flex justify-center md:mt-8">
+          <a
+            href={startUrl}
+            {...(openKitInNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+            className="inline-flex w-full max-w-md items-center justify-center rounded-full bg-black px-6 py-3.5 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-gray-800 sm:px-10 sm:py-4 sm:text-sm"
+          >
+            Start my Identity Kit
+          </a>
+        </div>
+
+        <p className="mx-auto mt-6 max-w-xl text-center text-[10px] font-light leading-snug text-gray-400 md:mt-8 md:text-xs md:leading-relaxed">
           Checkout and delivery run in the secure kit experience. While you are still testing, use Stripe test mode or
           restrict who can reach the start link.
         </p>
       </div>
-
-      <FloatingIdentityKitCta href={startUrl} openInNewTab={openKitInNewTab} />
     </main>
   );
 };
