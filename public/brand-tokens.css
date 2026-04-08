@@ -83,3 +83,38 @@
     line-height: 1.55;
   }
 }
+
+
+/*
+ * Section intro stack density variants
+ * Use one per section to keep spacing stable as copy length changes.
+ */
+.ba-section-stack--compact .ba-section-eyebrow {
+  margin-bottom: 0.35rem;
+}
+.ba-section-stack--compact .ba-section-display-title {
+  margin-bottom: 0.75rem;
+}
+.ba-section-stack--compact .ba-section-support {
+  margin-top: 0.3rem;
+}
+
+.ba-section-stack--default .ba-section-eyebrow {
+  margin-bottom: 0.5rem;
+}
+.ba-section-stack--default .ba-section-display-title {
+  margin-bottom: 1rem;
+}
+.ba-section-stack--default .ba-section-support {
+  margin-top: 0.5rem;
+}
+
+.ba-section-stack--roomy .ba-section-eyebrow {
+  margin-bottom: 0.6rem;
+}
+.ba-section-stack--roomy .ba-section-display-title {
+  margin-bottom: 1.25rem;
+}
+.ba-section-stack--roomy .ba-section-support {
+  margin-top: 0.65rem;
+}

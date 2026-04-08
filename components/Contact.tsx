@@ -14,9 +14,9 @@ const Contact: React.FC = () => {
           WebkitBackdropFilter: 'blur(3px)',
         }}
       />
-      <div className="relative mx-auto max-w-4xl px-4 text-center">
-        <h2 className="ba-section-eyebrow mb-2 text-xs font-bold uppercase tracking-[0.3em] text-gray-400 md:mb-4">Contact</h2>
-        <h3 className="ba-section-display-title mb-6 text-4xl font-serif font-normal text-gray-900 md:mb-8 md:text-5xl">Have questions?</h3>
+      <div className="ba-section-stack--roomy relative mx-auto max-w-4xl px-4 text-center">
+        <h2 className="ba-section-eyebrow text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Contact</h2>
+        <h3 className="ba-section-display-title text-4xl font-serif font-normal text-gray-900 md:text-5xl">Have questions?</h3>
         <p className="ba-section-support mb-0 mx-auto max-w-2xl text-base font-light leading-relaxed text-gray-500 md:text-lg">
           We build tools for business owners who want to put their best foot forward online, on their own terms. Questions about our products? Reach us at{' '}
           <a href="mailto:info@brandalchemyllc.com" className="text-gray-900 underline underline-offset-2 hover:text-gray-500 transition-colors">

@@ -2,7 +2,7 @@ import React from 'react';
 import Hero from './Hero';
 import Services from './Services';
 import Products from './Products';
-import Guides from './Guides';
+import Articles from './Articles';
 import Contact from './Contact';
 import AlchemyBackground from './AlchemyBackground';
 
@@ -15,7 +15,7 @@ const HomePage: React.FC = () => {
         <Hero />
         <Services />
         <Products />
-        <Guides />
+        <Articles />
         <Contact />
       </main>
     </>

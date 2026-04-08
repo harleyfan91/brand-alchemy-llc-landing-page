@@ -70,7 +70,7 @@ const Header: React.FC = () => {
           >
             Identity Kit
           </Link>
-          <a href={isHome ? '#guides' : '/#guides'} onClick={(e) => handleNavClick(e, 'guides')} className="hover:text-black transition-colors">Guides</a>
+          <a href={isHome ? '#articles' : '/#articles'} onClick={(e) => handleNavClick(e, 'articles')} className="hover:text-black transition-colors">Articles</a>
           <a href="mailto:info@brandalchemyllc.com" className="hover:text-black transition-colors">Contact</a>
         </nav>
 
@@ -107,7 +107,7 @@ const Header: React.FC = () => {
           >
             Identity Kit
           </Link>
-          <a href={isHome ? '#guides' : '/#guides'} onClick={(e) => handleNavClick(e, 'guides')} className="hover:text-black transition-colors">Guides</a>
+          <a href={isHome ? '#articles' : '/#articles'} onClick={(e) => handleNavClick(e, 'articles')} className="hover:text-black transition-colors">Articles</a>
           <a href="mailto:info@brandalchemyllc.com" onClick={closeMenu} className="hover:text-black transition-colors">Contact</a>
         </nav>
       </div>

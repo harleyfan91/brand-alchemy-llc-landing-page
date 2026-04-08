@@ -80,8 +80,8 @@ const Services: React.FC = () => {
       className="relative z-20 scroll-mt-20 overflow-visible bg-transparent py-8 md:py-24"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-6 text-center md:mb-16">
-          <h2 className="ba-section-eyebrow mb-2 text-xs font-bold uppercase tracking-[0.3em] text-gray-400 md:mb-4">
+        <div className="ba-section-stack--default mb-6 text-center md:mb-16">
+          <h2 className="ba-section-eyebrow text-xs font-bold uppercase tracking-[0.3em] text-gray-400">
             The path
           </h2>
           <h3 className="ba-section-display-title font-serif font-normal text-4xl text-gray-900 md:text-5xl">Start with the brand. Then put it to work.</h3>

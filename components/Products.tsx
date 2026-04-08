@@ -467,14 +467,11 @@ const Products = () => {
   return (
     <section id="products" className="scroll-mt-20 bg-white py-8 md:py-24">
       <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-        <div className="relative z-20 mx-auto mb-6 max-w-3xl md:mb-16">
-          <h2 className="ba-section-eyebrow mb-2 text-xs font-bold uppercase tracking-[0.3em] text-gray-400 md:mb-4">Products</h2>
+        <div className="ba-section-stack--default relative z-20 mx-auto mb-6 max-w-3xl md:mb-16">
+          <h2 className="ba-section-eyebrow text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Products</h2>
           <h3 className="ba-section-display-title text-4xl md:text-5xl font-serif font-normal text-gray-900">The Toolkit</h3>
-          <p className="ba-section-support text-gray-500 text-sm md:text-base font-light leading-relaxed mt-5">
-            Start with the Identity Kit to define how your business sounds and looks. Then choose the guides,
-            kits, and copy packs that help you know what to say, what to post, what to improve first, and how
-            to stay consistent. Camentra supports the visual side when you want help taking better photos and
-            keeping things polished in the real world.
+          <p className="ba-section-support text-gray-500 text-sm md:text-base font-light leading-relaxed">
+            Start with the Identity Kit. Once your brand has a clear voice and look, everything else clicks into place.
           </p>
         </div>
 

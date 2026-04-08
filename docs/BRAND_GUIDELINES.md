@@ -196,6 +196,7 @@ For section intro blocks (eyebrow + serif heading + support text):
 2. Keep proportion stable across bands (eyebrow smallest, heading dominant, support readable).
 3. Centralize width-band overrides in shared CSS tokens/classes (not one-off inline utility edits per section).
 4. **Policy:** section intro stack uses **band-based shared classes** (predictable and auditable). Hero remains the exception and uses `clamp(...)` because it is most viewport-sensitive.
+5. Use one density variant per section intro block: `ba-section-stack--compact` (short support copy), `ba-section-stack--default` (standard), or `ba-section-stack--roomy` (longer/supportive copy).
 
 #### Do / Don't
 

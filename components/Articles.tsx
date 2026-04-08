@@ -42,9 +42,9 @@ import React, { useCallback, useEffect, useRef, useState, type CSSProperties } f
  *   homepage strip stays a teaser.
  * - Tiles should navigate with `href` / router; keep `slug` as the path segment; move body copy out
  *   of this file.
- * - Header: today `#guides` on the marketing page; later you can point “Guides” to `/guides` while
+ * - Header: today `#articles` on the marketing page; later you can point “Articles” to `/articles` while
  *   keeping section anchors on home if useful.
- * - Article template: choose one primary “up” link (Home `/` vs Guides index `/guides`) for
+ * - Article template: choose one primary “up” link (Home `/` vs Articles index `/articles`) for
  *   breadcrumbs or back navigation and use it consistently.
  */
 
@@ -86,7 +86,7 @@ const CarouselNavIcon = ({ direction }: { direction: 'left' | 'right' }) => (
   </svg>
 );
 
-function GuidesCarouselNavButton({
+function ArticlesCarouselNavButton({
   direction,
   disabled,
   onClick,
@@ -147,7 +147,7 @@ function GuidesCarouselNavButton({
       type="button"
       onClick={onClick}
       disabled={disabled}
-      aria-label={direction === 'left' ? 'Previous guides' : 'Next guides'}
+      aria-label={direction === 'left' ? 'Previous articles' : 'Next articles'}
       style={style}
       onMouseEnter={() => {
         if (!disabled) setHover(true);
@@ -159,7 +159,7 @@ function GuidesCarouselNavButton({
   );
 }
 
-type Guide = {
+type Article = {
   slug: string;
   category: string;
   title: string;
@@ -169,7 +169,7 @@ type Guide = {
   imageAlt: string;
 };
 
-const guides: Guide[] = [
+const articles: Article[] = [
   {
     slug: 'branding-vs-marketing',
     category: 'Brand Basics',
@@ -222,10 +222,10 @@ const guides: Guide[] = [
   },
 ];
 
-const guideCount = guides.length;
+const articleCount = articles.length;
 
 /** Typography tiers: see file-top “tile title length” comment. */
-function guideTitleClass(title: string): string {
+function articleTitleClass(title: string): string {
   const n = title.length;
   const base = 'mb-4 font-serif font-normal leading-snug text-gray-900 text-balance';
   if (n > 88) return `${base} text-lg sm:text-xl`;
@@ -233,7 +233,7 @@ function guideTitleClass(title: string): string {
   return `${base} text-2xl sm:text-3xl`;
 }
 
-const Guides: React.FC = () => {
+const Articles: React.FC = () => {
   const lgUp = useMediaQueryMatches('(min-width: 1024px)');
   const [comingSoonOpen, setComingSoonOpen] = useState(false);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -293,23 +293,22 @@ const Guides: React.FC = () => {
 
   return (
     <>
-      <section id="guides" className="scroll-mt-20 bg-white py-8 md:py-24">
+      <section id="articles" className="scroll-mt-20 bg-white py-8 md:py-24">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-          <div className="relative z-20 mx-auto mb-6 max-w-3xl md:mb-16">
-            <h2 className="ba-section-eyebrow mb-2 text-xs font-bold uppercase tracking-[0.3em] text-gray-400 md:mb-4">
-              Guides
+          <div className="ba-section-stack--compact relative z-20 mx-auto mb-6 max-w-3xl md:mb-16">
+            <h2 className="ba-section-eyebrow text-xs font-bold uppercase tracking-[0.3em] text-gray-400">
+              Articles
             </h2>
             <h3 className="ba-section-display-title font-serif text-4xl font-normal text-gray-900 md:text-5xl">
-              Helpful reads for business owners
+              Marketing concepts, made simple.
             </h3>
-            <p className="ba-section-support mt-5 text-sm font-light leading-relaxed text-gray-500 md:text-base">
-              If you run a shop or service and want to look good online without drowning in buzzwords, these short reads are for you.
-              They cover how to show up clearly, what to post, and how to make your business easy to find and trust.
+            <p className="ba-section-support text-sm font-light leading-relaxed text-gray-500 md:text-base">
+              Short, plain-English explainers on how to get found, what to post, and how to make your business look its best.
             </p>
           </div>
 
           <div className="flex items-stretch gap-2 pb-4 pt-1 sm:gap-3">
-            <GuidesCarouselNavButton
+            <ArticlesCarouselNavButton
               variant="side"
               direction="left"
               disabled={!canScrollPrev}
@@ -323,17 +322,17 @@ const Guides: React.FC = () => {
               {/* Below lg: track ≥ N× scrollport; each slide is (MOBILE_CAROUSEL_SLIDE_FRAC/N)× track so slide ≈ that fraction of scrollport → adjacent tiles peek. */}
               <div
                 className="flex items-start gap-5 lg:items-stretch lg:min-w-0 lg:w-full"
-                style={lgUp ? undefined : { minWidth: `${guideCount * 100}%` }}
+                style={lgUp ? undefined : { minWidth: `${articleCount * 100}%` }}
               >
-                {guides.map((guide) => (
+                {articles.map((article) => (
                   <article
-                    key={guide.slug}
+                    key={article.slug}
                     className="relative z-20 isolate flex shrink-0 justify-start py-3 lg:block lg:w-[calc((100%-3.75rem)/4)]"
                     style={
                       lgUp
                         ? undefined
                         : {
-                            width: `${(100 * MOBILE_CAROUSEL_SLIDE_FRAC) / guideCount}%`,
+                            width: `${(100 * MOBILE_CAROUSEL_SLIDE_FRAC) / articleCount}%`,
                             flexShrink: 0,
                           }
                     }
@@ -341,20 +340,20 @@ const Guides: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => setComingSoonOpen(true)}
-                      aria-label={`${guide.title} — full guide coming soon`}
+                      aria-label={`${article.title} — full article coming soon`}
                       className="group flex w-full flex-col overflow-hidden rounded-xl appearance-none border border-gray-100 bg-white text-left shadow-none transition-[box-shadow,background-color,border-color] duration-500 max-lg:h-auto max-lg:min-h-[26rem] max-lg:w-[min(14rem,calc(100vw-4rem))] max-lg:shadow-sm hover:border-gray-200 hover:bg-gray-50 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2 lg:h-[min(420px,52vh)] lg:min-h-0 lg:max-h-none lg:max-w-none lg:rounded-2xl lg:shadow-none"
                     >
                       <div className="relative h-40 shrink-0 overflow-hidden bg-gray-100 sm:h-44 lg:h-[30%] lg:min-h-[7.5rem]">
                         <img
-                          src={guide.imageSrc}
-                          alt={guide.imageAlt}
+                          src={article.imageSrc}
+                          alt={article.imageAlt}
                           className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
                         />
                       </div>
                       <div className="flex flex-1 flex-col justify-between gap-2 bg-white px-3.5 pb-4 pt-4 sm:px-4 sm:pb-5 sm:pt-5 max-lg:overflow-visible lg:min-h-0 lg:overflow-visible">
-                        <h4 className={guideTitleClass(guide.title)}>{guide.title}</h4>
+                        <h4 className={articleTitleClass(article.title)}>{article.title}</h4>
                         <span className="text-left text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
-                          {guide.category}
+                          {article.category}
                         </span>
                       </div>
                     </button>
@@ -363,7 +362,7 @@ const Guides: React.FC = () => {
               </div>
             </div>
 
-            <GuidesCarouselNavButton
+            <ArticlesCarouselNavButton
               variant="side"
               direction="right"
               disabled={!canScrollNext}
@@ -372,13 +371,13 @@ const Guides: React.FC = () => {
           </div>
 
           <div className="mt-1 flex justify-center gap-6 sm:hidden">
-            <GuidesCarouselNavButton
+            <ArticlesCarouselNavButton
               variant="inline"
               direction="left"
               disabled={!canScrollPrev}
               onClick={() => scrollByOneTile(-1)}
             />
-            <GuidesCarouselNavButton
+            <ArticlesCarouselNavButton
               variant="inline"
               direction="right"
               disabled={!canScrollNext}
@@ -429,4 +428,4 @@ const Guides: React.FC = () => {
   );
 };
 
-export default Guides;
+export default Articles;
