@@ -11,6 +11,7 @@ import { scrollToSection } from '../utils/scrollToSection';
 const Header: React.FC = () => {
   const location = useLocation();
   const isHome = location.pathname === '/';
+  const isIdentityKit = location.pathname === '/identity-kit';
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -62,7 +63,13 @@ const Header: React.FC = () => {
         <nav className="hidden md:flex space-x-10 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
           <a href={isHome ? '#services' : '/#services'} onClick={(e) => handleNavClick(e, 'services')} className="hover:text-black transition-colors">Solutions</a>
           <a href={isHome ? '#products' : '/#products'} onClick={(e) => handleNavClick(e, 'products')} className="hover:text-black transition-colors">Products</a>
-          <Link to="/identity-kit" className="hover:text-black transition-colors">Identity Kit</Link>
+          <Link
+            to="/identity-kit"
+            className={`transition-colors hover:text-black ${isIdentityKit ? 'text-black' : ''}`}
+            aria-current={isIdentityKit ? 'page' : undefined}
+          >
+            Identity Kit
+          </Link>
           <a href={isHome ? '#guides' : '/#guides'} onClick={(e) => handleNavClick(e, 'guides')} className="hover:text-black transition-colors">Guides</a>
           <a href="mailto:info@brandalchemyllc.com" className="hover:text-black transition-colors">Contact</a>
         </nav>
@@ -92,7 +99,14 @@ const Header: React.FC = () => {
         <nav className="flex flex-col p-8 space-y-8 text-center text-[11px] font-bold uppercase tracking-[0.4em] text-gray-400">
           <a href={isHome ? '#services' : '/#services'} onClick={(e) => handleNavClick(e, 'services')} className="hover:text-black transition-colors">Solutions</a>
           <a href={isHome ? '#products' : '/#products'} onClick={(e) => handleNavClick(e, 'products')} className="hover:text-black transition-colors">Products</a>
-          <Link to="/identity-kit" onClick={closeMenu} className="hover:text-black transition-colors">Identity Kit</Link>
+          <Link
+            to="/identity-kit"
+            onClick={closeMenu}
+            className={`transition-colors hover:text-black ${isIdentityKit ? 'text-black' : ''}`}
+            aria-current={isIdentityKit ? 'page' : undefined}
+          >
+            Identity Kit
+          </Link>
           <a href={isHome ? '#guides' : '/#guides'} onClick={(e) => handleNavClick(e, 'guides')} className="hover:text-black transition-colors">Guides</a>
           <a href="mailto:info@brandalchemyllc.com" onClick={closeMenu} className="hover:text-black transition-colors">Contact</a>
         </nav>

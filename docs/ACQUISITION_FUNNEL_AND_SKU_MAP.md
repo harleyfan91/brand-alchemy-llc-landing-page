@@ -5,6 +5,7 @@
 **Code / product references**
 
 - Marketing catalog (Google/Yelp kits, content packs, bundle): `components/Products.tsx`
+- Site routing (homepage + `/identity-kit`): `App.tsx`, `components/HomePage.tsx`, `pages/IdentityKitPage.tsx`; optional kit URLs: `utils/identityKitUrls.ts`, `.env.example`
 - Identity Kit tiers and deliverables: `identity-kit` repo — `README.md`, `IDENTITY_KIT_PRD.md`, `apps/web/src/data/tiers.ts`
 - Camentra subscription model: `Camentra` repo — `docs/features/subscription/SUBSCRIPTION_SYSTEM_COMPLETE_GUIDE.md`, `app/screens/PaywallScreen.tsx`
 
@@ -124,6 +125,7 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
 - [x] Updated the product section copy to frame Google / Yelp kits as **conversion libraries**, not just “setup.”
 - [x] Added the **Identity Kit → local kits** and **local kits → Camentra** integration language to the site catalog copy.
 - [x] Linked this doc into the broader brand/product documentation so it can act as the working reference.
+- [x] Shipped **client-side routes** for `/` and `/identity-kit`, Identity Kit **marketing page**, and **nav** link; fixed production issues (**no** incompatible `ScrollRestoration` on `BrowserRouter`; **no** catch-all `_redirects` on Cloudflare Pages).
 
 ### Next steps
 
@@ -138,7 +140,7 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
 - [x] Audit every current CTA and decide which are **browse CTAs** vs **conversion CTAs** so the page has one primary path.
   Current browse / orientation CTAs: header nav links, hero `See the approach`, services `See the products`, `Browse guides and kits`, guide card clicks, and general contact.
   Current soft-trust CTA: email contact in `Contact.tsx`.
-  Current intended conversion CTAs that are **not fully wired yet**: `Buy now`, `Buy bundle`, `Get sample`, and the future `Open Identity Kit` path once the card is live.
+  Current intended conversion CTAs that are **not fully wired yet**: `Buy now`, `Buy bundle`, `Get sample`. Identity Kit: product card links to **`/identity-kit`** (offer page); primary conversion on that page is **Start my Identity Kit** → kit app URL from env / default subdomain.
   Conclusion: the site currently behaves as a **hub with browse CTAs**, not as a true funnel. Keep it that way at the homepage level, and move high-intent conversion into dedicated offer pages and real checkout flows.
 - [ ] Decide whether the **bundle** should remain a Pro-only two-platform offer or whether a separate two-platform Core offer is needed later.
 - [ ] Confirm the **live checkout / payment links** match the new prices before promoting the revised tiers.
@@ -156,9 +158,9 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
   - `brandalchemyllc.com/identity-kit` = dedicated Identity Kit marketing / sales page
   - `brandalchemyllc.com/identity-kit/start` = actual Identity Kit app flow (served from the separate repo)
   Why: this preserves the architectural split (app, checkout, fulfillment, PDFs) without making Identity Kit feel like a separate website or brand.
-- [ ] Define where the **Identity Kit** should appear as a destination from the marketing site.
-  Candidate locations: product card, product modal / supporting copy, nav CTA, guides/internal links, and future dedicated landing pages.
-  Rule: avoid sending cold traffic straight into the app from every surface until the intended entry point and app readiness are explicit.
+- [x] Define where the **Identity Kit** should appear as a destination from the marketing site.
+  **Implemented:** header nav **Identity Kit**, Products section first card (**View Identity Kit** → `/identity-kit`), and supporting copy elsewhere as before.
+  Rule: avoid sending cold traffic straight into the app from every surface until the intended entry point and app readiness are explicit — the **`/identity-kit`** page sells the offer first; the app URL is only the primary CTA on that page (and configurable via `VITE_IDENTITY_KIT_*`).
 - [x] Review hosting / payment assumptions against existing Identity Kit docs.
   Findings from `identity-kit` docs:
   - `DEPLOYMENT_DECISION_MEMO.md` already recommends **Cloudflare Pages** for web, **Render** for API, **Supabase** for DB, **Stripe Checkout + Stripe Webhooks** for payments, and **Resend** for email.
@@ -168,19 +170,17 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
 
 ### Same-domain Identity Kit implementation plan
 
-- [ ] Add real routing to the main marketing site so it can support page-level destinations instead of only one-page section anchors.
-  Minimum routes to plan for:
-  - `/` → homepage
-  - `/identity-kit` → dedicated Identity Kit marketing page
-  - future `/guides` and `/guides/:slug`
-- [ ] Build the **Identity Kit marketing page** in the main Brand Alchemy site.
-  Purpose: let the umbrella site introduce the offer, explain deliverables, price tiers, and outcomes before a visitor enters the app flow.
-  This page should not duplicate the full intake app; it should sell the offer and route qualified users into `/identity-kit/start`.
+- [x] Add real routing to the main marketing site so it can support page-level destinations instead of only one-page section anchors.
+  **Shipped:** `BrowserRouter` + `Routes` — `/` → homepage (`HomePage`), `/identity-kit` → `IdentityKitPage`. Do **not** use `<ScrollRestoration>` with `BrowserRouter` in React Router v7 (it requires a data router and will white-screen the app).
+  **Still to plan:** `/guides` and `/guides/:slug` when guide pages ship.
+- [x] Build the **Identity Kit marketing page** in the main Brand Alchemy site (`pages/IdentityKitPage.tsx`).
+  Purpose: introduce the offer, tiers, and outcomes before the app. Primary CTA: **Start my Identity Kit** (breadcrumb **Home** + header logo/nav for wayfinding — no second action beside the CTA).
+  Intake remains in the `identity-kit` repo; target URL is `VITE_IDENTITY_KIT_START_URL` or `VITE_IDENTITY_KIT_URL` / default kit host until `/identity-kit/start` is routed on the apex.
 - [ ] Keep the **Identity Kit intake app** in the separate repo, but prepare it for subpath hosting under the main domain.
   Technical note: the current Vite app in `identity-kit/apps/web` has no subpath base configured yet. If it will live at `/identity-kit/start`, asset loading and build config will need to support that base path.
-- [ ] Decide the Cloudflare path-routing mechanism for the shared domain.
-  Recommended direction: use Cloudflare to keep a **single public domain** while path-routing `/identity-kit/start` to the separately deployed Identity Kit frontend origin.
-  Internal implementation can still use a separate hidden origin such as `kit.brandalchemyllc.com` if that keeps deployment simpler; the public UX should remain on the main domain.
+- [ ] Decide the Cloudflare path-routing mechanism for the shared domain (only if you want the app on-path instead of a subdomain).
+  Recommended direction: keep **one public domain**; path-route `/identity-kit/start` to the kit frontend origin if needed, or use **`kit.brandalchemyllc.com`** with no Worker (simplest).
+  **Marketing site on Cloudflare Pages:** do **not** add a catch-all `_redirects` rule like `/* /index.html 200` — on Pages, redirects apply **even when a static file exists**, so that pattern can make `/assets/*.js` return HTML and **blank the entire site**. Rely on the default SPA behavior: **no top-level `404.html`** and Pages maps unknown paths to the SPA.
 - [ ] Keep the Identity Kit API separate from the marketing site.
   Recommended default from existing docs: deploy `identity-kit/apps/api` separately (Render is the current documented default) and let the app call that API for orders, checkout, fulfillment, and email.
 - [ ] Replace placeholder checkout only after the production path is ready.
@@ -192,8 +192,8 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
   Until then, do not push cold traffic directly into the live app flow.
 - [ ] Define the launch threshold for the Identity Kit connection.
   Two milestones:
-  - **Marketing-ready:** `/identity-kit` can be public as an offer page even if the app is not fully transacting yet
-  - **Conversion-ready:** `/identity-kit/start` is ready for real traffic because checkout, webhook, fulfillment, and email are operational
+  - **Marketing-ready:** `/identity-kit` can be public as an offer page even if the app is not fully transacting yet — **current state** (offer page live; kit app readiness per `identity-kit` repo).
+  - **Conversion-ready:** `/identity-kit/start` (or kit subdomain) is ready for real traffic because checkout, webhook, fulfillment, and email are operational.
 - [ ] Decide whether to keep `kit.brandalchemyllc.com` public, private, or transitional.
   Strong current preference: treat it as an implementation detail / deploy target if useful, but present the product publicly on `brandalchemyllc.com/identity-kit` so the customer experience feels like one site.
 
