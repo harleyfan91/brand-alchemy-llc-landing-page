@@ -64,9 +64,9 @@ const IdentityKitPage: React.FC = () => {
 
   return (
     <main className="flex-grow scroll-mt-20 bg-white pb-10 pt-20 md:pb-16 md:pt-28">
-      <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <nav aria-label="Breadcrumb" className="mb-4 md:mb-5">
-          <ol className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-[10px] font-medium uppercase tracking-[0.18em] text-gray-400 md:text-xs md:tracking-[0.2em]">
+          <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] font-medium uppercase tracking-[0.18em] text-gray-400 md:text-xs md:tracking-[0.2em]">
             <li>
               <Link to="/" className="text-gray-500 transition-colors hover:text-gray-900">
                 Home
@@ -81,35 +81,37 @@ const IdentityKitPage: React.FC = () => {
           </ol>
         </nav>
 
-        <h1 className="font-sans text-2xl font-bold uppercase leading-[1.1] tracking-tight text-gray-900 sm:text-3xl md:text-4xl">
-          <span className="block">Build your brand kit</span>
-          <span className="mt-0.5 block text-gray-500 sm:mt-1">In minutes</span>
-        </h1>
+        <div className="mx-auto max-w-3xl text-center">
+          <h1 className="font-sans text-2xl font-bold uppercase leading-[1.1] tracking-tight text-gray-900 sm:text-3xl md:text-4xl">
+            <span className="block">Build your brand kit</span>
+            <span className="mt-0.5 block text-gray-500 sm:mt-1">In minutes</span>
+          </h1>
 
-        <p className="mx-auto mt-4 max-w-xl text-sm font-light leading-relaxed text-gray-600 sm:mt-5 sm:text-base">
-          The kit helps define how your brand sounds and looks so you can show up consistently, without starting from
-          scratch every time you write, update your site, or post. Take a short guided quiz to unlock your brand&apos;s
-          identity.
-        </p>
-      </div>
-
-      <div className="mx-auto mt-7 max-w-2xl px-4 sm:px-6 lg:px-8 md:mt-12">
-        <MarketingComparisonCards cards={comparisonCards} />
-
-        <div className="mt-6 flex justify-center md:mt-8">
-          <a
-            href={startUrl}
-            {...(openKitInNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-            className="inline-flex w-full max-w-md items-center justify-center rounded-full bg-black px-6 py-3.5 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-gray-800 sm:px-10 sm:py-4 sm:text-sm"
-          >
-            Start my Identity Kit
-          </a>
+          <p className="mx-auto mt-4 max-w-xl text-sm font-light leading-relaxed text-gray-600 sm:mt-5 sm:text-base">
+            The kit helps define how your brand sounds and looks so you can show up consistently, without starting from
+            scratch every time you write, update your site, or post. Take a short guided quiz to unlock your brand&apos;s
+            identity.
+          </p>
         </div>
 
-        <p className="mx-auto mt-6 max-w-xl text-center text-[10px] font-light leading-snug text-gray-400 md:mt-8 md:text-xs md:leading-relaxed">
-          Checkout and delivery run in the secure kit experience. While you are still testing, use Stripe test mode or
-          restrict who can reach the start link.
-        </p>
+        <div className="mx-auto mt-7 max-w-2xl md:mt-12">
+          <MarketingComparisonCards cards={comparisonCards} />
+
+          <div className="mt-6 flex justify-center md:mt-8">
+            <a
+              href={startUrl}
+              {...(openKitInNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              className="inline-flex w-full max-w-md items-center justify-center rounded-full bg-black px-6 py-3.5 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-gray-800 sm:px-10 sm:py-4 sm:text-sm"
+            >
+              Start my Identity Kit
+            </a>
+          </div>
+
+          <p className="mx-auto mt-6 max-w-xl text-center text-[10px] font-light leading-snug text-gray-400 md:mt-8 md:text-xs md:leading-relaxed">
+            Checkout and delivery run in the secure kit experience. While you are still testing, use Stripe test mode or
+            restrict who can reach the start link.
+          </p>
+        </div>
       </div>
     </main>
   );
