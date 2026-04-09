@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import AlchemyMark from './AlchemyMark';
 import { scrollToSection } from '../utils/scrollToSection';
 
@@ -10,6 +10,7 @@ import { scrollToSection } from '../utils/scrollToSection';
 
 const Header: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const isHome = location.pathname === '/';
   const isIdentityKit = location.pathname === '/identity-kit';
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,11 +28,12 @@ const Header: React.FC = () => {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
     closeMenu();
-    if (!isHome) {
-      window.location.assign(`/#${targetId}`);
+    const expectedHash = `#${targetId}`;
+    if (location.pathname === '/' && location.hash === expectedHash) {
+      scrollToSection(targetId);
       return;
     }
-    scrollToSection(targetId);
+    navigate({ pathname: '/', hash: targetId });
   };
 
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
