@@ -50,7 +50,7 @@ Use this table when adding or auditing blocks so hero vs section vs body stay di
 | **Body / descriptions** (cards, features, solutions) | Inter | **light** (300) or **normal** (400) for lists | `text-sm` (often `md:text-base` for intros) | `text-gray-500`–`text-gray-600` | Sentence case, `leading-relaxed` |
 | **Contact headline** | Source Serif 4 | **normal** (400) — `font-normal` | `text-4xl` → `md:text-5xl` | `text-gray-900` | Title case |
 | **Content pack card title** (catalog) | Source Serif 4 | **normal** (400) — `font-normal` | `text-sm` → `sm:text-lg` | `text-gray-900` | Title case, `leading-snug` |
-| **Modal section title** (e.g. guides/kits `h3`) | Source Serif 4 | **normal** (400) — `font-normal` | `text-2xl` | `text-gray-900` | Title case |
+| **Modal section title** (e.g. local-business catalog `h3`) | Source Serif 4 | **normal** (400) — `font-normal` | `text-2xl` | `text-gray-900` | Title case |
 | **Contact body** | Inter | **light** (300) | `text-lg` | `text-gray-500` | `leading-relaxed`; link `text-gray-900`, hover `text-gray-500` |
 
 #### UI chrome
@@ -162,7 +162,7 @@ Shipped as **`/favicon.ico`**. Regeneration settings for a consistent mark are d
 
 Use a **hybrid** layout model on this site:
 
-- **Natural vertical document flow** for page sections (hero, services, products, guides, contact).
+- **Natural vertical document flow** for page sections (hero, services, products, articles, contact).
 - **Snap only for horizontal carousels** (cards/tiles), not full-page vertical lock-step sections.
 - Keep each section readable in one pass without forcing users into section-by-section swipes.
 

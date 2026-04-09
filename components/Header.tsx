@@ -5,7 +5,7 @@ import { scrollToSection } from '../utils/scrollToSection';
 
 /**
  * Nav: home uses in-page #anchors; `/identity-kit` is a dedicated route.
- * When standalone guide routes ship (e.g. `/guides/:slug`), add them here.
+ * When standalone article routes ship, add them here (see `Articles.tsx` TODO block).
  */
 
 const Header: React.FC = () => {

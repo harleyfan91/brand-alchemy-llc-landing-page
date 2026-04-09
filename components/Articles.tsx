@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react';
 
 /**
- * Guides — tile title length (persistent spec)
+ * Articles — tile title length (persistent spec)
  *
- * Keep this in sync with `guideTitleClass` below.
+ * Keep this in sync with `articleTitleClass` below.
  *
  * Editorial
  * - Aim for about two to three lines in the narrow tile. Prefer shorter, clearer titles in CMS over
@@ -16,12 +16,12 @@ import React, { useCallback, useEffect, useRef, useState, type CSSProperties } f
  *
  * Typography tiers by `title.length` (inclusive)
  * - 1–52:   `text-2xl` / `sm:text-3xl` (only very short headlines)
- * - 53–88:  `text-xl` / `sm:text-2xl` (default band — typical guide titles)
+ * - 53–88:  `text-xl` / `sm:text-2xl` (default band — typical article titles)
  * - 89+:    `text-lg` / `sm:text-xl`
  */
 
 /**
- * Guides — TODO and context (audience, content, IA)
+ * Articles — TODO and context (audience, content, IA)
  *
  * Audience
  * - Owner-operated SMBs: local shops, services, trades, Etsy, hospitality. They know their business,
@@ -29,27 +29,28 @@ import React, { useCallback, useEffect, useRef, useState, type CSSProperties } f
  * - Avoid tone aimed at SaaS founders, growth marketers, or “thought leadership” for pros.
  *
  * Content and naming
- * - Use “Guides” framing on the site (plain, practical), not a generic blog voice.
+ * - **Articles** is the site story for this strip: plain, practical explainers, not a generic blog voice.
  * - Tile categories (e.g. Brand Basics, Social Media, Get Found) should read like owner questions,
  *   not internal channel labels.
  * - Topics: immediate problems — what to post, what to fix first, profiles, photos, local visibility,
- *   time and budget. Help first; soft tie-in to kits only where it fits, no hard sell.
- * - Prefer a few strong guides over many thin or placeholder posts.
+ *   time and budget. Help first; soft tie-in to paid products only where it fits, no hard sell.
+ * - Prefer a few strong articles over many thin or placeholder posts.
+ * - How-to or step-by-step **guide-style** articles are one format we use; that does not rename this
+ *   section away from Articles in the nav or on the page.
  *
  * Future: pages, SEO, navigation
- * - Replace the coming-soon modal with real routes: `/guides` index and `/guides/:slug` articles
- *   (or `/blog/:slug` if you standardize on that). Full HTML, metadata, internal links for SEO;
- *   homepage strip stays a teaser.
+ * - Replace the coming-soon modal with real article index/detail routes when content ships (URL scheme
+ *   TBD). Full HTML, metadata, internal links for SEO; homepage strip can stay a teaser.
  * - Tiles should navigate with `href` / router; keep `slug` as the path segment; move body copy out
  *   of this file.
- * - Header: today `#articles` on the marketing page; later you can point “Articles” to `/articles` while
- *   keeping section anchors on home if useful.
- * - Article template: choose one primary “up” link (Home `/` vs Articles index `/articles`) for
- *   breadcrumbs or back navigation and use it consistently.
+ * - Header: today `#articles` on the marketing page; later you can point “Articles” to a dedicated index
+ *   route while keeping section anchors on home if useful.
+ * - Article template: choose one primary “up” link (Home `/` vs articles index) for breadcrumbs or back
+ *   navigation and use it consistently.
  */
 
 /** `gap-5` between tiles — keep in sync with carousel `gap-5` and width `calc`. */
-const GUIDE_TILE_GAP_PX = 20;
+const ARTICLE_TILE_GAP_PX = 20;
 
 /**
  * Below `lg`, each slide uses this fraction of the scrollport width; the remainder lets the
@@ -216,7 +217,7 @@ const articles: Article[] = [
     title: 'What to say when someone reviews your business online (placeholder)',
     summary:
       'Draft topic: short, polite replies you can reuse, when to take a conversation offline, and how to keep star ratings from eating your whole week.',
-    reasonToRead: 'Placeholder so the carousel scrolls on smaller screens; swap for a real guide when you are ready.',
+    reasonToRead: 'Placeholder so the carousel scrolls on smaller screens; swap for a real article when you are ready.',
     imageSrc: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=900',
     imageAlt: 'Two people talking at a small table in a cafe',
   },
@@ -254,7 +255,7 @@ const Articles: React.FC = () => {
     const root = scrollRef.current;
     const first = root?.querySelector('article');
     if (!root || !first) return;
-    const w = (first as HTMLElement).offsetWidth + GUIDE_TILE_GAP_PX;
+    const w = (first as HTMLElement).offsetWidth + ARTICLE_TILE_GAP_PX;
     root.scrollBy({ left: dir * w, behavior: 'smooth' });
   };
 
@@ -392,8 +393,8 @@ const Articles: React.FC = () => {
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 px-4 py-6"
           role="dialog"
           aria-modal="true"
-          aria-labelledby="guide-coming-soon-title"
-          aria-describedby="guide-coming-soon-desc"
+          aria-labelledby="article-coming-soon-title"
+          aria-describedby="article-coming-soon-desc"
           onClick={() => setComingSoonOpen(false)}
         >
           <div
@@ -410,16 +411,16 @@ const Articles: React.FC = () => {
             </button>
 
             <h4
-              id="guide-coming-soon-title"
+              id="article-coming-soon-title"
               className="pr-14 font-serif text-2xl font-normal leading-tight text-gray-900 sm:text-3xl"
             >
               Coming soon
             </h4>
             <p
-              id="guide-coming-soon-desc"
+              id="article-coming-soon-desc"
               className="mt-4 text-sm font-light leading-relaxed text-gray-500 sm:text-base"
             >
-              We’re writing full guide pages you can read on their own URLs. They aren’t live yet—check back soon.
+              We’re writing full articles you can read on their own URLs. They aren’t live yet—check back soon.
             </p>
           </div>
         </div>

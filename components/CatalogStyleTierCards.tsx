@@ -3,7 +3,7 @@ import CheckIcon from './CheckIcon';
 import ProFeatureSparkIcon from './ProFeatureSparkIcon';
 
 /**
- * Static Core / Pro tier pair using the same chrome as the guides & kits catalog modal
+ * Static Core / Pro tier pair using the same chrome as the local-business catalog modal in `Products.tsx`
  * (`Products.tsx` → `renderTierCardsFor`): borders, emphasis, Inter prices, checkmark features.
  * Not interactive — decorative “radio” dots mirror the selectable tier UI for visual parity.
  */

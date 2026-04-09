@@ -142,7 +142,7 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
 - [x] Refine the **Products** section so the visual hierarchy makes the order clearer: Identity Kit first, local kits second, Camentra third.
 - [x] Decide whether the current homepage should stay a **single broad catalog page** or whether Identity Kit needs its own more focused landing page before paid traffic.
   Decision: keep the homepage as the **umbrella / catalog / brand hub** for Brand Alchemy.
-  Why: the current page structure, navigation, and guides section already behave like a browse-first hub rather than a one-offer funnel; this supports SEO, trust, and multiple product lines better than forcing the homepage into a single-offer conversion page.
+  Why: the current page structure, navigation, and **Articles** section already behave like a browse-first hub rather than a one-offer funnel; this supports SEO, trust, and multiple product lines better than forcing the homepage into a single-offer conversion page.
   Implication: use the homepage to explain the ecosystem and route people to the right next step, while a dedicated **Identity Kit landing page** should handle paid traffic or high-intent promotion later.
 - [x] Audit every current CTA and decide which are **browse CTAs** vs **conversion CTAs** so the page has one primary path.
   Current browse / orientation CTAs: header nav links, hero **See the system**, services **See the products**, **Articles** → `#articles`, product cards (e.g. **View Identity Kit**, **View guides and kits** → `/local-business`), and general contact.
@@ -161,7 +161,7 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
 - [x] Decide the first-stage integration pattern between the marketing site and Identity Kit.
   Decision: keep the **Identity Kit codebase separate**, but present it as part of the **same customer-facing website**.
   Customer-facing structure:
-  - `brandalchemyllc.com/` = umbrella homepage / catalog / guides hub
+  - `brandalchemyllc.com/` = umbrella homepage / catalog / articles hub
   - `brandalchemyllc.com/identity-kit` = dedicated Identity Kit marketing / sales page
   - `brandalchemyllc.com/identity-kit/start` = actual Identity Kit app flow (served from the separate repo)
   Why: this preserves the architectural split (app, checkout, fulfillment, PDFs) without making Identity Kit feel like a separate website or brand.
@@ -179,7 +179,7 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
 
 - [x] Add real routing to the main marketing site so it can support page-level destinations instead of only one-page section anchors.
   **Shipped:** `BrowserRouter` + `Routes` — `/` → homepage (`HomePage`), `/identity-kit` → `IdentityKitPage`. Do **not** use `<ScrollRestoration>` with `BrowserRouter` in React Router v7 (it requires a data router and will white-screen the app).
-  **Still to plan:** `/guides` and `/guides/:slug` when guide pages ship.
+  **Still to plan:** dedicated **article** index/detail routes when long-form pieces ship (URL scheme TBD—not committed here).
 - [x] Build the **Identity Kit marketing page** in the main Brand Alchemy site (`pages/IdentityKitPage.tsx`).
   Purpose: introduce the offer, tiers, and outcomes before the app. Current page pattern: short hero + **marketing comparison block** (Pro first, clearer summaries, anchored CTA below the cards, subtle **AI Enhanced** peek tab on Pro) rather than a pseudo-selector.
   Intake remains in the `identity-kit` repo; target URL is `VITE_IDENTITY_KIT_START_URL` or `VITE_IDENTITY_KIT_URL` / default kit host until `/identity-kit/start` is routed on the apex.

@@ -117,7 +117,7 @@ function catalogAccent(selection: CatalogPlatform | null, columnId: CatalogPlatf
   return 'var(--ba-catalog-emphasis)';
 }
 
-/** Standalone downloads (photo guides, copy packs)—buy any pack on its own; not framed as “add-ons” to kits */
+/** Standalone downloads (e.g. photo how-tos, copy packs)—buy any pack on its own; not framed as “add-ons” to kits */
 const contentPacks = [
   {
     title: 'Seasonal Industry Photo Angles',
@@ -215,7 +215,7 @@ const catalogCta = {
 const IDENTITY_CARD_EYEBROW = 'Brand & voice';
 const IDENTITY_CARD_PRICE_LINE = 'Core $49 · Pro $99';
 
-/** Eyebrow on guides & kits card (launch kits, content packs, and more) */
+/** Eyebrow on local-business catalog card (launch kits, content packs, and more) */
 const CATALOG_CARD_EYEBROW = 'Local business';
 const CATALOG_CARD_PRICE_LINE = 'From $19 · Core kits from $39';
 
