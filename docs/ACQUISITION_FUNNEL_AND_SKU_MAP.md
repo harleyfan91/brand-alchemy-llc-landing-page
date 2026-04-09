@@ -131,20 +131,21 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
 ### Next steps
 
 - [x] Update the **homepage narrative below the hero** so the page clearly makes **Identity Kit** the first recommended step.
-- [x] Rework `components/Services.tsx` so the three steps reflect the ladder more directly: **foundation → execution → ongoing support**.
+- [x] Rework `components/Services.tsx` so the three steps reflect the ladder more directly: **brand foundation → marketing tools & kits → visibility & growth**.
 - [x] Reframe the homepage section above the catalog as **System** instead of **Solutions / The path** so it explains the Brand Alchemy model rather than acting like a loose process explainer.
   Current structure:
   - **Brand foundation** → Identity Kit as the starting point
   - **Marketing tools & kits** → growing catalog of practical products
   - **Visibility & growth** → the business outcome layer the system supports
-- [ ] Review the **Hero** section and decide whether the primary CTA should point to **Identity Kit** first instead of the broader catalog. *(Deferred for now; keep hero untouched in this pass.)*
+- [x] Review the **Hero** section and decide whether the primary CTA should point to **Identity Kit** first instead of the broader catalog.
+  **Decision:** Keep the **hub** model. Primary hero action stays **See the system** → `#services` (explain the model first). High-intent Identity Kit traffic can land on **`/identity-kit`**; the homepage does not need to behave like a single-offer funnel.
 - [x] Refine the **Products** section so the visual hierarchy makes the order clearer: Identity Kit first, local kits second, Camentra third.
 - [x] Decide whether the current homepage should stay a **single broad catalog page** or whether Identity Kit needs its own more focused landing page before paid traffic.
   Decision: keep the homepage as the **umbrella / catalog / brand hub** for Brand Alchemy.
   Why: the current page structure, navigation, and guides section already behave like a browse-first hub rather than a one-offer funnel; this supports SEO, trust, and multiple product lines better than forcing the homepage into a single-offer conversion page.
   Implication: use the homepage to explain the ecosystem and route people to the right next step, while a dedicated **Identity Kit landing page** should handle paid traffic or high-intent promotion later.
 - [x] Audit every current CTA and decide which are **browse CTAs** vs **conversion CTAs** so the page has one primary path.
-  Current browse / orientation CTAs: header nav links, hero `See the approach`, services `See the products`, `Browse guides and kits`, guide card clicks, and general contact.
+  Current browse / orientation CTAs: header nav links, hero **See the system**, services **See the products**, **Articles** → `#articles`, product cards (e.g. **View Identity Kit**, **View guides and kits** → `/local-business`), and general contact.
   Current soft-trust CTA: email contact in `Contact.tsx`.
   Current intended conversion CTAs that are **not fully wired yet**: `Buy now`, `Buy bundle`, `Get sample`. Identity Kit: product card links to **`/identity-kit`** (offer page); primary conversion on that page is **Start my Identity Kit** → kit app URL from env / default subdomain.
   Conclusion: the site currently behaves as a **hub with browse CTAs**, not as a true funnel. Keep it that way at the homepage level, and move high-intent conversion into dedicated offer pages and real checkout flows.
