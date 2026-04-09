@@ -29,7 +29,7 @@ const PRO_ADD_ONS = [
 const comparisonCards: MarketingComparisonCard[] = [
   {
     name: 'Pro',
-    price: '$99',
+    price: '$149',
     tabLabel: 'AI Enhanced',
     emphasis: true,
     icon: 'spark',
@@ -39,7 +39,7 @@ const comparisonCards: MarketingComparisonCard[] = [
   },
   {
     name: 'Core',
-    price: '$49',
+    price: '$79',
     icon: 'check',
     summary: 'A clear brand foundation with practical documents and next steps you can use right away.',
     features: [...CORE_DELIVERABLES],

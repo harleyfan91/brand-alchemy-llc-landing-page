@@ -17,7 +17,7 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
 
 | Phase | Name (internal) | Role | Hook (customer-facing) | Prices |
 |-------|------------------|------|------------------------|--------|
-| **1** | The Brain | Foundation | Stop guessing how your brand should sound and look. | Identity Kit **Core $49** / **Pro $99** |
+| **1** | The Brain | Foundation | Stop guessing how your brand should sound and look. | Identity Kit **Core $79** / **Pro $149** |
 | **2** | The Megaphone | Local execution | Don’t sell “Google setup”—sell a **conversion asset library**: replies, prompts, angles, plus an honest profile walkthrough. | Google/Yelp **Core $39** / **Pro $79**; **Both (2× Pro) bundle $129** |
 | **3** | The Engine | Ongoing execution | The “how-to” for the **12 industry photo angles** in the kits—line up shots, retouch, AI coach. | Camentra **~$9.99/mo** or **~$79.99/yr** (set in App Store / RevenueCat; confirm live) |
 
@@ -54,10 +54,10 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
 
 | Tier | Price | Summary |
 |------|--------|---------|
-| **Core** | **$49** | Brand Brief, Style Guide, Voice & Content Playbook, 30-Day Quick Start (4 PDFs). |
-| **Pro** | **$99** | Core + **Content Starter Pack** (5th PDF). |
+| **Core** | **$79** | Brand Brief, Style Guide, Voice & Content Playbook, 30-Day Quick Start (4 PDFs). |
+| **Pro** | **$149** | Core + **Content Starter Pack** (5th PDF). |
 
-**Primary ad/lander SKU:** Identity Kit **Core ($49)**.
+**Primary ad/lander SKU:** Identity Kit **Core ($79)**.
 
 ### Phase 2 — Local kits (marketing site)
 
@@ -107,9 +107,9 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
 
 | Stage | Goal | SKU(s) |
 |-------|------|--------|
-| **Land** | Brand foundation | Identity Kit **Core** $49 |
+| **Land** | Brand foundation | Identity Kit **Core** $79 |
 | **Bump** | Apply voice + local templates | **Social post starters** $19 **or** **Google/Yelp Core** $39 (one default per test) |
-| **Ascend** | Deeper brand or local Pro | Identity Kit **Pro** $99; **Google/Yelp Pro** $79; **2× Pro bundle** $129 |
+| **Ascend** | Deeper brand or local Pro | Identity Kit **Pro** $149; **Google/Yelp Pro** $79; **2× Pro bundle** $129 |
 | **Retain** | Photos + coach | Camentra **Pro** subscription; optional subsidized trial after kit |
 
 ---

@@ -58,7 +58,7 @@
 | Google Core / Pro kits | Local businesses using Google | Conversion library (templates, replies, walkthrough, angles)—not “paid setup” | Prices/features in `Products.tsx`; ladder in [ACQUISITION_FUNNEL_AND_SKU_MAP.md](ACQUISITION_FUNNEL_AND_SKU_MAP.md) |
 | Yelp Core / Pro kits | Businesses using Yelp | Same pattern as Google | Keep parity honest per platform |
 | Content packs (e.g. seasonal photo / copy) | Owners creating their own content | Specific deliverable (PDF, prompts, angles) | Framed as standalone, not confusing “add-on” language |
-| Identity Kit (Core / Pro) | Owners who want brand voice + look on paper | Guided intake → PDFs by email | Core $49 / Pro $99 in identity-kit repo; funnel role in [ACQUISITION_FUNNEL_AND_SKU_MAP.md](ACQUISITION_FUNNEL_AND_SKU_MAP.md) |
+| Identity Kit (Core / Pro) | Owners who want brand voice + look on paper | Guided intake → PDFs by email | Core $79 / Pro $149 in identity-kit repo; funnel role in [ACQUISITION_FUNNEL_AND_SKU_MAP.md](ACQUISITION_FUNNEL_AND_SKU_MAP.md) |
 | Camentra (app) | Owners taking business photos | Templates, guidance, AI coach (Pro) | Subscription via app store; optional post-kit Pro promo — see funnel map |
 
 Add a row for **each new SKU or service line** so the table stays the checklist before publishing copy.

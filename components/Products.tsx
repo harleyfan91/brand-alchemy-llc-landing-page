@@ -213,7 +213,7 @@ const catalogCta = {
 
 /** Eyebrow on Identity Kit card */
 const IDENTITY_CARD_EYEBROW = 'Brand & voice';
-const IDENTITY_CARD_PRICE_LINE = 'Core $49 · Pro $99';
+const IDENTITY_CARD_PRICE_LINE = 'Core $79 · Pro $149';
 
 /** Eyebrow on local-business catalog card (launch kits, content packs, and more) */
 const CATALOG_CARD_EYEBROW = 'Local business';
