@@ -486,12 +486,14 @@ const Products = () => {
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
               />
             </div>
-            <div className="p-5 sm:p-8 md:p-10 text-left">
+            <div className="flex flex-1 flex-col p-5 text-left sm:p-8 md:p-10">
               <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">{IDENTITY_CARD_EYEBROW}</span>
               <h4 className="text-2xl font-serif font-normal text-gray-900 mb-4">Identity Kit</h4>
               <p className="text-gray-500 text-sm leading-relaxed font-light mb-4">{identityKitDescription}</p>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-6">{IDENTITY_CARD_PRICE_LINE}</p>
-              <span className="text-xs font-bold text-black border-b border-black pb-1 uppercase tracking-widest">View Identity Kit</span>
+              <div className="mt-auto pt-6">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">{IDENTITY_CARD_PRICE_LINE}</p>
+                <span className="text-xs font-bold text-black border-b border-black pb-1 uppercase tracking-widest w-fit">View Identity Kit</span>
+              </div>
             </div>
           </Link>
 
@@ -507,15 +509,17 @@ const Products = () => {
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
               />
             </div>
-            <div className="p-5 sm:p-8 md:p-10 text-left">
+            <div className="flex flex-1 flex-col p-5 text-left sm:p-8 md:p-10">
               <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">{CATALOG_CARD_EYEBROW}</span>
               <h4 className="text-2xl font-serif font-normal text-gray-900 mb-4">{GUIDES_KITS_TITLE}</h4>
               <p className="text-gray-500 text-sm leading-relaxed font-light mb-6">
                 Practical products for local businesses that want to show up more clearly online. They help with
                 profiles, replies, content, photos, and the everyday marketing work that brings in more customers.
               </p>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-6">{CATALOG_CARD_PRICE_LINE}</p>
-              <span className="text-xs font-bold text-black border-b border-black pb-1 uppercase tracking-widest">View guides and kits</span>
+              <div className="mt-auto pt-6">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">{CATALOG_CARD_PRICE_LINE}</p>
+                <span className="text-xs font-bold text-black border-b border-black pb-1 uppercase tracking-widest w-fit">View guides and kits</span>
+              </div>
             </div>
           </Link>
 
@@ -533,14 +537,14 @@ const Products = () => {
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
               />
             </div>
-            <div className="p-5 sm:p-8 md:p-10 text-left">
+            <div className="flex flex-1 flex-col p-5 text-left sm:p-8 md:p-10">
               <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-1">{CAMENTRA_CARD_EYEBROW}</span>
               <h4 className="text-2xl font-serif font-normal text-gray-900 mb-4">Camentra</h4>
               <p className="text-gray-500 text-sm leading-relaxed font-light mb-4">
                 The photo coach in your pocket: live on-screen blueprints and real-time, AI powered coaching so you nail the shot every time.
                 See the site for current pricing.
               </p>
-              <span className="text-xs font-bold text-black border-b border-black pb-1 uppercase tracking-widest">Visit Site</span>
+              <span className="mt-auto pt-6 text-xs font-bold text-black border-b border-black pb-1 uppercase tracking-widest w-fit">Visit Site</span>
             </div>
           </a>
         </div>
