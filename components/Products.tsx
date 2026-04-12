@@ -234,9 +234,10 @@ const identityKitDescription =
  */
 const KitPeekSkeletonLines = () => (
   <div className="mt-2.5 space-y-1.5">
-    <div className="h-2.5 w-[85%] rounded bg-gray-200/90 blur-[1px]" />
-    <div className="h-2.5 w-[66%] rounded bg-gray-200/85 blur-[1px]" />
-    <div className="h-2.5 w-[78%] rounded bg-gray-200/85 blur-[1px]" />
+    {/* Solid `bg-gray-*` only — opacity modifiers on theme-linked grays are unreliable with Tailwind CDN + CSS vars. */}
+    <div className="h-2.5 w-[85%] rounded bg-gray-300 blur-[1px]" />
+    <div className="h-2.5 w-[66%] rounded bg-gray-300 blur-[1px]" />
+    <div className="h-2.5 w-[78%] rounded bg-gray-300 blur-[1px]" />
   </div>
 );
 
@@ -333,11 +334,13 @@ const Products = () => {
                   handleTierChange(t);
                 }
               }}
-              className="rounded-lg sm:rounded-xl border bg-white cursor-pointer relative overflow-hidden"
+              className={`rounded-lg sm:rounded-xl border cursor-pointer relative overflow-hidden ${
+                isActive ? 'bg-gray-100' : 'bg-white'
+              }`}
               style={{
                 borderColor: isActive ? 'var(--ba-catalog-emphasis)' : 'var(--ba-gray-200)',
                 boxShadow: isActive ? '0 4px 20px -4px rgba(0,0,0,0.12)' : 'none',
-                transition: 'border-color 0.15s ease, box-shadow 0.15s ease',
+                transition: 'border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease',
               }}
             >
               <div className="flex items-center justify-between px-4 pt-4 pb-3 sm:px-5 sm:pt-4 sm:pb-3">
@@ -417,7 +420,7 @@ const Products = () => {
     <>
       <div className="space-y-3 mb-5" style={fadeStyle}>
         <div
-          className="rounded-lg sm:rounded-xl border bg-white relative overflow-hidden"
+          className="rounded-lg sm:rounded-xl border bg-gray-100 relative overflow-hidden"
           style={{
             borderColor: 'var(--ba-catalog-emphasis)',
             boxShadow: '0 4px 20px -4px rgba(0,0,0,0.12)',
@@ -757,7 +760,7 @@ const Products = () => {
                                 )}
                               </button>
                               {expanded && (
-                                <div className="px-3 pb-5 pt-2 border-t border-gray-100 bg-white/70 sm:px-4">
+                                <div className="px-3 pb-5 pt-2 border-t border-gray-100 bg-white sm:px-4">
                                   {col.id === 'both' ? renderBundleColumnContent() : renderTierCardsFor(col.id)}
                                 </div>
                               )}
@@ -828,7 +831,7 @@ const Products = () => {
                                   <ChevronRightMicro className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-px" />
                                 </span>
                               </div>
-                              <div className="flex min-h-0 flex-1 flex-col overflow-y-auto border-t border-gray-100/90 bg-white/60 px-3 pb-4 pt-2 backdrop-blur-sm sm:px-4 sm:pb-5">
+                              <div className="flex min-h-0 flex-1 flex-col overflow-y-auto border-t border-gray-100 bg-white px-3 pb-4 pt-2 sm:px-4 sm:pb-5">
                                 <CatalogColumnPreviewPeek col={col} />
                               </div>
                             </button>
@@ -861,7 +864,7 @@ const Products = () => {
                                 {headerBar}
                               </button>
                               {expanded && (
-                                <div className="flex-1 flex flex-col min-h-0 min-w-0 px-4 sm:px-5 pb-5 sm:pb-6 pt-2 border-t border-gray-100/90 bg-white/60 backdrop-blur-sm overflow-y-auto">
+                                <div className="flex-1 flex flex-col min-h-0 min-w-0 px-4 sm:px-5 pb-5 sm:pb-6 pt-2 border-t border-gray-100 bg-white overflow-y-auto">
                                   {col.id === 'both' ? renderBundleColumnContent() : renderTierCardsFor(col.id)}
                                 </div>
                               )}

@@ -78,15 +78,19 @@ Use this table when adding or auditing blocks so hero vs section vs body stay di
 
 ## Color
 
-### Core neutrals (Tailwind gray scale)
+### Core neutrals (cool slate gray — one family)
+
+Parent-brand neutrals are a **cool slate** ramp (blue-gray undertone), defined once as `--ba-gray-50` … `--ba-gray-900` in [`public/brand-tokens.css`](../public/brand-tokens.css). **`index.html`** configures the Tailwind CDN so utilities like `text-gray-500` and `border-gray-100` resolve to those CSS variables—utilities and tokens cannot drift.
 
 - **Page:** `bg-white`, default text `text-gray-900` (`index.html` `body`).
-- **Primary text:** `text-gray-900`.
+- **Primary text:** `text-gray-900` (ink step on the ramp).
 - **Secondary / body:** `text-gray-500`, `text-gray-600`, `text-gray-700` as needed.
 - **Eyebrows / muted labels:** `text-gray-400`.
 - **Softer headline accents:** `text-gray-300` (e.g. hero line weight).
 - **Borders / dividers:** `border-gray-100`, `border-gray-200`.
 - **Surfaces:** `bg-gray-50`, `bg-gray-100` (image placeholders, subtle panels).
+
+Legacy aliases `--ba-cool-ramp-*` in the token file point at the same steps; prefer **`--ba-gray-*`** in new code.
 
 ### Brand chrome
 
@@ -102,7 +106,7 @@ Use this table when adding or auditing blocks so hero vs section vs body stay di
 
 ### Design tokens (machine-readable)
 
-**File:** [`public/brand-tokens.css`](../public/brand-tokens.css) — CSS custom properties for font stacks, Tailwind-aligned **gray** neutrals, text/border/surface roles, primary button colors, scrim, and **catalog platform** tints (Google / Yelp / both). Linked from `index.html` so the variables are available if you add custom CSS; **Tailwind utility classes remain the day-to-day contract** on this site. `components/Products.tsx` uses `var(--ba-…)` for catalog inline styles so hex values are not duplicated outside this file.
+**File:** [`public/brand-tokens.css`](../public/brand-tokens.css) — CSS custom properties for font stacks, **canonical cool gray** (`--ba-gray-*`), semantic text/border/surface roles, primary button colors, scrim, and **catalog platform** tints (Google / Yelp / both). Linked from `index.html` **before** the Tailwind CDN script so variables exist when `tailwind.config` maps `gray` to `var(--ba-gray-*)`. **Tailwind utility classes remain the day-to-day contract** on this site. `components/Products.tsx` uses `var(--ba-…)` for catalog inline styles so hex values are not duplicated outside this file.
 
 **Sister sites:** copy or vendor this file from this repository and keep it aligned when the guidelines change. Product-specific accents stay in the product codebase.
 
@@ -114,7 +118,7 @@ Used for Google vs Yelp column styling in `Products.tsx` — values also live as
 |----------|-----------------|--------|
 | Google | `#f0f4ff` | `#4285F4` |
 | Yelp | `#fff5f5` | `#d32323` |
-| Both / neutral picker | `#f1f2f4` / `#f3f4f6` | `#111` for combined emphasis |
+| Both / neutral picker | `#eef1f4` / `var(--ba-gray-100)` | `#111` for combined emphasis |
 
 ---
 

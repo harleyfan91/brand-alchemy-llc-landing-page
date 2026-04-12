@@ -10,7 +10,7 @@ Reusable **formatting-only** building blocks for Brand Alchemy PDFs, aligned wit
 
 - **Identity Kit customer PDFs** (`CoreKitDocuments.tsx`) also use **survey palette swatches** (e.g. ocean, forest, `minimal_light`) for **colored nav segments and section bands** — that chroma is **personalization**, not the parent “Brand Alchemy blue.”
 
-- **Umbrella / lead-magnet PDFs** should lean on **black + Tailwind gray ramp** from the marketing site. This package exports **`BRAND_PDF_PARENT_UI`** — hex values aligned with `public/brand-tokens.css` (`--ba-gray-*`, `--ba-color-primary`). Use `navSegmentRamp`, `primary`, `doAnchor`, `avoidAnchor`, etc., instead of kit palette blues.
+- **Umbrella / lead-magnet PDFs** should lean on **black + the marketing site’s cool gray ramp** (`--ba-gray-*` in `public/brand-tokens.css`). This package exports **`BRAND_PDF_PARENT_UI`** — hex values aligned with those tokens (`--ba-color-primary` for black). Use `navSegmentRamp`, `primary`, `doAnchor`, `avoidAnchor`, etc., instead of kit palette blues.
 
 ## Usage
 

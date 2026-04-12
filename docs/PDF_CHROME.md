@@ -47,7 +47,7 @@ The sample in `packages/pdf-shell-sample` avoids that by **importing `@react-pdf
 
 Identity Kit’s **CoreKitDocuments** also applies **customer survey palettes** (ocean, forest, `minimal_light`, …) to **nav strips and section bands** — that color is **product personalization**, not the parent company palette.
 
-For **umbrella PDFs** in this repo, use **`BRAND_PDF_PARENT_UI`** from `@brand-alchemy/pdf-layout-primitives` (hex aligned with [`public/brand-tokens.css`](../public/brand-tokens.css): black primary, Tailwind grays). See **`packages/pdf-layout-primitives/README.md`**.
+For **umbrella PDFs** in this repo, use **`BRAND_PDF_PARENT_UI`** from `@brand-alchemy/pdf-layout-primitives` (hex aligned with [`public/brand-tokens.css`](../public/brand-tokens.css): black primary, **cool slate** `--ba-gray-*` ramp). See **`packages/pdf-layout-primitives/README.md`**.
 
 ## Relationship to canonical brand docs
 

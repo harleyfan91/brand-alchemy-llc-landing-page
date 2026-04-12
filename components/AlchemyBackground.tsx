@@ -188,7 +188,7 @@ const AlchemyBackground: React.FC = () => {
 
   return (
     <div
-      className="fixed inset-0 pointer-events-none overflow-hidden"
+      className="ba-alchemy-bg fixed inset-0 pointer-events-none overflow-hidden"
       style={{ zIndex: 10 }}
       aria-hidden="true"
     >

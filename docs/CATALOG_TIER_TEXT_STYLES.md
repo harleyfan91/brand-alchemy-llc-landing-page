@@ -47,7 +47,7 @@
 
 **Classes:** `text-sm sm:text-base font-bold uppercase tracking-wider`
 
-**Inline style (selected state):** `color: #111` when active, `#6b7280` when inactive; `transition: color 0.15s ease`.
+**Inline style (selected state):** `color: #111` when active, `gray-500` / `var(--ba-gray-500)` when inactive; `transition: color 0.15s ease`.
 
 **Computed intent:**
 
@@ -58,16 +58,16 @@
 | Font weight | 700 (`font-bold`) |
 | Letter-spacing | `tracking-wider` (0.05em) |
 | Text transform | uppercase |
-| Color | Active: `#111` · Inactive: `#6b7280` |
+| Color | Active: `#111` · Inactive: `gray-500` (parent cool ramp) |
 
-**Same row (price, for layout parity):** `text-2xl sm:text-3xl font-light tracking-tight`; color `#111` / `#9ca3af` by active state.
+**Same row (price, for layout parity):** `text-2xl sm:text-3xl font-light tracking-tight`; color `#111` / `gray-400` by active state.
 
 ---
 
 ## Parity checklist
 
 1. Peek labels: **semibold**, **not** uppercase, **gray-800**, 10px → 12px at `sm+`.
-2. Tier labels: **bold**, **uppercase**, **wider tracking**, 14px → 16px at `sm+`, **#111 / #6b7280** by selection.
+2. Tier labels: **bold**, **uppercase**, **wider tracking**, 14px → 16px at `sm+`, **#111 / gray-500** by selection.
 3. Stack: **Inter** (or document any substitute).
 
 **Code references:** `Products.tsx` — search `CatalogColumnPreviewPeek`, `renderTierCardsFor`, `previewItems`.

@@ -7,6 +7,8 @@ import DigitalProductTemplatePreviewPage from './pages/DigitalProductTemplatePre
 import GuidesAndKitsPage from './pages/GuidesAndKitsPage';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+// Dev-only: gray ramp reference panel. Uncomment import + line below; keep `import.meta.env.DEV` so it never ships in production.
+// import NeutralRampPreview from './components/NeutralRampPreview';
 
 const App: React.FC = () => {
   return (
@@ -21,6 +23,7 @@ const App: React.FC = () => {
           <Route path="/product-page-primitives" element={<DigitalProductTemplatePreviewPage />} />
         </Routes>
         <Footer />
+        {/* {import.meta.env.DEV ? <NeutralRampPreview /> : null} */}
       </div>
     </BrowserRouter>
   );

@@ -131,9 +131,9 @@ const OfferMatrix: React.FC<OfferMatrixProps> = ({ columns, primaryHref, primary
                   <div className="flex min-h-0 flex-1 flex-col overflow-y-auto border-t border-gray-100/90 px-3 pb-4 pt-2 sm:px-4 sm:pb-5">
                     <p className="text-sm font-light leading-relaxed text-gray-600">{column.summary}</p>
                     <div className="mt-3 space-y-1.5" aria-hidden>
-                      <div className="h-2.5 w-[85%] rounded bg-gray-200/90" />
-                      <div className="h-2.5 w-[66%] rounded bg-gray-200/85" />
-                      <div className="h-2.5 w-[78%] rounded bg-gray-200/85" />
+                      <div className="h-2.5 w-[85%] rounded bg-gray-300" />
+                      <div className="h-2.5 w-[66%] rounded bg-gray-300" />
+                      <div className="h-2.5 w-[78%] rounded bg-gray-300" />
                     </div>
                   </div>
                 </button>

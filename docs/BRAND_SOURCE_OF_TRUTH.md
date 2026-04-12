@@ -34,6 +34,16 @@ Implementation on **this** site lives in `index.html`, `public/brand-tokens.css`
 
 If the same colors, font stacks, spacing, or logo files are **copied in multiple repos** and start to disagree, use the **token file in this repo** as the single numeric source: [`public/brand-tokens.css`](../public/brand-tokens.css). Sister repos should **copy or import it** and re-sync when it changes on `main`. A heavier step later would be an npm package; the CSS file is the lightweight baseline. A large shared React component library is optional and only worth it if several apps need the same chrome.
 
+### Sister repo: refresh after a neutral / gray change
+
+When this repo updates `--ba-gray-*` (or Tailwind wiring in `index.html`), downstream apps should:
+
+1. **Copy** the new [`public/brand-tokens.css`](../public/brand-tokens.css) (or your vendored path).
+2. **Map framework neutrals** to the same values: if the app uses Tailwind, point `theme.colors.gray` at `var(--ba-gray-*)` like this site; if it uses MUI/Chakra/etc., set the grey palette from the same hex table once.
+3. **Search** for hardcoded legacy neutrals (`#f3f4f6`, `#111827`, `#6b7280`, old Tailwind defaults) and replace with tokens or theme.
+4. **Document** intentional exceptions in the product README (Phase A).
+5. **Identity Kit customer PDFs** — survey-driven nav/band colors stay separate; only **parent** chrome follows `--ba-gray-*` / `BRAND_PDF_PARENT_UI` (see [PDF_CHROME.md](PDF_CHROME.md)).
+
 ---
 
 ## Reporting drift or proposing updates

@@ -102,7 +102,7 @@ function ArticlesCarouselNavButton({
   const [hover, setHover] = useState(false);
   const hideSideOnNarrow = variant === 'side' && !smUp;
 
-  const borderColor = disabled ? '#e5e7eb' : hover ? '#111827' : '#4b5563';
+  const borderColor = disabled ? 'var(--ba-gray-200)' : hover ? 'var(--ba-gray-900)' : 'var(--ba-gray-600)';
 
   if (hideSideOnNarrow) {
     return null;
@@ -115,7 +115,7 @@ function ArticlesCarouselNavButton({
         ? '0 2px 4px rgb(0 0 0 / 0.06), 0 8px 20px -4px rgb(0 0 0 / 0.14)'
         : '0 1px 2px rgb(0 0 0 / 0.07), 0 4px 14px -2px rgb(0 0 0 / 0.12)';
 
-  const iconColor = disabled ? '#d1d5db' : hover ? '#000000' : '#111827';
+  const iconColor = disabled ? 'var(--ba-gray-300)' : hover ? '#000000' : 'var(--ba-gray-900)';
 
   const style: CSSProperties = {
     WebkitAppearance: 'none',

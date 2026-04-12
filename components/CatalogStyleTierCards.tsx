@@ -44,7 +44,7 @@ const CatalogStyleTierCards: React.FC<CatalogStyleTierCardsProps> = ({ core, pro
       {tiers.map(({ id, label, kit, isActive }) => (
         <div
           key={id}
-          className="relative overflow-hidden rounded-lg border bg-white sm:rounded-xl"
+          className={`relative overflow-hidden rounded-lg border sm:rounded-xl ${isActive ? 'bg-gray-100' : 'bg-white'}`}
           style={{
             borderColor: isActive ? 'var(--ba-catalog-emphasis)' : 'var(--ba-gray-200)',
             boxShadow: isActive ? '0 4px 20px -4px rgba(0,0,0,0.12)' : 'none',

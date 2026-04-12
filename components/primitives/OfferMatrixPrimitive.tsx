@@ -124,7 +124,7 @@ const OfferMatrixPrimitive: React.FC<OfferMatrixPrimitiveProps> = ({
                             [idx]: optionIdx,
                           }))
                         }
-                        className={`w-full rounded-lg border p-3 text-left ${isOptionActive ? 'border-gray-900 bg-gray-50/70' : 'border-gray-200 bg-white'}`}
+                        className={`w-full rounded-lg border p-3 text-left ${isOptionActive ? 'border-gray-900 bg-gray-100' : 'border-gray-200 bg-white'}`}
                       >
                         <div className="flex items-start justify-between gap-2">
                           <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-900">
@@ -191,9 +191,9 @@ const OfferMatrixPrimitive: React.FC<OfferMatrixPrimitiveProps> = ({
                         >
                           <p className="text-[10px] font-semibold leading-tight text-gray-800">{option.name}</p>
                           <div className="mt-2.5 space-y-1.5">
-                            <div className="h-2.5 w-[85%] rounded bg-gray-200/90" />
-                            <div className="h-2.5 w-[66%] rounded bg-gray-200/85" />
-                            <div className="h-2.5 w-[78%] rounded bg-gray-200/85" />
+                            <div className="h-2.5 w-[85%] rounded bg-gray-300" />
+                            <div className="h-2.5 w-[66%] rounded bg-gray-300" />
+                            <div className="h-2.5 w-[78%] rounded bg-gray-300" />
                           </div>
                         </div>
                       ))}
@@ -234,7 +234,7 @@ const OfferMatrixPrimitive: React.FC<OfferMatrixPrimitiveProps> = ({
                               [idx]: optionIdx,
                             }))
                           }
-                          className={`w-full rounded-xl border p-3 text-left ${isOptionActive ? 'border-gray-900 bg-gray-50/70' : 'border-gray-200 bg-white'}`}
+                          className={`w-full rounded-xl border p-3 text-left ${isOptionActive ? 'border-gray-900 bg-gray-100' : 'border-gray-200 bg-white'}`}
                         >
                           <div className="flex items-start justify-between gap-2">
                             <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-900">
