@@ -166,7 +166,7 @@ A candidate is worth including in the backlog if it passes all four of these che
 **AI draft prompt seed**
 You are writing for a small business owner — a restaurant, salon, shop, or service provider — who has never studied marketing and is trying to figure out where to start. Explain the difference between branding (how your business looks and sounds consistently) and marketing (how you promote yourself) in plain English, using real-world examples from local businesses. The article should reach a clear conclusion: branding comes first, because marketing amplifies whatever impression already exists. Do not use jargon. Do not write for marketers.
 
-**Status:** Candidate (placeholder exists on live site)
+**Status:** In draft — full article source at `content/articles/branding-vs-marketing.md` (April 2026); homepage tile still uses placeholder until routes ship.
 
 ---
 

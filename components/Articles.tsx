@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react';
+import { Link } from 'react-router-dom';
 
 /**
  * Articles — tile title length (persistent spec)
@@ -41,8 +42,8 @@ import React, { useCallback, useEffect, useRef, useState, type CSSProperties } f
  * Future: pages, SEO, navigation
  * - Replace the coming-soon modal with real article index/detail routes when content ships (URL scheme
  *   TBD). Full HTML, metadata, internal links for SEO; homepage strip can stay a teaser.
- * - Tiles should navigate with `href` / router; keep `slug` as the path segment; move body copy out
- *   of this file.
+ * - Tiles: use `articleHref` for shipped articles (`/articles/...`); keep `slug` as a stable id;
+ *   move long-form body copy out of this file into `content/articles/`.
  * - Header: today `#articles` on the marketing page; later you can point “Articles” to a dedicated index
  *   route while keeping section anchors on home if useful.
  * - Article template: choose one primary “up” link (Home `/` vs articles index) for breadcrumbs or back
@@ -168,7 +169,13 @@ type Article = {
   reasonToRead: string;
   imageSrc: string;
   imageAlt: string;
+  /** When set, the tile links to this route instead of opening the coming-soon dialog. */
+  articleHref?: string;
 };
+
+/** Shared chrome for carousel tiles (button or Link). */
+const ARTICLE_TILE_INTERACTIVE_CLASS =
+  'group flex w-full flex-col overflow-hidden rounded-xl border border-gray-100 bg-white text-left shadow-none transition-[box-shadow,background-color,border-color] duration-500 max-lg:h-auto max-lg:min-h-[26rem] max-lg:w-[min(14rem,calc(100vw-4rem))] max-lg:shadow-sm hover:border-gray-200 hover:bg-gray-50 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2 lg:h-[min(420px,52vh)] lg:min-h-0 lg:max-h-none lg:max-w-none lg:rounded-2xl lg:shadow-none';
 
 const articles: Article[] = [
   {
@@ -180,6 +187,7 @@ const articles: Article[] = [
     reasonToRead: 'Useful when you know your business needs help online but do not know where to start.',
     imageSrc: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=900',
     imageAlt: 'Design workspace with paper and tools',
+    articleHref: '/articles/branding-vs-marketing-small-business',
   },
   {
     slug: 'weekly-social-posts',
@@ -338,26 +346,48 @@ const Articles: React.FC = () => {
                           }
                     }
                   >
-                    <button
-                      type="button"
-                      onClick={() => setComingSoonOpen(true)}
-                      aria-label={`${article.title} — full article coming soon`}
-                      className="group flex w-full flex-col overflow-hidden rounded-xl appearance-none border border-gray-100 bg-white text-left shadow-none transition-[box-shadow,background-color,border-color] duration-500 max-lg:h-auto max-lg:min-h-[26rem] max-lg:w-[min(14rem,calc(100vw-4rem))] max-lg:shadow-sm hover:border-gray-200 hover:bg-gray-50 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2 lg:h-[min(420px,52vh)] lg:min-h-0 lg:max-h-none lg:max-w-none lg:rounded-2xl lg:shadow-none"
-                    >
-                      <div className="relative h-40 shrink-0 overflow-hidden bg-gray-100 sm:h-44 lg:h-[30%] lg:min-h-[7.5rem]">
-                        <img
-                          src={article.imageSrc}
-                          alt={article.imageAlt}
-                          className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
-                        />
-                      </div>
-                      <div className="flex flex-1 flex-col justify-between gap-2 bg-white px-3.5 pb-4 pt-4 sm:px-4 sm:pb-5 sm:pt-5 max-lg:overflow-visible lg:min-h-0 lg:overflow-visible">
-                        <h4 className={articleTitleClass(article.title)}>{article.title}</h4>
-                        <span className="text-left text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
-                          {article.category}
-                        </span>
-                      </div>
-                    </button>
+                    {article.articleHref ? (
+                      <Link
+                        to={article.articleHref}
+                        className={ARTICLE_TILE_INTERACTIVE_CLASS}
+                        aria-label={`Read article: ${article.title}`}
+                      >
+                        <div className="relative h-40 shrink-0 overflow-hidden bg-gray-100 sm:h-44 lg:h-[30%] lg:min-h-[7.5rem]">
+                          <img
+                            src={article.imageSrc}
+                            alt={article.imageAlt}
+                            className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
+                          />
+                        </div>
+                        <div className="flex flex-1 flex-col justify-between gap-2 bg-white px-3.5 pb-4 pt-4 sm:px-4 sm:pb-5 sm:pt-5 max-lg:overflow-visible lg:min-h-0 lg:overflow-visible">
+                          <h4 className={articleTitleClass(article.title)}>{article.title}</h4>
+                          <span className="text-left text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
+                            {article.category}
+                          </span>
+                        </div>
+                      </Link>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => setComingSoonOpen(true)}
+                        aria-label={`${article.title} — full article coming soon`}
+                        className={`${ARTICLE_TILE_INTERACTIVE_CLASS} appearance-none`}
+                      >
+                        <div className="relative h-40 shrink-0 overflow-hidden bg-gray-100 sm:h-44 lg:h-[30%] lg:min-h-[7.5rem]">
+                          <img
+                            src={article.imageSrc}
+                            alt={article.imageAlt}
+                            className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
+                          />
+                        </div>
+                        <div className="flex flex-1 flex-col justify-between gap-2 bg-white px-3.5 pb-4 pt-4 sm:px-4 sm:pb-5 sm:pt-5 max-lg:overflow-visible lg:min-h-0 lg:overflow-visible">
+                          <h4 className={articleTitleClass(article.title)}>{article.title}</h4>
+                          <span className="text-left text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
+                            {article.category}
+                          </span>
+                        </div>
+                      </button>
+                    )}
                   </article>
                 ))}
               </div>

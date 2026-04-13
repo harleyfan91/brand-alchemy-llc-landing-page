@@ -4,8 +4,7 @@ import AlchemyMark from './AlchemyMark';
 import { scrollToSection } from '../utils/scrollToSection';
 
 /**
- * Nav: home uses in-page #anchors; `/identity-kit` is a dedicated route.
- * When standalone article routes ship, add them here (see `Articles.tsx` TODO block).
+ * Nav: home uses in-page #anchors; `/identity-kit` and `/articles/:slug` are dedicated routes.
  */
 
 const Header: React.FC = () => {

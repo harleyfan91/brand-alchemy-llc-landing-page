@@ -5,6 +5,7 @@ import HomePage from './components/HomePage';
 import IdentityKitPage from './pages/IdentityKitPage';
 import DigitalProductTemplatePreviewPage from './pages/DigitalProductTemplatePreviewPage';
 import GuidesAndKitsPage from './pages/GuidesAndKitsPage';
+import ArticlePage from './pages/ArticlePage';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 // Dev-only: gray ramp reference panel. Uncomment import + line below; keep `import.meta.env.DEV` so it never ships in production.
@@ -20,6 +21,7 @@ const App: React.FC = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/identity-kit" element={<IdentityKitPage />} />
           <Route path="/local-business" element={<GuidesAndKitsPage />} />
+          <Route path="/articles/:slug" element={<ArticlePage />} />
           <Route path="/product-page-primitives" element={<DigitalProductTemplatePreviewPage />} />
         </Routes>
         <Footer />
