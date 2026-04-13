@@ -101,6 +101,9 @@ PRODUCT ADJACENCY
   Primary:   (Which Brand Alchemy product fits most naturally — or "none")
   Secondary: (Any other product that could be mentioned without forcing it)
   How to link: (Soft mention / Step in the how-to / "If you want to go deeper")
+  Hub CTA note:  (If Primary is not "none": where should `<!-- ARTICLE_CTA_SLOT -->` sit — after which
+                 section's theme? Mid-body vs. late. See **CTA rules** in `ARTICLE_WRITING_SCHEMA.md`
+                 for tab vs. body naming.)
 
 AI DRAFT PROMPT SEED
   (2–4 sentences that form the system prompt for the AI draft pass. Should specify voice, audience,

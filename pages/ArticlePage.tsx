@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import ArticleMarkdown from '../components/ArticleMarkdown';
+import { ARTICLE_INLINE_CTA_SLOT } from '../components/ArticleProductCallout';
 import { parseArticleFile } from '../utils/parseArticleFile';
+import { renderArticleInlineCta } from './articleInlineCta';
 
 import brandingVsMarketingRaw from '../content/articles/branding-vs-marketing.md?raw';
 
@@ -43,6 +45,12 @@ const ArticlePage: React.FC = () => {
     return <Navigate to="/" replace />;
   }
 
+  const bodyParts = parsed.body.split(ARTICLE_INLINE_CTA_SLOT);
+  const beforeInlineCta = bodyParts[0]?.trim() ?? '';
+  const afterInlineCta = bodyParts.length > 1 ? bodyParts.slice(1).join(ARTICLE_INLINE_CTA_SLOT).trim() : '';
+  const hasInlineCtaSlot = bodyParts.length > 1;
+  const inlineCta = renderArticleInlineCta(slug);
+
   return (
     <main className="flex-grow scroll-mt-20 bg-white pb-16 pt-24 md:pb-20 md:pt-28">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
@@ -70,7 +78,15 @@ const ArticlePage: React.FC = () => {
           </ol>
         </nav>
 
-        <ArticleMarkdown markdown={parsed.body} />
+        {hasInlineCtaSlot && inlineCta ? (
+          <>
+            <ArticleMarkdown markdown={beforeInlineCta} />
+            {inlineCta}
+            <ArticleMarkdown markdown={afterInlineCta} />
+          </>
+        ) : (
+          <ArticleMarkdown markdown={parsed.body} />
+        )}
       </div>
     </main>
   );

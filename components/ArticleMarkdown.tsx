@@ -30,7 +30,7 @@ const ArticleMarkdown: React.FC<Props> = ({ markdown }) => {
         ul: ({ children }) => <ul className="mb-4 list-disc space-y-2 pl-6 text-base font-light leading-relaxed text-gray-700">{children}</ul>,
         ol: ({ children }) => <ol className="mb-4 list-decimal space-y-2 pl-6 text-base font-light leading-relaxed text-gray-700">{children}</ol>,
         li: ({ children }) => <li className="pl-1">{children}</li>,
-        strong: ({ children }) => <strong className="font-semibold text-gray-900">{children}</strong>,
+        strong: ({ children }) => <strong className="font-medium text-gray-900">{children}</strong>,
         em: ({ children }) => <em className="italic text-gray-800">{children}</em>,
         hr: () => <hr className="my-10 border-gray-200" />,
         img: ({ src, alt }) => (

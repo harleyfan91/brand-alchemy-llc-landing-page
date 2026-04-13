@@ -79,15 +79,18 @@ Add a row for **each new SKU or service line** so the table stays the checklist 
 - **Topics:** Immediate problems—what to post, what to fix first, profiles, photos, local visibility, time and budget. **Help first**; tie in paid products only where it fits naturally, never as a hard sell.
 - **Quality bar:** Prefer a few strong articles over many thin or placeholder posts.
 - **Article byline:** On published article pages, attribute the author as **Brand Alchemy** unless a named contributor is documented for that piece, and always show **published date**. (Matches editorial QA in [ARTICLE_WRITING_SCHEMA.md](ARTICLE_WRITING_SCHEMA.md).) Topic discovery and candidate briefs: [ARTICLE_RESEARCH_SYSTEM.md](ARTICLE_RESEARCH_SYSTEM.md).
+- **Product CTA on shipped article pages:** One optional callout per piece, driven by a single `<!-- ARTICLE_CTA_SLOT -->` in the markdown and rendered in React (tab + card + text link). Tab line vs. callout body must follow **Naming: tab vs. body** in [ARTICLE_WRITING_SCHEMA.md](ARTICLE_WRITING_SCHEMA.md) (**CTA rules**). Do not add a second product pitch in prose before the FAQ.
+- **Punctuation (owner-facing tone):** Prefer commas, periods, colons, and parentheses over long **em dashes (—)**. An em dash is fine occasionally for a sharp aside; **many per article** reads like generic AI copy and wears readers out. See [ARTICLE_WRITING_SCHEMA.md](ARTICLE_WRITING_SCHEMA.md) (*Body sections* — emphasis, statistics, and punctuation).
+- **Emphasis in articles:** Bold is a scarce signal. Use it mainly for defined terms and the occasional one-beat takeaway, not for every important-sounding word. **Survey numbers and percentages** usually stay in normal weight; named sources in parentheses (or italic publication titles) carry the “verified” feel. Full pattern: same schema section.
 
 **SEO and traffic (how we plan to use it)**
 
-1. **Discoverability:** Each shipped article should be a real **HTML page** with a stable **URL** (slug-based path; exact scheme TBD when routes land), unique **title** and **meta description** written for humans first, aligned with [TARGET_AUDIENCE.md](TARGET_AUDIENCE.md) reading level and vocabulary.
+1. **Discoverability:** Each shipped article is a real **HTML page** with a stable **URL** (e.g. `/articles/:slug`), unique **title** and **meta description** written for humans first, aligned with [TARGET_AUDIENCE.md](TARGET_AUDIENCE.md) reading level and vocabulary.
 2. **Internal links:** Link from articles to the relevant catalog sections or offer pages (for example Identity Kit, local kits) where it genuinely helps the reader—strengthens crawl paths and clarifies the product ladder without feeling spammy.
 3. **Homepage strip:** The carousel on `/` is the **teaser**; it can remain even after an article index exists. Nav today uses **`#articles`** on the homepage; later, **Articles** in the header can point to a dedicated index route while anchors on home remain optional.
 4. **Measurement (when live):** Track landing queries, scroll engagement, and paths from article → product sections to learn which topics deserve depth and which products deserve clearer bridges from content.
 
-Until individual article routes exist, treat the **Articles** block as the **public commitment** to that editorial standard and IA—not yet the full SEO surface.
+The homepage **Articles** strip remains the teaser even as individual routes grow; both should stay aligned with the same editorial standard.
 
 ---
 

@@ -136,23 +136,34 @@ Every Brand Alchemy article follows this skeleton regardless of format. Format-s
 
 [BODY — 3 to 6 H2 sections]
   Each H2 answers one sub-question. Each section: 100–300 words.
-  CTA placement decision made here (see Stage 4 CTA rules).
+  Decide where the optional product CTA belongs (see Stage 4 CTA rules). It may appear **mid-body**
+  once the reader has enough context — not only after the last H2.
   Body visuals (process diagrams, stat callouts, comparison tables) are placed
   inline within sections where they add the most value. See Visual planning below.
 
 [CTA — optional, 0 or 1 per article]
-  If used: transition block after the last body H2 (see Stage 4 CTA Pattern B), or an
-  inline mention at the relevant step (Pattern A). Never in the closing paragraph.
+  **On the marketing site (`/articles/:slug`):** one product suggestion total. When used, place the
+  HTML comment sentinel **once** in the markdown body at the chosen break (between sections is
+  typical; never inside an FAQ answer; never in the closing paragraph):
+
+  `<!-- ARTICLE_CTA_SLOT -->`
+
+  The page splits on that sentinel and renders a single **styled product callout** (tab strip +
+  card + text link). Tab line, callout body, link label, and destination are maintained in code
+  (e.g. `articleInlineCta.tsx` keyed by article slug, using `ArticleProductCallout`) — **do not**
+  add a second product pitch in markdown before the FAQ (no duplicate “Pattern B” block in prose).
+  If there is no CTA, omit the sentinel entirely.
 
 [FAQ SECTION]
   H2: "Quick answers" or "[Topic]: common questions"
   3–5 questions, each with a 1–3 sentence direct answer.
-  Comes after the CTA block when a CTA exists, otherwise after the last body H2.
+  Comes after the **last body H2** (all sections that belong in markdown). If a CTA sentinel
+  appears earlier in the file, content after the callout continues as normal body, then the FAQ.
 
 [CLOSING]
   2–4 sentences. The takeaway, not a summary. What they should do first.
-  Comes after the FAQ. No product CTA here — CTAs live only in the body or the optional
-  transition block before the FAQ.
+  Comes after the FAQ. No product CTA here — the only product CTA is the optional callout at the
+  slot (or none).
 ```
 
 ### Format-specific body structure
@@ -162,7 +173,7 @@ The body builds understanding progressively: define the concept, show why it mat
 
 ```
 H2: What [concept] actually means (in plain English)
-H2: Why it matters for a local business
+H2: Why it matters for your business
 H2: The most common mistake owners make with [concept]
 H2: What "good enough" looks like in practice
 H2: The first step you can take today
@@ -193,7 +204,7 @@ H2: Here's what we'd do in your situation
 
 ### Plan the sections before writing
 
-Write just the H2s and a 1-sentence description of what each section covers. Assign data points from Stage 2 to specific sections. Note CTA placement if one is being used. Note any body visuals planned (see Visual planning below). Only when this skeleton is approved should drafting begin.
+Write just the H2s and a 1-sentence description of what each section covers. Assign data points from Stage 2 to specific sections. If a hub product CTA is planned, note **which section the `<!-- ARTICLE_CTA_SLOT -->` follows** and how tab vs. body will satisfy **Naming: tab vs. body** in CTA rules. Note any body visuals planned (see Visual planning below). Only when this skeleton is approved should drafting begin.
 
 ---
 
@@ -298,7 +309,7 @@ This is the one visual format that goes beyond article support and becomes its o
 
 ## Stage 4: Full Draft
 
-Execute the Stage 3 structural plan. All rules below — for metadata, the hero image asset, the answer block, introduction, body sections, CTAs, FAQ, and closing — apply during this stage. Work through them in skeleton order: metadata → hero image → answer block → intro → body sections → CTA (if applicable) → FAQ → closing.
+Execute the Stage 3 structural plan. All rules below — for metadata, the hero image asset, the answer block, introduction, body sections, CTAs, FAQ, and closing — apply during this stage. Work through them in skeleton order: metadata → hero image → answer block → intro → body sections (including the `<!-- ARTICLE_CTA_SLOT -->` sentinel when a hub CTA is planned) → FAQ → closing. **Product callout copy** for shipped routes is edited in the React layer, not repeated as a second markdown block before the FAQ.
 
 Do not write sections out of order. Writing the closing before the body is complete produces summaries of what you intended to write, not of what you wrote.
 
@@ -396,6 +407,32 @@ That's 73 words, answers the question completely, and gives the reader an immedi
 - Never use a statistic without the source
 - Round numbers cleanly: "roughly two in three customers" reads better than "63.4% of customers" in body copy; either is fine as long as the source is attributed
 
+**Emphasis, statistics, and punctuation (readability — not decoration)**
+
+Readers should not have to guess *why* something is visually loud. Too much **bold** (especially bold **percentages**, bold every “key” word, and bold stacked next to other bold) flattens the signal: everything looks equally urgent, nothing looks verified on purpose.
+
+**Bold (`**…**`) — use as a scarce signal**
+
+| Use bold for | Examples | Avoid |
+|--------------|----------|--------|
+| **Defined terms** the article is teaching, especially on **first** clear use in the body | *Branding* vs *marketing* when you are fixing the definitions | Re-bolding the same term in every later paragraph when the reader already has the frame |
+| **One-beat takeaways** or memory devices (short phrases the section hangs on) | A single mnemonic line; a closing “do this first” hinge | Whole clauses or sentences in bold |
+| **FAQ question lines** (optional pattern) | The question itself | Bolding the entire answer |
+
+**Statistics and verified numbers**
+
+- **Do not** bold percentages, counts, or dollar figures by default. Let the **number sit in normal weight** and let the sentence plus **named source** do the work.
+- It is acceptable to bold a **short takeaway that interprets the stat** (e.g. *clarity and care show*) when it is one phrase, not the whole statistic.
+- Italicize **external publication or report titles** when helpful (*Digital Journal*, *State of Brand Consistency*) — already common in attributions; keeps “verified” distinct from “defined term.”
+
+**Em dash (—) — reduce frequency, not a ban**
+
+Long em dashes are a common fingerprint of generic AI drafts when they appear **often** (several per section, chained asides, em dash where a comma or period would be clearer).
+
+- **Prefer:** comma, period, colon, parentheses, or a short second sentence.
+- **Use an em dash** sparingly for a true aside or sharp contrast (roughly **0–2 per major H2 section** is a useful gut check — not a law).
+- **Never** use an em dash to glue two unrelated thoughts that deserve a full stop.
+
 **Banned words and phrases (never use in body copy):**
 
 | Banned | Use instead |
@@ -437,51 +474,59 @@ That's 73 words, answers the question completely, and gives the reader an immedi
       YES →  Continue to question 3.
 
 3. Which CTA pattern fits?
-      The product is a tool/template for a specific step  →  Inline mention
-      The product is the logical next step after reading  →  Transition block
+      The product helps at a specific moment in the argument  →  Pattern A (default on hub)
+      The product is the natural wrap-up after the full arc    →  Pattern A at a late slot
+        (same component — longer body copy is fine; still only one callout)
 ```
 
-**CTA Pattern A: Inline contextual mention**
-Use when: A specific product solves the exact problem being discussed at a specific point in the body.
-Position: Inside the body, at the step where the product is relevant. Not in its own section — embedded in the paragraph.
-Length: 1–2 sentences.
-Tone: A recommendation, not a pitch.
+**Hub implementation (marketing site articles)**  
+Shipped articles use a **single** sentinel in the markdown file:
+
+`<!-- ARTICLE_CTA_SLOT -->`
+
+- **Must** match the string expected by the app (see `ARTICLE_INLINE_CTA_SLOT` in `ArticleProductCallout.tsx` — keep docs and code in sync if it ever changes).
+- **One** sentinel per article when a CTA exists; **zero** when none.
+- `ArticlePage` splits the markdown and injects **`ArticleProductCallout`** (tab strip + bordered card + product-grid-style text link). Slug-specific tab/body/button copy lives beside the article route (e.g. `articleInlineCta.tsx`).
+- **Do not** paste a second product CTA in markdown (no extra fenced callout, horizontal rule + pitch, or "View the …" block before the FAQ). One system only.
+
+**CTA Pattern A: Contextual product callout (default)**  
+Use when: A product genuinely fits the article; place the slot where the reader has enough context (mid-body is OK).
+
+**Chrome (current system):**
+- **Tab:** Short thematic line (uppercase in UI). May echo site patterns used elsewhere (e.g. Articles section "…, made simple").
+- **Body:** 1–3 short sentences in plain language — what the product *does* for this reader. No price, no urgency, no "buy now."
+- **Link:** Same *shape* as product cards on the home page (e.g. "View Identity Kit") — text + underline, not a loud banner button.
+
+**Naming: tab vs. body (required)**  
+Coordinate the **formal product name** (e.g. "Identity Kit") with what appears in the tab:
+
+| If the tab line… | Then the callout body… |
+|------------------|-------------------------|
+| **Does not** include the formal product name | **Must** include the full product name **once**, styled to stand out from body copy (e.g. serif + darker heading-style treatment for that name — match live `articleInlineCta` / `ArticleProductCallout`). |
+| **Does** include the formal product name | May use a lighter referent ("our kit," "the kit") without repeating the full trademark, as long as it stays clear. |
+
+**Prose-only mental model (same tone as the live callout)**  
+If you were writing only in markdown without the component, the recommendation might read like:
 
 > *The Google Core Kit includes 30 review response templates written for your industry — for positive and negative reviews — so you're not writing these from scratch each time.*
 
-Note what's absent: no price, no "buy now," no urgency language, no "click here." Just a plain description of what the product does in the context where it matters.
+On the hub, that idea becomes **callout body** (and optionally internal links elsewhere in the article) — not a duplicate block before the FAQ.
 
-**CTA Pattern B: Transition block**
-Use when: The product is the natural next step after the full article — the reader has learned the concept, now they need the tools to execute it.
-Position: After the last body H2, before the FAQ section.
-Length: 3–5 lines.
-Format: A visually distinct callout block (implementation detail for the developer — light border, slight background tint). Not a banner. Not a full product card.
-
-```
-[CALLOUT BLOCK]
-
-  If you want the templates already built:
-  
-  The Google Core Kit includes step-by-step profile setup, 30 review
-  response templates, and photo angles for your industry.
-  
-  → View the Google Core Kit
-```
-
-Again: no urgency language, no price in the CTA block (price lives on the product page), no superlatives.
+**CTA Pattern B: "Transition" length**  
+Older briefs described a longer "after the last H2" transition. **On hub, that is still Pattern A:** one sentinel, one callout, optionally richer body copy and a later slot position. Do not treat Pattern B as permission for a **second** visual CTA.
 
 **What a CTA should never do:**
 - Interrupt the flow of a how-to mid-step
 - Claim the product is essential when the article just showed how to do the thing without it
 - Use "limited time," "don't miss out," "transform your business," or any high-pressure framing
-- Appear more than once per article
+- Appear more than once per article (including a markdown pitch **plus** the slot callout)
 - Link to a product that isn't directly relevant to the article's core question
 
 ---
 
 ### FAQ section
 
-**Position:** After the last body H2, after the CTA block if one exists, before the closing.
+**Position:** After the last body H2 (all markdown body sections). If a hub CTA exists, it appears at the sentinel inside the body — the FAQ still follows the final body section, before the closing.
 
 **Heading:** Use one of these options, not a custom label:
 - "Frequently asked questions"
@@ -550,6 +595,8 @@ Run every article through this checklist before it is considered complete. Every
 - [ ] No paragraph starts with "I" (this is a brand voice, not a personal essay)
 - [ ] No sentence uses passive voice where active is possible
 - [ ] Reading level: run through Hemingway Editor or equivalent — aim for Grade 7–8, hard ceiling Grade 9
+- [ ] **Em dashes:** not overused — prefer commas/periods/colons/parentheses; no “em dash every other sentence” cadence (see *Body sections* — emphasis, statistics, and punctuation)
+- [ ] **Bold:** follows the emphasis hierarchy — statistics not bolded by default; defined terms and takeaways used sparingly so bold still means something
 
 ### SEO QA
 
@@ -586,7 +633,8 @@ Run every article through this checklist before it is considered complete. Every
 
 ### CTA QA
 
-- [ ] If a CTA is present, it appears only once
+- [ ] If a CTA is present, it appears only once (one `<!-- ARTICLE_CTA_SLOT -->` and no duplicate product pitch in markdown)
+- [ ] If a CTA is present, tab/body naming follows the schema: formal product name in tab **or** once, emphasized, in body — not missing, not repeated without intent
 - [ ] The product mentioned in the CTA is directly relevant to the article's core question
 - [ ] No urgency language, price, or superlatives in the CTA copy
 - [ ] If no CTA is present, the decision not to include one was intentional (not an oversight)
@@ -622,7 +670,8 @@ If any item fails, fix it before marking the article ready for publication.
 | Closing | 2–4 sentences, action-oriented, no sign-off |
 | Total length | 1,200–2,000 words (excluding metadata and FAQ) |
 | Reading level | Grade 7–8 target, Grade 9 ceiling |
-| CTAs | 0 or 1 per article, contextual adjacency required |
+| Emphasis & dashes | Bold is scarce; numbers from studies usually not bold. Em dashes rare; prefer comma/period/colon. See *Body sections*. |
+| CTAs | 0 or 1 per article, contextual adjacency required. Hub: one `<!-- ARTICLE_CTA_SLOT -->` + `ArticleProductCallout`; copy in code per slug. See **CTA rules**. |
 | Schema | Article (always) + HowTo + FAQPage where applicable |
 | Title tag | 50–60 characters |
 | Meta description | 140–155 characters |
