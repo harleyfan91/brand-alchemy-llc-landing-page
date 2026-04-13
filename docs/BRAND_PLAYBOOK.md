@@ -11,6 +11,7 @@
 | Who we serve / who we do *not* serve | [TARGET_AUDIENCE.md](TARGET_AUDIENCE.md) |
 | Voice, tone, vocabulary | This file — *Tone & voice* |
 | Naming and listing products | This file — *Products & offerings* |
+| Articles, SEO intent, content categories | This file — *Content, articles, and SEO* |
 | CTAs, contact, relationship posture | This file — *Engagement* |
 | Fonts, colors, imagery, β△ mark, UI weight | [BRAND_GUIDELINES.md](BRAND_GUIDELINES.md) |
 | Sister sites / products: canonical home, drift, Phase A | [BRAND_SOURCE_OF_TRUTH.md](BRAND_SOURCE_OF_TRUTH.md) |
@@ -25,7 +26,7 @@
 **Do**
 
 - Use **plain language**, short sentences, and **concrete outcomes** (what they can do, what customers will notice).
-- Acknowledge constraints: time, budget, no design team, no marketing background (aligned with current Solutions copy).
+- Acknowledge constraints: time, budget, no design team, no marketing background (aligned with the **System** section on the homepage and product copy elsewhere).
 - Prefer **steps, kits, templates, guides** over abstract “strategy” unless we immediately explain what that means in their world.
 - **Confident, warm, direct** — invite action without hype or fear-based urgency.
 
@@ -50,18 +51,43 @@
 
 **Living catalog (update when the site or store changes)**
 
+The homepage **System** block (`#services`, `components/Services.tsx`) explains *how we think* in three layers. The table below ties that story to **named products** and **content**.
+
 | Offering | Who it’s for | Promise in one line | Notes / boundaries |
 |----------|----------------|---------------------|-------------------|
-| Brand Standards (solution) | Owner-operated businesses wanting consistency | Clear visual + voice standards without a big agency | Guides, not unlimited custom design |
-| Ready-to-Use Toolkits (solution) | DIY operators | Plain steps + real templates | No assumption of marketing experience |
-| Get Found (solution) | Local / profile-driven businesses | Setup + visibility for profiles people actually check | Walkthroughs, not guaranteed placement |
-| Google Core / Pro kits | Local businesses using Google | Conversion library (templates, replies, walkthrough, angles)—not “paid setup” | Prices/features in `Products.tsx`; ladder in [ACQUISITION_FUNNEL_AND_SKU_MAP.md](ACQUISITION_FUNNEL_AND_SKU_MAP.md) |
-| Yelp Core / Pro kits | Businesses using Yelp | Same pattern as Google | Keep parity honest per platform |
-| Content packs (e.g. seasonal photo / copy) | Owners creating their own content | Specific deliverable (PDF, prompts, angles) | Framed as standalone, not confusing “add-on” language |
-| Identity Kit (Core / Pro) | Owners who want brand voice + look on paper | Guided intake → PDFs by email | Core $79 / Pro $149 in identity-kit repo; funnel role in [ACQUISITION_FUNNEL_AND_SKU_MAP.md](ACQUISITION_FUNNEL_AND_SKU_MAP.md) |
+| **System — Brand foundation** (site story, not a SKU name) | Owner-operated businesses | Voice and look on paper first, so nothing else feels pieced together | Leads with **Identity Kit**; eyebrow label **System** on the homepage |
+| **System — Marketing tools & kits** | DIY operators and busy owners | Practical kits, guides, and templates without a marketing background | **Products** catalog: local kits, content packs, bundles — `components/Products.tsx` |
+| **System — Visibility & growth** | Anyone building local or digital presence | Show up more clearly and build momentum over time | Outcome layer; reinforced by local kits, articles, and **Camentra** |
+| Identity Kit (Core / Pro) | Owners who want brand voice + look on paper | Guided intake → PDFs by email | Core **$79** / Pro **$149**; funnel role in [ACQUISITION_FUNNEL_AND_SKU_MAP.md](ACQUISITION_FUNNEL_AND_SKU_MAP.md) |
+| Google Core / Pro kits; Yelp Core / Pro kits; **Google + Yelp Pro bundle** | Local businesses on those platforms | Conversion library (templates, replies, walkthrough, angles)—not “paid setup” | Core **$39** / Pro **$79**; bundle **$129**; details in `Products.tsx` and [PRODUCTS_PRICING_AND_INCLUDES.md](PRODUCTS_PRICING_AND_INCLUDES.md) |
+| Content packs (seasonal photo angles, copy, social starters, email list) | Owners creating their own content | Specific deliverable (PDF, prompts, angles) | Framed as **standalone** purchases, not confusing “add-on” language unless checkout explicitly offers a bump |
 | Camentra (app) | Owners taking business photos | Templates, guidance, AI coach (Pro) | Subscription via app store; optional post-kit Pro promo — see funnel map |
+| **Articles** (editorial) | Same audience as the site | Plain, practical explainers that answer real owner questions | Supports **trust and SEO** when index/detail pages ship; see *Content, articles, and SEO* below |
 
 Add a row for **each new SKU or service line** so the table stays the checklist before publishing copy.
+
+---
+
+## Content, articles, and SEO
+
+**Role on the site:** **Articles** is the long-game **content and organic discovery** lane on the marketing homepage (`#articles`, `components/Articles.tsx`). It complements the catalog: products sell concrete kits and tools; articles earn attention, clarify problems in our voice, and build **topical authority** for search and referral traffic.
+
+**What we publish**
+
+- **Format:** Practical explainers and guide-style pieces—not generic “thought leadership” for marketers or agency readers.
+- **Categories** (tile labels such as *Brand Basics*, *Social Media*, *Get Found*) should read like **questions or concerns an owner would recognize**, not internal channel jargon.
+- **Topics:** Immediate problems—what to post, what to fix first, profiles, photos, local visibility, time and budget. **Help first**; tie in paid products only where it fits naturally, never as a hard sell.
+- **Quality bar:** Prefer a few strong articles over many thin or placeholder posts.
+- **Article byline:** On published article pages, attribute the author as **Brand Alchemy** unless a named contributor is documented for that piece, and always show **published date**. (Matches editorial QA in [ARTICLE_WRITING_SCHEMA.md](ARTICLE_WRITING_SCHEMA.md).) Topic discovery and candidate briefs: [ARTICLE_RESEARCH_SYSTEM.md](ARTICLE_RESEARCH_SYSTEM.md).
+
+**SEO and traffic (how we plan to use it)**
+
+1. **Discoverability:** Each shipped article should be a real **HTML page** with a stable **URL** (slug-based path; exact scheme TBD when routes land), unique **title** and **meta description** written for humans first, aligned with [TARGET_AUDIENCE.md](TARGET_AUDIENCE.md) reading level and vocabulary.
+2. **Internal links:** Link from articles to the relevant catalog sections or offer pages (for example Identity Kit, local kits) where it genuinely helps the reader—strengthens crawl paths and clarifies the product ladder without feeling spammy.
+3. **Homepage strip:** The carousel on `/` is the **teaser**; it can remain even after an article index exists. Nav today uses **`#articles`** on the homepage; later, **Articles** in the header can point to a dedicated index route while anchors on home remain optional.
+4. **Measurement (when live):** Track landing queries, scroll engagement, and paths from article → product sections to learn which topics deserve depth and which products deserve clearer bridges from content.
+
+Until individual article routes exist, treat the **Articles** block as the **public commitment** to that editorial standard and IA—not yet the full SEO surface.
 
 ---
 
@@ -85,7 +111,7 @@ Add a row for **each new SKU or service line** so the table stays the checklist 
 When you’re ready, add new pages or sections here or as linked docs:
 
 - **Proof & trust:** testimonials policy, what claims we will/won’t make, before/after rules.
-- **SEO & metadata:** how titles and descriptions should sound (still audience-appropriate).
+- **SEO runbooks:** keyword research workflow, canonical URL policy, and refresh cadence once article volume grows (titles/descriptions stay audience-first; baseline intent is in *Content, articles, and SEO* above).
 - **Channels:** if we standardize Instagram vs email tone, document deltas.
 - **Competitors:** not a bash list — a short “we are not X” to sharpen positioning.
 - **Accessibility:** reading level targets, alt text habits for product imagery.
@@ -97,7 +123,7 @@ When you’re ready, add new pages or sections here or as linked docs:
 1. When audience or exclusions change, update **[TARGET_AUDIENCE.md](TARGET_AUDIENCE.md)** first.
 2. When voice or engagement changes, update **this playbook**.
 3. When products ship or rename, update the **Living catalog** table and the implementation (e.g. `Products.tsx`).
-4. **Cursor:** Keep the project rule **[`.cursor/rules/brand-alchemy-messaging.mdc`](../.cursor/rules/brand-alchemy-messaging.mdc)** — it should continue to point agents at `docs/TARGET_AUDIENCE.md`, `docs/BRAND_PLAYBOOK.md`, and **`docs/BRAND_GUIDELINES.md`**. If you add a new canonical doc, add it to that rule in the same bullet list.
+4. **Cursor:** Keep the project rule **[`.cursor/rules/brand-alchemy-messaging.mdc`](../.cursor/rules/brand-alchemy-messaging.mdc)** — it should continue to point agents at **`docs/BRAND_SOURCE_OF_TRUTH.md`**, `docs/TARGET_AUDIENCE.md`, `docs/BRAND_PLAYBOOK.md`, **`docs/BRAND_GUIDELINES.md`**, **`docs/ACQUISITION_FUNNEL_AND_SKU_MAP.md`**, and (for editorial articles) **`docs/ARTICLE_RESEARCH_SYSTEM.md`** / **`docs/ARTICLE_WRITING_SCHEMA.md`**. If you add a new canonical doc, add it to that rule in the same bullet list.
 5. When **visuals or layout** change, update **[BRAND_GUIDELINES.md](BRAND_GUIDELINES.md)** in the same change as the code.
 
 ---

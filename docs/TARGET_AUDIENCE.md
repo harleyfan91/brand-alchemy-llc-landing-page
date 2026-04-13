@@ -4,6 +4,7 @@
 
 **Related docs**
 
+- [Brand source of truth](BRAND_SOURCE_OF_TRUTH.md) — single entry point: audience summary, goals, hub site model, articles/SEO role, links to all canonical docs.
 - [Brand playbook](BRAND_PLAYBOOK.md) — tone, product catalog discipline, engagement, and how to maintain docs + rules together.
 - [Brand guidelines](BRAND_GUIDELINES.md) — fonts, colors, imagery, β△ symbol, layout and UI weight.
 

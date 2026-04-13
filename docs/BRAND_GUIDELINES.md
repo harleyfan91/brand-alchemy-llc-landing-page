@@ -30,7 +30,7 @@ Use this table when adding or auditing blocks so hero vs section vs body stay di
 | **Definition line** (dictionary) | Source Serif 4 | italic body: **normal** (400); word “alchemy”: **semibold** (600) | `text-[clamp(0.82rem,2.2vw,0.95rem)]` → `md:text-sm` | Wrapper `text-gray-500`; emphasized word `text-gray-700`; definition text `text-gray-400` | `normal-case`, `tracking-normal`, `leading-snug` |
 | **Hero H1** (main headline) | Inter | **bold** (700) | `text-[clamp(2rem,8.4vw,2.4rem)]` → `sm:text-4xl` → `md:text-5xl` → `lg:text-6xl` → `xl:text-7xl` | Primary lines `text-gray-900`; secondary line e.g. brand name `text-gray-300`; tertiary e.g. tagline `text-gray-500` | **UPPERCASE** (CSS via content), `tracking-tight`, `leading-[1.08]` → `md:leading-[1.1]` |
 | **Hero subhead** (paragraph under H1) | Inter | **light** (300) | `text-[clamp(1.02rem,4.2vw,1.15rem)]` → `md:text-xl` | `text-gray-500` | Sentence case, `leading-relaxed` |
-| **Hero text link CTA** (“See the approach”) | Inter | **bold** (700) | `text-[clamp(0.72rem,2.7vw,0.8rem)]` → `md:text-xs` | `text-gray-500`, hover `text-gray-900` | **UPPERCASE**, `tracking-[0.2em]` (not a filled button; arrow paired in component) |
+| **Hero text link CTA** (“See the system”) | Inter | **bold** (700) | `text-[clamp(0.72rem,2.7vw,0.8rem)]` → `md:text-xs` | `text-gray-500`, hover `text-gray-900` | **UPPERCASE**, `tracking-[0.2em]` (not a filled button; arrow paired in component) |
 
 #### Section header stack (e.g. Services, Products intros — `Services.tsx`, `Products.tsx`)
 
