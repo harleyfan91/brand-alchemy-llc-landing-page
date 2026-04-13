@@ -4,7 +4,6 @@ slug: branding-vs-marketing-small-business
 homepage_category: Brand Basics
 candidate_id: "01"
 status: draft
-author: Brand Alchemy
 date_published: "2026-04-13"
 last_verified: "2026-04-13"
 platform_sensitive: false
@@ -37,7 +36,7 @@ data_points:
 
 You know you need to be “out there” more. Maybe you have already tried posting twice a week, boosting a post, or running a coupon, and it still feels like you are shouting into the void. Often the missing piece is not effort; it is **clarity**. If you have only ever heard the words “branding” and “marketing” from salespeople, it is easy to assume they mean the same thing. They do not, and mixing them up usually wastes money.
 
-This article names the difference between branding and marketing in plain English, explains why order matters when you are stretched thin, and leaves you with one small action you can take today, before you spend another dollar asking strangers to notice you. You will not find agency vocabulary here: just the words a tired owner can use with their staff on Monday morning.
+This article names the difference between branding and marketing in plain English, explains why order matters when you are stretched thin, and leaves you with one small action you can take today, before you spend another dollar asking strangers to notice you.
 
 ## What branding and marketing actually mean (in plain English)
 
@@ -112,5 +111,3 @@ You do not have to wait for perfect. You should wait until you are clear and con
 Your logo is one piece of branding, not the whole thing. Branding is also colors, photos, tone, and the promises you keep in real life.
 
 Start with the fifteen-minute walkthrough, fix the loudest mismatch you find, and write your five true sentences before you buy another week of ads. **Branding first, then marketing** is how you make sure the money you spend actually points at a business people can recognize.
-
-**Brand Alchemy** · *Published April 13, 2026*

@@ -348,6 +348,10 @@ Assign one of the following. This tells the developer which structured data mark
 - `FAQPage` — add this for the FAQ section on any article that has one (nearly all of them)
 - These can stack: a how-to article gets `Article` + `HowTo` + `FAQPage`
 
+**Publish metadata (YAML, shipped articles on `/articles/:slug`)**
+- **`date_published`:** ISO date `YYYY-MM-DD`. Required for the article template. The page reads this for **Published [date]** in the header chrome (below the breadcrumb). Do **not** repeat “Published …” as a footer line in the markdown body.
+- **`author`:** Omit for normal Brand Alchemy editorial. Add only when a **named guest or co-author** is documented for that piece; implementation can show a byline in chrome when present. House articles stay cleaner without a redundant author field.
+
 ---
 
 ### The answer block
@@ -613,7 +617,7 @@ Run every article through this checklist before it is considered complete. Every
 - [ ] Answer block is the first content after the hero image — no intro paragraph, no decorative element before it
 - [ ] Each H2 section is modular — it answers its question without requiring the reader to have read the previous section
 - [ ] FAQ section has 3–5 questions, each answerable in 1–3 sentences
-- [ ] Author attribution is visible on the published page (name, date published) — byline follows [BRAND_PLAYBOOK.md](BRAND_PLAYBOOK.md) (*Content, articles, and SEO*): default **Brand Alchemy** unless a named contributor is documented for that piece
+- [ ] **Published date** is in article page chrome (from `date_published`), not duplicated as a body footer — see [BRAND_PLAYBOOK.md](BRAND_PLAYBOOK.md) (*Content, articles, and SEO*). Named author in chrome only when frontmatter documents a guest; otherwise omit `author` for house pieces
 - [ ] Data points use named sources, not "studies show" or "research suggests"
 
 ### Visual QA
