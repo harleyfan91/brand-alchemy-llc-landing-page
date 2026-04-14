@@ -206,9 +206,9 @@ const CATALOG_COLUMNS: {
  */
 const catalogCta = {
   getSample: 'Get sample',
-  addKit: 'Buy now',
-  addBundle: 'Buy bundle',
-  addItem: 'Buy now',
+  addKit: 'Coming soon',
+  addBundle: 'Coming soon',
+  addItem: 'Coming soon',
 } as const;
 
 /** Eyebrow on Identity Kit card */
@@ -407,8 +407,9 @@ const Products = () => {
       </div>
       <button
         type="button"
+        disabled
         style={fadeStyle}
-        className="w-full py-3 sm:py-3.5 bg-black text-white rounded-full text-xs font-bold uppercase tracking-widest hover:bg-gray-800 transition-colors"
+        className="w-full cursor-not-allowed rounded-full border border-gray-200 bg-gray-100 py-3 text-xs font-bold uppercase tracking-widest text-gray-500 sm:py-3.5"
       >
         {catalogCta.addKit}
       </button>
@@ -458,8 +459,9 @@ const Products = () => {
       </div>
       <button
         type="button"
+        disabled
         style={fadeStyle}
-        className="w-full py-3 sm:py-3.5 bg-black text-white rounded-full text-xs font-bold uppercase tracking-widest hover:bg-gray-800 transition-colors"
+        className="w-full cursor-not-allowed rounded-full border border-gray-200 bg-gray-100 py-3 text-xs font-bold uppercase tracking-widest text-gray-500 sm:py-3.5"
       >
         {catalogCta.addBundle}
       </button>
@@ -927,7 +929,8 @@ const Products = () => {
                         </div>
                         <button
                           type="button"
-                          className="w-full py-2.5 sm:py-3 border border-gray-200 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-widest group-hover:border-black group-hover:bg-black group-hover:text-white transition-all duration-300"
+                          disabled
+                          className="w-full cursor-not-allowed rounded-full border border-gray-200 bg-gray-100 py-2.5 text-[10px] font-bold uppercase tracking-widest text-gray-500 sm:py-3 sm:text-xs"
                         >
                           {catalogCta.addItem}
                         </button>

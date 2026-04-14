@@ -5,6 +5,7 @@ import OfferMatrixPrimitive from './primitives/OfferMatrixPrimitive.tsx';
 import ProductPhotoGridPrimitive from './primitives/ProductPhotoGridPrimitive.tsx';
 import SingleOfferTile from './primitives/SingleOfferTile.tsx';
 import { DIGITAL_PRODUCT_PRIMITIVES } from './primitives/digitalProductPrimitives';
+import { checkoutOpensInNewTab, normalizeCheckoutHref } from '../utils/checkoutHref';
 
 export interface DigitalProductPageCta {
   href: string;
@@ -74,20 +75,13 @@ export interface DigitalProductPageContent {
   legalNote?: string;
 }
 
-function isExternalToCurrentOrigin(url: string): boolean {
-  if (typeof window === 'undefined') return true;
-  try {
-    return new URL(url, window.location.href).origin !== window.location.origin;
-  } catch {
-    return true;
-  }
-}
-
 const DigitalProductPage: React.FC<{ product: DigitalProductPageContent }> = ({ product }) => {
-  const openCtaInNewTab = isExternalToCurrentOrigin(product.primaryCta.href);
-  const openSecondaryInNewTab = product.secondaryCta
-    ? isExternalToCurrentOrigin(product.secondaryCta.href)
-    : false;
+  const primaryCheckoutHref = normalizeCheckoutHref(product.primaryCta.href);
+  const secondaryCheckoutHref = product.secondaryCta
+    ? normalizeCheckoutHref(product.secondaryCta.href)
+    : null;
+  const openCtaInNewTab = primaryCheckoutHref ? checkoutOpensInNewTab(primaryCheckoutHref) : false;
+  const openSecondaryInNewTab = secondaryCheckoutHref ? checkoutOpensInNewTab(secondaryCheckoutHref) : false;
 
   const matrixColumns: DigitalProductMatrixColumn[] =
     product.matrixColumns ||
@@ -179,7 +173,7 @@ const DigitalProductPage: React.FC<{ product: DigitalProductPageContent }> = ({ 
             <OfferMatrixPrimitive
               columns={matrixColumns}
               primaryHref={product.primaryCta.href}
-              openInNewTab={openCtaInNewTab}
+              primaryBuyLabel={product.primaryCta.label}
             />
           )}
         </section>
@@ -353,21 +347,41 @@ const DigitalProductPage: React.FC<{ product: DigitalProductPageContent }> = ({ 
             Pick the package that matches your current bottleneck and start with a clear next step.
           </p>
           <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:items-center">
-            <a
-              href={product.primaryCta.href}
-              {...(openCtaInNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-xs font-bold uppercase tracking-widest text-gray-900 transition-colors hover:bg-gray-100"
-            >
-              {product.primaryCta.label}
-            </a>
-            {product.secondaryCta ? (
+            {primaryCheckoutHref ? (
               <a
-                href={product.secondaryCta.href}
-                {...(openSecondaryInNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                className="inline-flex items-center justify-center rounded-full border border-gray-500 px-6 py-3 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:border-white"
+                href={primaryCheckoutHref}
+                {...(openCtaInNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-xs font-bold uppercase tracking-widest text-gray-900 transition-colors hover:bg-gray-100"
               >
-                {product.secondaryCta.label}
+                {product.primaryCta.label}
               </a>
+            ) : (
+              <button
+                type="button"
+                disabled
+                className="inline-flex cursor-not-allowed items-center justify-center rounded-full border border-gray-600 bg-transparent px-6 py-3 text-xs font-bold uppercase tracking-widest text-gray-500"
+              >
+                Coming soon
+              </button>
+            )}
+            {product.secondaryCta ? (
+              secondaryCheckoutHref ? (
+                <a
+                  href={secondaryCheckoutHref}
+                  {...(openSecondaryInNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                  className="inline-flex items-center justify-center rounded-full border border-gray-500 px-6 py-3 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:border-white"
+                >
+                  {product.secondaryCta.label}
+                </a>
+              ) : (
+                <button
+                  type="button"
+                  disabled
+                  className="inline-flex cursor-not-allowed items-center justify-center rounded-full border border-gray-600 px-6 py-3 text-xs font-bold uppercase tracking-widest text-gray-500"
+                >
+                  Coming soon
+                </button>
+              )
             ) : null}
           </div>
           {product.legalNote ? (

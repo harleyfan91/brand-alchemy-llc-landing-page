@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import HomePage from './components/HomePage';
 import IdentityKitPage from './pages/IdentityKitPage';
+import IdentityKitSelectorPage from './pages/IdentityKitSelectorPage';
 import DigitalProductTemplatePreviewPage from './pages/DigitalProductTemplatePreviewPage';
 import GuidesAndKitsPage from './pages/GuidesAndKitsPage';
 import ArticlePage from './pages/ArticlePage';
@@ -20,6 +21,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/identity-kit" element={<IdentityKitPage />} />
+          <Route path="/identity-kit/select" element={<IdentityKitSelectorPage />} />
           <Route path="/local-business" element={<GuidesAndKitsPage />} />
           <Route path="/articles/:slug" element={<ArticlePage />} />
           <Route path="/product-page-primitives" element={<DigitalProductTemplatePreviewPage />} />

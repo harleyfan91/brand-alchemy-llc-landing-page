@@ -1,17 +1,30 @@
 import React, { useState } from 'react';
 import CheckIcon from '../CheckIcon';
 import type { DigitalProductMatrixColumn } from '../DigitalProductPage';
+import { checkoutOpensInNewTab, normalizeCheckoutHref } from '../../utils/checkoutHref';
 
-interface OfferMatrixPrimitiveProps {
+export interface OfferMatrixPrimitiveProps {
   columns: DigitalProductMatrixColumn[];
-  primaryHref: string;
-  openInNewTab: boolean;
+  /**
+   * Used when `getCheckoutHref` is not set. Placeholder values (`#`, empty) render a disabled CTA.
+   */
+  primaryHref?: string | null;
+  /**
+   * Per-column, per-option checkout URL. When set, overrides `primaryHref` for the bottom CTA.
+   */
+  getCheckoutHref?: (columnIndex: number, optionIndex: number) => string | null | undefined;
+  /** Label when checkout URL is present (default: Buy now). */
+  primaryBuyLabel?: string;
+  /** Label when no checkout URL (default: Coming soon). */
+  primaryUnavailableLabel?: string;
 }
 
 const OfferMatrixPrimitive: React.FC<OfferMatrixPrimitiveProps> = ({
   columns,
   primaryHref,
-  openInNewTab,
+  getCheckoutHref,
+  primaryBuyLabel = 'Buy now',
+  primaryUnavailableLabel = 'Coming soon',
 }) => {
   const [selectedOffer, setSelectedOffer] = useState<number | null>(null);
   const [selectedOptionByColumn, setSelectedOptionByColumn] = useState<Record<number, number>>({});
@@ -61,6 +74,40 @@ const OfferMatrixPrimitive: React.FC<OfferMatrixPrimitiveProps> = ({
     return Math.min(Math.max(idx, 0), Math.max(optionsLength - 1, 0));
   };
 
+  const resolveCheckoutHref = (columnIndex: number): string | null => {
+    const column = columns[columnIndex];
+    if (!column) return null;
+    const optionIndex = getSelectedOptionIndex(columnIndex, column.options.length);
+    if (getCheckoutHref) {
+      return normalizeCheckoutHref(getCheckoutHref(columnIndex, optionIndex));
+    }
+    return normalizeCheckoutHref(primaryHref);
+  };
+
+  const matrixCtaBase =
+    'mt-4 inline-flex w-full items-center justify-center rounded-full text-xs font-bold uppercase tracking-widest';
+  const matrixCtaLive = 'bg-black text-white transition-colors hover:bg-gray-800';
+  const matrixCtaDisabled = 'cursor-not-allowed border border-gray-200 bg-gray-100 text-gray-500';
+
+  const MatrixCheckoutCta = ({ columnIndex, paddingClass }: { columnIndex: number; paddingClass: string }) => {
+    const href = resolveCheckoutHref(columnIndex);
+    if (href) {
+      return (
+        <a
+          href={href}
+          {...(checkoutOpensInNewTab(href) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+          className={`${matrixCtaBase} ${paddingClass} ${matrixCtaLive}`}
+        >
+          {primaryBuyLabel}
+        </a>
+      );
+    }
+    return (
+      <button type="button" disabled className={`${matrixCtaBase} ${paddingClass} ${matrixCtaDisabled}`}>
+        {primaryUnavailableLabel}
+      </button>
+    );
+  };
 
   return (
     <div
@@ -151,13 +198,7 @@ const OfferMatrixPrimitive: React.FC<OfferMatrixPrimitiveProps> = ({
                       </button>
                     )})}
                   </div>
-                  <a
-                    href={primaryHref}
-                    {...(openInNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                    className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-black px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-white"
-                  >
-                    Buy now
-                  </a>
+                  <MatrixCheckoutCta columnIndex={idx} paddingClass="px-5 py-2.5" />
                 </div>
               ) : null}
             </div>
@@ -261,13 +302,7 @@ const OfferMatrixPrimitive: React.FC<OfferMatrixPrimitiveProps> = ({
                         </button>
                       )})}
                     </div>
-                    <a
-                      href={primaryHref}
-                      {...(openInNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                      className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-black px-6 py-3 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-gray-800"
-                    >
-                      Buy now
-                    </a>
+                    <MatrixCheckoutCta columnIndex={idx} paddingClass="px-6 py-3" />
                   </div>
                 </>
               )}

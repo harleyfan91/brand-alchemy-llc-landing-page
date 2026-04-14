@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import OfferMatrixPrimitive from '../components/primitives/OfferMatrixPrimitive.tsx';
 import ProductPhotoGridPrimitive from '../components/primitives/ProductPhotoGridPrimitive.tsx';
 import type { DigitalProductMatrixColumn } from '../components/DigitalProductPage';
+import { getLocalBusinessKitCheckoutHref } from '../utils/localBusinessKitCheckoutUrls';
 
 const matrixColumns: DigitalProductMatrixColumn[] = [
   {
@@ -73,6 +74,8 @@ const contentPacks = [
     price: '$7',
     description: 'Niche-specific framing for seasonal peaks so you know exactly which shots to capture and when.',
     imageUrl: 'https://images.unsplash.com/photo-1554048612-b6a482bc67e5?auto=format&fit=crop&q=80&w=900',
+    ctaLabel: 'Coming soon',
+    ctaDisabled: true,
   },
   {
     title: 'Seasonal & Event Copy Pack',
@@ -80,6 +83,8 @@ const contentPacks = [
     price: '$39',
     description: 'Ready-to-use copy for holidays and local events. Edit quickly and post without starting from scratch.',
     imageUrl: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=900',
+    ctaLabel: 'Coming soon',
+    ctaDisabled: true,
   },
   {
     title: 'Social Post Starters',
@@ -87,6 +92,8 @@ const contentPacks = [
     price: '$19',
     description: 'Short lines and fill-in-the-blank ideas for feed and stories.',
     imageUrl: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=900',
+    ctaLabel: 'Coming soon',
+    ctaDisabled: true,
   },
   {
     title: 'Email List Copy Pack',
@@ -94,6 +101,8 @@ const contentPacks = [
     price: '$29',
     description: 'Welcome and nurture email copy you can adapt to your voice.',
     imageUrl: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=900',
+    ctaLabel: 'Coming soon',
+    ctaDisabled: true,
   },
 ];
 
@@ -179,11 +188,7 @@ const GuidesAndKitsPage: React.FC = () => {
               to tailor the wording.
             </p>
           </div>
-          <OfferMatrixPrimitive
-            columns={matrixColumns}
-            primaryHref="#"
-            openInNewTab={false}
-          />
+          <OfferMatrixPrimitive columns={matrixColumns} getCheckoutHref={getLocalBusinessKitCheckoutHref} />
         </section>
 
         <section className="mt-12 border-t border-gray-100 pt-6">
