@@ -43,7 +43,7 @@ export const productPagePrimitivesPreviewPage: DigitalProductPageContent = {
         {
           name: 'Core',
           price: '$39',
-          bullets: ['Profile checklist', 'Review templates', 'Photo guide'],
+          bullets: ['Profile walkthrough', 'Review templates', 'Listing tips', 'Worksheets'],
           ctaLabel: 'Choose Google Core',
         },
         {
@@ -61,7 +61,7 @@ export const productPagePrimitivesPreviewPage: DigitalProductPageContent = {
         {
           name: 'Core',
           price: '$39',
-          bullets: ['Profile checklist', 'Review templates', 'Photo guide'],
+          bullets: ['Profile walkthrough', 'Review templates', 'Listing tips', 'Worksheets'],
           ctaLabel: 'Choose Yelp Core',
         },
         {
@@ -91,14 +91,14 @@ export const productPagePrimitivesPreviewPage: DigitalProductPageContent = {
       name: 'Google',
       price: '$39',
       summary: 'Google-focused templates and workflows for profile quality and review response consistency.',
-      bullets: ['Google profile checklist', 'Review reply templates', 'Photo angle guide', 'Weekly action checklist'],
+      bullets: ['Profile walkthrough', 'Review reply templates', 'Listing tips', 'Worksheets'],
       ctaLabel: 'Choose Google',
     },
     {
       name: 'Yelp',
       price: '$39',
       summary: 'Yelp-focused templates and workflows for better profile clarity and response speed.',
-      bullets: ['Yelp profile checklist', 'Review reply templates', 'Photo angle guide', 'Weekly action checklist'],
+      bullets: ['Profile walkthrough', 'Review reply templates', 'Listing tips', 'Worksheets'],
       ctaLabel: 'Choose Yelp',
     },
     {

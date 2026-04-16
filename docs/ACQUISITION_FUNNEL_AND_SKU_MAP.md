@@ -4,7 +4,8 @@
 
 **Code / product references**
 
-- Marketing catalog (Google/Yelp kits, content packs, bundle): `components/Products.tsx`
+- Homepage product cards: `components/Products.tsx`
+- Local kits + content packs (full detail): `pages/GuidesAndKitsPage.tsx`, `content/contentPacks.ts`
 - Site routing (homepage + `/identity-kit`): `App.tsx`, `components/HomePage.tsx`, `components/ScrollToTop.tsx` (scroll-to-top on route change), `pages/IdentityKitPage.tsx`, `components/MarketingComparisonCards.tsx` (marketing-first Core/Pro comparison for offer pages); optional kit URLs: `utils/identityKitUrls.ts`, `.env.example`
 - Identity Kit tiers and deliverables: `identity-kit` repo — `README.md`, `IDENTITY_KIT_PRD.md`, `apps/web/src/data/tiers.ts`
 - Camentra subscription model: `Camentra` repo — `docs/features/subscription/SUBSCRIPTION_SYSTEM_COMPLETE_GUIDE.md`, `app/screens/PaywallScreen.tsx`
@@ -18,13 +19,13 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
 | Phase | Name (internal) | Role | Hook (customer-facing) | Prices |
 |-------|------------------|------|------------------------|--------|
 | **1** | The Brain | Foundation | Stop guessing how your brand should sound and look. | Identity Kit **Core $79** / **Pro $149** |
-| **2** | The Megaphone | Local execution | Don’t sell “Google setup”—sell a **conversion asset library**: replies, prompts, angles, plus an honest profile walkthrough. | Google/Yelp **Core $39** / **Pro $79**; **Both (2× Pro) bundle $129** |
-| **3** | The Engine | Ongoing execution | The “how-to” for the **12 industry photo angles** in the kits—line up shots, retouch, AI coach. | Camentra **~$9.99/mo** or **~$79.99/yr** (set in App Store / RevenueCat; confirm live) |
+| **2** | The Megaphone | Local execution | Don’t sell “Google setup”—sell a **conversion asset library**: walkthrough, review templates, listing tips, worksheets. | Google/Yelp **Core $39** / **Pro $79**; **Both (2× Pro) bundle $129** |
+| **3** | The Engine | Ongoing execution | **Business photos on your phone:** line up shots, retouch, AI coach. | Camentra **~$9.99/mo** or **~$79.99/yr** (set in App Store / RevenueCat; confirm live) |
 
 **Integration copy to repeat where it fits**
 
 - **Identity Kit → local kits:** The **Voice & Content Playbook** is how they **personalize templates** (review replies, captions, posts) in the Google/Yelp kits.
-- **Local kits → Camentra:** The **12 industry photo angles** are meant to be used **on the phone** with Camentra’s templates and guidance, not only as a static PDF list.
+- **Local kits → Camentra:** Listing work in the kits pairs with **Camentra** when owners are ready to **shoot stronger business photos on the phone** (templates, guidance, coach).
 
 ---
 
@@ -41,14 +42,14 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
 ## One narrative thread (customer-facing)
 
 1. **First, get clear.** Answer a short set of questions and receive **your brand on paper**—voice, look, and what to do first (**Identity Kit**).
-2. **Then, execute locally.** Add a **conversion library** for Google and/or Yelp: templates and replies you tailor with your **Voice & Content Playbook**, plus a walkthrough and photo angles (**local kits**).
-3. **Keep showing up.** Use **Camentra** to turn those angles into real photos—**Pro** in the app (~$10/mo or ~$80/yr; verify in store). Optional: limited-time **Pro** included after a kit purchase (not wired in repo yet).
+2. **Then, execute locally.** Add a **conversion library** for Google and/or Yelp: a **profile walkthrough**, **30 review templates** you tailor with your **Voice & Content Playbook**, **plain-language tips** for a stronger listing, and **worksheets** to stay organized (**local kits**).
+3. **Keep showing up.** Use **Camentra** for **business photos on your phone**—**Pro** in the app (~$10/mo or ~$80/yr; verify in store). Optional: limited-time **Pro** included after a kit purchase (not wired in repo yet).
 
 **Words to avoid on customer surfaces:** “tripwire,” “order bump,” “retainer,” “conversion” (as funnel jargon).
 
 ---
 
-## SKU reference (aligned with `Products.tsx`)
+## SKU reference (aligned with [PRODUCTS_PRICING_AND_INCLUDES.md](PRODUCTS_PRICING_AND_INCLUDES.md) and `/local-business`)
 
 ### Phase 1 — Identity Kit (`identity-kit`)
 
@@ -63,7 +64,7 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
 
 | SKU | Price | Notes |
 |-----|--------|--------|
-| **Google Core Kit** | **$39** | Conversion-library framing; review templates + walkthrough + angles; tie-in to Identity Kit + Camentra in copy. |
+| **Google Core Kit** | **$39** | Walkthrough first; 30 review templates; plain-language listing tips; worksheets for consistency and upkeep. Camentra is separate (photos). |
 | **Google Pro Kit** | **$79** | Everything in Core + Ads starter, captions, KPI workbook, tracking. |
 | **Yelp Core Kit** | **$39** | Same pattern as Google for Yelp. |
 | **Yelp Pro Kit** | **$79** | Same pattern as Google Pro for Yelp. |
@@ -99,8 +100,9 @@ Photo execution and on-phone framing stay with **Camentra**; we do not sell a se
 
 ## Messaging emphasis (local kits)
 
-- **Lead with** time saved on **review responses** and **reply/post starters** (high pain, high perceived value).
-- **Frame setup** as a **checklist walkthrough** for something that is “free” but confusing—not the main headline.
+- **Lead with** the **profile walkthrough** (the part owners dread) and **30 review response templates** (high pain, high perceived value).
+- **Frame listing and search visibility** as practical steps owners can take, not a ranking promise.
+- The listing is “free” but confusing; the **walkthrough** is the on-ramp, not a generic “buy setup” pitch.
 - **Honest scope:** no guaranteed rankings or placement.
 
 ---

@@ -10,15 +10,17 @@ const matrixColumns: DigitalProductMatrixColumn[] = [
   {
     name: 'Google',
     toneKey: 'google',
-    summary: 'Conversion-ready templates, review replies, walkthrough, and photo angles for Google.',
+    summary:
+      'Profile setup guide, 30 review templates, plain-language listing tips, and worksheets to stay organized.',
     options: [
       {
         name: 'Core',
         price: '$39',
         bullets: [
+          'Step-by-step Google Business Profile setup guide',
           '30 review response templates personalized with your voice',
-          'Reply and post starters for real customer conversations',
-          'Step-by-step Google Business profile walkthrough',
+          'Best practices to help you rank higher in local search',
+          'Worksheets to keep your details consistent online and stay on top of your listing',
         ],
       },
       {
@@ -31,15 +33,17 @@ const matrixColumns: DigitalProductMatrixColumn[] = [
   {
     name: 'Yelp',
     toneKey: 'yelp',
-    summary: 'Conversion-ready templates, review replies, walkthrough, and photo angles for Yelp.',
+    summary:
+      'Profile setup guide, 30 review templates, plain-language listing tips, and worksheets to stay organized.',
     options: [
       {
         name: 'Core',
         price: '$39',
         bullets: [
+          'Step-by-step Yelp profile setup guide',
           '30 review response templates personalized with your voice',
-          'Reply and post starters for real customer conversations',
-          'Step-by-step Yelp profile walkthrough',
+          'Best practices to help you rank higher in local search',
+          'Worksheets to keep your details consistent online and stay on top of your listing',
         ],
       },
       {
@@ -61,7 +65,7 @@ const matrixColumns: DigitalProductMatrixColumn[] = [
         bullets: [
           'Google and Yelp Pro conversion libraries together',
           'Save compared to buying each Pro kit separately',
-          'Templates, photo angles, replies, and ads-ready extras',
+          'Walkthroughs, templates, listing tips, worksheets, and ads-ready extras across both platforms',
         ],
       },
     ],

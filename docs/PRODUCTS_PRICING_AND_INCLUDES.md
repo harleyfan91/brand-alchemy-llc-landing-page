@@ -52,11 +52,10 @@
 ### Google Core Kit
 - Price: $39
 - Includes:
+  - Step-by-step Google Business Profile walkthrough (set up and complete your listing the right way)
   - 30 review response templates (designed to be personalized with the Identity Kit Voice and Content Playbook)
-  - Reply and post starters
-  - Step-by-step Google Business Profile walkthrough
-  - 12 industry photo angles
-  - Local search visibility tips (no ranking guarantee)
+  - Plain-language best practices for a complete listing and showing up when people search for businesses like yours (honest scope: no guaranteed placement)
+  - Worksheets to keep your business details consistent wherever you show up online and to stay on top of your listing
 
 ### Google Pro Kit
 - Price: $79
@@ -70,11 +69,10 @@
 ### Yelp Core Kit
 - Price: $39
 - Includes:
+  - Step-by-step Yelp profile walkthrough (set up and complete your listing the right way)
   - 30 review response templates (designed to be personalized with the Identity Kit Voice and Content Playbook)
-  - Reply and post starters
-  - Step-by-step Yelp profile walkthrough
-  - 12 industry photo angles
-  - Local search visibility tips (no ranking guarantee)
+  - Plain-language best practices for a complete listing and showing up when people search for businesses like yours (honest scope: no guaranteed placement)
+  - Worksheets to keep your business details consistent wherever you show up online and to stay on top of your listing
 
 ### Yelp Pro Kit
 - Price: $79
@@ -90,7 +88,7 @@
 - Includes:
   - Google Pro conversion library
   - Yelp Pro conversion library
-  - Templates, photo angles, review replies, and ads-ready extras across both platforms
+  - Full Core and Pro deliverables on both platforms: walkthroughs, templates, listing tips, worksheets, and ads-ready extras
 
 ## Content packs
 
