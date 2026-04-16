@@ -132,19 +132,41 @@ const AlchemyBackground: React.FC = () => {
       // Mobile: advance triangle/train/beta timing with pAnim so layers stay in sync vs page scroll.
       const narrow = window.matchMedia('(max-width: 767px)').matches;
       const MOBILE_ANIM_BOOST = 2.75;
-      const pAnim = narrow ? Math.min(1, pRaw * MOBILE_ANIM_BOOST) : pRaw;
 
       const triPhaseEnd = 0.3;
+
+      // Desktop: tie the triangle + symbol-train phase to #services (not to % of total scroll).
+      // Longer pages shrink pRaw at a given section, so fixed thresholds (e.g. 0.25) drift late
+      // into Products unless we anchor to the section pixel position.
+      let pAnim: number;
+      if (narrow) {
+        pAnim = Math.min(1, pRaw * MOBILE_ANIM_BOOST);
+      } else {
+        const services = document.getElementById('services');
+        const vh = window.innerHeight;
+        let anchorScrollY = maxScroll * triPhaseEnd;
+        if (services) {
+          const topDoc = services.getBoundingClientRect().top + scrollY;
+          // Smaller vh factor → larger anchorScrollY → triangle / train phase completes later.
+          anchorScrollY = Math.max(160, topDoc - vh * 0.18);
+          anchorScrollY = Math.min(anchorScrollY, maxScroll * 0.98);
+        }
+        if (scrollY <= anchorScrollY) {
+          pAnim = (scrollY / Math.max(anchorScrollY, 1)) * triPhaseEnd;
+        } else {
+          pAnim =
+            triPhaseEnd +
+            ((scrollY - anchorScrollY) / Math.max(1, maxScroll - anchorScrollY)) * (1 - triPhaseEnd);
+        }
+      }
+
       const trainFadeStart = 0.25;
 
-      // ── Beta Symbol (on mobile use pAnim so fade completes before train ramps in at ~0.25) ──
-      const betaOpacity = narrow
-        ? pAnim < 0.05
+      // ── Beta Symbol (fade on pAnim so it stays synced with triangle + train on all breakpoints) ──
+      const betaOpacity =
+        pAnim < 0.05
           ? MAX_OPACITY
-          : mapRange(pAnim, 0.05, 0.22, MAX_OPACITY, 0)
-        : pRaw < 0.15
-          ? MAX_OPACITY
-          : mapRange(pRaw, 0.15, 0.25, MAX_OPACITY, 0);
+          : mapRange(pAnim, 0.05, 0.22, MAX_OPACITY, 0);
 
       if (betaRef.current) {
         betaRef.current.style.transform = `translate(calc(-50% - 25vw), -50%)`; 
