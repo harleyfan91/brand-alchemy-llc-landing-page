@@ -10,7 +10,7 @@ export const contentPacks: ProductPhotoCardItem[] = [
     subtitle: 'Year round',
     price: '$29',
     description:
-      'Reusable prompts for routine posts and small updates: what is new, hours, quick news, and staying in front of customers between holidays and bigger pushes.',
+      "Reusable templates and starters for routine posts and updates—what's new, hours, quick news, and more.",
     imageUrl: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=900',
     ctaLabel: 'Coming soon',
     ctaDisabled: true,
@@ -28,7 +28,7 @@ export const contentPacks: ProductPhotoCardItem[] = [
     title: 'Social Content Pack',
     subtitle: 'Social',
     price: '$19',
-    description: 'Short lines and fill-in-the-blank ideas for feed and stories.',
+    description: 'Short lines, starters, and fill-in-the-blank ideas for feed and stories.',
     imageUrl: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=900',
     ctaLabel: 'Coming soon',
     ctaDisabled: true,

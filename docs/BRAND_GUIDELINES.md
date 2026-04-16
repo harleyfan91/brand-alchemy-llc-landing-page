@@ -50,7 +50,7 @@ Use this table when adding or auditing blocks so hero vs section vs body stay di
 | **Body / descriptions** (cards, features, solutions) | Inter | **light** (300) or **normal** (400) for lists | `text-sm` (often `md:text-base` for intros) | `text-gray-500`–`text-gray-600` | Sentence case, `leading-relaxed` |
 | **Contact headline** | Source Serif 4 | **normal** (400) — `font-normal` | `text-4xl` → `md:text-5xl` | `text-gray-900` | Title case |
 | **Content pack card title** (catalog) | Source Serif 4 | **normal** (400) — `font-normal` | `text-sm` → `sm:text-lg` | `text-gray-900` | Title case, `leading-snug` |
-| **Modal section title** (e.g. local-business catalog `h3`) | Source Serif 4 | **normal** (400) — `font-normal` | `text-2xl` | `text-gray-900` | Title case |
+| **Modal section title** (e.g. offer dialog `h3`) | Source Serif 4 | **normal** (400) — `font-normal` | `text-2xl` | `text-gray-900` | Title case |
 | **Contact body** | Inter | **light** (300) | `text-lg` | `text-gray-500` | `leading-relaxed`; link `text-gray-900`, hover `text-gray-500` |
 
 #### UI chrome
@@ -231,7 +231,7 @@ There **was** a one-line note in the layout table; the trouble we hit on Guides 
 | **Section foreground** | `20` | Major in-flow content that must read above the fixed atmosphere: section shells (`Services`, `Contact`), hero copy container, section intros, dense grids (e.g. `Products` cards), carousel tiles (`Guides` `article`). Optional **`isolate`** where stacking with siblings/overflow gets confusing. |
 | **Local controls** | `20` (same band) | Small interactive controls that sit in a flex row **beside** `overflow-*` tracks (e.g. Guides prev/next): give the **control** `position: relative` + `z-index: 20` — **not** the whole section — so they stack above `z-10` without flattening the whole block. |
 | **Header** | `50` | `Header` — fixed nav above page content |
-| **Modals** | `100` | Full-screen scrim + dialog (`Products` kit modal, `Guides` coming-soon). **Use `z-[100]` for all** so layers stay predictable. |
+| **Modals** | `100` | Full-screen scrim + dialog (e.g. `Guides` coming-soon). **Use `z-[100]` for all** so layers stay predictable. |
 
 **Why it was confusing:** `AlchemyBackground` is a **sibling** of `main` (both under the app root), not a child of each section. A white **section** (`bg-white`) still leaves **flex children** (e.g. carousel arrows vs `overflow-x-auto` track) in subtle stacking orders; a control without `z-index` can end up **under** the fixed `z-10` layer in some compositions. Raising **`z-20` on an entire section** fixes that but also **hides the atmosphere for the whole band** — too heavy. Prefer **targeted** `relative` + `z-20` on the element that needs it.
 

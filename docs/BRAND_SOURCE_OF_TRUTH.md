@@ -28,7 +28,7 @@ We exist for **small, owner-operated businesses**: local shops and services, tra
 
 - **Homepage (`/`)** is the **umbrella**: hero, **System** (`#services`), **Products** catalog, **Articles**, contact—not a single-offer funnel. Primary hero action stays **See the system** → explain the model before the catalog.
 - **Identity Kit** has a dedicated offer path: **`/identity-kit`** sells the tiers; high-intent traffic can land there. Intake/checkout may live on a subdomain or subpath per deployment; messaging still reads as one site.
-- **Local kits and guides** are grouped for browsing (for example **`/local-business`** where implemented) as **execution modules** that plug into a defined brand, not a separate “strategy.”
+- **Guides & launch kits** (`/local-business`) group **local launch kits** (Google / Yelp / bundle) and **content packs** on one page: execution modules that plug into a defined brand, not a separate “strategy.” Page pattern and copy rules: [BRAND_PLAYBOOK.md](BRAND_PLAYBOOK.md) (*`/local-business`*). SKU prices and deliverables: [PRODUCTS_PRICING_AND_INCLUDES.md](PRODUCTS_PRICING_AND_INCLUDES.md).
 - **Implementation** wiring: `App.tsx`, `components/HomePage.tsx`, `pages/IdentityKitPage.tsx`, `components/Products.tsx`, `components/Services.tsx`, `components/Articles.tsx`, `components/Hero.tsx`.
 
 ---
@@ -50,7 +50,7 @@ This mirrors the internal **Brain → Megaphone → Engine** framing in the acqu
 | Layer | Customer-facing idea | Primary SKUs (see pricing doc for includes) |
 |-------|------------------------|---------------------------------------------|
 | Foundation | Brand on paper | Identity Kit **Core $79** / **Pro $149** |
-| Local execution | Conversion-ready libraries for Google and Yelp | Core **$39** / Pro **$79** per platform; **Google + Yelp Pro bundle $129** |
+| Local execution | **Local launch kits** for Google and Yelp (step-by-step listings, templates, worksheets) | Core **$39** / Pro **$79** per platform; **Google + Yelp Pro bundle $129** |
 | Ongoing creative | Photos aligned to kit guidance | **Camentra** Free / Pro (~**$9.99/mo** or ~**$79.99/yr**—confirm in store) |
 | Add-ons / standalone | Copy and seasonal support | Content packs per [PRODUCTS_PRICING_AND_INCLUDES.md](PRODUCTS_PRICING_AND_INCLUDES.md) |
 
@@ -87,8 +87,7 @@ Until article pages ship, treat the strip as the **editorial and SEO commitment*
 | [ARTICLE_RESEARCH_SYSTEM.md](ARTICLE_RESEARCH_SYSTEM.md) | Article topic research, candidate brief schema, backlog. |
 | [ARTICLE_WRITING_SCHEMA.md](ARTICLE_WRITING_SCHEMA.md) | Article draft stages, on-page structure, visual and publish QA. |
 | [BRAND_GUIDELINES.md](BRAND_GUIDELINES.md) | Typography, color, imagery, β△ mark, layout, motion, UI weight. |
-| [ACQUISITION_FUNNEL_AND_SKU_MAP.md](ACQUISITION_FUNNEL_AND_SKU_MAP.md) | Funnel narrative, SKU ladder, bumps, checklist vs implementation. |
-| [PRODUCTS_PRICING_AND_INCLUDES.md](PRODUCTS_PRICING_AND_INCLUDES.md) | Price points and deliverable lists per SKU. |
+| [PRODUCTS_PRICING_AND_INCLUDES.md](PRODUCTS_PRICING_AND_INCLUDES.md) + [ACQUISITION_FUNNEL_AND_SKU_MAP.md](ACQUISITION_FUNNEL_AND_SKU_MAP.md) | **Pair:** **Pricing doc** = prices and SKU deliverables (source of truth for what’s in each product). **Acquisition doc** = story, ladder, bundle logic, bumps, checklists. Each references the other; update both when prices or includes change. |
 | [`public/brand-tokens.css`](../public/brand-tokens.css) | CSS variables: neutrals, chrome, scrim, catalog platform tints (`--ba-catalog-*`). |
 | [CATALOG_TIER_TEXT_STYLES.md](CATALOG_TIER_TEXT_STYLES.md) | Core / Pro–style labels where those tiers apply (optional for sites that do not use that catalog language). |
 | [PDF_CHROME.md](PDF_CHROME.md) | Shared PDF chrome packages and parent vs Identity Kit color roles. |

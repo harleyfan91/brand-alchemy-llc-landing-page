@@ -1,5 +1,11 @@
 # Products, pricing, and included items
 
+**What this doc is:** **Prices** and **what ships inside each SKU** (deliverables). It does **not** describe page layout, section order, or on-site UI copy—that belongs with [BRAND_PLAYBOOK.md](BRAND_PLAYBOOK.md) / implementation in `pages/`.
+
+**Companion (read together):** [ACQUISITION_FUNNEL_AND_SKU_MAP.md](ACQUISITION_FUNNEL_AND_SKU_MAP.md) covers the **customer story**, **product ladder**, **bundle math**, **bumps**, and **implementation checklist**. It treats **this file** as the source of truth for **pricing and SKU includes**. When **prices, bundle rules, or named deliverables** change, update **both** docs in the same change so the funnel never drifts from the catalog.
+
+---
+
 ## Identity Kit
 
 ### Identity Kit Core
@@ -62,9 +68,7 @@
 - Includes:
   - Everything in Google Core Kit
   - Google Ads starter settings
-  - 30 evergreen caption prompts
   - KPI and audit workbook
-  - Performance tracking sheet
 
 ### Yelp Core Kit
 - Price: $39
@@ -79,35 +83,34 @@
 - Includes:
   - Everything in Yelp Core Kit
   - Yelp Ads starter configuration
-  - 30 evergreen caption prompts
   - Troubleshooting playbook
-  - Performance tracking sheet
 
 ### Google + Yelp Pro Bundle
 - Price: $129
 - Includes:
-  - Google Pro conversion library
-  - Yelp Pro conversion library
+  - Google Pro and Yelp Pro **local launch kits** together (both Pro tiers in one checkout)
   - Full Core and Pro deliverables on both platforms: walkthroughs, templates, listing tips, worksheets, and ads-ready extras
 
 ## Content packs
 
+Standalone copy (not Identity Kit deliverables, not local launch kits). When template counts, file format, and length rules are finalized, add them under each SKU.
+
 ### Core Content Pack
 - Price: $29
 - Includes:
-  - Reusable prompts for routine posts and small updates (what is new, hours, quick news)
+  - Reusable templates and starters for routine posts and updates (what is new, hours, quick news, and more)
   - Lines you can reuse to stay visible between holidays and bigger campaigns
 
 ### Holidays & Events Content Pack
 - Price: $39
 - Includes:
-  - Ready-to-use copy for holidays and local events
-  - Timely prompts you can edit and post quickly
+  - Ready-to-use copy for holidays and local events; edit and post without starting from scratch
+  - Timely starters you can adapt quickly
 
 ### Social Content Pack
 - Price: $19
 - Includes:
-  - Short lines and fill-in-the-blank ideas for feed and stories
+  - Short lines, starters, and fill-in-the-blank ideas for feed and stories
 
 ### Email Content Pack
 - Price: $29

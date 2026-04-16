@@ -63,7 +63,7 @@ const matrixColumns: DigitalProductMatrixColumn[] = [
         name: 'Bundle',
         price: '$129',
         bullets: [
-          'Google and Yelp Pro conversion libraries together',
+          'Google and Yelp Pro local launch kits together',
           'Save compared to buying each Pro kit separately',
           'Walkthroughs, templates, listing tips, worksheets, and ads-ready extras across both platforms',
         ],
@@ -101,18 +101,16 @@ const GuidesAndKitsPage: React.FC = () => {
           <h1 className="mt-2 font-serif text-3xl font-normal leading-tight text-gray-900 sm:text-4xl md:text-5xl">
             Guides &amp; launch kits
           </h1>
-          <p className="mt-3 max-w-3xl text-sm font-light leading-relaxed text-gray-600 sm:text-base">
-            Practical products for local businesses that want to show up more clearly online. They help with profiles,
-            replies, content, photos, and the everyday marketing work that brings in more customers.
-          </p>
         </section>
 
         <section className="mt-8 rounded-xl border border-gray-100 bg-gray-50 p-4 sm:rounded-2xl sm:p-5">
           <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Free sample</span>
-          <h2 className="mt-1 font-serif text-xl font-normal text-gray-900 sm:text-2xl">Starter sample</h2>
+          <h2 className="mt-1 font-serif text-xl font-normal text-gray-900 sm:text-2xl">
+            Your free local-business preview
+          </h2>
           <p className="mt-1.5 text-sm font-light leading-snug text-gray-500">
-            We&apos;ll send a quick profile audit, 3 review response templates for your niche, and next steps for stronger
-            phone photos, including how Camentra helps you line up shots (see camentra.com).
+            Choose an industry below and enter your email to receive a sample of photo best practices, review response
+            templates, and a 3-minute audit of your local business listings.
           </p>
           <div className="mt-3 flex flex-col gap-2 md:flex-row md:items-stretch md:gap-2.5">
             <select
@@ -146,13 +144,12 @@ const GuidesAndKitsPage: React.FC = () => {
 
         <section className="mt-10">
           <div className="mb-4 text-left md:mb-5">
-            <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Local conversion libraries</span>
+            <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Local launch kits</span>
             <h2 className="mt-1 text-xl font-serif font-normal text-gray-900 sm:text-2xl">
-              Choose Google, Yelp, or both.
+              Set up your local listings with ease.
             </h2>
             <p className="mt-2 text-sm font-light text-gray-500">
-              These kits are execution modules: templates, replies, and angles. Use your Identity Kit voice guidance
-              to tailor the wording.
+              Step-by-step guides for setting up Google Business and Yelp profiles, review response templates & more.
             </p>
           </div>
           <OfferMatrixPrimitive columns={matrixColumns} getCheckoutHref={getLocalBusinessKitCheckoutHref} />
@@ -163,7 +160,7 @@ const GuidesAndKitsPage: React.FC = () => {
             <div>
               <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Content packs</span>
               <h2 className="mt-1.5 text-xl font-serif font-normal text-gray-900 sm:text-2xl">
-                Copy and prompts for every channel.
+                Content starters for what you publish
               </h2>
               <p className="mt-2 max-w-3xl text-sm font-light leading-relaxed text-gray-500">
                 Templates and easy to use guides so you don&apos;t have to invent marketing copy from scratch.

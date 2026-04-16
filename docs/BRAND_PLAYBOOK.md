@@ -59,12 +59,14 @@ The homepage **System** block (`#services`, `components/Services.tsx`) explains 
 | **System — Marketing tools & kits** | DIY operators and busy owners | Practical kits, guides, and templates without a marketing background | **Products** catalog: local kits, content packs, bundles — `components/Products.tsx` |
 | **System — Visibility & growth** | Anyone building local or digital presence | Show up more clearly and build momentum over time | Outcome layer; reinforced by local kits, articles, and **Camentra** |
 | Identity Kit (Core / Pro) | Owners who want brand voice + look on paper | Guided intake → PDFs by email | Core **$79** / Pro **$149**; funnel role in [ACQUISITION_FUNNEL_AND_SKU_MAP.md](ACQUISITION_FUNNEL_AND_SKU_MAP.md) |
-| Google Core / Pro kits; Yelp Core / Pro kits; **Google + Yelp Pro bundle** | Local businesses on those platforms | Walkthrough, review templates, plain-language listing tips, worksheets—not a generic “paid setup” pitch | Core **$39** / Pro **$79**; bundle **$129**; live details in [PRODUCTS_PRICING_AND_INCLUDES.md](PRODUCTS_PRICING_AND_INCLUDES.md) and `/local-business` |
+| Google Core / Pro kits; Yelp Core / Pro kits; **Google + Yelp Pro bundle** | Local businesses on those platforms | **Local launch kits:** walkthrough, review templates, plain-language listing tips, worksheets—not a generic “paid setup” pitch | Core **$39** / Pro **$79**; bundle **$129**; SKUs in [PRODUCTS_PRICING_AND_INCLUDES.md](PRODUCTS_PRICING_AND_INCLUDES.md); page pattern below |
 | Content packs (**Core Content Pack**, **Holidays & Events Content Pack**, **Social Content Pack**, **Email Content Pack**) | Owners creating their own content | Templates and easy to use guides; Core pack is year-round routine content, not social-only or email-only | **Standalone** purchases unless checkout offers a bump; **photo framing / angles → Camentra**, not a competing PDF |
 | Camentra (app) | Owners taking business photos | Templates, guidance, AI coach (Pro) | Subscription via app store; optional post-kit Pro promo — see funnel map |
 | **Articles** (editorial) | Same audience as the site | Plain, practical explainers that answer real owner questions | Supports **trust and SEO** when index/detail pages ship; see *Content, articles, and SEO* below |
 
 Add a row for **each new SKU or service line** so the table stays the checklist before publishing copy.
+
+**`/local-business` (Guides & launch kits)** — Dedicated page for local execution products; implementation `pages/GuidesAndKitsPage.tsx`. **Eyebrows:** Local business (hero), Free sample, Local launch kits, Content packs. **Headlines:** H1 *Guides & launch kits*; section H2s include *Your free local-business preview*, *Set up your local listings with ease.*, *Content starters for what you publish*. Lead magnet: industry + email for a sample (photo best practices, review response templates, short listings audit). Use **local launch kits** (not deprecated “conversion library”). Content pack **card blurbs:** `content/contentPacks.ts`. **Pricing and what’s inside each SKU:** [PRODUCTS_PRICING_AND_INCLUDES.md](PRODUCTS_PRICING_AND_INCLUDES.md)—not page layout.
 
 ---
 

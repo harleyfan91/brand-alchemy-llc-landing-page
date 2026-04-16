@@ -2,6 +2,8 @@
 
 **Purpose:** Map **SKUs and prices** to a **single customer-facing story** and document the **product ladder** (foundation → execution modules → ongoing tool). Use for ads, landing pages, checkout, and email. Tone: [TARGET_AUDIENCE.md](TARGET_AUDIENCE.md), [BRAND_PLAYBOOK.md](BRAND_PLAYBOOK.md)—**plain language**; keep internal funnel jargon off customer surfaces.
 
+**Companion (read together):** [PRODUCTS_PRICING_AND_INCLUDES.md](PRODUCTS_PRICING_AND_INCLUDES.md) is the **authoritative catalog** for **prices** and **SKU deliverables**. **This doc** owns **narrative, sequencing, bumps, and ops checklists**. The **SKU reference** tables below are **summaries** for funnel thinking; when anything numeric or “what’s included” changes, edit the **pricing doc first**, then align this file.
+
 **Code / product references**
 
 - Homepage product cards: `components/Products.tsx`
@@ -19,7 +21,7 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
 | Phase | Name (internal) | Role | Hook (customer-facing) | Prices |
 |-------|------------------|------|------------------------|--------|
 | **1** | The Brain | Foundation | Stop guessing how your brand should sound and look. | Identity Kit **Core $79** / **Pro $149** |
-| **2** | The Megaphone | Local execution | Don’t sell “Google setup”—sell a **conversion asset library**: walkthrough, review templates, listing tips, worksheets. | Google/Yelp **Core $39** / **Pro $79**; **Both (2× Pro) bundle $129** |
+| **2** | The Megaphone | Local execution | Don’t sell “Google setup”—sell **local launch kits**: walkthrough, review templates, listing tips, worksheets. | Google/Yelp **Core $39** / **Pro $79**; **Both (2× Pro) bundle $129** |
 | **3** | The Engine | Ongoing execution | **Business photos on your phone:** line up shots, retouch, AI coach. | Camentra **~$9.99/mo** or **~$79.99/yr** (set in App Store / RevenueCat; confirm live) |
 
 **Integration copy to repeat where it fits**
@@ -42,14 +44,14 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
 ## One narrative thread (customer-facing)
 
 1. **First, get clear.** Answer a short set of questions and receive **your brand on paper**—voice, look, and what to do first (**Identity Kit**).
-2. **Then, execute locally.** Add a **conversion library** for Google and/or Yelp: a **profile walkthrough**, **30 review templates** you tailor with your **Voice & Content Playbook**, **plain-language tips** for a stronger listing, and **worksheets** to stay organized (**local kits**).
+2. **Then, execute locally.** Add **local launch kits** for Google and/or Yelp: a **profile walkthrough**, **30 review templates** you tailor with your **Voice & Content Playbook**, **plain-language tips** for a stronger listing, and **worksheets** to stay organized.
 3. **Keep showing up.** Use **Camentra** for **business photos on your phone**—**Pro** in the app (~$10/mo or ~$80/yr; verify in store). Optional: limited-time **Pro** included after a kit purchase (not wired in repo yet).
 
 **Words to avoid on customer surfaces:** “tripwire,” “order bump,” “retainer,” “conversion” (as funnel jargon).
 
 ---
 
-## SKU reference (aligned with [PRODUCTS_PRICING_AND_INCLUDES.md](PRODUCTS_PRICING_AND_INCLUDES.md) and `/local-business`)
+## SKU reference (aligned with [PRODUCTS_PRICING_AND_INCLUDES.md](PRODUCTS_PRICING_AND_INCLUDES.md))
 
 ### Phase 1 — Identity Kit (`identity-kit`)
 
@@ -65,9 +67,9 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
 | SKU | Price | Notes |
 |-----|--------|--------|
 | **Google Core Kit** | **$39** | Walkthrough first; 30 review templates; plain-language listing tips; worksheets for consistency and upkeep. Camentra is separate (photos). |
-| **Google Pro Kit** | **$79** | Everything in Core + Ads starter, captions, KPI workbook, tracking. |
+| **Google Pro Kit** | **$79** | Everything in Core + Google Ads starter settings + KPI and audit workbook. |
 | **Yelp Core Kit** | **$39** | Same pattern as Google for Yelp. |
-| **Yelp Pro Kit** | **$79** | Same pattern as Google Pro for Yelp. |
+| **Yelp Pro Kit** | **$79** | Everything in Core + Yelp Ads starter configuration + troubleshooting playbook. |
 | **Google + Yelp (bundle)** | **$129** | **Both Pro tiers** in one checkout; save **$29** vs two Pro singles. |
 
 ### Checkout add-ons (Identity Kit checkout—test one default)
@@ -82,7 +84,7 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
 
 | SKU | Price | Notes |
 |-----|--------|-------|
-| **Core Content Pack** | **$29** | Year-round prompts for routine posts and small updates; not social-only or email-only (those are separate packs). |
+| **Core Content Pack** | **$29** | Year-round templates and starters for routine posts and small updates; not social-only or email-only (those are separate packs). |
 | **Email Content Pack** | **$29** | Welcome and early email copy. |
 
 Photo execution and on-phone framing stay with **Camentra**; we do not sell a separate low-price “photo angles” PDF that competes with the app.
@@ -126,7 +128,7 @@ Photo execution and on-phone framing stay with **Camentra**; we do not sell a se
 - [x] Updated the **local kit pricing model** in this doc to **$39 / $79** and aligned the **bundle** to **$129**.
 - [x] Re-checked the **bundle math** so the bundle still reads as a deal after lowering individual kit prices.
 - [x] Updated `components/Products.tsx` pricing to match the tier model in this doc.
-- [x] Updated the product section copy to frame Google / Yelp kits as **conversion libraries**, not just “setup.”
+- [x] Updated the product section copy to frame Google / Yelp kits as **local launch kits** (listings + templates), not a generic “setup” pitch.
 - [x] Added the **Identity Kit → local kits** and **local kits → Camentra** integration language to the site catalog copy.
 - [x] Linked this doc into the broader brand/product documentation so it can act as the working reference.
 - [x] Shipped **client-side routes** for `/` and `/identity-kit`, Identity Kit **marketing page**, and **nav** link; fixed production issues (**no** incompatible `ScrollRestoration` on `BrowserRouter`; **no** catch-all `_redirects` on Cloudflare Pages).
