@@ -1,6 +1,6 @@
 import React from 'react';
 
-/** Catalog tier feature rows — sizes match `components/Products.tsx` (formerly inline). */
+/** Catalog tier feature rows — sizes match `CatalogStyleTierCards` and kit surfaces. */
 const CheckIcon = ({ size = 'sm' }: { size?: 'sm' | 'md' }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"

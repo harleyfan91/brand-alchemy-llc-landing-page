@@ -10,20 +10,22 @@ export const productPagePrimitivesPreviewPage: DigitalProductPageContent = {
   quickFacts: ['Instant download', 'Plain-language steps', 'No agency retainer', 'Use with or without Identity Kit'],
   packageSectionTitle: 'Choose your package',
   showPrimitiveGallery: true,
+  /** Layout-only placeholders for `ProductPhotoGridPrimitive` on `/product-page-primitives`. Real SKU copy lives in `content/contentPacks.ts`. */
   photoGridPreviewItems: [
     {
-      title: 'Seasonal Industry Photo Angles',
-      subtitle: '9-Angle PDF Guide',
-      price: '$7',
-      description: 'Niche-specific framing examples for seasonal demand periods.',
-      imageUrl: 'https://images.unsplash.com/photo-1554048612-b6a482bc67e5?auto=format&fit=crop&q=80&w=900',
+      title: 'Sample product card (long title wraps)',
+      subtitle: 'Eyebrow',
+      price: '$29',
+      description:
+        'Neutral placeholder copy to preview image ratio, price alignment, and body text in the photo grid. Not a live product.',
+      imageUrl: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=900',
     },
     {
-      title: 'Social Post Starters',
-      subtitle: 'Captions & Ideas',
-      price: '$19',
-      description: 'Image-led card example for smaller standalone digital products.',
-      imageUrl: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=900',
+      title: 'Second sample card',
+      subtitle: 'Category',
+      price: '$39',
+      description: 'Second tile for responsive columns (e.g. two-up on tablet, four-up when the real page shows four packs).',
+      imageUrl: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=900',
     },
   ],
   singleOfferPreview: {

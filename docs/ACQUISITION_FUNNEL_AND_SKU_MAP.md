@@ -73,16 +73,18 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
 
 | SKU | Price | Role |
 |-----|--------|------|
-| **Social post starters** | **$19** | Low-friction “use your voice now.” |
-| **Seasonal & Event Copy Pack** | **$39** | Stronger seasonal/event copy. |
+| **Social Content Pack** | **$19** | Low-friction "use your voice now" on feed and stories. |
+| **Holidays & Events Content Pack** | **$39** | Holiday and local-moment copy. |
 | **Google or Yelp Core** | **$39** | Local execution module right after brand clarity. |
 
-### Other packs (standalone or later emails)
+### Other content packs (standalone or later emails)
 
-| SKU | Price |
-|-----|--------|
-| **Email List Copy Pack** | **$29** |
-| **Seasonal Industry Photo Angles** | **$7** |
+| SKU | Price | Notes |
+|-----|--------|-------|
+| **Core Content Pack** | **$29** | Year-round prompts for routine posts and small updates; not social-only or email-only (those are separate packs). |
+| **Email Content Pack** | **$29** | Welcome and early email copy. |
+
+Photo execution and on-phone framing stay with **Camentra**; we do not sell a separate low-price “photo angles” PDF that competes with the app.
 
 ### Phase 3 — Camentra
 
@@ -108,7 +110,7 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
 | Stage | Goal | SKU(s) |
 |-------|------|--------|
 | **Land** | Brand foundation | Identity Kit **Core** $79 |
-| **Bump** | Apply voice + local templates | **Social post starters** $19 **or** **Google/Yelp Core** $39 (one default per test) |
+| **Bump** | Apply voice + local templates | **Social Content Pack** $19 **or** **Google/Yelp Core** $39 (one default per test) |
 | **Ascend** | Deeper brand or local Pro | Identity Kit **Pro** $149; **Google/Yelp Pro** $79; **2× Pro bundle** $129 |
 | **Retain** | Photos + coach | Camentra **Pro** subscription; optional subsidized trial after kit |
 
@@ -151,7 +153,7 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
   Conclusion: the site currently behaves as a **hub with browse CTAs**, not as a true funnel. Keep it that way at the homepage level, and move high-intent conversion into dedicated offer pages and real checkout flows.
 - [ ] Decide whether the **bundle** should remain a Pro-only two-platform offer or whether a separate two-platform Core offer is needed later.
 - [ ] Confirm the **live checkout / payment links** match the new prices before promoting the revised tiers.
-- [ ] Decide what the first **post-purchase add-on test** should be: **Social post starters ($19)** or **Google/Yelp Core ($39)**.
+- [ ] Decide what the first **post-purchase add-on test** should be: **Social Content Pack ($19)** or **Google/Yelp Core ($39)**.
 
 ### Identity Kit integration notes
 

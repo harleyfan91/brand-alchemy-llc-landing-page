@@ -4,6 +4,7 @@ import OfferMatrixPrimitive from '../components/primitives/OfferMatrixPrimitive.
 import ProductPhotoGridPrimitive from '../components/primitives/ProductPhotoGridPrimitive.tsx';
 import type { DigitalProductMatrixColumn } from '../components/DigitalProductPage';
 import { getLocalBusinessKitCheckoutHref } from '../utils/localBusinessKitCheckoutUrls';
+import { contentPacks } from '../content/contentPacks';
 
 const matrixColumns: DigitalProductMatrixColumn[] = [
   {
@@ -67,45 +68,6 @@ const matrixColumns: DigitalProductMatrixColumn[] = [
   },
 ];
 
-const contentPacks = [
-  {
-    title: 'Seasonal Industry Photo Angles',
-    subtitle: '9-Angle PDF Guide',
-    price: '$7',
-    description: 'Niche-specific framing for seasonal peaks so you know exactly which shots to capture and when.',
-    imageUrl: 'https://images.unsplash.com/photo-1554048612-b6a482bc67e5?auto=format&fit=crop&q=80&w=900',
-    ctaLabel: 'Coming soon',
-    ctaDisabled: true,
-  },
-  {
-    title: 'Seasonal & Event Copy Pack',
-    subtitle: 'Holidays & Local Events',
-    price: '$39',
-    description: 'Ready-to-use copy for holidays and local events. Edit quickly and post without starting from scratch.',
-    imageUrl: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=900',
-    ctaLabel: 'Coming soon',
-    ctaDisabled: true,
-  },
-  {
-    title: 'Social Post Starters',
-    subtitle: 'Captions & Ideas',
-    price: '$19',
-    description: 'Short lines and fill-in-the-blank ideas for feed and stories.',
-    imageUrl: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=900',
-    ctaLabel: 'Coming soon',
-    ctaDisabled: true,
-  },
-  {
-    title: 'Email List Copy Pack',
-    subtitle: 'Welcome & Nurture',
-    price: '$29',
-    description: 'Welcome and nurture email copy you can adapt to your voice.',
-    imageUrl: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=900',
-    ctaLabel: 'Coming soon',
-    ctaDisabled: true,
-  },
-];
-
 const industries = ['Cafe', 'Gym & Fitness', 'Spa & Beauty', 'Professional Services'];
 
 const GuidesAndKitsPage: React.FC = () => {
@@ -143,9 +105,10 @@ const GuidesAndKitsPage: React.FC = () => {
 
         <section className="mt-8 rounded-xl border border-gray-100 bg-gray-50 p-4 sm:rounded-2xl sm:p-5">
           <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Free sample</span>
-          <h2 className="mt-1 font-serif text-xl font-normal text-gray-900 sm:text-2xl">3-Shot Starter Pack</h2>
+          <h2 className="mt-1 font-serif text-xl font-normal text-gray-900 sm:text-2xl">Starter sample</h2>
           <p className="mt-1.5 text-sm font-light leading-snug text-gray-500">
-            We&apos;ll send 3 photo angles for your industry, a quick profile audit, and 3 response templates.
+            We&apos;ll send a quick profile audit, 3 review response templates for your niche, and next steps for stronger
+            phone photos, including how Camentra helps you line up shots (see camentra.com).
           </p>
           <div className="mt-3 flex flex-col gap-2 md:flex-row md:items-stretch md:gap-2.5">
             <select
@@ -196,8 +159,11 @@ const GuidesAndKitsPage: React.FC = () => {
             <div>
               <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Content packs</span>
               <h2 className="mt-1.5 text-xl font-serif font-normal text-gray-900 sm:text-2xl">
-                Photo guides and copy for every channel.
+                Copy and prompts for every channel.
               </h2>
+              <p className="mt-2 max-w-3xl text-sm font-light leading-relaxed text-gray-500">
+                Templates and easy to use guides so you don&apos;t have to invent marketing copy from scratch.
+              </p>
             </div>
             <span className="text-xs font-bold uppercase tracking-widest text-gray-400">{contentPacks.length} packs</span>
           </div>

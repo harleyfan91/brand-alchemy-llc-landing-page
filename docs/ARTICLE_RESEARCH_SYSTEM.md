@@ -303,7 +303,7 @@ You are writing for a small business owner who has some version of brand colors 
 
 **Product adjacency**
 - Primary: Social Post Starters (fill-in-the-blank captions for the framework)
-- Secondary: Seasonal & Event Copy Pack
+- Secondary: Holidays & Events Content Pack
 - How to link: Step in the how-to — "For the weeks when you're drawing a blank, the Social Post Starters are built exactly for this rhythm."
 
 **AI draft prompt seed**
@@ -373,7 +373,7 @@ You are writing for a small business owner — a café, salon, landscaper, or re
 
 **Product adjacency**
 - Primary: Social Post Starters (reduces the "what do I even say" block that causes the inconsistency)
-- Secondary: Seasonal & Event Copy Pack
+- Secondary: Holidays & Events Content Pack
 - How to link: Step in the how-to — "The biggest reason people stop posting isn't time, it's not knowing what to say. The Social Post Starters solve that part."
 
 **AI draft prompt seed**
@@ -408,7 +408,7 @@ You are writing for a small business owner who posts on social media inconsisten
 
 **Product adjacency**
 - Primary: Google Core Kit (profile walkthrough is one of the kit's core deliverables)
-- Secondary: Photo Angles guide (Camentra adjacency)
+- Secondary: Camentra (for refreshing profile and post photos with on-phone framing)
 - How to link: Step in the how-to — "The Google Core Kit includes a step-by-step walkthrough of every section of the profile, plus review templates written for your industry."
 
 **Status:** Candidate (placeholder exists on live site)
@@ -598,11 +598,11 @@ You are writing for a small business owner who has satisfied customers but not m
 - Platform-sensitive: No
 
 **Product adjacency**
-- Primary: Photo Angles guide (9-angle PDF) + Camentra app
-- Secondary: Google Core Kit (the photos section)
-- How to link: Step in the how-to — "The Photo Angles guide includes industry-specific shot lists you can capture with your phone. Camentra shows you exactly how to frame each one."
+- Primary: Camentra app (on-phone framing, templates, coaching for the shot types that matter on a site)
+- Secondary: Google Core Kit (the photos section of the profile)
+- How to link: Step in the how-to — "For each shot type, point readers to Camentra for lining up the frame on their phone—no separate angle PDF."
 
-**Status:** Candidate (placeholder exists on live site)
+**Status:** Candidate (Camentra-forward; seasonal photo-angles PDF retired)
 
 ---
 
@@ -666,8 +666,8 @@ You are writing for a small business owner whose About page is either empty, gen
 
 **Product adjacency**
 - Primary: Identity Kit (brand voice + visual guidelines feed directly into a website refresh)
-- Secondary: Photo Angles guide + Camentra (fixing the photos is often the highest-impact fix)
-- How to link: Step in the decision guide — "Two of the most common problems — inconsistent look and weak photos — are exactly what the Identity Kit and Photo Angles guide address."
+- Secondary: Camentra (weak or outdated photos—highest-impact fix is often better phone shots with on-screen help)
+- How to link: Step in the decision guide — "Inconsistent look is what the Identity Kit addresses; weak photos are a good fit for Camentra’s framing help on your phone."
 
 **AI draft prompt seed**
 You are writing a decision guide for a small business owner who knows their website isn't doing its job but doesn't know specifically why. Give them a checklist of the six most common problems that make a site look unprofessional, ranked from easiest to hardest to fix: (1) outdated or missing photos — replace with phone photos this week; (2) vague or generic homepage message — can you tell in five seconds what this business does and who it's for?; (3) no visible trust signals — no reviews, no testimonials, no photos of real work; (4) broken or buried contact info; (5) inconsistent fonts, colors, or logo use; (6) site doesn't look right on a phone. For each, give one concrete fix they can do without a developer. Tone: practical and direct, like a friend who just reviewed your site and is giving honest feedback.

@@ -92,29 +92,29 @@
   - Yelp Pro conversion library
   - Templates, photo angles, review replies, and ads-ready extras across both platforms
 
-## Content Packs
+## Content packs
 
-### Seasonal Industry Photo Angles
-- Price: $7
-- Includes:
-  - 9-angle PDF guide for seasonal, niche-specific shot planning
-
-### Social Post Starters
-- Price: $19
-- Includes:
-  - Caption and idea starters for feed and stories
-  - Fill-in-the-blank post prompts
-
-### Email List Copy Pack
+### Core Content Pack
 - Price: $29
 - Includes:
-  - Welcome and list-building email copy adaptable to brand voice
+  - Reusable prompts for routine posts and small updates (what is new, hours, quick news)
+  - Lines you can reuse to stay visible between holidays and bigger campaigns
 
-### Seasonal and Event Copy Pack
+### Holidays & Events Content Pack
 - Price: $39
 - Includes:
-  - Ready-to-use holiday and local event copy
-  - 30+ caption templates
+  - Ready-to-use copy for holidays and local events
+  - Timely prompts you can edit and post quickly
+
+### Social Content Pack
+- Price: $19
+- Includes:
+  - Short lines and fill-in-the-blank ideas for feed and stories
+
+### Email Content Pack
+- Price: $29
+- Includes:
+  - Welcome and early email copy you can adapt to your voice
 
 ## Camentra App
 
