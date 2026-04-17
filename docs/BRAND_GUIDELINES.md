@@ -128,6 +128,7 @@ Used for Google vs Yelp column styling in `Products.tsx` — values also live as
 - **Mood:** Real-world, warm, owner-operated businesses — natural light, believable contexts. Avoid cliché “handshake in boardroom” stock when possible.
 - **Treatment:** Prefer full-bleed within the frame, no heavy filters; let borders (`border-gray-100`) and whitespace carry the premium feel.
 - **Alt text:** Descriptive, plain language (matches [TARGET_AUDIENCE.md](TARGET_AUDIENCE.md)).
+- **Product watermark motifs:** For homepage product cards, use monochrome sculptural still-life imagery (stone, paper material, glass/lens) as decorative ambient marks. Keep opacity very low (about `0.03` mobile to `0.05` desktop), offset off the lower-right edge, and mark as decorative (`alt=""`, `aria-hidden`). Store files in `public/product-card-watermarks/`.
 
 ---
 
@@ -161,6 +162,12 @@ Shipped as **`/favicon.ico`**. Regeneration settings for a consistent mark are d
 | **Primary buttons** | `rounded-full`, generous vertical padding (`py-3`–`py-3.5`) |
 
 **Visual weight:** Favor **white space, light type weights, and thin borders** over heavy boxes. Black is for **decision moments** (primary CTA, selection), not large fills.
+
+### Homepage hierarchy patterns
+
+- **System (`Services.tsx`)**: keep this section compact with a horizontal three-step track (`01 → 02 → 03`) that sets sequence quickly without heavy containers or long editorial stacks.
+- **Products (`Products.tsx`)**: use an equal three-card row on desktop (`md:grid-cols-3`) with `Identity Kit` as the entry via the black `Start here` peek tab and matching black border.
+- **Homepage product visual interest**: prefer subtle monochrome sculptural watermark motifs in each card over extra chips, symbol clutter, or large color blocks.
 
 ### Mobile section rhythm (hybrid standard)
 
