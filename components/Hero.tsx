@@ -2,6 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { scrollToSection } from '../utils/scrollToSection';
 import './hero-brand-shine.css';
 
+/**
+ * After the full stagger + intro timer finish once in this JS session, remounting Hero
+ * (e.g. navigating back to home) skips that sequence and only re-runs the Brand Alchemy shine.
+ * Full reload starts a new session and clears this flag.
+ */
+let heroFullIntroHasCompletedThisJsLoad = false;
+
 /** Vertical stagger (seconds) — definition → headline → body + CTA */
 const STAGGER_S = [0, 0.48, 0.96] as const;
 const INTRO_BLOCK_DURATION_MS = 900;
@@ -25,9 +32,12 @@ const scrollYToReveal = (scrollY: number): number => {
 
 const Hero: React.FC = () => {
   const [reduceMotion, setReduceMotion] = useState(prefersReducedMotion);
-  const [introOn, setIntroOn] = useState(prefersReducedMotion);
-  const [introComplete, setIntroComplete] = useState(prefersReducedMotion);
-  const [scrollReveal, setScrollReveal] = useState(1);
+  const [introOn, setIntroOn] = useState(() => heroFullIntroHasCompletedThisJsLoad || prefersReducedMotion());
+  const [introComplete, setIntroComplete] = useState(() => heroFullIntroHasCompletedThisJsLoad || prefersReducedMotion());
+  const [scrollReveal, setScrollReveal] = useState(() => {
+    if (typeof window === 'undefined') return 1;
+    return heroFullIntroHasCompletedThisJsLoad ? scrollYToReveal(window.scrollY) : 1;
+  });
   const [brandShineOn, setBrandShineOn] = useState(false);
 
   useEffect(() => {
@@ -47,6 +57,7 @@ const Hero: React.FC = () => {
 
   useEffect(() => {
     if (reduceMotion) return;
+    if (heroFullIntroHasCompletedThisJsLoad) return;
     const id = requestAnimationFrame(() => {
       requestAnimationFrame(() => setIntroOn(true));
     });
@@ -56,10 +67,18 @@ const Hero: React.FC = () => {
   useEffect(() => {
     if (reduceMotion) {
       setIntroComplete(true);
+      heroFullIntroHasCompletedThisJsLoad = true;
+      return;
+    }
+    if (heroFullIntroHasCompletedThisJsLoad) {
+      setIntroComplete(true);
       return;
     }
     const lastStaggerMs = Math.max(...STAGGER_S) * 1000;
-    const t = window.setTimeout(() => setIntroComplete(true), lastStaggerMs + INTRO_BLOCK_DURATION_MS);
+    const t = window.setTimeout(() => {
+      setIntroComplete(true);
+      heroFullIntroHasCompletedThisJsLoad = true;
+    }, lastStaggerMs + INTRO_BLOCK_DURATION_MS);
     return () => window.clearTimeout(t);
   }, [reduceMotion]);
 

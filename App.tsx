@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import HomePage from './components/HomePage';
 import IdentityKitPage from './pages/IdentityKitPage';
@@ -9,26 +9,39 @@ import GuidesAndKitsPage from './pages/GuidesAndKitsPage';
 import ArticlePage from './pages/ArticlePage';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import './components/page-route-fade.css';
 // Dev-only: gray ramp reference panel. Uncomment import + line below; keep `import.meta.env.DEV` so it never ships in production.
 // import NeutralRampPreview from './components/NeutralRampPreview';
+
+const AppRoutes: React.FC = () => {
+  const location = useLocation();
+
+  return (
+    <>
+      <ScrollToTop />
+      <div className="flex min-h-screen flex-col selection:bg-black selection:text-white">
+        <Header />
+        <div key={location.pathname} className="ba-page-route-fade w-full min-w-0 min-h-0">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/identity-kit" element={<IdentityKitPage />} />
+            <Route path="/identity-kit/select" element={<IdentityKitSelectorPage />} />
+            <Route path="/local-business" element={<GuidesAndKitsPage />} />
+            <Route path="/articles/:slug" element={<ArticlePage />} />
+            <Route path="/product-page-primitives" element={<DigitalProductTemplatePreviewPage />} />
+          </Routes>
+        </div>
+        <Footer />
+        {/* {import.meta.env.DEV ? <NeutralRampPreview /> : null} */}
+      </div>
+    </>
+  );
+};
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <ScrollToTop />
-      <div className="min-h-screen flex flex-col selection:bg-black selection:text-white">
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/identity-kit" element={<IdentityKitPage />} />
-          <Route path="/identity-kit/select" element={<IdentityKitSelectorPage />} />
-          <Route path="/local-business" element={<GuidesAndKitsPage />} />
-          <Route path="/articles/:slug" element={<ArticlePage />} />
-          <Route path="/product-page-primitives" element={<DigitalProductTemplatePreviewPage />} />
-        </Routes>
-        <Footer />
-        {/* {import.meta.env.DEV ? <NeutralRampPreview /> : null} */}
-      </div>
+      <AppRoutes />
     </BrowserRouter>
   );
 };
