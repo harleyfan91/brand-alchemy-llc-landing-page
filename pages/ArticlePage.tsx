@@ -7,9 +7,11 @@ import { parseArticleFile } from '../utils/parseArticleFile';
 import { renderArticleInlineCta } from './articleInlineCta';
 
 import brandingVsMarketingRaw from '../content/articles/branding-vs-marketing.md?raw';
+import weeklySocialPostsRaw from '../content/articles/weekly-social-posts-small-business.md?raw';
 
 const ARTICLE_SOURCES: Record<string, string> = {
   'branding-vs-marketing-small-business': brandingVsMarketingRaw,
+  'weekly-social-posts-small-business': weeklySocialPostsRaw,
 };
 
 /**

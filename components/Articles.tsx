@@ -181,7 +181,7 @@ const articles: Article[] = [
   {
     slug: 'branding-vs-marketing',
     category: 'Brand Basics',
-    title: 'Branding vs. marketing: what does a small business actually need first?',
+    title: 'Branding vs. marketing: which should you fix first?',
     summary:
       'A plain-English guide to what each one does, where they overlap, and what to focus on when you cannot do everything at once.',
     reasonToRead: 'Useful when you know your business needs help online but do not know where to start.',
@@ -192,12 +192,13 @@ const articles: Article[] = [
   {
     slug: 'weekly-social-posts',
     category: 'Social Media',
-    title: 'What should a small business post on social media each week?',
+    title: 'What to post on social media each week, simplified',
     summary:
       'A practical framework for posting consistently without feeling like you need to become a full-time content creator.',
     reasonToRead: 'Useful when you need ideas you can actually keep up with week after week.',
     imageSrc: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=900',
     imageAlt: 'Phone showing social apps',
+    articleHref: '/articles/weekly-social-posts-small-business',
   },
   {
     slug: 'google-business-trust',

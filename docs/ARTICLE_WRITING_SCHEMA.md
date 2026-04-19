@@ -331,6 +331,7 @@ These must be completed before or alongside the draft, not after. They are part 
 - Question format preferred for this content type ("How to..." / "What is..." / "Which...")
 - Do not duplicate the meta description
 - Do not use brand name in H1 (it appears in the page title separately)
+- Do not use a trailing audience tag such as `(small business)` or `(for owners)`. Readers and SEO already sit on Brand Alchemy’s site; the voice and body copy carry audience. If you need length to reach 50–60 characters, add a clarifying phrase inside the title (e.g. `…each week, simplified`) rather than a parenthetical audience label.
 - Example: `How to ask for a Google review (without feeling pushy)` → 53 chars ✓
 
 **Meta description**

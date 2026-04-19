@@ -5,11 +5,11 @@ homepage_category: Brand Basics
 candidate_id: "01"
 status: draft
 date_published: "2026-04-13"
-last_verified: "2026-04-13"
+last_verified: "2026-04-19"
 platform_sensitive: false
 
 # SEO
-title_tag: "Branding vs marketing: what to fix first (small business)"
+title_tag: "Branding vs. marketing: which should you fix first?"
 meta_description: "Branding vs marketing in plain English: fix how you look and sound first, then spend on posts or ads so people recognize one steady business."
 schema:
   - Article
@@ -28,7 +28,7 @@ data_points:
     use_for: "Why branding comes before louder marketing"
 ---
 
-# Branding vs marketing: what to fix first (small business)
+# Branding vs. marketing: which should you fix first?
 
 ![Branded article hero placeholder: replace with 1200×630 typographic card or grayscale stock per ARTICLE_WRITING_SCHEMA](https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=1200)
 
