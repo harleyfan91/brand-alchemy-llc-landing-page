@@ -1,5 +1,4 @@
 import React from 'react';
-import { scrollToSection } from '../utils/scrollToSection';
 import { useInViewOnce } from '../utils/useInViewOnce';
 
 const solutions = [
@@ -31,11 +30,6 @@ const Services: React.FC = () => {
     threshold: 0,
     rootMargin: '0px 0px -32% 0px',
   });
-
-  const scrollToProducts = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    scrollToSection('products');
-  };
 
   const motionStyle = (delayMs: number): React.CSSProperties => ({
     transitionDelay: reduceMotion ? '0ms' : `${delayMs}ms`,
@@ -98,30 +92,6 @@ const Services: React.FC = () => {
             );
           })}
         </ol>
-
-        <div
-          className={`mt-4 flex justify-center transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] md:mt-6 ${sectionEnterClass}`}
-          style={motionStyle(440)}
-        >
-          <a
-            href="#products"
-            onClick={scrollToProducts}
-            className="group inline-flex items-center gap-2 text-[clamp(0.72rem,2.7vw,0.8rem)] font-bold uppercase tracking-[0.2em] text-gray-500 transition-colors hover:text-gray-900 md:gap-2.5 md:text-xs"
-          >
-            <span>See the products</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="h-4 w-4 shrink-0 transition-transform group-hover:translate-y-0.5 md:h-5 md:w-5"
-              aria-hidden
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
-            </svg>
-          </a>
-        </div>
       </div>
     </section>
   );

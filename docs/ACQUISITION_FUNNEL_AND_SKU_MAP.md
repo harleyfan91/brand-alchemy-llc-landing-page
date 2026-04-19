@@ -151,7 +151,7 @@ Photo execution and on-phone framing stay with **Camentra**; we do not sell a se
   Why: the current page structure, navigation, and **Articles** section already behave like a browse-first hub rather than a one-offer funnel; this supports SEO, trust, and multiple product lines better than forcing the homepage into a single-offer conversion page.
   Implication: use the homepage to explain the ecosystem and route people to the right next step, while a dedicated **Identity Kit landing page** should handle paid traffic or high-intent promotion later.
 - [x] Audit every current CTA and decide which are **browse CTAs** vs **conversion CTAs** so the page has one primary path.
-  Current browse / orientation CTAs: header nav links, hero **See the system**, services **See the products**, **Articles** → `#articles`, product cards (e.g. **View Identity Kit**, **View guides and kits** → `/local-business`), and general contact.
+  Current browse / orientation CTAs: header nav links, hero **See the system**, **Articles** → `#articles`, product cards (e.g. **View Identity Kit**, **View guides and kits** → `/local-business`), and general contact.
   Current soft-trust CTA: email contact in `Contact.tsx`.
   Current intended conversion CTAs that are **not fully wired yet**: `Buy now`, `Buy bundle`, `Get sample`. Identity Kit: product card links to **`/identity-kit`** (offer page); primary conversion on that page is **Start my Identity Kit** → kit app URL from env / default subdomain.
   Conclusion: the site currently behaves as a **hub with browse CTAs**, not as a true funnel. Keep it that way at the homepage level, and move high-intent conversion into dedicated offer pages and real checkout flows.

@@ -311,9 +311,6 @@ const Articles: React.FC = () => {
             <h3 className="ba-section-display-title font-serif text-4xl font-normal text-gray-900 md:text-5xl">
               Marketing concepts, made simple.
             </h3>
-            <p className="ba-section-support text-sm font-light leading-relaxed text-gray-500 md:text-base">
-              Short, plain-English explainers on how to get found, what to post, and how to make your business look its best.
-            </p>
           </div>
 
           <div className="flex items-stretch gap-2 pb-4 pt-1 sm:gap-3">
