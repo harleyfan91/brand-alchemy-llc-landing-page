@@ -32,7 +32,7 @@ const products: Product[] = [
     eyebrow: 'Local business',
     title: 'Guides & launch kits',
     body: 'Once your brand is clear, choose easy-to-use guides, launch kits, and content packs that help you publish, respond, and show up more clearly online.',
-    priceLine: 'From $19 · Core kits from $39',
+    priceLine: 'From $19 · Launch kits from $39',
     ctaLabel: 'View guides and kits',
     href: '/local-business',
     watermarkSrc: '/product-card-watermarks/guides-kits-stack.png',

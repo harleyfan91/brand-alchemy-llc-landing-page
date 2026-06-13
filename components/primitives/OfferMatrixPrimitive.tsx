@@ -69,6 +69,22 @@ const OfferMatrixPrimitive: React.FC<OfferMatrixPrimitiveProps> = ({
     if (column.options.length === 1) return column.options[0].price;
     return '';
   };
+
+  const optionHasTierLabel = (option: DigitalProductMatrixColumn['options'][number]): boolean =>
+    Boolean(option.name.trim());
+
+  const renderOptionBullets = (bullets: string[]) => (
+    <ul className="mt-2 space-y-1.5">
+      {bullets.map((bullet) => (
+        <li key={bullet} className="flex items-start gap-2 text-xs font-light leading-relaxed text-gray-700">
+          <span aria-hidden className="mt-0.5 text-gray-500">
+            <CheckIcon size="sm" />
+          </span>
+          <span>{bullet}</span>
+        </li>
+      ))}
+    </ul>
+  );
   const getSelectedOptionIndex = (columnIdx: number, optionsLength: number): number => {
     const idx = selectedOptionByColumn[columnIdx] ?? 0;
     return Math.min(Math.max(idx, 0), Math.max(optionsLength - 1, 0));
@@ -161,42 +177,62 @@ const OfferMatrixPrimitive: React.FC<OfferMatrixPrimitiveProps> = ({
                     {column.options.slice(0, 2).map((option, optionIdx) => {
                       const selectedOption = getSelectedOptionIndex(idx, column.options.length);
                       const isOptionActive = selectedOption === optionIdx;
-                      return (
-                      <button
-                        key={`${column.name}-${option.name}`}
-                        type="button"
-                        onClick={() =>
-                          setSelectedOptionByColumn((prev) => ({
-                            ...prev,
-                            [idx]: optionIdx,
-                          }))
-                        }
-                        className={`w-full rounded-lg border p-3 text-left ${isOptionActive ? 'border-gray-900 bg-gray-100' : 'border-gray-200 bg-white'}`}
-                      >
-                        <div className="flex items-start justify-between gap-2">
-                          <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-900">
-                            <span
-                              aria-hidden
-                              className={`flex h-4 w-4 items-center justify-center rounded-full border ${isOptionActive ? 'border-black bg-black' : 'border-gray-300 bg-white'}`}
-                            >
-                              {isOptionActive ? <span className="h-1.5 w-1.5 rounded-full bg-white" /> : null}
-                            </span>
-                            {option.name}
-                          </span>
-                          <span className="text-sm font-light text-gray-900">{option.price}</span>
-                        </div>
-                        <ul className="mt-2 space-y-1.5">
-                          {option.bullets.map((bullet) => (
-                            <li key={bullet} className="flex items-start gap-2 text-xs font-light leading-relaxed text-gray-700">
-                              <span aria-hidden className="mt-0.5 text-gray-500">
-                                <CheckIcon size="sm" />
+                      const showTierLabel = optionHasTierLabel(option);
+                      const optionCardClass = `w-full rounded-lg border p-3 text-left ${
+                        showTierLabel
+                          ? isOptionActive
+                            ? 'border-gray-900 bg-gray-100'
+                            : 'border-gray-200 bg-white'
+                          : 'border-gray-200 bg-white'
+                      }`;
+                      const optionBody = (
+                        <>
+                          <div
+                            className={`flex items-start gap-2 ${showTierLabel ? 'justify-between' : 'justify-end'}`}
+                          >
+                            {showTierLabel ? (
+                              <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-900">
+                                <span
+                                  aria-hidden
+                                  className={`flex h-4 w-4 items-center justify-center rounded-full border ${isOptionActive ? 'border-black bg-black' : 'border-gray-300 bg-white'}`}
+                                >
+                                  {isOptionActive ? <span className="h-1.5 w-1.5 rounded-full bg-white" /> : null}
+                                </span>
+                                {option.name}
                               </span>
-                              <span>{bullet}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </button>
-                    )})}
+                            ) : (
+                              <span className="sr-only">{column.name} kit</span>
+                            )}
+                            <span className="text-sm font-light text-gray-900">{option.price}</span>
+                          </div>
+                          {renderOptionBullets(option.bullets)}
+                        </>
+                      );
+
+                      if (!showTierLabel) {
+                        return (
+                          <div key={`${column.name}-${optionIdx}`} className={optionCardClass}>
+                            {optionBody}
+                          </div>
+                        );
+                      }
+
+                      return (
+                        <button
+                          key={`${column.name}-${option.name}`}
+                          type="button"
+                          onClick={() =>
+                            setSelectedOptionByColumn((prev) => ({
+                              ...prev,
+                              [idx]: optionIdx,
+                            }))
+                          }
+                          className={optionCardClass}
+                        >
+                          {optionBody}
+                        </button>
+                      );
+                    })}
                   </div>
                   <MatrixCheckoutCta columnIndex={idx} paddingClass="px-5 py-2.5" />
                 </div>
@@ -225,12 +261,14 @@ const OfferMatrixPrimitive: React.FC<OfferMatrixPrimitiveProps> = ({
                   <div className="flex min-h-0 flex-1 flex-col overflow-y-auto border-t border-gray-100/90 bg-white/65 px-3 pb-4 pt-2 sm:px-4 sm:pb-5">
                     <p className="text-sm font-light leading-relaxed text-gray-600">{column.summary}</p>
                     <div className="mt-3 grid w-full grid-cols-2 gap-2 sm:mt-auto" aria-hidden="true">
-                      {column.options.slice(0, 2).map((option) => (
+                      {column.options.slice(0, 2).map((option, optionIdx) => (
                         <div
-                          key={`${column.name}-${option.name}-skeleton`}
+                          key={`${column.name}-${option.name || optionIdx}-skeleton`}
                           className="flex h-[6rem] flex-col overflow-hidden rounded-xl border border-gray-200 bg-gray-50/80 p-2.5"
                         >
-                          <p className="text-[10px] font-semibold leading-tight text-gray-800">{option.name}</p>
+                          <p className="text-[10px] font-semibold leading-tight text-gray-800">
+                            {optionHasTierLabel(option) ? option.name : option.price}
+                          </p>
                           <div className="mt-2.5 space-y-1.5">
                             <div className="h-2.5 w-[85%] rounded bg-gray-300" />
                             <div className="h-2.5 w-[66%] rounded bg-gray-300" />
@@ -265,42 +303,62 @@ const OfferMatrixPrimitive: React.FC<OfferMatrixPrimitiveProps> = ({
                       {column.options.slice(0, 2).map((option, optionIdx) => {
                         const selectedOption = getSelectedOptionIndex(idx, column.options.length);
                         const isOptionActive = selectedOption === optionIdx;
-                        return (
-                        <button
-                          key={`${column.name}-${option.name}`}
-                          type="button"
-                          onClick={() =>
-                            setSelectedOptionByColumn((prev) => ({
-                              ...prev,
-                              [idx]: optionIdx,
-                            }))
-                          }
-                          className={`w-full rounded-xl border p-3 text-left ${isOptionActive ? 'border-gray-900 bg-gray-100' : 'border-gray-200 bg-white'}`}
-                        >
-                          <div className="flex items-start justify-between gap-2">
-                            <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-900">
-                              <span
-                                aria-hidden
-                                className={`flex h-4 w-4 items-center justify-center rounded-full border ${isOptionActive ? 'border-black bg-black' : 'border-gray-300 bg-white'}`}
-                              >
-                                {isOptionActive ? <span className="h-1.5 w-1.5 rounded-full bg-white" /> : null}
-                              </span>
-                              {option.name}
-                            </span>
-                            <span className="text-sm font-light text-gray-900">{option.price}</span>
-                          </div>
-                          <ul className="mt-2 space-y-1.5">
-                            {option.bullets.map((bullet) => (
-                              <li key={bullet} className="flex items-start gap-2 text-xs font-light leading-relaxed text-gray-700">
-                                <span aria-hidden className="mt-0.5 text-gray-500">
-                                  <CheckIcon size="sm" />
+                        const showTierLabel = optionHasTierLabel(option);
+                        const optionCardClass = `w-full rounded-xl border p-3 text-left ${
+                          showTierLabel
+                            ? isOptionActive
+                              ? 'border-gray-900 bg-gray-100'
+                              : 'border-gray-200 bg-white'
+                            : 'border-gray-200 bg-white'
+                        }`;
+                        const optionBody = (
+                          <>
+                            <div
+                              className={`flex items-start gap-2 ${showTierLabel ? 'justify-between' : 'justify-end'}`}
+                            >
+                              {showTierLabel ? (
+                                <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-900">
+                                  <span
+                                    aria-hidden
+                                    className={`flex h-4 w-4 items-center justify-center rounded-full border ${isOptionActive ? 'border-black bg-black' : 'border-gray-300 bg-white'}`}
+                                  >
+                                    {isOptionActive ? <span className="h-1.5 w-1.5 rounded-full bg-white" /> : null}
+                                  </span>
+                                  {option.name}
                                 </span>
-                                <span>{bullet}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </button>
-                      )})}
+                              ) : (
+                                <span className="sr-only">{column.name} kit</span>
+                              )}
+                              <span className="text-sm font-light text-gray-900">{option.price}</span>
+                            </div>
+                            {renderOptionBullets(option.bullets)}
+                          </>
+                        );
+
+                        if (!showTierLabel) {
+                          return (
+                            <div key={`${column.name}-${optionIdx}`} className={optionCardClass}>
+                              {optionBody}
+                            </div>
+                          );
+                        }
+
+                        return (
+                          <button
+                            key={`${column.name}-${option.name}`}
+                            type="button"
+                            onClick={() =>
+                              setSelectedOptionByColumn((prev) => ({
+                                ...prev,
+                                [idx]: optionIdx,
+                              }))
+                            }
+                            className={optionCardClass}
+                          >
+                            {optionBody}
+                          </button>
+                        );
+                      })}
                     </div>
                     <MatrixCheckoutCta columnIndex={idx} paddingClass="px-6 py-3" />
                   </div>

@@ -2,75 +2,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import OfferMatrixPrimitive from '../components/primitives/OfferMatrixPrimitive.tsx';
 import ProductPhotoGridPrimitive from '../components/primitives/ProductPhotoGridPrimitive.tsx';
-import type { DigitalProductMatrixColumn } from '../components/DigitalProductPage';
+import { getLocalBusinessKitMatrixColumns } from '../content/localBusinessKits';
 import { getLocalBusinessKitCheckoutHref } from '../utils/localBusinessKitCheckoutUrls';
 import { contentPacks } from '../content/contentPacks';
 
-const matrixColumns: DigitalProductMatrixColumn[] = [
-  {
-    name: 'Google',
-    toneKey: 'google',
-    summary:
-      'Profile setup guide, 30 review templates, plain-language listing tips, and worksheets to stay organized.',
-    options: [
-      {
-        name: 'Core',
-        price: '$39',
-        bullets: [
-          'Step-by-step Google Business Profile setup guide',
-          '30 review response templates personalized with your voice',
-          'Best practices to help you rank higher in local search',
-          'Worksheets to keep your details consistent online and stay on top of your listing',
-        ],
-      },
-      {
-        name: 'Pro',
-        price: '$79',
-        bullets: ['Everything in Core', 'Google Ads starter settings', 'KPI and audit workbook'],
-      },
-    ],
-  },
-  {
-    name: 'Yelp',
-    toneKey: 'yelp',
-    summary:
-      'Profile setup guide, 30 review templates, plain-language listing tips, and worksheets to stay organized.',
-    options: [
-      {
-        name: 'Core',
-        price: '$39',
-        bullets: [
-          'Step-by-step Yelp profile setup guide',
-          '30 review response templates personalized with your voice',
-          'Best practices to help you rank higher in local search',
-          'Worksheets to keep your details consistent online and stay on top of your listing',
-        ],
-      },
-      {
-        name: 'Pro',
-        price: '$79',
-        bullets: ['Everything in Core', 'Yelp Ads starter configuration', 'Troubleshooting playbook'],
-      },
-    ],
-  },
-  {
-    name: 'Both',
-    toneKey: 'both',
-    teaser: '$129',
-    summary: 'Google + Yelp Pro together in one checkout.',
-    options: [
-      {
-        name: 'Bundle',
-        price: '$129',
-        bullets: [
-          'Google and Yelp Pro local launch kits together',
-          'Save compared to buying each Pro kit separately',
-          'Walkthroughs, templates, listing tips, worksheets, and ads-ready extras across both platforms',
-        ],
-      },
-    ],
-  },
-];
+const matrixColumns = getLocalBusinessKitMatrixColumns();
 
 const industries = ['Cafe', 'Gym & Fitness', 'Spa & Beauty', 'Professional Services'];
 
@@ -149,7 +85,7 @@ const GuidesAndKitsPage: React.FC = () => {
               Set up your local listings with ease.
             </h2>
             <p className="mt-2 text-sm font-light text-gray-500">
-              Step-by-step guides for setting up Google Business and Yelp profiles, review response templates & more.
+              Step-by-step guides for setting up Google Business and Yelp profiles, review response scripts & more.
             </p>
           </div>
           <OfferMatrixPrimitive columns={matrixColumns} getCheckoutHref={getLocalBusinessKitCheckoutHref} />
