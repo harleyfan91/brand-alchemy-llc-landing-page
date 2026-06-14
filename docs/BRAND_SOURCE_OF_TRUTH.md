@@ -86,6 +86,7 @@ Until article pages ship, treat the strip as the **editorial and SEO commitment*
 | [BRAND_PLAYBOOK.md](BRAND_PLAYBOOK.md) | Voice, tone, products, **articles and SEO intent**, CTAs, engagement. |
 | [ARTICLE_RESEARCH_SYSTEM.md](ARTICLE_RESEARCH_SYSTEM.md) | Article topic research, candidate brief schema, backlog. |
 | [ARTICLE_WRITING_SCHEMA.md](ARTICLE_WRITING_SCHEMA.md) | Article draft stages, on-page structure, visual and publish QA. |
+| [DIGITAL_PRODUCT_CONTENT_SCHEMA.md](DIGITAL_PRODUCT_CONTENT_SCHEMA.md) | **Digital product content creation** — end-to-end process (research → brief → writing → review → format) for content packs and template products. Includes first three kit briefs (Social Content Pack, Email Blast Pack, Promo & Offer Pack). |
 | [BRAND_GUIDELINES.md](BRAND_GUIDELINES.md) | Typography, color, imagery, β△ mark, layout, motion, UI weight. |
 | [PRODUCTS_PRICING_AND_INCLUDES.md](PRODUCTS_PRICING_AND_INCLUDES.md) + [ACQUISITION_FUNNEL_AND_SKU_MAP.md](ACQUISITION_FUNNEL_AND_SKU_MAP.md) | **Pair:** **Pricing doc** = prices and SKU deliverables (source of truth for what’s in each product). **Acquisition doc** = story, ladder, bundle logic, bumps, checklists. Each references the other; update both when prices or includes change. |
 | [`public/brand-tokens.css`](../public/brand-tokens.css) | CSS variables: neutrals, chrome, scrim, catalog platform tints (`--ba-catalog-*`). |

@@ -109,7 +109,23 @@ Standalone copy (not Identity Kit deliverables, not local launch kits). When tem
 ### Social Content Pack
 - Price: $19
 - Includes:
-  - Short lines, starters, and fill-in-the-blank ideas for feed and stories
+  - 30–35 ready-to-post captions organized by situation (introducing the business, availability, behind-the-scenes, a customer moment, local life, a weekly win)
+  - Designed for 0–2 obvious fill-ins ([your town], [your trade]) — no marketing vocabulary required
+
+### Email Blast Pack
+- Price: $19
+- Includes:
+  - 15–20 complete ready-to-send emails for specific moments (new offering, slow week, re-engagement, seasonal push, quick update, thank you)
+  - Each email includes a subject line, a 3–5 sentence body, and a closing CTA line
+  - Written to sound like the owner typed it — not a newsletter template
+  - Distinct from Email Content Pack (which covers welcome sequences and early email programs)
+
+### Promo & Offer Pack
+- Price: $19
+- Includes:
+  - 25–30 ready-to-post captions for "ask" moments — availability, new offerings, weekend pushes, time-bounded invites, what we do explanations
+  - Written in warm, direct owner-voice without pressure language or aggressive sales framing
+  - Natural pair with the Social Content Pack (presence + ask)
 
 ### Email Content Pack
 - Price: $29
