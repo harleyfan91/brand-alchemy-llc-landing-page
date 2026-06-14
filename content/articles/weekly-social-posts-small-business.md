@@ -9,7 +9,7 @@ last_verified: "2026-04-19"
 platform_sensitive: false
 
 # SEO
-title_tag: "What to post on social media each week, simplified"
+title_tag: "What to post on social media each week"
 meta_description: "Four repeatable social post types each week so you show up without inventing something new daily or burning your limited marketing time on blank captions."
 schema:
   - Article
@@ -31,7 +31,7 @@ data_points:
     use_for: "Consistency over perfection"
 ---
 
-# What to post on social media each week, simplified
+# What to post on social media each week
 
 ![Phone on a counter suggesting a quick social post, grayscale](https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=1200)
 

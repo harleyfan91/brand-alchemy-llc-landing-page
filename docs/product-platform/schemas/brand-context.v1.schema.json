@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://brandalchemyllc.com/schemas/brand-context.v1.json",
+  "title": "BrandContextV1",
+  "description": "Machine-readable brand state for a fulfilled Identity Kit order. Canonical schema lives in the Brand Alchemy umbrella repo (docs/product-platform/schemas/). Assembled deterministically from intake + kit_section_outputs — not LLM-generated.",
+  "type": "object",
+  "required": ["schemaVersion", "meta", "intake", "voiceProfile", "visualProfile", "sections"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": "brand-context.v1"
+    },
+    "meta": {
+      "type": "object",
+      "required": ["orderId", "tier", "businessName", "generatedAt"],
+      "additionalProperties": false,
+      "properties": {
+        "orderId": { "type": "string" },
+        "tier": { "enum": ["core", "pro"] },
+        "businessName": { "type": "string" },
+        "generatedAt": { "type": "string", "format": "date-time" },
+        "sourceOrderId": {
+          "type": "string",
+          "description": "Prior order id when Core→Pro upgrade"
+        }
+      }
+    },
+    "intake": {
+      "type": "object",
+      "description": "Normalized IdentityKitForm snapshot (post migrateIdentityKitForm). Full shape: identity-kit packages/shared.",
+      "additionalProperties": true
+    },
+    "voiceProfile": {
+      "type": "object",
+      "required": ["narratorId", "tonePreset", "ctaType"],
+      "additionalProperties": false,
+      "properties": {
+        "narratorId": { "type": "string" },
+        "tonePreset": { "type": "string" },
+        "ctaType": {
+          "enum": ["book_or_consult", "browse_or_buy", "visit_or_call", "support_or_join"]
+        },
+        "contentPillarNames": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Deterministic from narrator profile — stable across products"
+        }
+      }
+    },
+    "visualProfile": {
+      "type": "object",
+      "required": ["paletteId", "paletteDisplayName", "selectedStyle"],
+      "additionalProperties": false,
+      "properties": {
+        "paletteId": { "type": "string" },
+        "paletteDisplayName": { "type": "string" },
+        "selectedStyle": { "type": "string" },
+        "moodAdjectives": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "sections": {
+      "type": "object",
+      "description": "Keyed by Section ID (see SECTION_ID_REGISTRY.md). Values are parsed AI/deterministic output_json from kit_section_outputs.",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["sectionId", "status", "output"],
+        "properties": {
+          "sectionId": { "type": "string" },
+          "status": {
+            "enum": ["ok", "fallback_shipped", "skipped"]
+          },
+          "output": { "type": "object", "additionalProperties": true },
+          "fieldsCited": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      },
+      "properties": {
+        "csp.oneLiner": { "$ref": "#/$defs/sectionEnvelope" },
+        "csp.elevator": { "$ref": "#/$defs/sectionEnvelope" },
+        "csp.paragraph": { "$ref": "#/$defs/sectionEnvelope" },
+        "csp.homepageDirections": { "$ref": "#/$defs/sectionEnvelope" },
+        "csp.bioShort": { "$ref": "#/$defs/sectionEnvelope" },
+        "csp.bioLong": { "$ref": "#/$defs/sectionEnvelope" },
+        "csp.captionStarters": { "$ref": "#/$defs/sectionEnvelope" },
+        "csp.contentPillars": { "$ref": "#/$defs/sectionEnvelope" },
+        "voice.ctaVariations": { "$ref": "#/$defs/sectionEnvelope" },
+        "voice.email.welcome": { "$ref": "#/$defs/sectionEnvelope" },
+        "voice.email.followUp": { "$ref": "#/$defs/sectionEnvelope" },
+        "brief.idealCustomer": { "$ref": "#/$defs/sectionEnvelope" }
+      }
+    }
+  },
+  "$defs": {
+    "sectionEnvelope": {
+      "type": "object",
+      "required": ["sectionId", "status", "output"],
+      "additionalProperties": false,
+      "properties": {
+        "sectionId": { "type": "string" },
+        "status": {
+          "enum": ["ok", "fallback_shipped", "skipped"]
+        },
+        "output": { "type": "object", "additionalProperties": true },
+        "fieldsCited": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

@@ -43,14 +43,13 @@
 - Includes:
   - Everything in Identity Kit Core, with deeper synthesis/personalization across audience, tone, story, and differentiation
   - Content Starter Pack (practical copy asset), including:
-    - One-liner / brand summary options
+    - Brand summary options (three one-liner angles + elevator pitch + paragraph)
     - Homepage messaging directions
-    - Brand bio / about intro
-    - Social bio options
+    - Social bios (short profile + long About)
     - Caption starters
     - Content pillar prompts
-    - CTA suggestions
-  - Pro-only email voice templates in expanded output (per current spec)
+    - CTA variations per channel (shared with Voice Playbook)
+  - Pro-only **email voice templates** on Voice Playbook page 3 (not inside the Content Starter Pack PDF)
   - Practical difference vs Core: Core is strategy + direction + implementation checklist; Pro adds reusable, ready-to-adapt messaging and copy assets
 
 ## Local Business Kits

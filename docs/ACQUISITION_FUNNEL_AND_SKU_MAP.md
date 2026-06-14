@@ -26,7 +26,7 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
 
 **Integration copy to repeat where it fits**
 
-- **Identity Kit → local kits:** The **Voice & Content Playbook** is how they **personalize templates** (review replies, captions, posts) in the Google/Yelp kits.
+- **Identity Kit → local kits:** The **Voice & Content Playbook** is how they **personalize templates** (review replies, captions, posts) in the Google/Yelp kits. Long-term: **`brand-context.json`** from Identity Kit fulfillment (see [product-platform/CUSTOMER_VOICE_AND_PRODUCT_LINE.md](product-platform/CUSTOMER_VOICE_AND_PRODUCT_LINE.md)).
 - **Local kits → Camentra:** Listing work in the kits pairs with **Camentra** when owners are ready to **shoot stronger business photos on the phone** (templates, guidance, coach).
 
 ---
@@ -58,7 +58,7 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
 | Tier | Price | Summary |
 |------|--------|---------|
 | **Core** | **$79** | Brand Brief, Style Guide, Voice & Content Playbook, 30-Day Quick Start (4 PDFs). |
-| **Pro** | **$149** | Core + **Content Starter Pack** (5th PDF). |
+| **Pro** | **$149** | Core + deeper synthesis + Pro-only PDFs: **Content Starter Pack**, **Brand Strategy Memo**, conditional **Brand Audit** (when existing-brand inputs provided), Pro Visual Reference Spread on Style Guide, and Voice Playbook page 3 extensions. Content Starter Pack = paste-ready applied copy (`06-content-starter-pack.pdf`). |
 
 **Primary ad/lander SKU:** Identity Kit **Core ($79)**.
 

@@ -1,0 +1,19 @@
+---
+description: Customer voice platform and digital product line — canonical docs for all sister products
+alwaysApply: false
+---
+
+# Product platform (this repo)
+
+When adding SKUs, content packs, or changing how customer-generated copy works across products:
+
+Read and update **`docs/product-platform/`** in **this repository** first:
+
+- [README.md](./docs/product-platform/README.md)
+- [CUSTOMER_VOICE_AND_PRODUCT_LINE.md](./docs/product-platform/CUSTOMER_VOICE_AND_PRODUCT_LINE.md)
+- [SECTION_ID_REGISTRY.md](./docs/product-platform/SECTION_ID_REGISTRY.md)
+- [schemas/brand-context.v1.schema.json](./docs/product-platform/schemas/brand-context.v1.schema.json)
+
+Identity Kit (`identity-kit` sibling repo) **implements** generation; it links here instead of copying boundaries.
+
+Parent **marketing** voice: [BRAND_PLAYBOOK.md](./docs/BRAND_PLAYBOOK.md). Customer **kit** voice: product-platform docs above.

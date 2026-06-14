@@ -8,12 +8,12 @@ export const IDENTITY_KIT_CORE_DELIVERABLES = [
 ] as const;
 
 export const IDENTITY_KIT_PRO_ADD_ONS = [
-  'Custom brand summary for your marketing materials',
+  'Custom brand summaries (one-liners, elevator pitch, paragraph)',
   'Content Starter Pack',
   'Homepage messaging directions',
-  'Social bio options',
-  'Caption and content prompts',
-  'CTA language suggestions',
+  'Social bios (short profile + long About)',
+  'Caption starters and content pillar prompts',
+  'CTA variations per channel',
 ] as const;
 
 export const IDENTITY_KIT_VALUE_POINTS = [

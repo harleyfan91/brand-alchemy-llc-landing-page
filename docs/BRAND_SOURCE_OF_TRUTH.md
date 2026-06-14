@@ -91,6 +91,7 @@ Until article pages ship, treat the strip as the **editorial and SEO commitment*
 | [`public/brand-tokens.css`](../public/brand-tokens.css) | CSS variables: neutrals, chrome, scrim, catalog platform tints (`--ba-catalog-*`). |
 | [CATALOG_TIER_TEXT_STYLES.md](CATALOG_TIER_TEXT_STYLES.md) | Core / Pro–style labels where those tiers apply (optional for sites that do not use that catalog language). |
 | [PDF_CHROME.md](PDF_CHROME.md) | Shared PDF chrome packages and parent vs Identity Kit color roles. |
+| [product-platform/README.md](product-platform/README.md) | **Customer voice & digital product line** — brand context schema, Section ID cross-SKU map, process for new packs (canonical for all sister products). |
 
 Implementation on **this** site lives in `index.html`, `public/brand-tokens.css`, `App.tsx`, and `components/`. When you change fonts, colors, or the mark here, **update [BRAND_GUIDELINES.md](BRAND_GUIDELINES.md) (and playbook if copy rules change) in the same change**, so the written record stays true. When **shared neutrals, primary chrome, or catalog platform tints** change, update [`public/brand-tokens.css`](../public/brand-tokens.css) and keep `components/Products.tsx` (and the platform table in the guidelines) aligned.
 

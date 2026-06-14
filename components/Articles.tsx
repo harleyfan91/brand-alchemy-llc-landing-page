@@ -192,7 +192,7 @@ const articles: Article[] = [
   {
     slug: 'weekly-social-posts',
     category: 'Social Media',
-    title: 'What to post on social media each week, simplified',
+    title: 'What to post on social media each week',
     summary:
       'A practical framework for posting consistently without feeling like you need to become a full-time content creator.',
     reasonToRead: 'Useful when you need ideas you can actually keep up with week after week.',
