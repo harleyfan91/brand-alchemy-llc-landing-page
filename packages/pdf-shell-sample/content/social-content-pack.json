@@ -1,0 +1,206 @@
+{
+  "slug": "social-content-pack",
+  "title": "Social Content Pack",
+  "subtitle": "30 ready-to-post captions for your business",
+  "version": "1",
+  "intro": {
+    "openingHook": "You know you should post this week. You just don't know what to say.\n\nYou open the app. Stare at the blank screen. Close it again.\n\nThis pack has 30 captions for the moments that actually come up — a good week, a customer story, a simple reminder that you exist. Most are ready to copy and post as-is. No marketing experience required.",
+    "howToUse": "Find the situation that matches your week. Fill in your town or your trade where the template needs it — both take under five seconds. Post it. That's it.",
+    "fillInNote": "Most fill-ins in this pack are [your town] or [your trade] — both take under five seconds. Template 16 has [what they came in with]. Template 26 has [ongoing project]. You know these already. Just write them in. If a template doesn't fit your week, skip it. You have 30 to choose from.",
+    "identityKitNote": "If you have an Identity Kit, pull a line or two from your Voice and Content Playbook into any template that has room for it. The pack works without it, but reads more like you with it."
+  },
+  "categories": [
+    {
+      "id": "who-we-are",
+      "title": "This is who we are",
+      "description": "First impression posts for new followers. Say something customers would notice or repeat — not a mission statement or how you run the business.",
+      "templates": [
+        {
+          "id": "01",
+          "text": "We've been called a hidden gem so many times we're starting to wonder if we need a bigger sign.",
+          "register": "Wry"
+        },
+        {
+          "id": "02",
+          "text": "People stumble on us by accident. Most of them stop calling it an accident after the second visit.",
+          "register": "Real"
+        },
+        {
+          "id": "03",
+          "text": "New here? You're in good company. Half our customers were sent by the other half.",
+          "register": "Light"
+        },
+        {
+          "id": "04",
+          "text": "We let the work speak. Show up once and you'll know if we're your kind of place.",
+          "register": "Confident"
+        },
+        {
+          "id": "05",
+          "text": "If a friend sent you here, they chose well.",
+          "register": "Warm"
+        }
+      ]
+    },
+    {
+      "id": "were-open",
+      "title": "We're open. Come see us.",
+      "description": "A reminder you exist and you're ready. Understatement or one concrete detail about today — not a sales pitch and not 'this is your sign.'",
+      "templates": [
+        {
+          "id": "06",
+          "text": "We're open. That's all.",
+          "register": "Quiet"
+        },
+        {
+          "id": "07",
+          "text": "Rainy week? We're open anyway.",
+          "register": "Light"
+        },
+        {
+          "id": "08",
+          "text": "A lot of you had the same idea today. We're open.",
+          "register": "Energetic"
+        },
+        {
+          "id": "09",
+          "text": "Slow week so far. We're here if you need us.",
+          "register": "Real"
+        },
+        {
+          "id": "10",
+          "text": "Same place. Same hours. You know where to find us.",
+          "register": "Confident"
+        }
+      ]
+    },
+    {
+      "id": "behind-how-we-work",
+      "title": "Behind how we work",
+      "description": "One thing you do that customers wouldn't guess — a rule, a habit, or a trade-off. Not 'the real work happens before you arrive.'",
+      "templates": [
+        {
+          "id": "11",
+          "text": "If it's not right, we fix it. Not 'sorry about that.' Fix it.",
+          "register": "Confident"
+        },
+        {
+          "id": "12",
+          "text": "Long wait today? You'll hear about it at the door, not twenty minutes in.",
+          "register": "Quiet"
+        },
+        {
+          "id": "13",
+          "text": "You'll never get the rushed version. Even on our busiest days.",
+          "register": "Real"
+        },
+        {
+          "id": "14",
+          "text": "We're good at plenty. We're honest about what we're not, and we'd rather say so upfront than waste your time.",
+          "register": "Wry"
+        },
+        {
+          "id": "15",
+          "text": "We check the details you wouldn't think to ask about.",
+          "register": "Light"
+        }
+      ]
+    },
+    {
+      "id": "customer-moment",
+      "title": "A customer moment",
+      "description": "Something a customer did, said, or felt this week — not how you feel about having customers. No names needed.",
+      "templates": [
+        {
+          "id": "16",
+          "text": "Came in with [what they came in with]. Walked out with it handled.",
+          "register": "Real"
+        },
+        {
+          "id": "17",
+          "text": "Someone came in this week not sure we could help. We could. You should have seen their face.",
+          "register": "Warm"
+        },
+        {
+          "id": "18",
+          "text": "A regular back after a long stretch away. Said the closer place was fine, but fine isn't enough.",
+          "register": "Warm"
+        },
+        {
+          "id": "19",
+          "text": "First visit this week. Cautious at the door, comfortable by the time they left.",
+          "register": "Light"
+        },
+        {
+          "id": "20",
+          "text": "A customer brought their neighbor in this week. Just said, 'This is the place.'",
+          "register": "Warm"
+        }
+      ]
+    },
+    {
+      "id": "local-life",
+      "title": "Local life",
+      "description": "One thing about your town or neighborhood this week — observable, specific. Not a generic love letter to [your town].",
+      "templates": [
+        {
+          "id": "21",
+          "text": "First warm day in [your town] in a while. Half the neighborhood seems to be out.",
+          "register": "Light"
+        },
+        {
+          "id": "22",
+          "text": "Tuesday in [your town]. We're open.",
+          "register": "Quiet"
+        },
+        {
+          "id": "23",
+          "text": "In [your town], you stop being a stranger pretty fast. Half the people in line this week felt like we'd already met.",
+          "register": "Warm"
+        },
+        {
+          "id": "24",
+          "text": "Our corner of [your town]. Still the best place we could think of to work.",
+          "register": "Real"
+        },
+        {
+          "id": "25",
+          "text": "Busy weekend downtown in [your town]. We're open before and after the crowd.",
+          "register": "Energetic"
+        }
+      ]
+    },
+    {
+      "id": "proud-of-this-week",
+      "title": "Something we're proud of",
+      "description": "A small win from this week — name the outcome first. Not a vague 'great week' or milestone speech.",
+      "templates": [
+        {
+          "id": "26",
+          "text": "Checked [ongoing project] off the list this week! About time.",
+          "register": "Light"
+        },
+        {
+          "id": "27",
+          "text": "Customer from opening week came in this week. Still ordering the same thing.",
+          "register": "Warm"
+        },
+        {
+          "id": "28",
+          "text": "Busiest Thursday we've had in months. We were ready.",
+          "register": "Confident"
+        },
+        {
+          "id": "29",
+          "text": "Sold out by Friday. Didn't see that coming. Restocking Monday. If you missed it, now you know.",
+          "register": "Energetic"
+        },
+        {
+          "id": "30",
+          "text": "Slow weeks used to get in our heads. This one had momentum. We know the rush is coming.",
+          "register": "Quiet"
+        }
+      ]
+    }
+  ]
+}

@@ -20,7 +20,8 @@
     "pdf:services": "npm run generate:services --workspace=@brand-alchemy/pdf-shell-sample",
     "pdf:services-photos": "npm run generate:services-photos --workspace=@brand-alchemy/pdf-shell-sample",
     "pdf:spa": "npm run generate:spa --workspace=@brand-alchemy/pdf-shell-sample",
-    "pdf:spa-photos": "npm run generate:spa-photos --workspace=@brand-alchemy/pdf-shell-sample"
+    "pdf:spa-photos": "npm run generate:spa-photos --workspace=@brand-alchemy/pdf-shell-sample",
+    "pdf:pack": "npm run generate:pack --workspace=@brand-alchemy/pdf-shell-sample"
   },
   "dependencies": {
     "react": "^19.2.4",

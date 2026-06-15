@@ -110,8 +110,14 @@ CONTENT SPEC
                      5 seconds. Never require a fill-in to justify "personalization."]
   Fill-in standard:  [List the ONLY fill-ins allowed. Permitted: [your town/city],
                      [your trade or type of business], [a date], [your name].
-                     Not permitted: anything requiring thought — [your brand message],
-                     [your unique offering], [your target customer], etc.]
+                     Specific-detail fills are also permitted for customer-moment
+                     and proud-of categories when the owner can fill them in under
+                     5 seconds — [what they came in with], [the result], [the milestone],
+                     [what happened]. These are not "personalization" fills; they are
+                     factual recalls the owner already knows.
+                     Not permitted: anything requiring the owner to think about their
+                     positioning — [your brand message], [your unique offering],
+                     [your target customer], etc.]
   Template count:    [Target range, e.g. 30–35. Aim for roughly 1/3 zero-fill,
                      2/3 with one simple fill.]
   Categories:        [4–6 named scenario buckets with 1-line description each]
@@ -124,6 +130,7 @@ EXPRESSIVITY RANGE
     Energetic — something genuinely worth getting excited about
     Light — easy, human, occasionally a little fun
     Quiet — understated, does not try too hard
+    Wry — dry, self-aware, earns a smile without performing it
   No single register should dominate more than 40% of templates.
   Monotone is a failure mode even when all scenarios are different.]
 
@@ -152,7 +159,7 @@ STATUS
 
 ## Stage 3: Content Creation
 
-**Work through categories in order.** Finishing one category before starting the next keeps the tone more consistent than hopping around.
+**Work through categories in order.** Draft one category, review it, then start the next. Hopping around or batch-writing all templates before review is how packs drift into template-library tone.
 
 ### Before writing
 
@@ -160,6 +167,24 @@ Re-read the brief in full. Specifically re-read:
 - Fill-in standard (these are the only brackets allowed)
 - Off-limits list (these are active constraints during writing, not post-hoc edits)
 - Quality bar (this is the internal test for every template before it moves to review)
+
+Then calibrate — do not skip this even if the brief is complete:
+
+1. **Voice anchors** — Approve 1–3 lines that already sound right for this SKU (from a prior draft, a user correction, or a fresh write). Every template must pass: *Would this sit next to an anchor in someone's feed?* Do not bulk-draft 30 lines hoping one lands.
+2. **Category steering** — For each category, write the description as: what situation it covers **plus** the expected-angle trap to avoid (e.g. behind-the-scenes: not "the real work happens before you arrive"). Descriptions steer writers during drafting; they are not catalog marketing copy.
+3. **Two voices** — Intro and instructions may use second-person pain (speaking to the owner who bought the pack). **Templates** use first-person owner voice speaking **to their customers**. Competitor research is useful for anti-patterns (creator voice, jargon, question-stacks) — not as swipe copy.
+
+### Template gate (run in this order)
+
+A template is not done when it passes the voice walkers. Run these checks **in order** before moving on:
+
+1. **Customer-facing** (watchout #6) — Would a follower care, or is the business talking about itself, its operations, or its marketing?
+2. **Angle** (watchouts #1–2) — Not table-stakes. Not the safest obvious post for this category.
+3. **Punchline** — Story and moment templates need a last beat the customer would say or imply. Do not explain it (watchout #3).
+4. **First sentence** (watchout #7) — Scroll-stopper on its own?
+5. **Voice walkers** — Jargon, punctuation, industry narrowing, CTA rules (below).
+
+Passing step 5 alone is not sufficient. That is the most common failure mode when tone feels "almost right" but flat.
 
 ### Writing each template
 
@@ -200,6 +225,7 @@ A pack where every template sounds the same is monotone even if every scenario i
 | **Energetic** | Something genuinely worth getting excited about | "Something new just landed and we're excited to show you." |
 | **Light** | Easy, human, a little fun without being a brand mascot | "Monday is officially here. Come make it better." |
 | **Quiet** | Understated, does not try too hard | "We're open. That's all." |
+| **Wry** | Dry, self-aware, makes the reader smile without trying | "We've been called a hidden gem so many times we're starting to wonder if we need a bigger sign." |
 
 Use the expressivity range from the brief to guide which registers to prioritize. No single register should appear in more than 40% of the pack. If writing a full category and every template sounds the same emotionally, stop and rewrite half of them in a different register before moving on.
 
@@ -207,21 +233,60 @@ Use the expressivity range from the brief to guide which registers to prioritize
 
 These mirror the platform walkers in [`product-platform/CUSTOMER_VOICE_AND_PRODUCT_LINE.md`](product-platform/CUSTOMER_VOICE_AND_PRODUCT_LINE.md):
 
-1. **Banned vocabulary** — no: "authentic," "leverage," "brand equity," "curated," "content strategy," "algorithm," "engagement," "drip," "campaign," "subscriber," "persona," "funnel," "unique value proposition," or any other term that signals professional marketer context
+1. **Banned jargon** — no: "authentic," "leverage," "brand equity," "curated," "content strategy," "algorithm," "engagement," "drip," "campaign," "subscriber," "persona," "funnel," "unique value proposition," or any other term that signals professional marketer context. **Note:** urgency, social proof, specific outcomes, humor, and direct CTAs are not jargon — they are marketing mechanics that work because they are human. A template that ends "If you missed it, now you know" uses earned urgency. A template that ends "Book before it's too late" uses manufactured pressure. Only the latter is off-limits.
 2. **Industry narrowing** — read each template and ask: does any word limit this to one type of business? "Shop" suggests retail. "Clients" suggests professional services. "Appointment" suggests service scheduling. Default to: "customers," "what we do," "reach out," "come see us"
 3. **Claim-safety** — no rankings promises, no outcome guarantees, no "most" or "best" without specific grounding
-4. **CTA rules** — CTAs should invite, not pressure. "Come see us" over "Don't miss out." "We'd love to hear from you" over "Book now before it's too late."
+4. **CTA rules** — Many strong templates need **no CTA**; do not append "Come see us" to make a line feel complete. When a CTA belongs, invite — don't beg. "Come see us this week" is an invitation. "Book before it's too late" is manufactured pressure. "If you missed it, now you know" is earned urgency — something real happened, the reader benefits from the heads-up. Urgency is allowed when there is a real reason. Urgency invented to pressure a click is not. Questions are also valid CTAs: "Have you been in lately?" closes a loop differently than a directive and creates engagement without feeling like a command.
 5. **Punctuation** — Em dashes and ellipses are banned from all templates. Exclamation points: zero or one per template, Energetic/Light registers only. No doubled punctuation (`!!`, `!?`). No ALL CAPS. Fragments are allowed. Full punctuation rules in the table above.
+
+### Content quality watchouts: what flat looks like
+
+A template can pass all five voice walkers and still fail the customer read test. These are the patterns that make a pack feel generated rather than curated.
+
+**1. Table-stakes language.** "We work hard," "we care about quality," "we take our time" — these are true for almost every business that stays open. A template built on a table-stakes claim gives the reader nothing they cannot already assume. Replace the claim with a moment, a behavior, or a structural angle that implies the same quality without naming it.
+
+**2. The expected angle.** The most common failure mode is writing the most obvious, safest thing about the topic. "We're open" posts that only say "we're open." "Behind-the-scenes" posts that only say "we work hard before you see it." Templates that convert take an honest or slightly unexpected angle — a small admission, an implied contrast, a wry observation — rather than the most comfortable one.
+
+**3. Explaining the emotion.** After a genuine moment, many templates add a sentence that names what the moment means: "That's why we show up." "That's who we are." "That's what this work is for." These closers close the loop for the reader instead of leaving the moment open. Trust the reader to feel it. Cut the explanation.
+
+**4. The philosophical closer pattern.** Any single "That's X" closer can be earned. When multiple templates in the same pack end with this structure, it becomes a formula. Cap it at one per pack. If more than one has earned it, keep the strongest and rewrite the others.
+
+**5. Performing authenticity.** Words like "genuinely," "truly," "honestly" as modifiers often signal that the surrounding sentence is doing something inauthentic. "We genuinely love what we do" sounds less genuine than "We've been doing this for a long time and we're not done." Watch for modifier words compensating for a weak core claim. (Exception: "genuinely" is allowed when the surrounding structure earns it, e.g. "Made something this week we're genuinely proud of. Doesn't happen every week. This one did." — the staccato rhythm does the work, not the modifier.)
+
+**6. Internal-facing perspective.** Templates that describe the business to itself ("we're a community," "we care about our customers," "this is more than a job") are oriented inward. The reader cannot verify these claims and has no particular reason to believe them. Templates that create a moment the reader can enter — that say something specific about what the reader will experience or belong to — convert better than self-descriptions. **Business-meta fails too:** jokes or asides about the business's marketing, posting strategy, or operations (even wry ones) are written for the owner, not the customer. If a follower would ask "why do I care about that?", rewrite.
+
+**7. The weak first sentence.** Read only the first sentence of every template. Does it earn the second? The first sentence is the scroll-stopper. If it is forgettable — if it could be the first sentence of a hundred other posts — the template will not hold attention long enough to land.
+
+**8. The "someone came in" vagueness trap.** "Someone came in this week and said something." "A customer stopped by." These setups imply specificity but deliver generality. Either anchor the setup with a specific emotional type ("A customer came in stressed and left calm") or drop the setup and start with the outcome.
+
+### Hype: use it, but anchor it
+
+Skipping hype entirely makes the pack feel flat and emotionally one-note. Generic hype makes it sound like every other template library ("excited to share," "good energy," "genuinely good week"). The rule is **earned hype** — energy tied to something real the reader can picture.
+
+| Generic hype (avoid) | Earned hype (use) |
+|----------------------|-------------------|
+| "It's been a genuinely good week in [your town]!" | "We sold out by Friday. Restocking Monday." |
+| "Good energy in the neighborhood!" | "Opening day was a blur. Thank you to everyone who showed up." |
+| "We're excited to share what we've been working on!" | "Today's the day. We're open. Come see what we've been building." |
+| "Something amazing happened this week!" | "A new customer came in skeptical and left saying they'll be back. That made our week!" |
+
+**When hype belongs:** openings and milestones, a real win worth announcing, something new landing, a busy week that exceeded expectations, seasonal or local moments with a reason to celebrate. These map to **Energetic** and **Light** registers — use them on purpose, not as filler.
+
+**When hype doesn't belong:** routine "we're open" reminders, behind-the-scenes process posts, quiet customer moments, templates where the whole point is understatement. Not every post needs to peak.
+
+**Target mix:** Roughly 15–20% of templates in a social pack should carry clear energy or celebration (about 5–6 of 30). The rest can stay Real, Warm, Confident, or Quiet. A pack with zero hype reads cautious; a pack where every other line shouts reads like an ad.
+
+**How to write earned hype:** Name the thing first, then the feeling. "We're open" before "we're so excited." Or let the detail carry the energy: "Sold out by noon" needs no exclamation point. Use `!` when the moment supports it — openings, wins, invitations — not to rescue a flat sentence.
 
 ### Stage 3 output
 
-A complete draft of all templates, organized by category, with a placeholder instructions page. Do not finalize the instructions page until Stage 4 is complete — it is written from what the templates actually need, not from what you imagine they will need.
+A complete draft of all templates, organized by category, with updated category descriptions (steering + anti-patterns) and a placeholder instructions page. Do not finalize the instructions page until Stage 4 is complete — it is written from what the templates actually need, not from what you imagine they will need.
 
 ---
 
 ## Stage 4: Review
 
-**This stage has five checks. All five must pass before the product ships.**
+**Six checks. All must pass before the product ships.** During drafting, use the Stage 3 template gate first; do not rely on Check 1 alone.
 
 ### Check 1: Walker pass
 
@@ -270,7 +335,7 @@ Read the product as a whole and ask: does this feel like it came from Brand Alch
 - A marketing course workbook
 - A product built for professional content creators
 
-If the overall pack sounds like any of those, find where the drift happened and fix it at the category level, not template by template.
+If the overall pack sounds like any of those, find where the drift happened — usually expected-angle defaults per category (fix steering descriptions and rewrite that category), not one-word edits across the pack.
 
 ### Stage 4 output
 
@@ -339,8 +404,10 @@ CONTENT SPEC
   Format:            Ready-to-post. Zero-fill is valid and preferred; ~1/3 of templates
                      should need no modification at all. 1 fill allowed when the template
                      genuinely needs a local or trade reference to feel grounded.
-  Fill-in standard:  [your city/town], [your trade or type of business] only.
-                     No fill-ins requiring thought.
+  Fill-in standard:  [your city/town], [your trade or type of business] for most
+                     templates. Customer moment and proud-of templates may use
+                     one specific-detail fill ([what they came in with], [the result],
+                     [the milestone]) when the owner can answer it in under 5 seconds.
   Template count:    30–35
   Categories:
     1. This is who we are (intro / first impression posts for new followers)
@@ -352,14 +419,17 @@ CONTENT SPEC
 
 EXPRESSIVITY RANGE
   Required registers: Real, Warm, Confident, Light
+  1–2 Wry templates per pack (dry self-awareness reads as distinctly human)
   At least 1–2 Quiet templates per pack (the understated ones often resonate most)
   Avoid: every template sounding grateful/warm — that is the default drift for this category
 
 CONSTRAINTS
-  Off-limits:        "Content strategy," "algorithm," "engagement," "brand voice,"
-                     "authentic," any marketing vocabulary. Nothing requiring the
-                     owner to explain their positioning. Nothing that sounds like
-                     it was written for a content creator.
+  Off-limits:        Marketing jargon — "content strategy," "algorithm," "engagement,"
+                     "brand voice," "authentic," any term a professional marketer uses
+                     that a small business owner would not. Nothing that sounds like it
+                     was written for a content creator.
+                     Note: urgency, humor, social proof, specific outcomes, and direct
+                     CTAs are not off-limits — they work because they are human. Use them.
   Industry rule:     Must work for a plumber, a florist, and a café. No word that
                      implies a product business (shop, items, stock), service business
                      (clients, appointments), or food business (menu, taste) unless
