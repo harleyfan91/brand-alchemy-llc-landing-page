@@ -92,45 +92,63 @@
 
 ## Content packs
 
-Standalone copy (not Identity Kit deliverables, not local launch kits). When template counts, file format, and length rules are finalized, add them under each SKU.
+Standalone copy (not Identity Kit deliverables, not local launch kits). All $19 content packs are **industry-specific** — each product type ships as a separate SKU per industry. The Local Kits and Identity Kit are the industry-agnostic layer; content packs are the specific layer on top.
 
-### Core Content Pack
-- Price: $29
-- Includes:
-  - Reusable templates and starters for routine posts and updates (what is new, hours, quick news, and more)
-  - Lines you can reuse to stay visible between holidays and bigger campaigns
+**Production strategy:** Start with three industries (Salons & Beauty, Cafés & Coffee Shops, Home Services), prove the format, then expand. See `DIGITAL_PRODUCT_CONTENT_SCHEMA.md` for the full production backlog and matrix.
 
-### Holidays & Events Content Pack
-- Price: $39
-- Includes:
-  - Ready-to-use copy for holidays and local events; edit and post without starting from scratch
-  - Timely starters you can adapt quickly
+**Product types planned:**
 
-### Social Content Pack
-- Price: $19
-- Includes:
-  - 30–35 ready-to-post captions organized by situation (introducing the business, availability, behind-the-scenes, a customer moment, local life, a weekly win)
-  - Designed for 0–2 obvious fill-ins ([your town], [your trade]) — no marketing vocabulary required
+| Type | Price | Format | Status |
+|---|---|---|---|
+| Social Content Pack | $19 | 30 ready-to-post captions by situation | First three industries in brief |
+| Email Blast Pack | $19 | 15–20 complete emails for specific moments | Generic framework complete; industry versions pending |
+| Promo & Offer Pack | $19 | 25–30 captions for "ask" moments | Generic framework complete; industry versions pending |
+| Holiday & Events Pack | $19 | Ready-to-use copy for holidays and local events | Planned |
+| Core Content Pack | $29 | Broader multi-channel templates (website, email, directories) | Planned |
+| Email Content Pack | $29 | Welcome and early email sequences | Planned |
 
-### Email Blast Pack
-- Price: $19
-- Includes:
-  - 15–20 complete ready-to-send emails for specific moments (new offering, slow week, re-engagement, seasonal push, quick update, thank you)
-  - Each email includes a subject line, a 3–5 sentence body, and a closing CTA line
-  - Written to sound like the owner typed it — not a newsletter template
-  - Distinct from Email Content Pack (which covers welcome sequences and early email programs)
+---
 
-### Promo & Offer Pack
-- Price: $19
-- Includes:
-  - 25–30 ready-to-post captions for "ask" moments — availability, new offerings, weekend pushes, time-bounded invites, what we do explanations
-  - Written in warm, direct owner-voice without pressure language or aggressive sales framing
-  - Natural pair with the Social Content Pack (presence + ask)
+### Social Content Pack (industry-specific, $19 each)
 
-### Email Content Pack
-- Price: $29
-- Includes:
-  - Welcome and early email copy you can adapt to your voice
+30 ready-to-post captions organized by situation. Written specifically for one industry so captions use real vocabulary and real scenarios — not generic placeholders. Fill-ins are minimal ([your town], [your trade], and one specific-detail fill in customer-moment templates).
+
+**Shipping first:**
+- **Social Content Pack: Salons & Beauty** — $19
+- **Social Content Pack: Cafés & Coffee Shops** — $19
+- **Social Content Pack: Home Services** — $19
+
+More industries to follow using the same format.
+
+---
+
+### Email Blast Pack (industry-specific, $19 each)
+
+15–20 complete ready-to-send emails for specific moments (new offering, slow week, re-engagement, seasonal push, quick update, thank you). Each includes a subject line, 3–5 sentence body, and a closing CTA line. Written to sound like the owner typed it personally — not a newsletter template. Industry-specific versions in planning; generic framework complete.
+
+---
+
+### Promo & Offer Pack (industry-specific, $19 each)
+
+25–30 captions for "ask" moments — availability, new offerings, weekend pushes, time-bounded invites, what we do explanations. Warm and direct without pressure language. Natural pair with the Social Content Pack (presence + ask). Industry-specific versions in planning; generic framework complete.
+
+---
+
+### Holiday & Events Pack (industry-specific, $19 each)
+
+Ready-to-use copy for holidays and local events. Planned; format and template count TBD.
+
+---
+
+### Core Content Pack (industry-specific, $29 each)
+
+Broader multi-channel templates for routine posts and updates across website, email, and directories. Planned.
+
+---
+
+### Email Content Pack ($29)
+
+Welcome and early email copy you can adapt to your voice. Planned.
 
 ## Camentra App
 

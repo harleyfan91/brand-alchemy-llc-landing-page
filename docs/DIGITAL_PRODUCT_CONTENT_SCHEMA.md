@@ -375,16 +375,49 @@ A reviewed, corrected final draft of all templates and the completed instruction
 
 ---
 
-## Part 2: First three kit briefs
+## Part 2: Kit briefs and production backlog
+
+### Production strategy: industry-specific packs
+
+All $19 content packs are industry-specific. Each product TYPE (social, email, promo, holiday, core content) will have a separate SKU per starting industry rather than one generic version that tries to work for everyone.
+
+**Why:** Generic templates are forced to be vague. Industry-specific templates can be genuinely specific — a café pack can reference the morning prep list; a contractor pack can reference the job site and the estimate. Specificity is what makes a template feel worth using rather than worth skipping. This also solves the content quality problem that appears when writing for "any business."
+
+**What this is not:** We are not creating dozens of industry packs all at once. We start with three industries, prove the format, then expand horizontally (more industries) and vertically (more product types).
+
+**Starting industries — three packs ship first:**
+
+| Industry | Rationale |
+|---|---|
+| **Salons & Beauty** | Largest buyer category for copy packs; Instagram-native; clearest content scenarios (before/after, client moment, availability, transformation); high purchase intent |
+| **Cafés & Coffee Shops** | Massive market; posting is already cultural in this industry; rich specific angles (morning prep, regulars, seasonal drinks, the counter); easiest to write well |
+| **Home Services** (plumbers, electricians, HVAC, contractors) | Huge underserved market; trades are notoriously bad at social and know it; specific before/after scenarios that no competing pack addresses |
+
+**Full product × industry matrix (long-term vision):**
+
+```
+Product type            Salons   Cafés   Home Svcs   …more industries
+Social Content Pack      $19      $19       $19
+Email Blast Pack         $19      $19       $19
+Promo & Offer Pack       $19      $19       $19
+Holiday & Events Pack    $19      $19       $19
+Core Content Pack        $29      $29       $29
+```
+
+Each cell is one SKU. The Local Kits (Google/Yelp) and Identity Kit remain industry-agnostic — they are the foundation layer. Content packs are the specific layer on top.
+
+**Internal reference packs (KIT 01–03):** These are generic versions that proved the format, writing process, and PDF pipeline. They are NOT sellable products. They exist as internal frameworks that each industry-specific pack is built from.
+
+---
 
 These are the first products planned for production. Each brief is at a "ready to enter Stage 3" level — research has been validated through the article candidate log and general market knowledge. A formal Stage 1 research pass should still be run before writing begins.
 
 ---
 
-### KIT 01 — Social Content Pack
+### KIT 01 — Social Content Pack *(internal framework only — not for sale)*
 
 ```
-PRODUCT BRIEF: Social Content Pack
+PRODUCT BRIEF: Social Content Pack (internal reference)
 ─────────────────────────────────────────────────────────────────────
 
 SKU
@@ -452,7 +485,11 @@ CATALOG CONTEXT
                      Promo & Offer Pack = when you want to drive action.
 
 STATUS
-  Brief
+  Sample framework complete.
+  PDF layout, content density, and typographic design are established.
+  All 30 templates are working drafts that demonstrate voice, register variety, and
+  category coverage — NOT final customer-facing copy.
+  Next: full template rewrite to final voice spec → Stage 4 review → Stage 5 delivery.
 ```
 
 ---
@@ -600,7 +637,180 @@ CATALOG CONTEXT
                      These two are natural pairs.
 
 STATUS
-  Brief
+  Internal framework only — not for sale.
+```
+
+---
+
+### KIT 04 — Social Content Pack: Salons & Beauty *(first to ship)*
+
+```
+PRODUCT BRIEF: Social Content Pack — Salons & Beauty
+─────────────────────────────────────────────────────────────────────
+
+SKU
+  Name:              Social Content Pack: Salons & Beauty
+  Price:             $19
+  Funnel position:   Standalone; possible bump after Identity Kit or Google/Yelp Kit
+
+BUYER
+  Starting state:    Owns or works at a salon, beauty studio, nail studio, or esthetician
+                     practice. Posts inconsistently — often only when something big happens.
+                     Knows social media matters but freezes on what to say between
+                     transformation posts. Has seen competitors posting more and wonders
+                     what they're actually saying.
+  End state:         Has 30 captions for the situations that actually come up — a great
+                     client moment, a quiet Tuesday with open appointments, a before/after
+                     that deserves more than just the photo. Can post without writing from
+                     scratch.
+
+CONTENT SPEC
+  Format:            Ready-to-post captions. Short (2–4 sentences). Social-first.
+  Fill-in standard:  [your town], [your specialty or service], and one specific-detail fill
+                     per customer moment template ([what they came in wanting], [the result]).
+                     Owners in this industry have rich specific details — invite them in.
+  Template count:    30
+  Categories:
+    1. This is who we are (first impression, new follower, what kind of place this is)
+    2. We have availability (open chair, slow day, appointment reminder)
+    3. The work (behind the chair, what the process looks like, what care looks like here)
+    4. A client moment (transformation, a regular, someone who trusted you with something)
+    5. The community (neighborhood, regulars, the culture of the space)
+    6. A win this week (a transformation you're proud of, a milestone, a good week)
+
+EXPRESSIVITY RANGE
+  Required registers: Warm, Confident, Real, Wry
+  1–2 Quiet per pack
+  Avoid: performative enthusiasm ("we LOVE our clients!") — this industry's worst
+         social media habit; every caption should feel like the stylist actually typed it
+
+CONSTRAINTS
+  Industry-specific allowed vocabulary: "chair," "appointment," "the look," "the result,"
+    "client," "transformation," "the color," "the cut" — these narrow to beauty but are
+    correct for this pack.
+  Off-limits:        Marketing jargon, fake urgency, "book now before it's too late."
+                     Nothing that sounds like a Groupon ad or a franchise promotion.
+  Standalone rule:   Works without Identity Kit. With Identity Kit voice playbook,
+                     the owner can inject their salon's specific personality.
+
+QUALITY BAR
+  A template ships when: a solo esthetician can grab it, add her town, and post it
+                         in under 2 minutes and it sounds like her — not like a
+                         social media manager wrote it.
+  A template fails when: it could have been written by a chatbot about any beauty brand;
+                         OR it uses language a neighborhood nail studio would never say.
+
+STATUS
+  Brief pending — content not yet written.
+  Priority: FIRST to ship among industry-specific packs.
+```
+
+---
+
+### KIT 05 — Social Content Pack: Cafés & Coffee Shops
+
+```
+PRODUCT BRIEF: Social Content Pack — Cafés & Coffee Shops
+─────────────────────────────────────────────────────────────────────
+
+SKU
+  Name:              Social Content Pack: Cafés & Coffee Shops
+  Price:             $19
+  Funnel position:   Standalone
+
+BUYER
+  Starting state:    Owns or manages an independent café, coffee shop, or espresso bar.
+                     Posting is sporadic — sometimes a latte art photo, sometimes nothing
+                     for three weeks. Knows regulars would engage but doesn't know what to
+                     say beyond "we're open."
+  End state:         Has 30 captions for the actual moments of café life — the early
+                     morning before anyone walks in, a regular's order, a slow Tuesday,
+                     something new on the menu, a week that felt right.
+
+CONTENT SPEC
+  Format:            Ready-to-post captions. Short. Social-first.
+  Fill-in standard:  [your town], [the drink or item], [the specific detail].
+                     Cafés have inherently specific details — lean into them.
+  Template count:    30
+  Categories:
+    1. Who we are (neighborhood café identity, what kind of place this is)
+    2. We're open / come in (morning presence, slow day, weekday invite)
+    3. The craft (what goes into the work, the prep, the care before the doors open)
+    4. A regular moment (a customer interaction, a returning face, a first-timer)
+    5. Local life (neighborhood energy, the block, the season)
+    6. This week (a win, a milestone, a good run of days)
+
+EXPRESSIVITY RANGE
+  Required registers: Warm, Quiet, Real, Wry
+  Avoid: corporate coffee chain voice — no "crafted with care," no "hand-selected beans,"
+         no influencer language; should sound like the person behind the counter
+
+CONSTRAINTS
+  Industry-specific allowed vocabulary: "espresso," "the bar," "the regulars," "the cup,"
+    "the morning rush," "the prep list" — these narrow to cafés and are correct for this pack.
+  Off-limits:        Coffee chain vocabulary, influencer aesthetics, "cozy vibes."
+
+QUALITY BAR
+  A template ships when: the person who opens at 6am reads it and thinks "yes, that's us."
+  A template fails when: it could apply to any café chain or sounds like a lifestyle brand.
+
+STATUS
+  Brief pending — content not yet written.
+```
+
+---
+
+### KIT 06 — Social Content Pack: Home Services
+
+```
+PRODUCT BRIEF: Social Content Pack — Home Services
+─────────────────────────────────────────────────────────────────────
+
+SKU
+  Name:              Social Content Pack: Home Services
+  Price:             $19
+  Funnel position:   Standalone; strong candidate for Local Kit bump
+
+BUYER
+  Starting state:    Runs a plumbing, electrical, HVAC, general contracting, or similar
+                     home services business. Has almost no social media presence —
+                     knows they "should post" but genuinely has no idea what to say.
+                     Their work is unsexy to them (they do it every day) but deeply
+                     reassuring to homeowners (who are anxious about everything breaking).
+  End state:         Has 30 captions that reframe everyday work as trustworthy and
+                     confidence-building — without sounding like an ad or a franchise.
+
+CONTENT SPEC
+  Format:            Ready-to-post captions. Short. Social-first.
+  Fill-in standard:  [your town], [the job or trade], [what it was / what it took / how long].
+                     The specific detail is the whole post — owners know it in 2 seconds.
+  Template count:    30
+  Categories:
+    1. Who we are (how long we've been here, what kind of company this is)
+    2. We're available (slow week, booking open, come find us)
+    3. The work (what a job actually looks like, what it takes, what most people don't see)
+    4. A customer moment (the problem they'd been living with, the fix, the relief)
+    5. Local life (serving this town, being part of the neighborhood)
+    6. A win (a job well done, a week that came together, a milestone)
+
+EXPRESSIVITY RANGE
+  Required registers: Confident, Real, Wry, Warm
+  Avoid: contractor bravado ("we get it done!") and corporate contractor voice
+         ("our team of professionals"); should sound like the person who answered the phone
+
+CONSTRAINTS
+  Industry-specific allowed vocabulary: "the job," "the call," "on-site," "the fix,"
+    "the estimate," "the homeowner" — correct for this pack.
+  Off-limits:        Aggressive availability pressure, urgency language, fake reviews
+                     or testimonial framing, anything that sounds like a Yelp ad.
+
+QUALITY BAR
+  A template ships when: a solo plumber reads it and thinks "I would actually post that."
+  A template fails when: it sounds like it came from a franchise marketing team.
+
+STATUS
+  Brief pending — content not yet written.
+  High priority: largest underserved market in this category.
 ```
 
 ---

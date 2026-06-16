@@ -123,40 +123,59 @@ const S = StyleSheet.create({
 
   // ── Intro page ─────────────────────────────────────────────────────────────
 
-  introWrap: {
+  // Dark editorial panel — occupies the top portion of the page.
+  // The hard zone change (dark → white) replaces the need for a divider.
+  introHookPanel: {
     paddingHorizontal: 44,
-    paddingTop: 40,
+    paddingTop: 52,
+    paddingBottom: 44,
+    backgroundColor: '#111111',
   },
-  // Opening hook — pain recognition + what this is. Editorial, larger.
-  introHook: {
-    fontSize: 13,
+  // Regular hook paragraph — setup / context. Slightly smaller and muted
+  // so the stacked sentences below read as the visual peak.
+  introHookPara: {
+    fontSize: 16,
     fontFamily: 'Source Serif 4',
     fontWeight: 400,
-    fontStyle: 'italic',
-    color: BRAND_PDF_COLORS.black,
-    lineHeight: 1.6,
-    marginBottom: 20,
-  },
-  introDivider: {
-    height: 1,
-    backgroundColor: '#E4E4E7',
-    marginBottom: 20,
-  },
-  introHeading: {
-    fontSize: 22,
-    fontFamily: 'Source Serif 4',
-    fontWeight: 400,
-    color: BRAND_PDF_COLORS.black,
-    marginBottom: 14,
-    lineHeight: 1.2,
-  },
-  introBody: {
-    fontSize: 9.5,
-    fontFamily: 'Inter',
-    fontWeight: 300,
+    color: 'rgba(255,255,255,0.82)',
     lineHeight: 1.65,
-    color: BRAND_PDF_COLORS.bodyText,
-    marginBottom: 8,
+    marginBottom: 26,
+  },
+  // Sentence-stack block wrapper — holds the stacked single-line sentences.
+  introHookStack: {
+    marginBottom: 26,
+  },
+  // Each stacked sentence: large, full white, tight leading.
+  // At 25pt, short sentences (≤ ~28 chars) each fall on their own line.
+  introHookStackLine: {
+    fontSize: 25,
+    fontFamily: 'Source Serif 4',
+    fontWeight: 400,
+    color: '#FFFFFF',
+    lineHeight: 1.28,
+  },
+  // Final paragraph: the solution. Prominent serif — a second focal point
+  // after the stacked problem sentences. Generous marginTop signals the pivot.
+  introHookParaDesc: {
+    fontSize: 17,
+    fontFamily: 'Source Serif 4',
+    fontWeight: 400,
+    color: 'rgba(255,255,255,0.9)',
+    lineHeight: 1.65,
+    marginTop: 32,
+  },
+  // White section below — grows to fill remaining height between panel and footer.
+  introInstructionsSection: {
+    flex: 1,
+    paddingHorizontal: 44,
+    paddingTop: 22,
+    paddingBottom: 8,
+  },
+  // Instruction blocks — no border, generous padding lets the small-caps
+  // label do the structural work on its own.
+  introInstructionBlock: {
+    paddingTop: 20,
+    paddingBottom: 20,
   },
   introLabel: {
     fontSize: 6.5,
@@ -164,8 +183,14 @@ const S = StyleSheet.create({
     fontWeight: 700,
     letterSpacing: 1.6,
     color: BRAND_PDF_COLORS.subText,
-    marginTop: 18,
-    marginBottom: 6,
+    marginBottom: 8,
+  },
+  introBody: {
+    fontSize: 10.5,
+    fontFamily: 'Inter',
+    fontWeight: 300,
+    lineHeight: 1.72,
+    color: BRAND_PDF_COLORS.bodyText,
   },
 
   // ── Category header strips (inline dividers within the flow) ───────────────
@@ -270,25 +295,54 @@ function CoverPage() {
 }
 
 function IntroPage() {
+  const hookParas = pack.intro.openingHook.split('\n\n')
+
   return h(
     Page,
     { size: 'LETTER', style: S.page },
+
+    // Dark editorial panel — para 1 at regular size sets up the scene;
+    // para 2 sentences stack large as the visual peak; para 3 drops to
+    // small muted Inter as the informational description.
     h(
       View,
-      { style: S.introWrap },
-
-      // Opening hook — pain recognition + what this pack is
-      h(Text, { style: S.introHook }, pack.intro.openingHook),
-      h(View, { style: S.introDivider }),
-
-      // Instruction section
-      h(Text, { style: S.introLabel }, 'HOW TO USE IT'),
-      h(Text, { style: S.introBody }, pack.intro.howToUse),
-      h(Text, { style: S.introLabel }, 'FILL-INS'),
-      h(Text, { style: S.introBody }, pack.intro.fillInNote),
-      h(Text, { style: S.introLabel }, 'IF YOU HAVE AN IDENTITY KIT'),
-      h(Text, { style: S.introBody }, pack.intro.identityKitNote),
+      { style: S.introHookPanel },
+      ...hookParas.map((para, i) => {
+        const isLast = i === hookParas.length - 1
+        if (isLast) {
+          return h(Text, { key: `hook-${i}`, style: S.introHookParaDesc }, para)
+        }
+        if (para.includes('\n')) {
+          // Sentence-stack: each \n-separated line gets its own large Text
+          const lines = para.split('\n')
+          return h(View, { key: `hook-${i}`, style: S.introHookStack },
+            ...lines.map((line, li) =>
+              h(Text, { key: li, style: S.introHookStackLine }, line),
+            ),
+          )
+        }
+        return h(Text, { key: `hook-${i}`, style: S.introHookPara }, para)
+      }),
     ),
+
+    // White instructions section — flex: 1 fills remaining height above footer
+    h(
+      View,
+      { style: S.introInstructionsSection },
+      h(View, { style: S.introInstructionBlock },
+        h(Text, { style: S.introLabel }, 'HOW TO USE IT'),
+        h(Text, { style: S.introBody }, pack.intro.howToUse),
+      ),
+      h(View, { style: S.introInstructionBlock },
+        h(Text, { style: S.introLabel }, 'FILL-INS'),
+        h(Text, { style: S.introBody }, pack.intro.fillInNote),
+      ),
+      h(View, { style: S.introInstructionBlock },
+        h(Text, { style: S.introLabel }, 'IF YOU HAVE AN IDENTITY KIT'),
+        h(Text, { style: S.introBody }, pack.intro.identityKitNote),
+      ),
+    ),
+
     h(PageFooterChrome),
   )
 }
