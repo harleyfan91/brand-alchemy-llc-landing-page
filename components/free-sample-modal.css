@@ -1,0 +1,62 @@
+@keyframes free-sample-modal-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.free-sample-modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 200;
+  background-color: rgb(0 0 0 / 0.55);
+}
+
+.free-sample-modal-layer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 201;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 1.5rem 1rem;
+  pointer-events: none;
+}
+
+.free-sample-modal-inner {
+  width: 100%;
+  max-width: 28rem;
+  pointer-events: auto;
+}
+
+.free-sample-modal-panel {
+  position: relative;
+  width: 100%;
+  animation: free-sample-modal-panel-in 520ms cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation-delay: 40ms;
+}
+
+.free-sample-modal-panel--prompted {
+  animation-duration: 920ms;
+  animation-delay: 140ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .free-sample-modal-panel {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -28,7 +28,7 @@ export const LOCAL_KIT_PRO_TIERS_LIVE = false;
 export const LOCAL_KITS_CORE_BUNDLE_PRICE = '$69';
 
 const platformSummary =
-  'Profile setup guide, 30 review response scripts, plain-language listing tips, and worksheets to stay organized.';
+  'Learn how pros set up a local listing with a clear step-by-step guide, industry best practices throughout so your profile gets more attention.';
 
 const reviewScriptBullet = '30 review response scripts ready to customize';
 
@@ -36,6 +36,7 @@ const googleCoreBullets = [
   'Step-by-step Google Business Profile setup guide',
   reviewScriptBullet,
   'Best practices to help you rank higher in local search',
+  'Ads and promotion starter guidance tailored to Google',
   'Worksheets to keep your details consistent online and stay on top of your listing',
 ];
 
@@ -43,6 +44,7 @@ const yelpCoreBullets = [
   'Step-by-step Yelp profile setup guide',
   reviewScriptBullet,
   'Best practices to help you rank higher in local search',
+  'Ads and promotion starter guidance tailored to Yelp',
   'Worksheets to keep your details consistent online and stay on top of your listing',
 ];
 
@@ -78,23 +80,38 @@ export const localBusinessKitMatrixColumnsFull: LocalKitColumnDef[] = [
   },
 ];
 
+const bundleCoreBullets = [
+  'Full Google Business Profile and Yelp profile setup guides',
+  '30 review response scripts ready to customize for both platforms',
+  'Best practices to help you rank higher in local search on Google and Yelp',
+  'Ads and promotion starter guidance tailored to Google and Yelp',
+  'Worksheets and listing tips to keep both profiles consistent',
+  'Save $9 compared to buying each kit separately',
+];
+
+const bundleProBullets = [
+  'Google and Yelp Pro local launch kits together',
+  'Full setup guides and 30 review response scripts for both platforms',
+  'Best practices to help you rank higher in local search on Google and Yelp',
+  'Google and Yelp ads and promotion starter guidance in one bundle',
+  'Walkthroughs, listing tips, worksheets, and Pro extras across both platforms',
+  'Save $29 compared to buying each Pro kit separately',
+];
+
 function bundleColumnDef(): LocalKitColumnDef {
   if (LOCAL_KIT_PRO_TIERS_LIVE) {
     return {
       name: 'Both',
       toneKey: 'both',
-      summary: 'Google + Yelp Pro together in one checkout.',
+      summary:
+        'Get both Google and Yelp guides in one bundle, with industry best practices that help your listings stay consistent and earn more attention across both platforms.',
       teaser: '$129',
       options: [
         {
           tierKey: 'bundle',
           tierLabel: 'Bundle',
           price: '$129',
-          bullets: [
-            'Google and Yelp Pro local launch kits together',
-            'Save compared to buying each Pro kit separately',
-            'Walkthroughs, templates, listing tips, worksheets, and ads-ready extras across both platforms',
-          ],
+          bullets: bundleProBullets,
         },
       ],
     };
@@ -103,18 +120,15 @@ function bundleColumnDef(): LocalKitColumnDef {
   return {
     name: 'Both',
     toneKey: 'both',
-    summary: 'Google and Yelp launch kits together in one checkout.',
+    summary:
+      'Get both Google and Yelp guides in one bundle, with industry best practices that help your listings stay consistent and earn more attention across both platforms.',
     teaser: LOCAL_KITS_CORE_BUNDLE_PRICE,
     options: [
       {
         tierKey: 'bundle',
         tierLabel: 'Bundle',
         price: LOCAL_KITS_CORE_BUNDLE_PRICE,
-        bullets: [
-          'Google and Yelp local launch kits together',
-          'Save compared to buying each kit separately',
-          'Walkthroughs, review scripts, listing tips, and worksheets across both platforms',
-        ],
+        bullets: bundleCoreBullets,
       },
     ],
   };

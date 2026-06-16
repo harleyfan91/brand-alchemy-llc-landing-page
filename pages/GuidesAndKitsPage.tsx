@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import FreeSampleLeadModal from '../components/FreeSampleLeadModal';
 import OfferMatrixPrimitive from '../components/primitives/OfferMatrixPrimitive.tsx';
 import ProductPhotoGridPrimitive from '../components/primitives/ProductPhotoGridPrimitive.tsx';
 import { getLocalBusinessKitMatrixColumns } from '../content/localBusinessKits';
@@ -8,94 +9,111 @@ import { contentPacks } from '../content/contentPacks';
 
 const matrixColumns = getLocalBusinessKitMatrixColumns();
 
-const industries = ['Cafe', 'Gym & Fitness', 'Spa & Beauty', 'Professional Services'];
+const AUTO_SAMPLE_PROMPT_KEY = 'guides-kits-auto-sample-prompt-shown';
+const AUTO_SAMPLE_PROMPT_DELAY_MS = 750;
 
 const GuidesAndKitsPage: React.FC = () => {
   const [selectedIndustry, setSelectedIndustry] = useState('');
+  const [sampleOpen, setSampleOpen] = useState(false);
+  const [sampleEntrance, setSampleEntrance] = useState<'manual' | 'prompted'>('manual');
+
+  const userOpenedSampleManuallyRef = useRef(false);
+  const autoPromptTimerRef = useRef<number | null>(null);
+  const autoPromptScheduledRef = useRef(false);
+
+  useEffect(() => {
+    return () => {
+      if (autoPromptTimerRef.current !== null) {
+        window.clearTimeout(autoPromptTimerRef.current);
+      }
+    };
+  }, []);
+
+  const openSampleManually = useCallback(() => {
+    userOpenedSampleManuallyRef.current = true;
+    if (autoPromptTimerRef.current !== null) {
+      window.clearTimeout(autoPromptTimerRef.current);
+      autoPromptTimerRef.current = null;
+    }
+    setSampleEntrance('manual');
+    setSampleOpen(true);
+  }, []);
+
+  const handleOfferExpand = useCallback(() => {
+    if (userOpenedSampleManuallyRef.current) return;
+    if (autoPromptScheduledRef.current) return;
+    if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem(AUTO_SAMPLE_PROMPT_KEY)) return;
+
+    autoPromptScheduledRef.current = true;
+    autoPromptTimerRef.current = window.setTimeout(() => {
+      autoPromptTimerRef.current = null;
+      if (userOpenedSampleManuallyRef.current) return;
+
+      sessionStorage.setItem(AUTO_SAMPLE_PROMPT_KEY, '1');
+      setSampleEntrance('prompted');
+      setSampleOpen(true);
+    }, AUTO_SAMPLE_PROMPT_DELAY_MS);
+  }, []);
 
   return (
     <main className="flex-grow scroll-mt-20 bg-white pb-12 pt-20 md:pb-20 md:pt-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <nav aria-label="Breadcrumb" className="mb-4 md:mb-5">
-          <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] font-medium uppercase tracking-[0.18em] text-gray-400 md:text-xs md:tracking-[0.2em]">
-            <li>
-              <Link to="/" className="text-gray-500 transition-colors hover:text-gray-900">
-                Home
-              </Link>
-            </li>
-            <li aria-hidden className="select-none text-gray-300">
-              /
-            </li>
-            <li className="text-gray-900" aria-current="page">
-              Guides &amp; kits
-            </li>
-          </ol>
-        </nav>
+        <header className="border-b border-gray-100 pb-6 md:pb-8">
+          <nav aria-label="Breadcrumb" className="mb-5 md:mb-6">
+            <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] font-medium uppercase tracking-[0.18em] text-gray-400 md:text-xs md:tracking-[0.2em]">
+              <li>
+                <Link to="/" className="text-gray-500 transition-colors hover:text-gray-900">
+                  Home
+                </Link>
+              </li>
+              <li aria-hidden className="select-none text-gray-300">
+                /
+              </li>
+              <li className="text-gray-900" aria-current="page">
+                Guides &amp; kits
+              </li>
+            </ol>
+          </nav>
 
-        <section className="py-2">
-          <span className="text-xs font-bold uppercase tracking-[0.25em] text-gray-400">Marketing tools &amp; kits</span>
-          <h1 className="mt-2 font-serif text-3xl font-normal leading-tight text-gray-900 sm:text-4xl md:text-5xl">
+          <h1 className="font-sans text-3xl font-bold uppercase leading-[1.05] tracking-tight text-gray-900 sm:text-4xl md:text-[2.65rem]">
             Guides &amp; kits
+            <span className="mt-1.5 block font-serif text-xl font-normal normal-case tracking-normal text-gray-500 sm:text-2xl md:mt-2">
+              Launch kits and content packs that plug into your brand.
+            </span>
           </h1>
-          <p className="mt-4 max-w-3xl text-sm font-light leading-relaxed text-gray-500 md:text-base">
-            Practical tools that plug into your brand: local launch kits for Google and Yelp, plus industry content
-            packs for what you publish week to week.
-          </p>
-        </section>
+        </header>
 
-        <section className="mt-8 rounded-xl border border-gray-100 bg-gray-50 p-4 sm:rounded-2xl sm:p-5">
-          <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Free sample</span>
-          <h2 className="mt-1 font-serif text-xl font-normal text-gray-900 sm:text-2xl">
-            Your free listings preview
-          </h2>
-          <p className="mt-1.5 text-sm font-light leading-snug text-gray-500">
-            Choose an industry below and enter your email to receive a sample of photo best practices, review response
-            templates, and a 3-minute audit of your Google and Yelp listings.
-          </p>
-          <div className="mt-3 flex flex-col gap-2 md:flex-row md:items-stretch md:gap-2.5">
-            <select
-              value={selectedIndustry}
-              onChange={(e) => setSelectedIndustry(e.target.value)}
-              className="min-h-[2.75rem] w-full cursor-pointer appearance-none rounded-full border border-gray-200 bg-white px-3.5 py-2 text-sm text-gray-900 focus:border-black focus:outline-none md:w-[12.5rem]"
-            >
-              <option value="" disabled>
-                Industry...
-              </option>
-              {industries.map((ind) => (
-                <option key={ind} value={ind}>
-                  {ind}
-                </option>
-              ))}
-            </select>
-            <input
-              type="email"
-              placeholder="you@business.com"
-              autoComplete="email"
-              className="min-h-[2.75rem] w-full flex-1 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm text-gray-900 placeholder:text-gray-400 focus:border-black focus:outline-none"
-            />
-            <button
-              type="button"
-              className="min-h-[2.75rem] w-full rounded-full bg-black px-5 py-2 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-gray-800 md:w-auto md:min-w-[8.25rem]"
-            >
-              Get sample
-            </button>
-          </div>
-        </section>
-
-        <section className="mt-10">
+        <section className="mt-8 md:mt-10">
           <div className="mb-4 text-left md:mb-5">
             <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Local launch kits</span>
             <h2 className="mt-1 text-xl font-serif font-normal text-gray-900 sm:text-2xl">
               Set up your local listings with ease.
             </h2>
-            <p className="mt-2 text-sm font-light text-gray-500">
-              Step-by-step guides for setting up Google Business and Yelp profiles, review response scripts & more.
+            <p className="mt-2 max-w-2xl text-sm font-light leading-relaxed text-gray-500">
+              Local business kits for Google and Yelp — each includes a step-by-step setup guide and proven tactics to rank
+              higher in local search, whether you&apos;re launching new or refreshing a listing that&apos;s been live for
+              years.
             </p>
           </div>
-          <OfferMatrixPrimitive columns={matrixColumns} getCheckoutHref={getLocalBusinessKitCheckoutHref} />
+
+          <OfferMatrixPrimitive
+            columns={matrixColumns}
+            getCheckoutHref={getLocalBusinessKitCheckoutHref}
+            onOfferExpand={handleOfferExpand}
+          />
+
+          <div className="mt-5 text-center md:text-left">
+            <button
+              type="button"
+              onClick={openSampleManually}
+              className="border-b border-gray-300 pb-0.5 text-xs font-bold uppercase tracking-widest text-gray-500 transition-colors hover:border-black hover:text-black"
+            >
+              Get the free sample pack
+            </button>
+          </div>
         </section>
 
-        <section className="mt-12 border-t border-gray-100 pt-6">
+        <section className="mt-12 border-t border-gray-100 pt-6 md:pt-8">
           <div className="mb-5 flex flex-col gap-2 text-left sm:flex-row sm:items-end sm:justify-between">
             <div>
               <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Content packs</span>
@@ -112,6 +130,14 @@ const GuidesAndKitsPage: React.FC = () => {
           <ProductPhotoGridPrimitive items={contentPacks} />
         </section>
       </div>
+
+      <FreeSampleLeadModal
+        open={sampleOpen}
+        onClose={() => setSampleOpen(false)}
+        selectedIndustry={selectedIndustry}
+        onIndustryChange={setSelectedIndustry}
+        entrance={sampleEntrance}
+      />
     </main>
   );
 };

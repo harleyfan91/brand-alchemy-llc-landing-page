@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import CheckIcon from '../CheckIcon';
 import type { DigitalProductMatrixColumn } from '../DigitalProductPage';
 import { checkoutOpensInNewTab, normalizeCheckoutHref } from '../../utils/checkoutHref';
+import { renderKitCopy } from '../../utils/renderKitCopy';
 
 export interface OfferMatrixPrimitiveProps {
   columns: DigitalProductMatrixColumn[];
@@ -17,6 +18,8 @@ export interface OfferMatrixPrimitiveProps {
   primaryBuyLabel?: string;
   /** Label when no checkout URL (default: Coming soon). */
   primaryUnavailableLabel?: string;
+  /** Fires when the user expands a kit column (null → selected). */
+  onOfferExpand?: (columnIndex: number) => void;
 }
 
 const OfferMatrixPrimitive: React.FC<OfferMatrixPrimitiveProps> = ({
@@ -25,11 +28,32 @@ const OfferMatrixPrimitive: React.FC<OfferMatrixPrimitiveProps> = ({
   getCheckoutHref,
   primaryBuyLabel = 'Buy now',
   primaryUnavailableLabel = 'Coming soon',
+  onOfferExpand,
 }) => {
-  const [selectedOffer, setSelectedOffer] = useState<number | null>(null);
+  // On mobile we want Google expanded by default, but without triggering the "auto-open sample modal" flow.
+  // On desktop we keep it neutral until hover.
+  const initialSelectedOffer = (() => {
+    if (typeof window === 'undefined') return null;
+    return window.matchMedia('(max-width: 767px)').matches ? 0 : null;
+  })();
+
+  const [selectedOffer, setSelectedOffer] = useState<number | null>(initialSelectedOffer);
   const [selectedOptionByColumn, setSelectedOptionByColumn] = useState<Record<number, number>>({});
+  const prevSelectedOfferRef = useRef<number | null>(initialSelectedOffer);
+
+  // Desktop-only: highlight + checkout CTA on hover. No width/height animation.
+  const [desktopHoveredOffer, setDesktopHoveredOffer] = useState<number | null>(null);
+
+  const activeOfferForStyling = desktopHoveredOffer ?? selectedOffer;
+
+  useEffect(() => {
+    if (selectedOffer !== null && prevSelectedOfferRef.current === null) {
+      onOfferExpand?.(selectedOffer);
+    }
+    prevSelectedOfferRef.current = selectedOffer;
+  }, [selectedOffer, onOfferExpand]);
   const hasThreeOffers = columns.length === 3;
-  const selectedColumn = selectedOffer !== null ? columns[selectedOffer] : null;
+  const selectedColumn = activeOfferForStyling !== null ? columns[activeOfferForStyling] : null;
 
   const matrixBackground = (() => {
     if (!selectedColumn?.toneKey) return 'var(--ba-catalog-neutral-bg)';
@@ -38,12 +62,6 @@ const OfferMatrixPrimitive: React.FC<OfferMatrixPrimitiveProps> = ({
     return 'var(--ba-catalog-both-bg)';
   })();
 
-  const matrixAccent = (() => {
-    if (!selectedColumn?.toneKey) return 'transparent';
-    if (selectedColumn.toneKey === 'google') return 'var(--ba-catalog-google-accent)';
-    if (selectedColumn.toneKey === 'yelp') return 'var(--ba-catalog-yelp-accent)';
-    return 'var(--ba-catalog-emphasis)';
-  })();
   const columnAccent = (toneKey?: DigitalProductMatrixColumn['toneKey']): string => {
     if (toneKey === 'google') return 'var(--ba-catalog-google-accent)';
     if (toneKey === 'yelp') return 'var(--ba-catalog-yelp-accent)';
@@ -70,6 +88,9 @@ const OfferMatrixPrimitive: React.FC<OfferMatrixPrimitiveProps> = ({
     return '';
   };
 
+  /** Desktop column headers: show price teaser when multiple tiers are visible (e.g. Core + Pro). */
+  const showDesktopHeaderTeaser = columns.some((column) => column.options.length > 1);
+
   const optionHasTierLabel = (option: DigitalProductMatrixColumn['options'][number]): boolean =>
     Boolean(option.name.trim());
 
@@ -80,7 +101,7 @@ const OfferMatrixPrimitive: React.FC<OfferMatrixPrimitiveProps> = ({
           <span aria-hidden className="mt-0.5 text-gray-500">
             <CheckIcon size="sm" />
           </span>
-          <span>{bullet}</span>
+          <span>{renderKitCopy(bullet)}</span>
         </li>
       ))}
     </ul>
@@ -128,7 +149,7 @@ const OfferMatrixPrimitive: React.FC<OfferMatrixPrimitiveProps> = ({
   return (
     <div
       className="overflow-hidden rounded-xl border border-gray-200 sm:rounded-2xl"
-      style={{ backgroundColor: matrixBackground, transition: 'background-color 0.4s ease' }}
+      style={{ backgroundColor: matrixBackground, transition: 'background-color 0.3s ease' }}
     >
       <div className="border-b border-gray-200/80 md:hidden">
         {columns.map((column, idx) => {
@@ -172,7 +193,7 @@ const OfferMatrixPrimitive: React.FC<OfferMatrixPrimitiveProps> = ({
               </button>
               {isExpanded ? (
                 <div className="border-t border-gray-100 bg-white/75 px-3 pb-5 pt-2 sm:px-4">
-                  <p className="text-sm font-light leading-relaxed text-gray-600">{column.summary}</p>
+                  <p className="text-sm font-medium leading-relaxed text-gray-800">{column.summary}</p>
                   <div className="mt-3 grid gap-2">
                     {column.options.slice(0, 2).map((option, optionIdx) => {
                       const selectedOption = getSelectedOptionIndex(idx, column.options.length);
@@ -241,129 +262,109 @@ const OfferMatrixPrimitive: React.FC<OfferMatrixPrimitiveProps> = ({
           );
         })}
       </div>
-      <div className={`hidden min-h-[min(320px,50vh)] md:flex md:flex-row ${hasThreeOffers ? '' : 'md:gap-4'}`} role="radiogroup" aria-label="Choose an offer">
+      <div
+        className={`hidden md:flex md:flex-row md:items-stretch ${hasThreeOffers ? '' : 'md:gap-4'}`}
+        role="radiogroup"
+        aria-label="Choose an offer"
+        onMouseLeave={() => setDesktopHoveredOffer(null)}
+      >
         {columns.map((column, idx) => {
-          const expanded = selectedOffer === idx;
-          const equal = selectedOffer === null;
-          const slim = !equal && !expanded;
-          const optionCount = Math.min(column.options.length, 2);
-          const flexClass = equal ? 'flex-1 min-w-0' : expanded ? 'flex-[3] min-w-0' : 'flex-1 basis-0 min-w-[5.25rem]';
+          const hovered = desktopHoveredOffer === idx;
+
           return (
-            <div key={column.name} className={`flex flex-col min-h-0 transition-[flex-grow,flex-shrink,flex-basis] duration-300 ease-out ${hasThreeOffers ? 'border-r border-gray-200/80 last:border-r-0' : ''} ${flexClass}`}>
-              {equal ? (
-                <button type="button" role="radio" aria-checked={false} aria-label={`${column.name} — show details`} onClick={() => setSelectedOffer(idx)} className="group relative flex flex-1 min-h-0 min-w-0 flex-col rounded-none border-0 bg-white/55 text-left transition-all duration-200 hover:bg-white/92 hover:shadow-[0_12px_36px_-14px_rgba(0,0,0,0.16)] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gray-900">
-                  <div className="relative flex shrink-0 items-start justify-between gap-2 px-3 py-3 sm:px-4 sm:py-3.5">
-                    <div className="flex min-w-0 flex-col gap-1 pr-1">
-                      <span className="text-xs font-bold uppercase tracking-widest text-gray-900">{column.name}</span>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400">{columnTeaser(column)}</span>
-                    </div>
-                  </div>
-                  <div className="flex min-h-0 flex-1 flex-col overflow-y-auto border-t border-gray-100/90 bg-white/65 px-3 pb-4 pt-2 sm:px-4 sm:pb-5">
-                    <p className="text-sm font-light leading-relaxed text-gray-600">{column.summary}</p>
-                    <div className="mt-3 grid w-full grid-cols-2 gap-2 sm:mt-auto" aria-hidden="true">
-                      {column.options.slice(0, 2).map((option, optionIdx) => (
+            <div
+              key={column.name}
+              className={`flex min-w-0 flex-1 flex-col transition-colors duration-300 ${
+                hovered ? 'bg-white/80' : 'bg-white/65'
+              } ${hasThreeOffers ? 'border-r border-gray-200/80 last:border-r-0' : ''}`}
+              onMouseEnter={() => setDesktopHoveredOffer(idx)}
+            >
+              <div className="relative shrink-0 px-4 py-3 sm:py-3.5">
+                <div className="flex min-w-0 flex-col gap-1 pr-1">
+                  <span className="text-xs font-bold uppercase tracking-widest text-gray-900">{column.name}</span>
+                  {showDesktopHeaderTeaser ? (
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400">
+                      {columnTeaser(column)}
+                    </span>
+                  ) : null}
+                </div>
+                <span
+                  className={`absolute bottom-0 left-3 right-3 h-1 rounded-full transition-opacity duration-300 ${hovered ? 'opacity-100' : 'opacity-0'}`}
+                  style={{ backgroundColor: columnAccent(column.toneKey) }}
+                  aria-hidden
+                />
+              </div>
+              <div className="flex flex-1 flex-col border-t border-gray-100/90 px-4 pb-5 pt-2 sm:px-5 sm:pb-6">
+                <p className="text-sm font-medium leading-relaxed text-gray-800">{column.summary}</p>
+                <div className="mt-3 grid gap-2">
+                  {column.options.slice(0, 2).map((option, optionIdx) => {
+                    const selectedOption = getSelectedOptionIndex(idx, column.options.length);
+                    const isOptionActive = selectedOption === optionIdx;
+                    const showTierLabel = optionHasTierLabel(option);
+                    const optionCardClass = `w-full rounded-xl border p-3 text-left ${
+                      showTierLabel
+                        ? isOptionActive
+                          ? 'border-gray-900 bg-gray-100'
+                          : 'border-gray-200 bg-white'
+                        : 'border-gray-200 bg-white'
+                    }`;
+                    const optionBody = (
+                      <>
                         <div
-                          key={`${column.name}-${option.name || optionIdx}-skeleton`}
-                          className="flex h-[6rem] flex-col overflow-hidden rounded-xl border border-gray-200 bg-gray-50/80 p-2.5"
+                          className={`flex items-start gap-2 ${showTierLabel ? 'justify-between' : 'justify-end'}`}
                         >
-                          <p className="text-[10px] font-semibold leading-tight text-gray-800">
-                            {optionHasTierLabel(option) ? option.name : option.price}
-                          </p>
-                          <div className="mt-2.5 space-y-1.5">
-                            <div className="h-2.5 w-[85%] rounded bg-gray-300" />
-                            <div className="h-2.5 w-[66%] rounded bg-gray-300" />
-                            <div className="h-2.5 w-[78%] rounded bg-gray-300" />
-                          </div>
+                          {showTierLabel ? (
+                            <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-900">
+                              <span
+                                aria-hidden
+                                className={`flex h-4 w-4 items-center justify-center rounded-full border ${isOptionActive ? 'border-black bg-black' : 'border-gray-300 bg-white'}`}
+                              >
+                                {isOptionActive ? <span className="h-1.5 w-1.5 rounded-full bg-white" /> : null}
+                              </span>
+                              {option.name}
+                            </span>
+                          ) : (
+                            <span className="sr-only">{column.name} kit</span>
+                          )}
+                          <span className="text-sm font-light text-gray-900">{option.price}</span>
                         </div>
-                      ))}
-                      {column.options.length === 1 ? (
-                        <div
-                          className="h-[6rem] rounded-xl border border-transparent bg-transparent p-2.5 opacity-0"
-                          aria-hidden="true"
-                        />
-                      ) : null}
-                    </div>
-                  </div>
-                </button>
-              ) : slim ? (
-                <button type="button" role="radio" aria-checked={false} aria-label={`${column.name} — switch to this offer`} onClick={() => setSelectedOffer(idx)} className="relative flex flex-1 min-h-0 min-w-0 flex-col items-center justify-center gap-2 px-1.5 py-5 text-center text-gray-600 transition-all hover:bg-gray-50/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gray-900">
-                  <span className="text-[10px] font-bold uppercase tracking-widest leading-tight text-gray-900">{column.name}</span>
-                  <span className="text-[9px] font-bold uppercase leading-tight px-0.5 text-gray-400">{columnTeaser(column)}</span>
-                </button>
-              ) : (
-                <>
-                  <button type="button" role="radio" aria-checked={expanded} aria-label={`${column.name} — collapse`} onClick={() => setSelectedOffer(null)} className="relative flex w-full shrink-0 flex-col items-stretch gap-1 px-4 py-3 text-left transition-colors sm:py-3.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gray-900" style={{ backgroundColor: 'rgba(255,255,255,0.78)' }}>
-                    <span className="text-xs font-bold uppercase tracking-widest text-gray-900">{column.name}</span>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400">{columnTeaser(column)}</span>
-                    <span className="absolute bottom-0 left-3 right-3 h-1 rounded-full" style={{ backgroundColor: matrixAccent }} />
-                  </button>
-                  <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-y-auto border-t border-gray-100/90 bg-white/65 px-4 pb-5 pt-2 sm:px-5 sm:pb-6">
-                    <p className="text-sm font-light leading-relaxed text-gray-600">{column.summary}</p>
-                    <div className={`mt-3 grid gap-2 ${optionCount === 1 ? 'grid-cols-1 max-w-sm' : 'grid-cols-1 lg:grid-cols-2'} ${optionCount > 1 ? 'max-w-3xl' : ''}`}>
-                      {column.options.slice(0, 2).map((option, optionIdx) => {
-                        const selectedOption = getSelectedOptionIndex(idx, column.options.length);
-                        const isOptionActive = selectedOption === optionIdx;
-                        const showTierLabel = optionHasTierLabel(option);
-                        const optionCardClass = `w-full rounded-xl border p-3 text-left ${
-                          showTierLabel
-                            ? isOptionActive
-                              ? 'border-gray-900 bg-gray-100'
-                              : 'border-gray-200 bg-white'
-                            : 'border-gray-200 bg-white'
-                        }`;
-                        const optionBody = (
-                          <>
-                            <div
-                              className={`flex items-start gap-2 ${showTierLabel ? 'justify-between' : 'justify-end'}`}
-                            >
-                              {showTierLabel ? (
-                                <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-900">
-                                  <span
-                                    aria-hidden
-                                    className={`flex h-4 w-4 items-center justify-center rounded-full border ${isOptionActive ? 'border-black bg-black' : 'border-gray-300 bg-white'}`}
-                                  >
-                                    {isOptionActive ? <span className="h-1.5 w-1.5 rounded-full bg-white" /> : null}
-                                  </span>
-                                  {option.name}
-                                </span>
-                              ) : (
-                                <span className="sr-only">{column.name} kit</span>
-                              )}
-                              <span className="text-sm font-light text-gray-900">{option.price}</span>
-                            </div>
-                            {renderOptionBullets(option.bullets)}
-                          </>
-                        );
+                        {renderOptionBullets(option.bullets)}
+                      </>
+                    );
 
-                        if (!showTierLabel) {
-                          return (
-                            <div key={`${column.name}-${optionIdx}`} className={optionCardClass}>
-                              {optionBody}
-                            </div>
-                          );
+                    if (!showTierLabel) {
+                      return (
+                        <div key={`${column.name}-${optionIdx}`} className={optionCardClass}>
+                          {optionBody}
+                        </div>
+                      );
+                    }
+
+                    return (
+                      <button
+                        key={`${column.name}-${option.name}`}
+                        type="button"
+                        onClick={() =>
+                          setSelectedOptionByColumn((prev) => ({
+                            ...prev,
+                            [idx]: optionIdx,
+                          }))
                         }
-
-                        return (
-                          <button
-                            key={`${column.name}-${option.name}`}
-                            type="button"
-                            onClick={() =>
-                              setSelectedOptionByColumn((prev) => ({
-                                ...prev,
-                                [idx]: optionIdx,
-                              }))
-                            }
-                            className={optionCardClass}
-                          >
-                            {optionBody}
-                          </button>
-                        );
-                      })}
-                    </div>
+                        className={optionCardClass}
+                      >
+                        {optionBody}
+                      </button>
+                    );
+                  })}
+                </div>
+                <div className="mt-auto min-h-[2.75rem] pt-4">
+                  <div
+                    className={`transition-opacity duration-300 ${hovered ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
+                  >
                     <MatrixCheckoutCta columnIndex={idx} paddingClass="px-6 py-3" />
                   </div>
-                </>
-              )}
+                </div>
+              </div>
             </div>
           );
         })}
