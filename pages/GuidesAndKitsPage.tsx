@@ -1,11 +1,12 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import FreeSampleLeadModal from '../components/FreeSampleLeadModal';
+import ContentPackGridPrimitive from '../components/primitives/ContentPackGridPrimitive.tsx';
 import OfferMatrixPrimitive from '../components/primitives/OfferMatrixPrimitive.tsx';
-import ProductPhotoGridPrimitive from '../components/primitives/ProductPhotoGridPrimitive.tsx';
 import { getLocalBusinessKitMatrixColumns } from '../content/localBusinessKits';
+import { getContentPackCheckoutHref } from '../utils/contentPackCheckoutUrls';
 import { getLocalBusinessKitCheckoutHref } from '../utils/localBusinessKitCheckoutUrls';
-import { contentPacks } from '../content/contentPacks';
+import { contentPackFamilies } from '../content/contentPacks';
 
 const matrixColumns = getLocalBusinessKitMatrixColumns();
 
@@ -114,20 +115,18 @@ const GuidesAndKitsPage: React.FC = () => {
         </section>
 
         <section className="mt-12 border-t border-gray-100 pt-6 md:pt-8">
-          <div className="mb-5 flex flex-col gap-2 text-left sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Content packs</span>
-              <h2 className="mt-1.5 text-xl font-serif font-normal text-gray-900 sm:text-2xl">
-                Content starters for what you publish
-              </h2>
-              <p className="mt-2 max-w-3xl text-sm font-light leading-relaxed text-gray-500">
-                Ready-to-use templates by industry and situation — social posts, email, promos, and more. Industry
-                catalogs like salons and cafés are on the way.
-              </p>
-            </div>
-            <span className="text-xs font-bold uppercase tracking-widest text-gray-400">{contentPacks.length} packs</span>
+          <div className="mb-5 text-left md:mb-6">
+            <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Content packs</span>
+            <h2 className="mt-1.5 text-xl font-serif font-normal text-gray-900 sm:text-2xl">
+              Ready-made copy for what you publish.
+            </h2>
+            <p className="mt-2 max-w-2xl text-sm font-light leading-relaxed text-gray-500">
+              Content packs with captions, emails, and promos for social, offers, holidays, and routine updates — ready to
+              edit and publish. Each pack includes clear content starters and calls-to-action to turn attention into bookings, replies, and
+              visits, all tailored to your industry.
+            </p>
           </div>
-          <ProductPhotoGridPrimitive items={contentPacks} />
+          <ContentPackGridPrimitive families={contentPackFamilies} getCheckoutHref={getContentPackCheckoutHref} />
         </section>
       </div>
 

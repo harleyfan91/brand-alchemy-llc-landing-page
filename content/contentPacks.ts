@@ -1,45 +1,106 @@
-import type { ProductPhotoCardItem } from '../components/primitives/ProductPhotoGridPrimitive';
+import {
+  CONTENT_PACK_INDUSTRIES,
+  type ContentPackIndustrySlug,
+} from './contentPackIndustries';
+
+export type { ContentPackIndustrySlug } from './contentPackIndustries';
+export { CONTENT_PACK_INDUSTRIES, getContentPackIndustry } from './contentPackIndustries';
+
+export type ContentPackFamily = {
+  id: string;
+  categoryEyebrow: string;
+  title: string;
+  price: string;
+  summary: string;
+  imageUrl: string;
+  industries: ContentPackIndustrySlug[];
+};
+
+const launchIndustries: ContentPackIndustrySlug[] = CONTENT_PACK_INDUSTRIES.map((item) => item.slug);
+
+/** Burst by Shopify — pack-representative photos (Burst Some Rights Reserved). */
+const burstPhoto = (slug: string, width = 800) =>
+  `https://burst.shopifycdn.com/photos/${slug}.jpg?width=${width}&format=pjpg`;
+
+/** Unsplash — Unsplash License. */
+const unsplashPhoto = (photoPath: string, width = 800) =>
+  `https://images.unsplash.com/${photoPath}?w=${width}&q=80&auto=format&fit=crop`;
 
 /**
- * Canonical content-pack rows for the live Guides & kits page (`/guides-and-kits`).
- * The primitive preview route uses generic placeholders in `content/digitalProducts.ts`, not this file.
+ * Canonical content-pack catalog for `/guides-and-kits`.
+ * One row per pack type; each row surfaces an industry chip per starting vertical.
+ * The primitive preview route uses placeholders in `content/digitalProducts.ts`.
  */
-export const contentPacks: ProductPhotoCardItem[] = [
+export const contentPackFamilies: ContentPackFamily[] = [
   {
-    title: 'Core Content Pack',
-    subtitle: 'Year round',
-    price: '$29',
-    description:
-      "Reusable templates and starters for routine posts and updates—what's new, hours, quick news, and more.",
-    imageUrl: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=900',
-    ctaLabel: 'Coming soon',
-    ctaDisabled: true,
-  },
-  {
-    title: 'Holidays & Events Content Pack',
-    subtitle: 'Holidays & events',
-    price: '$39',
-    description: 'Ready-to-use copy for holidays and local events. Edit and post without starting from scratch.',
-    imageUrl: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=900',
-    ctaLabel: 'Coming soon',
-    ctaDisabled: true,
-  },
-  {
+    id: 'social',
+    categoryEyebrow: 'Social',
     title: 'Social Content Pack',
-    subtitle: 'Social',
     price: '$19',
-    description: 'Short lines, starters, and fill-in-the-blank ideas for feed and stories.',
-    imageUrl: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=900',
-    ctaLabel: 'Coming soon',
-    ctaDisabled: true,
+    summary:
+      '30 captions for feed and stories — situations and phrasing matched to the industry you choose.',
+    imageUrl: unsplashPhoto('photo-1675352161865-27816c76141a'),
+    industries: launchIndustries,
   },
   {
-    title: 'Email Content Pack',
-    subtitle: 'Email',
+    id: 'email-blast',
+    categoryEyebrow: 'Email',
+    title: 'Email Blast Pack',
+    price: '$19',
+    summary:
+      '15–20 ready-to-send emails for the moments your industry actually faces — matched tone, subject lines, and CTAs.',
+    imageUrl: burstPhoto('laptop-from-above'),
+    industries: launchIndustries,
+  },
+  {
+    id: 'promo-offer',
+    categoryEyebrow: 'Promos',
+    title: 'Promo & Offer Pack',
+    price: '$19',
+    summary:
+      '25–30 promo captions for availability, offers, and invites — direct and warm, with language that fits your trade.',
+    imageUrl: burstPhoto('black-friday-laptop-screen'),
+    industries: launchIndustries,
+  },
+  {
+    id: 'holiday-events',
+    categoryEyebrow: 'Holidays & events',
+    title: 'Holiday & Events Pack',
+    price: '$19',
+    summary:
+      'Holiday and local-event copy with the details and tone your customers expect from your type of business.',
+    imageUrl: unsplashPhoto('photo-1770250959829-de36726e99c4'),
+    industries: launchIndustries,
+  },
+  {
+    id: 'core',
+    categoryEyebrow: 'Year round',
+    title: 'Core Content Pack',
     price: '$29',
-    description: 'Welcome and early email copy you can adapt to your voice.',
-    imageUrl: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=900',
-    ctaLabel: 'Coming soon',
-    ctaDisabled: true,
+    summary:
+      'Year-round templates for routine updates — hours, news, and quick posts — written for your industry’s channels.',
+    imageUrl: burstPhoto('hand-writes-in-a-notebook-by-a-laptop-and-cellphone'),
+    industries: launchIndustries,
+  },
+  {
+    id: 'email-content',
+    categoryEyebrow: 'Email',
+    title: 'Email Content Pack',
+    price: '$29',
+    summary:
+      'Welcome and follow-up email sequences with industry-appropriate tone — a stronger layer after one-off blasts.',
+    imageUrl: burstPhoto('reading-notes-at-work'),
+    industries: launchIndustries,
   },
 ];
+
+export function getContentPackCatalogStats(): {
+  industryCount: number;
+  familyCount: number;
+  skuCount: number;
+} {
+  const industryCount = CONTENT_PACK_INDUSTRIES.length;
+  const familyCount = contentPackFamilies.length;
+  const skuCount = contentPackFamilies.reduce((total, family) => total + family.industries.length, 0);
+  return { industryCount, familyCount, skuCount };
+}
