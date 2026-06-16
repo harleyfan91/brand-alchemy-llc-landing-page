@@ -609,7 +609,7 @@ Run every article through this checklist before it is considered complete. Every
 - [ ] Title tag is 50–60 characters, primary keyword in first 40 characters
 - [ ] Meta description is 140–155 characters, active voice, includes primary keyword
 - [ ] One H1 (the title), H2s for major sections, H3s only where genuinely needed
-- [ ] At least 2 internal links are present — until inter-article links exist, link to live product pages (/identity-kit, /local-business) and section anchors (#services, #products, #articles) where relevant; do not invent URLs for articles not yet published
+- [ ] At least 2 internal links are present — until inter-article links exist, link to live product pages (/identity-kit, /guides-and-kits) and section anchors (#services, #products, #articles) where relevant; do not invent URLs for articles not yet published
 - [ ] All images have descriptive alt text (not "image1.jpg" or "photo of person")
 - [ ] Schema type(s) assigned: Article + HowTo (if applicable) + FAQPage (if FAQ section exists)
 

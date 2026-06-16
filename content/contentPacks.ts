@@ -1,7 +1,7 @@
 import type { ProductPhotoCardItem } from '../components/primitives/ProductPhotoGridPrimitive';
 
 /**
- * Canonical content-pack rows for the live Guides & launch kits page (`/local-business`).
+ * Canonical content-pack rows for the live Guides & kits page (`/guides-and-kits`).
  * The primitive preview route uses generic placeholders in `content/digitalProducts.ts`, not this file.
  */
 export const contentPacks: ProductPhotoCardItem[] = [

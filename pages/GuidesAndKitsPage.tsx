@@ -27,26 +27,30 @@ const GuidesAndKitsPage: React.FC = () => {
               /
             </li>
             <li className="text-gray-900" aria-current="page">
-              Guides &amp; launch kits
+              Guides &amp; kits
             </li>
           </ol>
         </nav>
 
         <section className="py-2">
-          <span className="text-xs font-bold uppercase tracking-[0.25em] text-gray-400">Local business</span>
+          <span className="text-xs font-bold uppercase tracking-[0.25em] text-gray-400">Marketing tools &amp; kits</span>
           <h1 className="mt-2 font-serif text-3xl font-normal leading-tight text-gray-900 sm:text-4xl md:text-5xl">
-            Guides &amp; launch kits
+            Guides &amp; kits
           </h1>
+          <p className="mt-4 max-w-3xl text-sm font-light leading-relaxed text-gray-500 md:text-base">
+            Practical tools that plug into your brand: local launch kits for Google and Yelp, plus industry content
+            packs for what you publish week to week.
+          </p>
         </section>
 
         <section className="mt-8 rounded-xl border border-gray-100 bg-gray-50 p-4 sm:rounded-2xl sm:p-5">
           <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Free sample</span>
           <h2 className="mt-1 font-serif text-xl font-normal text-gray-900 sm:text-2xl">
-            Your free local-business preview
+            Your free listings preview
           </h2>
           <p className="mt-1.5 text-sm font-light leading-snug text-gray-500">
             Choose an industry below and enter your email to receive a sample of photo best practices, review response
-            templates, and a 3-minute audit of your local business listings.
+            templates, and a 3-minute audit of your Google and Yelp listings.
           </p>
           <div className="mt-3 flex flex-col gap-2 md:flex-row md:items-stretch md:gap-2.5">
             <select
@@ -99,7 +103,8 @@ const GuidesAndKitsPage: React.FC = () => {
                 Content starters for what you publish
               </h2>
               <p className="mt-2 max-w-3xl text-sm font-light leading-relaxed text-gray-500">
-                Templates and easy to use guides so you don&apos;t have to invent marketing copy from scratch.
+                Ready-to-use templates by industry and situation — social posts, email, promos, and more. Industry
+                catalogs like salons and cafés are on the way.
               </p>
             </div>
             <span className="text-xs font-bold uppercase tracking-widest text-gray-400">{contentPacks.length} packs</span>

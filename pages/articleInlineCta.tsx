@@ -1,5 +1,6 @@
 import React from 'react';
 import ArticleProductCallout from '../components/ArticleProductCallout';
+import { GUIDES_AND_KITS_PATH } from '../content/guidesAndKitsRoutes';
 
 /**
  * Inline Pattern A product copy for shipped articles (keeps CTA out of markdown for styled callout).
@@ -27,8 +28,8 @@ export function renderArticleInlineCta(slug: string | undefined): React.ReactNod
     return (
       <ArticleProductCallout
         tabLabel="When the caption stalls you"
-        primaryHref="/local-business"
-        primaryLabel="View Guides & launch kits"
+        primaryHref={GUIDES_AND_KITS_PATH}
+        primaryLabel="View guides & kits"
       >
         <p>
           The{' '}

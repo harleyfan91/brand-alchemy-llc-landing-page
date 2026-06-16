@@ -82,7 +82,7 @@ If you use stories or shorter clips, you can pull from the same four roles; you 
 
 ## Here is what we would do in your shoes
 
-Pick the four roles above, set a recurring calendar note for the same day each week, and write captions like you are texting a regular. If a week gets away from you, post the invitation and one proof-of-work photo before you post nothing. Then get back to the full rotation the next week. Keep the photos on your phone as you work so you are not hunting for assets on Sunday night. When you want short lines and fill-in-the-blank starters that match that rhythm, browse the packs on the [Guides & launch kits](/local-business) page alongside your kits for listings and reviews.
+Pick the four roles above, set a recurring calendar note for the same day each week, and write captions like you are texting a regular. If a week gets away from you, post the invitation and one proof-of-work photo before you post nothing. Then get back to the full rotation the next week. Keep the photos on your phone as you work so you are not hunting for assets on Sunday night. When you want short lines and fill-in-the-blank starters that match that rhythm, browse the packs on the [guides & kits](/guides-and-kits) page alongside your kits for listings and reviews.
 
 ## Frequently asked questions
 

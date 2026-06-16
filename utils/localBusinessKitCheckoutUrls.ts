@@ -1,5 +1,5 @@
 /**
- * Checkout URLs for Guides & launch kits matrix (Google / Yelp / bundle).
+ * Checkout URLs for Guides & kits matrix (Google / Yelp / bundle).
  * Set in `.env` when a SKU is live; omitted env → no link (UI shows “Coming soon”).
  *
  * Column index: 0 = Google, 1 = Yelp, 2 = Both (bundle).

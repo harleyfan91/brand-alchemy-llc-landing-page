@@ -28,7 +28,7 @@ We exist for **small, owner-operated businesses**: local shops and services, tra
 
 - **Homepage (`/`)** is the **umbrella**: hero, **System** (`#services`), **Products** catalog, **Articles**, contact—not a single-offer funnel. Primary hero action stays **See the system** → explain the model before the catalog.
 - **Identity Kit** has a dedicated offer path: **`/identity-kit`** sells the tiers; high-intent traffic can land there. Intake/checkout may live on a subdomain or subpath per deployment; messaging still reads as one site.
-- **Guides & launch kits** (`/local-business`) group **local launch kits** (Google / Yelp / bundle) and **content packs** on one page: execution modules that plug into a defined brand, not a separate “strategy.” Page pattern and copy rules: [BRAND_PLAYBOOK.md](BRAND_PLAYBOOK.md) (*`/local-business`*). SKU prices and deliverables: [PRODUCTS_PRICING_AND_INCLUDES.md](PRODUCTS_PRICING_AND_INCLUDES.md).
+- **Guides & kits** (`/guides-and-kits`) group **local launch kits** (Google / Yelp / bundle) and **content packs** on one page: execution modules that plug into a defined brand, not a separate “strategy.” Future industry catalogs will live at paths like `/guides-and-kits/salon`. Page pattern and copy rules: [BRAND_PLAYBOOK.md](BRAND_PLAYBOOK.md) (*`/guides-and-kits`*). SKU prices and deliverables: [PRODUCTS_PRICING_AND_INCLUDES.md](PRODUCTS_PRICING_AND_INCLUDES.md).
 - **Implementation** wiring: `App.tsx`, `components/HomePage.tsx`, `pages/IdentityKitPage.tsx`, `components/Products.tsx`, `components/Services.tsx`, `components/Articles.tsx`, `components/Hero.tsx`.
 
 ---

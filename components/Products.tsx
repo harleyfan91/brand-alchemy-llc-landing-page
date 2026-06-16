@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useInViewOnce } from '../utils/useInViewOnce';
+import { GUIDES_AND_KITS_PATH } from '../content/guidesAndKitsRoutes';
 import './product-card-sheen.css';
 
 type Product = {
@@ -29,12 +30,12 @@ const products: Product[] = [
     showStartHereTab: true,
   },
   {
-    eyebrow: 'Local business',
-    title: 'Guides & launch kits',
-    body: 'Once your brand is clear, choose easy-to-use guides, launch kits, and content packs that help you publish, respond, and show up more clearly online.',
+    eyebrow: 'Marketing tools & kits',
+    title: 'Guides & kits',
+    body: 'Once your brand is clear, choose practical guides, local launch kits, and industry content packs that help you publish, respond, and show up online.',
     priceLine: 'From $19 · Launch kits from $39',
-    ctaLabel: 'View guides and kits',
-    href: '/local-business',
+    ctaLabel: 'View guides & kits',
+    href: GUIDES_AND_KITS_PATH,
     watermarkSrc: '/product-card-watermarks/guides-kits-stack.png',
   },
   {

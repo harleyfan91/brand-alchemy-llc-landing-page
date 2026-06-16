@@ -147,7 +147,7 @@ function toMatrixColumn(column: LocalKitColumnDef): DigitalProductMatrixColumn {
   };
 }
 
-/** Matrix columns for `/local-business` — respects `LOCAL_KIT_PRO_TIERS_LIVE`. */
+/** Matrix columns for `/guides-and-kits` — respects `LOCAL_KIT_PRO_TIERS_LIVE`. */
 export function getLocalBusinessKitMatrixColumns(): DigitalProductMatrixColumn[] {
   return [...localBusinessKitMatrixColumnsFull, bundleColumnDef()].map(toMatrixColumn);
 }

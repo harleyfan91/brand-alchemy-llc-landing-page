@@ -60,7 +60,7 @@ Separately, large surveys on brand consistency (same colors, language, and quali
 
 Trust sits underneath all of it. Edelman’s Trust Barometer research (2024) continues to show that trust is one of the main gates people use before they buy from a brand, especially one they have not used before (Edelman Trust Barometer, 2024). For a busy owner, “trust” is not a boardroom word; it is “Do I feel safe choosing you?” **Branding is how you earn that feeling** before you ask for the sale or the visit.
 
-When you are ready to line up the practical tools that sit *after* a clear brand story (posts, email, ads, listings, photo help), browse how the pieces fit together on the [kits and guides](/local-business) page and the main [products](/#products) section. Those are mostly marketing execution once your basics read as one business.
+When you are ready to line up the practical tools that sit *after* a clear brand story (posts, email, ads, listings, photo help), browse how the pieces fit together on the [guides & kits](/guides-and-kits) page and the main [products](/#products) section. Those are mostly marketing execution once your basics read as one business.
 
 ## The most common mistake owners make
 

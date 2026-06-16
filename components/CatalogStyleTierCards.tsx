@@ -3,7 +3,7 @@ import CheckIcon from './CheckIcon';
 import ProFeatureSparkIcon from './ProFeatureSparkIcon';
 
 /**
- * Static Core / Pro tier pair using the same visual chrome as the local kits matrix on `/local-business`
+ * Static Core / Pro tier pair using the same visual chrome as the local kits matrix on `/guides-and-kits`
  * (see `OfferMatrixPrimitive` / `GuidesAndKitsPage.tsx`): borders, emphasis, prices, checkmark features.
  * Not interactive — decorative “radio” dots mirror selectable tier UI where used.
  */
