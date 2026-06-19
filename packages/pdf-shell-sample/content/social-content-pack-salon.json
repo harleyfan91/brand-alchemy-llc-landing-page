@@ -1,0 +1,242 @@
+{
+  "slug": "social-content-pack-salon",
+  "packType": "social",
+  "title": "Social Content Pack",
+  "subtitle": "35 ready-to-post captions for salons & beauty",
+  "status": "ready",
+  "statusNote": "Ship-ready — 35 templates, 7 categories. Stage 4 review optional before listing.",
+  "coverStatement": "35 captions for salons & beauty. Ready to copy and post.",
+  "coverPhoto": "../../public/pdf-assets/social-content-pack-salon-cover.jpg",
+  "intro": {
+    "hookDescription": "This pack has 35 captions for the moments that actually come up — open chairs, a result you're proud of, a slow Tuesday, a question for the feed, a new follower who needs a reason to book. Most are ready to copy and post.",
+    "howToUse": "Pick the category that matches your week — that's the scenario. The caption is the post: lead with the result, vibe, or hook. Most lines are written ready to post. A few marked with (I/my/me) vs we/our/us are for solo stylists — swap only on those. Fill [brackets] if needed.",
+    "fillInNote": "Only swap (I/we) or (my/our) or (me/us) where the template shows it — everything else is already in salon or neutral voice. Other fill-ins: [your town], [your specialty or service], [day].",
+    "identityKitNote": "If you have an Identity Kit, swap in a line from your Voice and Content Playbook anywhere it fits. The pack works without it."
+  },
+  "categories": [
+    {
+      "id": "who-we-are",
+      "title": "If you're new here",
+      "description": "For when a new follower lands on your profile — referral energy, local pride, a reason to book.",
+      "templates": [
+        {
+          "id": "01",
+          "text": "We've been called a hidden gem so many times we're starting to wonder if we need a bigger sign.",
+          "register": "Wry"
+        },
+        {
+          "id": "02",
+          "text": "We're not trying to go viral, we just want to be the salon you keep coming back to.",
+          "register": "Real"
+        },
+        {
+          "id": "03",
+          "text": "If someone sent you here, they probably wouldn't shut up about their last visit.",
+          "register": "Light"
+        },
+        {
+          "id": "04",
+          "text": "First time in (my/our) chair? (I/We) still get stupid excited. DM (me/us).",
+          "register": "Warm"
+        },
+        {
+          "id": "05",
+          "text": "In [your town], good hair travels by word of mouth. Consider this your invite.",
+          "register": "Confident"
+        }
+      ]
+    },
+    {
+      "id": "availability",
+      "title": "Open chair this week",
+      "description": "For a slow day, an open slot, or room on the books — pair with a chair shot or calendar post.",
+      "templates": [
+        {
+          "id": "06",
+          "text": "Open chair today. If your hair's been telling you it needs attention, this is your sign!",
+          "register": "Light"
+        },
+        {
+          "id": "07",
+          "text": "It's a slow day at the salon, we take walk-ins.",
+          "register": "Warm"
+        },
+        {
+          "id": "08",
+          "text": "Sit back and relax — if you need extra time in the chair, we've got you. No rush.",
+          "register": "Light"
+        },
+        {
+          "id": "09",
+          "text": "[day] just opened up. DM (me/us) or link in bio.",
+          "register": "Confident"
+        },
+        {
+          "id": "10",
+          "text": "One more [your specialty or service] slot this week!!",
+          "register": "Energetic"
+        }
+      ]
+    },
+    {
+      "id": "the-work",
+      "title": "What you can expect",
+      "description": "For a process shot, tool flat-lay, or consultation clip — name the service, not the backstory.",
+      "templates": [
+        {
+          "id": "11",
+          "text": "[your specialty or service] consults — link in bio. (We'll/I'll) figure out what your hair actually needs.",
+          "register": "Warm"
+        },
+        {
+          "id": "12",
+          "text": "Less is more, babes. Sometimes a gloss + a trim is the whole move.",
+          "register": "Confident"
+        },
+        {
+          "id": "13",
+          "text": "Big change? We talk it through first. No surprises.",
+          "register": "Warm"
+        },
+        {
+          "id": "14",
+          "text": "We keep your formula on file. Every visit builds on the last.",
+          "register": "Confident"
+        },
+        {
+          "id": "15",
+          "text": "Don't love it when you walk out? We fix it. Period.",
+          "register": "Confident"
+        }
+      ]
+    },
+    {
+      "id": "client-moment",
+      "title": "A client moment",
+      "description": "For a before/after or finished look — lead with the result; the photo does the rest.",
+      "templates": [
+        {
+          "id": "16",
+          "text": "This is your sign you don't need a full transformation — sometimes it's enhancing what you already have.",
+          "register": "Confident"
+        },
+        {
+          "id": "17",
+          "text": "Got those curls back.",
+          "register": "Energetic"
+        },
+        {
+          "id": "18",
+          "text": "[your specialty or service] — soft dimension, lived-in glow, depth where it matters.",
+          "register": "Confident"
+        },
+        {
+          "id": "19",
+          "text": "Refresh, not reinvention.",
+          "register": "Real"
+        },
+        {
+          "id": "20",
+          "text": "Partial highlight up top with rich color underneath. Swipe to see the before.",
+          "register": "Light"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "title": "The regulars",
+      "description": "For salon vibe, team, or personality posts — not a loyalty speech.",
+      "templates": [
+        {
+          "id": "21",
+          "text": "(I/We) get to make people feel beautiful for a living. Thanks for trusting (me/us) with your hair.",
+          "register": "Warm"
+        },
+        {
+          "id": "22",
+          "text": "When she needs something and we're six clients deep.",
+          "register": "Light"
+        },
+        {
+          "id": "23",
+          "text": "Good hair is the standard. Feeling like yourself is the goal.",
+          "register": "Confident"
+        },
+        {
+          "id": "24",
+          "text": "Having someone wash your hair is a top-tier luxury. That's it. That's the post.",
+          "register": "Light"
+        },
+        {
+          "id": "25",
+          "text": "Daily wash or 2–3x a week? Tell us in the comments.",
+          "register": "Warm"
+        }
+      ]
+    },
+    {
+      "id": "win-this-week",
+      "title": "A win this week",
+      "description": "For a transformation or result you're proud of — seasonal punch, technique, or hot take.",
+      "templates": [
+        {
+          "id": "26",
+          "text": "Sun is out, blonde is in!!! Who's ready for summer?!",
+          "register": "Energetic"
+        },
+        {
+          "id": "27",
+          "text": "[your specialty or service] — depth at the root, brightness where it matters. Link in bio.",
+          "register": "Confident"
+        },
+        {
+          "id": "28",
+          "text": "When the lift is so good you don't even need to tone the ends.",
+          "register": "Real"
+        },
+        {
+          "id": "29",
+          "text": "Grey blending. What grey? She's a blonde bombshell.",
+          "register": "Confident"
+        },
+        {
+          "id": "30",
+          "text": "Blonding rules I live by: low and slow. No heat while processing. Your tips? Drop them below.",
+          "register": "Warm"
+        }
+      ]
+    },
+    {
+      "id": "conversation",
+      "title": "Start a conversation",
+      "description": "For when you want replies, not just likes — poll energy or a casual question, no fresh result required.",
+      "templates": [
+        {
+          "id": "31",
+          "text": "Lived-in color or full refresh? Pick a side.",
+          "register": "Light"
+        },
+        {
+          "id": "32",
+          "text": "What's the best part of a salon visit for you? We'll go first: the shampoo.",
+          "register": "Warm"
+        },
+        {
+          "id": "33",
+          "text": "What was one good thing you did for yourself this month?",
+          "register": "Warm"
+        },
+        {
+          "id": "34",
+          "text": "Curly, straight, or somewhere in between. What does your hair look like on a good day?",
+          "register": "Real"
+        },
+        {
+          "id": "35",
+          "text": "Same hair, two different finishes. One of these walks out of the salon every week. Which would you pick?",
+          "register": "Confident"
+        }
+      ]
+    }
+  ]
+}

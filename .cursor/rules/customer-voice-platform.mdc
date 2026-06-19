@@ -16,4 +16,8 @@ Read and update **`docs/product-platform/`** in **this repository** first:
 
 Identity Kit (`identity-kit` sibling repo) **implements** generation; it links here instead of copying boundaries.
 
-Parent **marketing** voice: [BRAND_PLAYBOOK.md](./docs/BRAND_PLAYBOOK.md). Customer **kit** voice: product-platform docs above.
+Parent **marketing** voice (voice 1): [BRAND_PLAYBOOK.md](./docs/BRAND_PLAYBOOK.md).
+
+**Three voices (canonical):** [VOICE_SCOPE.md](./docs/product-platform/VOICE_SCOPE.md) — pack templates (voice 2) and generated kit copy (voice 3) are **not** governed by the playbook.
+
+Pack template comp library: [digital-product-research/](./docs/digital-product-research/).

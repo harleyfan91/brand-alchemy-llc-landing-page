@@ -1,12 +1,12 @@
 {
   "slug": "social-content-pack",
+  "packType": "social",
   "title": "Social Content Pack",
   "subtitle": "30 ready-to-post captions for your business",
-  "version": "1",
   "status": "sample-framework",
   "statusNote": "PDF layout, content density, and design language are established. Templates are working drafts — voice and structure proven, final content rewrite required before ship.",
   "intro": {
-    "openingHook": "You know you should post this week. You just don't know what to say.\n\nYou open the app.\nStare at the blank screen.\nClose it again.\n\nThis pack has 30 captions for the moments that actually come up — a good week, a customer story, a simple reminder that you exist. Most are ready to copy and post as-is. No marketing experience required.",
+    "hookDescription": "This pack has 30 captions for the moments that actually come up — a good week, a customer story, a simple reminder that you exist. Most are ready to copy and post as-is. No marketing experience required.",
     "howToUse": "Find the situation that matches your week. Fill in your town or your trade where the template needs it — both take under five seconds. Post it. That's it.",
     "fillInNote": "Most fill-ins in this pack are [your town] or [your trade] — both take under five seconds. Template 16 has [what they came in with]. Template 26 has [ongoing project]. You know these already. Just write them in. If a template doesn't fit your week, skip it. You have 30 to choose from.",
     "identityKitNote": "If you have an Identity Kit, pull a line or two from your Voice and Content Playbook into any template that has room for it. The pack works without it, but reads more like you with it."

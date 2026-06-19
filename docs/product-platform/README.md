@@ -10,6 +10,7 @@
 
 | Document | Role |
 |----------|------|
+| [**VOICE_SCOPE.md**](./VOICE_SCOPE.md) | **Start here** — three voices; which rules apply where |
 | [CUSTOMER_VOICE_AND_PRODUCT_LINE.md](./CUSTOMER_VOICE_AND_PRODUCT_LINE.md) | Architecture, layers, SKU boundaries, process checklist |
 | [schemas/brand-context.v1.schema.json](./schemas/brand-context.v1.schema.json) | Machine-readable **brand context** export shape (v1) |
 | [SECTION_ID_REGISTRY.md](./SECTION_ID_REGISTRY.md) | Cross-SKU map: which Section IDs each product consumes |
@@ -46,5 +47,6 @@ When a second product repo needs **npm-importable** types (not just docs), add `
 | New SKU (Social pack, Email pack, …) | Yes — update SECTION_ID_REGISTRY + pricing doc |
 | CSP section boundaries vs channel packs | Yes — CUSTOMER_VOICE doc |
 | `brand-context.json` field added | Yes — schema + CUSTOMER_VOICE doc |
-| New walker / banned vocab for **customer** copy | Yes (policy); implement in identity-kit |
+| New walker / banned vocab for **generated kit** copy | Yes (policy); implement in identity-kit |
+| Pack template captions (Social Content Pack) | [VOICE_SCOPE.md](./VOICE_SCOPE.md) + [digital-product-research/](../digital-product-research/) — **not** platform walkers |
 | Identity Kit folio layout / path class routing | No — identity-kit only (link back here if a new SKU consumes it) |

@@ -9,12 +9,15 @@
 
 ## Two voices (do not merge)
 
+**Superseded by three voices:** see [`VOICE_SCOPE.md`](./VOICE_SCOPE.md) — canonical decision tree. Summary below; when in doubt, read VOICE_SCOPE.
+
 | Voice | Owner | Examples |
 |-------|--------|----------|
 | **Parent Brand Alchemy** | This repo — [BRAND_PLAYBOOK.md](../BRAND_PLAYBOOK.md) | Homepage, articles, “See the system,” kit marketing pages |
-| **Customer brand** (generated) | Product platform (this doc) + identity-kit implementation | PDFs, CSP, social/email packs, personalized review templates |
+| **End-customer marketing (pack templates)** | [DIGITAL_PRODUCT_CONTENT_SCHEMA.md](../DIGITAL_PRODUCT_CONTENT_SCHEMA.md) + comp library | Social Content Pack captions, promo templates in PDFs |
+| **Customer brand** (generated) | Product platform walkers + identity-kit implementation | Identity Kit PDFs, CSP, personalized blocks from intake |
 
-AI prompts for customer deliverables must **never** confuse the two. Marketing copy rules do not govern kit output.
+AI prompts for customer deliverables must **never** confuse the three. **Marketing copy rules (voice 1) do not govern pack templates (voice 2).** Platform walkers (voice 3) do not govern static pack templates (voice 2).
 
 ---
 
@@ -93,7 +96,9 @@ See [SECTION_ID_REGISTRY.md](./SECTION_ID_REGISTRY.md) for the SKU → Section I
 
 ## Walkers (customer copy quality gate)
 
-Every **customer-facing** generated string across all products must pass the same walker chain before ship:
+**Scope:** AI-generated **personalized** strings from Identity Kit intake (bios, CSP sections, voice blocks) — not static template libraries (Social Content Pack PDF captions, review reply templates, etc.). Those use [`DIGITAL_PRODUCT_CONTENT_SCHEMA.md`](../DIGITAL_PRODUCT_CONTENT_SCHEMA.md) — social packs use the **short gate** only.
+
+Every **generated kit** customer-facing string must pass the walker chain before ship:
 
 1. **Banned vocabulary** (marketing jargon, “authentic,” “leverage,” etc.)
 2. **Claim-safety** — no fabricated metrics, offers, or outcomes not in intake

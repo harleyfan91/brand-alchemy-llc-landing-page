@@ -2,11 +2,9 @@
  * Content pack generator — reads a JSON manifest and renders a multi-page PDF.
  *
  * Page structure:
- *   Page 1:  Cover     — split-panel: black left column (title + statement) + photo right column
- *   Page 2:  Intro     — how to use, fill-ins, Identity Kit note
- *   Pages 3+: Flow     — all categories and templates flowing continuously without forced page
- *                        breaks. Category strips are inline dividers. @react-pdf paginates
- *                        naturally so pages stay dense with no blank space at the bottom.
+ *   Page 1:  Cover
+ *   Page 2:  Intro     — hook + how-to (own page)
+ *   Page 3+: Templates — categories + captions (continuous flow)
  *
  * Usage:
  *   node src/generate-content-pack.mjs [pack-slug]
@@ -39,10 +37,29 @@ const { renderToBuffer, Document, Image, Page, Text, View, StyleSheet } = await 
 
 const packSlug = process.argv[2] ?? 'social-content-pack'
 const manifestPath = join(__dirname, '..', 'content', `${packSlug}.json`)
-const pack = JSON.parse(readFileSync(manifestPath, 'utf8'))
+const socialIntroPath = join(__dirname, '..', 'content', 'shared', 'social-pack-intro.json')
+
+function loadPack() {
+  const raw = JSON.parse(readFileSync(manifestPath, 'utf8'))
+  const isSocial =
+    raw.packType === 'social' || String(raw.slug ?? '').startsWith('social-content-pack')
+  if (!isSocial) return raw
+
+  const sharedIntro = JSON.parse(readFileSync(socialIntroPath, 'utf8'))
+  return {
+    ...raw,
+    intro: {
+      ...raw.intro,
+      hookStack: sharedIntro.hookStack,
+      hookPivot: sharedIntro.hookPivot,
+    },
+  }
+}
+
+const pack = loadPack()
 
 const outDir = join(__dirname, '..', 'output')
-const outFile = join(outDir, `${pack.slug}-v${pack.version}.pdf`)
+const outFile = join(outDir, `${pack.slug}.pdf`)
 
 // Cover photo — placeholder lifestyle image. Replace with a pack-specific asset
 // by adding "coverPhoto": "path/to/image.jpg" to the manifest.
@@ -53,14 +70,7 @@ const coverPhotoPath = pack.coverPhoto
 
 // ─── Colors ───────────────────────────────────────────────────────────────────
 
-const CATEGORY_BAND_COLORS = [
-  BRAND_PDF_PARENT_UI.gray900,
-  BRAND_PDF_PARENT_UI.gray700,
-  BRAND_PDF_PARENT_UI.gray600,
-  BRAND_PDF_PARENT_UI.gray500,
-  BRAND_PDF_PARENT_UI.gray900,
-  BRAND_PDF_PARENT_UI.gray700,
-]
+const CATEGORY_BAND_COLORS = BRAND_PDF_PARENT_UI.navSegmentRamp
 
 // ─── Styles ───────────────────────────────────────────────────────────────────
 
@@ -113,7 +123,7 @@ const S = StyleSheet.create({
     lineHeight: 1.45,
   },
 
-  // Full-width image — fills the rest of the cover page
+  // Full-width image — fills the rest of the cover page (612×644pt; crop assets to match)
   coverImage: {
     width: 612,
     height: COVER_IMAGE_H,
@@ -154,6 +164,15 @@ const S = StyleSheet.create({
     color: '#FFFFFF',
     lineHeight: 1.28,
   },
+  // Pivot line after the stack — same scale, Inter for contrast; marginTop ≈ one stack line.
+  introHookStackPivot: {
+    fontSize: 25,
+    fontFamily: 'Inter',
+    fontWeight: 300,
+    color: '#FFFFFF',
+    lineHeight: 1.28,
+    marginTop: 32,
+  },
   // Final paragraph: the solution. Prominent serif — a second focal point
   // after the stacked problem sentences. Generous marginTop signals the pivot.
   introHookParaDesc: {
@@ -164,18 +183,17 @@ const S = StyleSheet.create({
     lineHeight: 1.65,
     marginTop: 32,
   },
-  // White section below — grows to fill remaining height between panel and footer.
+  // White section below — instructions only.
   introInstructionsSection: {
-    flex: 1,
     paddingHorizontal: 44,
     paddingTop: 22,
-    paddingBottom: 8,
+    paddingBottom: 0,
   },
   // Instruction blocks — no border, generous padding lets the small-caps
   // label do the structural work on its own.
   introInstructionBlock: {
-    paddingTop: 20,
-    paddingBottom: 20,
+    paddingTop: 16,
+    paddingBottom: 16,
   },
   introLabel: {
     fontSize: 6.5,
@@ -201,16 +219,9 @@ const S = StyleSheet.create({
     paddingBottom: 11,
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 16,
   },
-  categoryStripNum: {
-    fontSize: 6.5,
-    fontFamily: 'Inter',
-    fontWeight: 700,
-    letterSpacing: 1.2,
-    color: 'rgba(255,255,255,0.4)',
-    width: 22,
-    flexShrink: 0,
+  categorySectionGap: {
+    height: 16,
   },
   categoryStripTitle: {
     fontSize: 8.5,
@@ -224,11 +235,11 @@ const S = StyleSheet.create({
     paddingHorizontal: 44,
     paddingTop: 6,
     paddingBottom: 10,
-    fontSize: 8,
+    fontSize: 9.5,
     fontFamily: 'Inter',
     fontWeight: 300,
     fontStyle: 'italic',
-    lineHeight: 1.5,
+    lineHeight: 1.55,
     color: BRAND_PDF_COLORS.subText,
   },
 
@@ -294,41 +305,54 @@ function CoverPage() {
   )
 }
 
-function IntroPage() {
-  const hookParas = pack.intro.openingHook.split('\n\n')
+function IntroHookPanel() {
+  const { hookStack, hookPivot, hookDescription, openingHook } = pack.intro
+
+  if (hookStack?.length && hookDescription) {
+    return h(
+      View,
+      { key: 'intro-hook', style: S.introHookPanel },
+      h(View, { key: 'hook-stack', style: { marginBottom: 0 } },
+        ...hookStack.map((line, i) =>
+          h(Text, { key: `stack-${i}`, style: S.introHookStackLine }, line),
+        ),
+      ),
+      hookPivot
+        ? h(Text, { key: 'hook-pivot', style: S.introHookStackPivot }, hookPivot)
+        : null,
+      h(Text, { key: 'hook-desc', style: S.introHookParaDesc }, hookDescription),
+    )
+  }
+
+  const hookParas = openingHook.split('\n\n')
 
   return h(
-    Page,
-    { size: 'LETTER', style: S.page },
+    View,
+    { key: 'intro-hook', style: S.introHookPanel },
+    ...hookParas.map((para, i) => {
+      const isLast = i === hookParas.length - 1
+      if (isLast) {
+        return h(Text, { key: `hook-${i}`, style: S.introHookParaDesc }, para)
+      }
+      if (para.includes('\n')) {
+        const lines = para.split('\n')
+        return h(View, { key: `hook-${i}`, style: S.introHookStack },
+          ...lines.map((line, li) =>
+            h(Text, { key: li, style: S.introHookStackLine }, line),
+          ),
+        )
+      }
+      return h(Text, { key: `hook-${i}`, style: S.introHookPara }, para)
+    }),
+  )
+}
 
-    // Dark editorial panel — para 1 at regular size sets up the scene;
-    // para 2 sentences stack large as the visual peak; para 3 drops to
-    // small muted Inter as the informational description.
+function IntroContent() {
+  return [
+    IntroHookPanel(),
     h(
       View,
-      { style: S.introHookPanel },
-      ...hookParas.map((para, i) => {
-        const isLast = i === hookParas.length - 1
-        if (isLast) {
-          return h(Text, { key: `hook-${i}`, style: S.introHookParaDesc }, para)
-        }
-        if (para.includes('\n')) {
-          // Sentence-stack: each \n-separated line gets its own large Text
-          const lines = para.split('\n')
-          return h(View, { key: `hook-${i}`, style: S.introHookStack },
-            ...lines.map((line, li) =>
-              h(Text, { key: li, style: S.introHookStackLine }, line),
-            ),
-          )
-        }
-        return h(Text, { key: `hook-${i}`, style: S.introHookPara }, para)
-      }),
-    ),
-
-    // White instructions section — flex: 1 fills remaining height above footer
-    h(
-      View,
-      { style: S.introInstructionsSection },
+      { key: 'intro-instructions', style: S.introInstructionsSection },
       h(View, { style: S.introInstructionBlock },
         h(Text, { style: S.introLabel }, 'HOW TO USE IT'),
         h(Text, { style: S.introBody }, pack.intro.howToUse),
@@ -342,64 +366,70 @@ function IntroPage() {
         h(Text, { style: S.introBody }, pack.intro.identityKitNote),
       ),
     ),
+  ]
+}
 
+/**
+ * Intro on its own page (page 2) — hook + how-to instructions.
+ */
+function IntroPage() {
+  return h(
+    Page,
+    { size: 'LETTER', style: S.page },
+    ...IntroContent(),
     h(PageFooterChrome),
   )
 }
 
-/**
- * All categories and templates in a single continuously paginated section.
- * No forced page breaks — @react-pdf fills each physical page as densely
- * as content allows. Category strips are inline visual dividers only.
- */
-function TemplateFlowSection() {
+function CategoryBlocks() {
   let globalNum = 0
 
+  return pack.categories.flatMap((cat, catIdx) => {
+    const bandColor = CATEGORY_BAND_COLORS[catIdx % CATEGORY_BAND_COLORS.length]
+
+    const header = [
+      catIdx > 0 ? h(View, { key: `gap-${cat.id}`, style: S.categorySectionGap }) : null,
+      h(
+        View,
+        { key: `strip-${cat.id}`, style: [S.categoryStrip, { backgroundColor: bandColor }], wrap: false },
+        h(Text, { style: S.categoryStripTitle }, cat.title.toUpperCase()),
+      ),
+      h(Text, { key: `desc-${cat.id}`, style: S.categoryDesc }, cat.description),
+    ]
+
+    const rows = cat.templates.map((template) => {
+      globalNum += 1
+      const num = globalNum
+      const parts = template.text.split(/(\[[^\]]+\])/)
+      return h(
+        View,
+        { key: `${cat.id}-${template.id}`, style: S.templateBlock },
+        h(
+          Text,
+          { style: S.templateText },
+          h(Text, { style: S.templateNumInline }, padNum(num) + '   '),
+          ...parts.map((part, i) =>
+            part.startsWith('[') && part.endsWith(']')
+              ? h(Text, { key: i, style: S.templateFill }, part)
+              : part,
+          ),
+        ),
+      )
+    })
+
+    return [...header, ...rows]
+  })
+}
+
+/**
+ * Templates on a separate page (page 3+) so the first category band starts flush
+ * at the top — avoids dead space from intro pagination + wrap:false headers.
+ */
+function TemplatesFlowPage() {
   return h(
     Page,
     { size: 'LETTER', style: S.page },
-
-    ...pack.categories.flatMap((cat, catIdx) => {
-      const bandColor = CATEGORY_BAND_COLORS[catIdx % CATEGORY_BAND_COLORS.length]
-
-      const header = h(
-        View,
-        { key: `hdr-${cat.id}`, wrap: false },
-        h(
-          View,
-          { style: [S.categoryStrip, { backgroundColor: bandColor }] },
-          h(Text, { style: S.categoryStripNum }, padNum(catIdx + 1)),
-          h(Text, { style: S.categoryStripTitle }, cat.title.toUpperCase()),
-        ),
-        h(Text, { style: S.categoryDesc }, cat.description),
-      )
-
-      const rows = cat.templates.map((template) => {
-        globalNum += 1
-        const num = globalNum
-        // Number is an inline span inside the same Text element — the two
-        // can never be separated across a physical page boundary, and no
-        // wrap: false is needed (so the page fills as densely as possible).
-        const parts = template.text.split(/(\[[^\]]+\])/)
-        return h(
-          View,
-          { key: template.id, style: S.templateBlock },
-          h(
-            Text,
-            { style: S.templateText },
-            h(Text, { style: S.templateNumInline }, padNum(num) + '   '),
-            ...parts.map((part, i) =>
-              part.startsWith('[') && part.endsWith(']')
-                ? h(Text, { key: i, style: S.templateFill }, part)
-                : part,
-            ),
-          ),
-        )
-      })
-
-      return [header, ...rows]
-    }),
-
+    ...CategoryBlocks(),
     h(PageFooterChrome),
   )
 }
@@ -412,7 +442,7 @@ function ContentPackDocument() {
     { title: `Brand Alchemy — ${pack.title}` },
     h(CoverPage),
     h(IntroPage),
-    h(TemplateFlowSection),
+    h(TemplatesFlowPage),
   )
 }
 

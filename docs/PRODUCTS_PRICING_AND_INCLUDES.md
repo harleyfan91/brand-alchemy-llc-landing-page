@@ -100,7 +100,7 @@ Standalone copy (not Identity Kit deliverables, not local launch kits). All $19 
 
 | Type | Price | Format | Status |
 |---|---|---|---|
-| Social Content Pack | $19 | 30 ready-to-post captions by situation | First three industries in brief |
+| Social Content Pack | $19 | 35 ready-to-post captions by situation (30 minimum for new SKUs; salon ships 35) | First three industries in brief |
 | Email Blast Pack | $19 | 15–20 complete emails for specific moments | Generic framework complete; industry versions pending |
 | Promo & Offer Pack | $19 | 25–30 captions for "ask" moments | Generic framework complete; industry versions pending |
 | Holiday & Events Pack | $19 | Ready-to-use copy for holidays and local events | Planned |
@@ -111,7 +111,7 @@ Standalone copy (not Identity Kit deliverables, not local launch kits). All $19 
 
 ### Social Content Pack (industry-specific, $19 each)
 
-30 ready-to-post captions organized by situation. Written specifically for one industry so captions use real vocabulary and real scenarios — not generic placeholders. Fill-ins are minimal ([your town], [your trade], and one specific-detail fill in customer-moment templates).
+35 ready-to-post captions organized by situation (7 categories × 5 for salon/beauty; 30–35 range for other industries per Stage 1 benchmark). Written specifically for one industry so captions use real vocabulary and real scenarios — not generic placeholders. Fill-ins are minimal ([your town], [your trade], and one specific-detail fill in customer-moment templates).
 
 **Shipping first:**
 - **Social Content Pack: Salons & Beauty** — $19

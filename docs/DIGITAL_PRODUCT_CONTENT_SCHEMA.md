@@ -2,7 +2,11 @@
 
 ## Purpose
 
-**Scope:** This document governs the end-to-end process for creating the actual content inside Brand Alchemy digital products — the templates, copy, and instructions that make up a deliverable. It is not about platform contracts, PDF layout, or checkout wiring — those belong to [`product-platform/CUSTOMER_VOICE_AND_PRODUCT_LINE.md`](product-platform/CUSTOMER_VOICE_AND_PRODUCT_LINE.md) and [`PDF_CHROME.md`](PDF_CHROME.md).
+**Scope:** This document governs the end-to-end process for creating the actual content inside Brand Alchemy digital products — the templates, copy, and instructions that make up a deliverable.
+
+**Voice scope (read first):** [`product-platform/VOICE_SCOPE.md`](product-platform/VOICE_SCOPE.md) — three voices; rules do not overlap. Pack templates = **voice 2** only.
+
+It is not about platform contracts, PDF layout, or checkout wiring — those belong to [`product-platform/CUSTOMER_VOICE_AND_PRODUCT_LINE.md`](product-platform/CUSTOMER_VOICE_AND_PRODUCT_LINE.md) and [`PDF_CHROME.md`](PDF_CHROME.md).
 
 **What this covers:** research → brief → content creation → review → format and delivery.
 
@@ -10,7 +14,10 @@
 - [`PRODUCTS_PRICING_AND_INCLUDES.md`](PRODUCTS_PRICING_AND_INCLUDES.md) — prices and what ships inside each SKU (source of truth)
 - [`ACQUISITION_FUNNEL_AND_SKU_MAP.md`](ACQUISITION_FUNNEL_AND_SKU_MAP.md) — funnel position, bumps, and product ladder
 - [`TARGET_AUDIENCE.md`](TARGET_AUDIENCE.md) — who these products are for and who they are not for
-- [`BRAND_PLAYBOOK.md`](BRAND_PLAYBOOK.md) — voice, tone, and the vocabulary guardrails that apply to all customer-facing content
+- [`product-platform/VOICE_SCOPE.md`](product-platform/VOICE_SCOPE.md) — **canonical:** three voices; which rulebook applies where
+- [`product-platform/CUSTOMER_VOICE_AND_PRODUCT_LINE.md`](product-platform/CUSTOMER_VOICE_AND_PRODUCT_LINE.md) — platform walkers for **AI-generated kit copy (voice 3)** only
+- [`digital-product-research/COMP_REFERENCE_LIBRARY.md`](digital-product-research/COMP_REFERENCE_LIBRARY.md) — verbatim comp lines for **pack templates (voice 2)**
+- [`BRAND_PLAYBOOK.md`](BRAND_PLAYBOOK.md) — **Brand Alchemy marketing (voice 1)** — not pack templates
 
 No content should be written before a brief is complete. No content should be shipped before Stage 4 review passes.
 
@@ -30,17 +37,17 @@ Stage 5 → Format and delivery
 
 ## Stage 1: Research
 
-**Goal:** Validate that the product addresses a real, searchable owner need — and collect the actual language owners use when they describe that need.
+**Goal:** Validate purchase intent, collect owner language, and audit what comparable digital products actually ship — so we write copy that converts without drifting into marketer voice or generic template-library tone.
 
-Digital product research is not about gathering statistics (that is the article process). It is about three things:
+Digital product research is about four things (run in order):
 
 ### 1a. Demand validation
 
 Confirm there is purchase intent, not just informational search. People searching "how to respond to a review" may want an article. People searching "review response templates" or "caption ideas for small business" are closer to a buying moment. Check:
 
 - Google search queries: what exact phrases do owners type for this problem?
-- Reddit r/smallbusiness and r/entrepreneur: is this a recurring frustration thread, or an occasional question?
-- Etsy / Gumroad / similar markets: are comparable products selling? (Units sold, review counts)
+- Reddit r/smallbusiness, r/entrepreneur, and **industry-specific communities** (e.g. salon owner threads): is this a recurring frustration, or an occasional question?
+- Etsy / Gumroad / Creative Market / independent shops: are comparable products selling? (Units sold, review counts, price)
 - Our own article candidate log ([`ARTICLE_RESEARCH_SYSTEM.md`](ARTICLE_RESEARCH_SYSTEM.md) Part 2): does this problem appear as a high-signal article topic? If so, there may be both article and product demand.
 
 ### 1b. Owner language audit
@@ -49,18 +56,55 @@ Collect the words owners actually use when describing this problem. Not marketer
 
 Sources: Reddit thread titles, product reviews on competing items, Google autocomplete, "People also ask" results.
 
-### 1c. Competitor gap
+### 1c. Competitive product audit
 
-Find 3–5 existing products in this category (Etsy, Gumroad, Creative Market). Note:
-- What do the best ones do well?
-- Where do they fail the non-marketer owner test? (Jargon, industry narrowing, corporate tone, too much "fill this in" work)
-- What is genuinely missing?
+Find **3–5 existing products** at a similar price tier and format (PDF caption pack, template bundle, content kit). Prefer products buyers actually purchased — not blog listicles.
 
-The gap becomes the quality bar for this product.
+For each competitor, record:
+
+| Field | What to capture |
+|-------|-----------------|
+| **Product** | Name, seller, URL, price |
+| **Deliverable shape** | Caption count, categories, bonus sections (hashtags, calendar, Canva links, ChatGPT prompts, posting plan) |
+| **Content mix** | Approximate split: availability / transformation / behind-the-scenes / promo / community / education |
+| **Hook patterns** | How first lines open (question, confession, specific detail, contrast, humor) |
+| **Engagement mechanics** | Questions, social proof, specificity, earned urgency, booking CTAs — what moves they use |
+| **Rhythm & emotion** | What the line *feels* like — **save 3–5 direct example lines** into `{SKU}-comp-examples.md` (see [comp library](digital-product-research/README.md)) |
+| **Fill-in density** | Zero-fill vs heavy customization vs “personalize every post” |
+| **Review signal** | What buyers praise (“saved blank-screen time,” “got comments”) vs complain about (“generic,” “influencer voice,” “too many hashtags”) |
+
+Also note where competitors fail the non-marketer owner test: jargon aimed at **marketers**, creator/influencer voice, corporate chain language, too much fill-in work. **Salon-style promos and urgency in comps are adoptable for voice 2** — see comp library.
+
+**Do not swipe copy.** Extract **market patterns** (count, categories, CTAs used in the category) from products — not wording. Copy caption text only from **Tier A** (real salon posts) into `{SKU}-comp-examples.md` — see [`digital-product-research/README.md`](digital-product-research/README.md) source tiers. **Reject** SEO caption listicles and AI marketing blogs.
+
+### 1d. Pattern synthesis and template-count benchmark
+
+Synthesize 1a–1c into decisions before writing:
+
+```
+PATTERN SYNTHESIS
+  Adopt:     [Post types, hooks, CTAs, promos, urgency patterns from comp examples file]
+  Avoid:     [Influencer/creator voice, corporate chain language, invented claims]
+  Differentiate: [What we ship that comps don't — specificity, voice, zero Canva dependency, etc.]
+
+TEMPLATE COUNT (confirm against price tier in PRODUCTS_PRICING_AND_INCLUDES.md)
+  Competitor range at this price:  [e.g. 30 captions @ $19, 50 Canva+caption @ $14]
+  Recommended count for this SKU:  [Number + brief rationale]
+  Rationale:                       [Quality over volume; one month+ of weekly posts; category coverage]
+```
+
+**Template count rule of thumb ($19 social caption packs):**
+
+- **30** is the market anchor for caption-only or caption-primary packs at this tier — enough for ~7 weeks of 4 posts/week or a full month with variety.
+- **35–40** is justified when research shows comps at $19–$29 ship meaningfully more *without* filler, and each extra template passes the distinctness check.
+- **50+** at $19 usually means generic lists, hashtag padding, or Canva bundles — not our lane unless we intentionally ship a larger **Core**-tier product at $29+.
+- Count changes require updating the brief **before** Stage 3 — not mid-draft.
+
+The gap from 1c plus the count decision from 1d become the quality bar for this product.
 
 ### Stage 1 output
 
-Record in this format before moving to Stage 2:
+Record in this format before moving to Stage 2. For industry-specific SKUs, store the full pass in `docs/digital-product-research/` (filename: `KIT-XX-[slug]-stage1.md`).
 
 ```
 RESEARCH FOR: [Product name]
@@ -75,9 +119,22 @@ DEMAND SIGNAL
 OWNER LANGUAGE
   [5–10 phrases owners use to describe this problem, verbatim or close to it]
 
+COMPETITIVE PRODUCT AUDIT
+  [3–5 products — use table from 1c; one row per product]
+
 COMPETITOR GAP
   [What the best existing products get wrong for our audience]
   [What is genuinely missing]
+
+PATTERN SYNTHESIS
+  Adopt:               [...]
+  Avoid:               [...]
+  Differentiate:       [...]
+
+TEMPLATE COUNT
+  Competitor range:    [...]
+  Recommended count:   [...]
+  Rationale:           [...]
 ```
 
 ---
@@ -118,8 +175,9 @@ CONTENT SPEC
                      Not permitted: anything requiring the owner to think about their
                      positioning — [your brand message], [your unique offering],
                      [your target customer], etc.]
-  Template count:    [Target range, e.g. 30–35. Aim for roughly 1/3 zero-fill,
-                     2/3 with one simple fill.]
+  Template count:    [From Stage 1d benchmark — e.g. 30 at $19 social. Confirm against
+                     PRODUCTS_PRICING_AND_INCLUDES.md. Aim for roughly 1/3 zero-fill,
+                     2/3 with one simple fill. Do not pad count with filler templates.]
   Categories:        [4–6 named scenario buckets with 1-line description each]
 
 EXPRESSIVITY RANGE
@@ -132,7 +190,9 @@ EXPRESSIVITY RANGE
     Quiet — understated, does not try too hard
     Wry — dry, self-aware, earns a smile without performing it
   No single register should dominate more than 40% of templates.
-  Monotone is a failure mode even when all scenarios are different.]
+  Monotone is a failure mode even when all scenarios are different.
+  **Social caption packs (industry-specific):** registers are optional tags for variety
+  checking only — do not rotate moods to hit percentages while drafting.]
 
 CONSTRAINTS
   Off-limits:        [Specific words, tones, industry signals, and claim types to exclude]
@@ -159,7 +219,9 @@ STATUS
 
 ## Stage 3: Content Creation
 
-**Work through categories in order.** Draft one category, review it, then start the next. Hopping around or batch-writing all templates before review is how packs drift into template-library tone.
+**Three voices — do not merge.** Full spec: [`product-platform/VOICE_SCOPE.md`](product-platform/VOICE_SCOPE.md). Pack templates = **voice 2** only (short gate + comp library). Never apply Brand Alchemy marketing rules or Identity Kit platform walkers to pack captions.
+
+**Work through categories in order.** Draft one category, review it, then start the next.
 
 ### Before writing
 
@@ -170,31 +232,86 @@ Re-read the brief in full. Specifically re-read:
 
 Then calibrate — do not skip this even if the brief is complete:
 
-1. **Voice anchors** — Approve 1–3 lines that already sound right for this SKU (from a prior draft, a user correction, or a fresh write). Every template must pass: *Would this sit next to an anchor in someone's feed?* Do not bulk-draft 30 lines hoping one lands.
-2. **Category steering** — For each category, write the description as: what situation it covers **plus** the expected-angle trap to avoid (e.g. behind-the-scenes: not "the real work happens before you arrive"). Descriptions steer writers during drafting; they are not catalog marketing copy.
-3. **Two voices** — Intro and instructions may use second-person pain (speaking to the owner who bought the pack). **Templates** use first-person owner voice speaking **to their customers**. Competitor research is useful for anti-patterns (creator voice, jargon, question-stacks) — not as swipe copy.
+0. **Pattern synthesis** — Re-read Stage 1d (Adopt / Avoid / Differentiate). Hooks and CTAs from comps are allowed. Avoid creator/influencer voice and corporate chain language. **For social packs:** adopt comp urgency and promos when drafting voice 2 templates.
+1. **Comp examples on disk (required for social packs)** — Before Category 1, `{SKU}-comp-examples.md` must exist in [`digital-product-research/`](digital-product-research/) with **15+ verbatim lines** tagged by post type. Index in [`COMP_REFERENCE_LIBRARY.md`](digital-product-research/COMP_REFERENCE_LIBRARY.md). Draft within earshot of comps — do not write from rules alone.
+2. **Ear calibration (optional)** — Read comp lines aloud. Match **energy and post types**, not one repeated arc.
+3. **Category steering (brief/research only — not the PDF)** — In the product brief or research doc, note what situation the category covers **and** the angle trap to avoid (e.g. behind-the-scenes: not "the real work happens before you arrive"). Use this while drafting. **Do not paste steering or anti-pattern notes into the JSON `description` field** — that text ships in the PDF.
+4. **Category description (customer-facing — ships in PDF)** — One or two sentences: when to reach for this section. Plain guidance the buyer reads while browsing the pack. No internal watchouts, failed draft examples, or writer shorthand.
+5. **Intro vs template voice** — Intro and instructions may use second-person pain (speaking to the owner who bought the pack). **Templates** use first-person owner voice speaking **to their customers**.
 
-### Template gate (run in this order)
+### Template gate
 
-A template is not done when it passes the voice walkers. Run these checks **in order** before moving on:
+**Social caption packs ($19 industry SKUs)** — use the **short gate** only ([below](#social-caption-packs-19-social-skus)). Do not run the full generic gate, watchouts #3–#4/#8–#10, register quotas, or pack rhythm targets.
+
+**All other template products** — run these checks **in order** before moving on:
 
 1. **Customer-facing** (watchout #6) — Would a follower care, or is the business talking about itself, its operations, or its marketing?
 2. **Angle** (watchouts #1–2) — Not table-stakes. Not the safest obvious post for this category.
-3. **Punchline** — Story and moment templates need a last beat the customer would say or imply. Do not explain it (watchout #3).
+3. **Punchline** — Story templates need a last beat the customer would say or imply.
 4. **First sentence** (watchout #7) — Scroll-stopper on its own?
-5. **Voice walkers** — Jargon, punctuation, industry narrowing, CTA rules (below).
-
-Passing step 5 alone is not sufficient. That is the most common failure mode when tone feels "almost right" but flat.
+5. **Voice walkers** — Platform walkers for kit AI output; template pack walkers for generic products; **short gate only** for social caption packs (below).
 
 ### Writing each template
 
+**Social caption packs:** one line to four short beats is fine. Lead with result, service name, or hook — not scenario setup. `(I/we)` notation where solo stylist vs salon voice differs.
+
+**All other template products:**
+
 - Write in **first person** from the owner's perspective wherever possible ("We're open," "Come see us," "I wanted to share..."). First-person removes the "fill in how you describe your business" burden that second-person creates.
 - Keep most templates to **2–4 sentences** for social and email. If a template requires more than one paragraph, it is probably two templates.
-- Use **simple, direct sentence structure**. Short sentences beat long ones.
 - Every fill-in must pass the **5-second test**: could an owner fill this in within 5 seconds without having to think? [your city] passes. [your core brand message] fails. When in doubt, rewrite the template so no fill-in is needed.
 - **Zero-fill templates are not lazy — they are often the most useful.** A template that works as-is is the fastest one to use. Aim for roughly one-third of the pack to need no fills at all.
 
-### Punctuation: part of the voice, not just grammar
+### Social caption packs ($19 social SKUs)
+
+**Use the short gate. Ignore removed rules below.**
+
+These packs failed when we optimized for **passing checklists** instead of **sounding like a real post**. The biggest manufactured pattern: every caption becoming *She came in → mirror → quoted client line* because rules required client beats, shape quotas, and register rotation.
+
+#### Short gate (only checks that matter)
+
+1. **Stylist post test** — Would a real owner post this verbatim after a normal week, without feeling like they're reading a template? If it sounds like a caption pack, rewrite.
+2. **Hard bans only** — No **invented claims** (guaranteed results, #1 in town, fabricated stats/reviews). **Salon-style urgency and promos are allowed** — limited spots, book this week, slots filling up, seasonal pushes — when comps and real salon posts use them. Write like real salon social: CTAs, link in bio, enthusiasm encouraged.
+3. **Variety by ear** — Read five templates in a row. If they share the same **structure** (not just topic), rewrite until the pack feels mixed.
+4. **Result-first, not scenario-first** — The **category description** tees the situation (when to use this section). The **caption** is the post: lead with vibe, service, result, or punch. Do not re-explain why you're posting — the photo and category already did that. (KIT 04 lesson: explaining the situation in every caption read stiff.)
+5. **Comps over rules** — Draft within earshot of Tier A lines in the comp file. If a global schema rule (punctuation, sentence count, watchout) conflicts with real comps, **comps win** for social packs.
+
+**Do not use while drafting social captions:** voice anchors, Story/Punchy/Hook shape plans, pack targets for `?` or `!`, staccato percentages, setup→turn→beat formulas, mandatory client quotes, register % caps, watchouts #3–#4/#8–#10, expressivity quotas, mirror-test formulas, or **scenario narration** in the caption body.
+
+#### Removed rules (why they manufactured copy)
+
+| Removed | Why |
+|---------|-----|
+| Per-pack `?` / `!` / Story % targets | Forced mechanical diversity |
+| Caption shape taxonomy + category shape plans | Same arc every time |
+| Three voice anchors before drafting | Calibrated to formula, not voice |
+| Rhythm & beat / staccato % (watchout #9) | Optimized sentence shape over meaning |
+| Mirror test requiring client-visible payoff | Every line became fictional vignette + quote |
+| Watchout #3–#4 (owner closers / client-beat endings) | Even when labeled "generic," agents applied these to salon packs → *She → mirror → quote* formula |
+| Watchout #8 (vagueness trap) | Forced hyper-specific "She was nervous…" fiction |
+| Watchout #10 (owner-outcome drift) | Swung copy to ops; then over-corrected to vignettes |
+| Register 40% cap + Check 5 expressivity quotas | Mood rotation for the spreadsheet |
+| "Earned !" register restrictions | Real stylists use `!` when they feel like it |
+| Ban on performative warmth | Empty "we LOVE clients" is bad; warmth isn't |
+
+#### What still applies
+
+- Stage 1 comp research (for **ear**, not to copy structure)
+- Fake urgency and invented claims stay banned
+- Industry-specific vocabulary is **allowed** when the SKU is industry-specific (salon: client, chair, color, appointment, link in bio, book, DM)
+- Check 4 distinctness (same situation twice is still filler) — but similar **structure** is the bigger problem; fix that first
+
+#### What does **not** apply to social caption packs
+
+- **Brand Alchemy marketing jargon ban** ([`BRAND_PLAYBOOK.md`](BRAND_PLAYBOOK.md)) — that governs how *we* talk to owners, not how owners talk to their customers
+- **Identity Kit voice walkers** ([`CUSTOMER_VOICE_AND_PRODUCT_LINE.md`](product-platform/CUSTOMER_VOICE_AND_PRODUCT_LINE.md)) — those govern AI-generated personalized copy from intake (claim-safe, no fabricated metrics), not static ready-to-post templates
+- Register quotas, shape targets, mirror-test formulas (see Removed rules table)
+
+### Punctuation and length
+
+**Social caption packs (voice 2):** follow **Tier A comps**, not the generic table below. Real salon posts use em dashes, fragments, `..`, and multiple `!` when the energy fits (see comp file). One-line captions are valid. Do not "clean up" comp rhythm into brochure sentences.
+
+**Generic / email / KIT 01–03 reference packs only:**
 
 Punctuation is one of the fastest ways to signal emotional register. Treat it as a writing choice, not cleanup.
 
@@ -215,7 +332,9 @@ Punctuation is one of the fastest ways to signal emotional register. Treat it as
 
 ### Expressivity: write in multiple registers, not one consistent tone
 
-A pack where every template sounds the same is monotone even if every scenario is different. Within each category, and across the pack as a whole, consciously vary the emotional register. The six registers available for our audience:
+**Social caption packs:** skip register planning. Tag `register` in JSON after drafting if useful for PDF variety — do not quota or rotate moods to hit percentages.
+
+**Generic / KIT 01–03 reference packs only:** A pack where every template sounds the same is monotone even if every scenario is different. Within each category, and across the pack as a whole, consciously vary the emotional register. The six registers available for our audience:
 
 | Register | What it sounds like | Example |
 |----------|---------------------|---------|
@@ -227,29 +346,42 @@ A pack where every template sounds the same is monotone even if every scenario i
 | **Quiet** | Understated, does not try too hard | "We're open. That's all." |
 | **Wry** | Dry, self-aware, makes the reader smile without trying | "We've been called a hidden gem so many times we're starting to wonder if we need a bigger sign." |
 
-Use the expressivity range from the brief to guide which registers to prioritize. No single register should appear in more than 40% of the pack. If writing a full category and every template sounds the same emotionally, stop and rewrite half of them in a different register before moving on.
+Use the expressivity range from the brief to guide which registers to prioritize. **Generic / KIT 01–03 reference packs only:** no single register should appear in more than 40% of templates. **Social caption packs:** do not quota registers — tag them after drafting if useful.
 
-### Voice walkers (apply to every template)
+### Voice walkers
 
-These mirror the platform walkers in [`product-platform/CUSTOMER_VOICE_AND_PRODUCT_LINE.md`](product-platform/CUSTOMER_VOICE_AND_PRODUCT_LINE.md):
+**Do not apply one walker set everywhere.** See [Three voices](#stage-3-content-creation) above.
 
-1. **Banned jargon** — no: "authentic," "leverage," "brand equity," "curated," "content strategy," "algorithm," "engagement," "drip," "campaign," "subscriber," "persona," "funnel," "unique value proposition," or any other term that signals professional marketer context. **Note:** urgency, social proof, specific outcomes, humor, and direct CTAs are not jargon — they are marketing mechanics that work because they are human. A template that ends "If you missed it, now you know" uses earned urgency. A template that ends "Book before it's too late" uses manufactured pressure. Only the latter is off-limits.
-2. **Industry narrowing** — read each template and ask: does any word limit this to one type of business? "Shop" suggests retail. "Clients" suggests professional services. "Appointment" suggests service scheduling. Default to: "customers," "what we do," "reach out," "come see us"
-3. **Claim-safety** — no rankings promises, no outcome guarantees, no "most" or "best" without specific grounding
-4. **CTA rules** — Many strong templates need **no CTA**; do not append "Come see us" to make a line feel complete. When a CTA belongs, invite — don't beg. "Come see us this week" is an invitation. "Book before it's too late" is manufactured pressure. "If you missed it, now you know" is earned urgency — something real happened, the reader benefits from the heads-up. Urgency is allowed when there is a real reason. Urgency invented to pressure a click is not. Questions are also valid CTAs: "Have you been in lately?" closes a loop differently than a directive and creates engagement without feeling like a command.
-5. **Punctuation** — Em dashes and ellipses are banned from all templates. Exclamation points: zero or one per template, Energetic/Light registers only. No doubled punctuation (`!!`, `!?`). No ALL CAPS. Fragments are allowed. Full punctuation rules in the table above.
+#### Platform walkers (Identity Kit AI output only)
+
+From [`CUSTOMER_VOICE_AND_PRODUCT_LINE.md`](product-platform/CUSTOMER_VOICE_AND_PRODUCT_LINE.md) — for **generated** customer-brand strings tied to intake (bios, CSP sections, personalized blocks):
+
+1. **Banned vocabulary** — SaaS/marketer-speak in *generated* kit copy ("leverage," "brand equity," "content strategy," etc.)
+2. **Claim-safety** — no fabricated metrics, offers, or outcomes not in intake
+3. **CTA rules** — inherit narrator profile; no ranking promises where prohibited
+4. **Punctuation budget** — per product spec
+
+#### Template pack walkers (generic email / non-social templates)
+
+For **static templates** in generic packs (KIT 01–03, Email Blast Pack): lighter gate — customer-facing, claim-safe, no fake urgency. **Do not** import the full platform jargon list; owners are allowed to sound promotional in their own marketing.
+
+#### Social caption packs
+
+**No voice walker checklist.** Use the [short gate](#short-gate-only-checks-that-matter) only. Promotional language, booking CTAs, hooks, and enthusiasm are the product.
 
 ### Content quality watchouts: what flat looks like
 
-A template can pass all five voice walkers and still fail the customer read test. These are the patterns that make a pack feel generated rather than curated.
+**Generic / email / KIT 01–03 reference packs only.** Social caption packs (voice 2): use the [short gate](#short-gate-only-checks-that-matter) only — do not run this watchout list while drafting salon captions.
+
+A template can pass voice checks and still fail the customer read test. These patterns make a pack feel generated rather than curated:
 
 **1. Table-stakes language.** "We work hard," "we care about quality," "we take our time" — these are true for almost every business that stays open. A template built on a table-stakes claim gives the reader nothing they cannot already assume. Replace the claim with a moment, a behavior, or a structural angle that implies the same quality without naming it.
 
 **2. The expected angle.** The most common failure mode is writing the most obvious, safest thing about the topic. "We're open" posts that only say "we're open." "Behind-the-scenes" posts that only say "we work hard before you see it." Templates that convert take an honest or slightly unexpected angle — a small admission, an implied contrast, a wry observation — rather than the most comfortable one.
 
-**3. Explaining the emotion.** After a genuine moment, many templates add a sentence that names what the moment means: "That's why we show up." "That's who we are." "That's what this work is for." These closers close the loop for the reader instead of leaving the moment open. Trust the reader to feel it. Cut the explanation.
+**3. Explaining the emotion — to the owner.** *(Generic packs only — caused KIT 04 mirror-quote formula when applied to social captions.)* After a genuine moment, many templates add a sentence that names what the moment means **for the business**: "That's why we show up." "That's who we are." "That's what this work is for." "That's the whole job." "That's the win." These closers orient inward. **Fix:** end on the **client beat** — what they said, felt, or saw — not what it meant to you. *Allowed:* `'That's exactly what I wanted.'` / *Not allowed:* `That reaction is the whole job.`
 
-**4. The philosophical closer pattern.** Any single "That's X" closer can be earned. When multiple templates in the same pack end with this structure, it becomes a formula. Cap it at one per pack. If more than one has earned it, keep the strongest and rewrite the others.
+**4. The philosophical closer pattern.** Any single owner-meaning closer can slip through once. When multiple templates in the same pack end with this structure, it becomes a formula. Cap owner-meaning closers at **zero** for social caption packs; use client reaction instead. If a draft ends on "that's the…", rewrite.
 
 **5. Performing authenticity.** Words like "genuinely," "truly," "honestly" as modifiers often signal that the surrounding sentence is doing something inauthentic. "We genuinely love what we do" sounds less genuine than "We've been doing this for a long time and we're not done." Watch for modifier words compensating for a weak core claim. (Exception: "genuinely" is allowed when the surrounding structure earns it, e.g. "Made something this week we're genuinely proud of. Doesn't happen every week. This one did." — the staccato rhythm does the work, not the modifier.)
 
@@ -259,7 +391,13 @@ A template can pass all five voice walkers and still fail the customer read test
 
 **8. The "someone came in" vagueness trap.** "Someone came in this week and said something." "A customer stopped by." These setups imply specificity but deliver generality. Either anchor the setup with a specific emotional type ("A customer came in stressed and left calm") or drop the setup and start with the outcome.
 
+**9. Staccato brochure drift.** Three or more short period-separated sentences that **describe the business** instead of **showing a moment** ("Independent salon in [town]. Good work. Normal people." / "New here? Most clients come from referrals. That's how we grow."). Reads like a label, not a post. **Fix:** use Story shape (setup → turn → beat), a `?` with payoff, or one specific client detail. Exception: intentional **Punchy** or **Quiet** templates in availability-style categories.
+
+**10. Owner-outcome drift.** The post reports something **true about the salon** that **clients don't care about** when scrolling: schedule efficiency ("everyone left on time"), posting meta ("didn't pitch us"), vibe marketing ("we're not a silent spa"), process without payoff ("we plan on the questions before the result"), or staff-side wins ("busiest Saturday — that's the win"). **Fix:** lead or land on **client-visible outcome or feeling**. Behind-the-scenes is allowed only when it answers *what do I get because you work this way?* — comfort, trust, a result they'd want for themselves.
+
 ### Hype: use it, but anchor it
+
+**Generic / email / KIT 01–03 reference packs only** (social caption packs: use comp energy; no hype % target).
 
 Skipping hype entirely makes the pack feel flat and emotionally one-note. Generic hype makes it sound like every other template library ("excited to share," "good energy," "genuinely good week"). The rule is **earned hype** — energy tied to something real the reader can picture.
 
@@ -268,19 +406,19 @@ Skipping hype entirely makes the pack feel flat and emotionally one-note. Generi
 | "It's been a genuinely good week in [your town]!" | "We sold out by Friday. Restocking Monday." |
 | "Good energy in the neighborhood!" | "Opening day was a blur. Thank you to everyone who showed up." |
 | "We're excited to share what we've been working on!" | "Today's the day. We're open. Come see what we've been building." |
-| "Something amazing happened this week!" | "A new customer came in skeptical and left saying they'll be back. That made our week!" |
+| "Something amazing happened this week!" | "She walked in frustrated with the color. When she saw the fix, she actually smiled." |
 
 **When hype belongs:** openings and milestones, a real win worth announcing, something new landing, a busy week that exceeded expectations, seasonal or local moments with a reason to celebrate. These map to **Energetic** and **Light** registers — use them on purpose, not as filler.
 
 **When hype doesn't belong:** routine "we're open" reminders, behind-the-scenes process posts, quiet customer moments, templates where the whole point is understatement. Not every post needs to peak.
 
-**Target mix:** Roughly 15–20% of templates in a social pack should carry clear energy or celebration (about 5–6 of 30). The rest can stay Real, Warm, Confident, or Quiet. A pack with zero hype reads cautious; a pack where every other line shouts reads like an ad.
+**Target mix (generic packs only):** Roughly 15–20% of templates in a social pack should carry clear energy or celebration (about 5–6 of 30). The rest can stay Real, Warm, Confident, or Quiet. A pack with zero hype reads cautious; a pack where every other line shouts reads like an ad.
 
 **How to write earned hype:** Name the thing first, then the feeling. "We're open" before "we're so excited." Or let the detail carry the energy: "Sold out by noon" needs no exclamation point. Use `!` when the moment supports it — openings, wins, invitations — not to rescue a flat sentence.
 
 ### Stage 3 output
 
-A complete draft of all templates, organized by category, with updated category descriptions (steering + anti-patterns) and a placeholder instructions page. Do not finalize the instructions page until Stage 4 is complete — it is written from what the templates actually need, not from what you imagine they will need.
+A complete draft of all templates, organized by category, with **customer-facing** category descriptions (when to use each section — no writer steering) and a placeholder instructions page. Do not finalize the instructions page until Stage 4 is complete — it is written from what the templates actually need, not from what you imagine they will need.
 
 ---
 
@@ -290,9 +428,15 @@ A complete draft of all templates, organized by category, with updated category 
 
 ### Check 1: Walker pass
 
-Read every template against the five voice walkers from Stage 3. Flag and fix any violations. This check is mechanical — it either passes or it does not.
+**Social caption packs:** skip — use Check 3 stylist post test instead.
+
+**Identity Kit / AI-generated copy:** platform walkers from [`CUSTOMER_VOICE_AND_PRODUCT_LINE.md`](product-platform/CUSTOMER_VOICE_AND_PRODUCT_LINE.md).
+
+**Other template products:** customer-facing, claim-safe, no fake urgency.
 
 ### Check 2: Owner use test ("the plumber test")
+
+**Generic packs only.** Skip for industry-specific SKUs (e.g. KIT 04 Salons) — use the **stylist post test** instead.
 
 Pick a business type that is not particularly glamorous and not obviously served by marketing tools: a plumber, an electrician, a house cleaner, a general contractor. For each template:
 
@@ -307,6 +451,7 @@ If more than 20% of templates fail for this business type, the pack has industry
 Read each template from the **customer's perspective** — not the owner's. This is the marketing effectiveness check.
 
 - For a social post: would a customer who sees this want to know more, visit, or feel warmly toward this business? Or does it read like background noise?
+- **Social caption packs only:** **Stylist post test** — would a real owner post this verbatim without cringing? Fail if it sounds like a template library (especially the *She came in / mirror / quoted line* formula repeated across the pack).
 - For an email: would a customer who receives this read it, take action, or at least not unsubscribe?
 - For a promo post: does it communicate the offer clearly without sounding desperate or aggressive?
 
@@ -318,6 +463,8 @@ Within each category, every template must be **meaningfully different** from the
 
 ### Check 5: Expressivity check
 
+**Generic / KIT 01–03 reference packs only.** Skip register quotas for social caption packs — use the stylist post test and structural variety by ear.
+
 Read the pack as a whole and count how many distinct registers are present. A pack that passes the distinctness check but fails this one has scenario variety without emotional variety — it still reads as monotone.
 
 - Does the pack hit at least 3 of the 6 registers defined in Stage 3?
@@ -328,7 +475,9 @@ The goal is that a buyer reading through the pack can feel the range — some te
 
 ### Check 6: Voice check
 
-Read the product as a whole and ask: does this feel like it came from Brand Alchemy's world? The signal is not polish — it is that it sounds like a knowledgeable friend who runs businesses and actually talks to owners. It should not sound like:
+**Social caption packs:** skip Brand Alchemy voice check — use **stylist post test** (Check 3) only. Pack should sound like a stylist typed it, not like our marketing site.
+
+**Generic / other template products:** Read the product as a whole and ask: does this feel like it came from Brand Alchemy's world? The signal is not polish — it is that it sounds like a knowledgeable friend who runs businesses and actually talks to owners. It should not sound like:
 
 - A social media scheduler's template library
 - A generic "tips for small business" blog post
@@ -360,9 +509,57 @@ A reviewed, corrected final draft of all templates and the completed instruction
 3. **Templates by category** — one category per page or section. Category name as a clear heading. Number each template within the category.
 4. **No fluff pages** — no "thank you for your purchase," no five-page introduction, no worksheet pages unless the brief specifically calls for them
 
+### Cover art pattern (social content packs)
+
+**Shared layout, industry-specific photo** — same cover chrome for every social pack SKU (white title panel + full-bleed image below; see `generate-content-pack.mjs`). **Do not** use one generic “social media” stock image across all industries.
+
+| Layer | Rule |
+|-------|------|
+| **Layout** | Shared — eyebrow, Source Serif title, italic `coverStatement`, photo fills remainder of Letter page |
+| **Photo** | **One cover per industry SKU** — buyer should recognize their world at a glance |
+| **File path** | `public/pdf-assets/social-content-pack-{industry}-cover.jpg` (e.g. `…-salon-cover.jpg`, `…-cafe-cover.jpg`) |
+| **JSON** | `"coverPhoto": "../../public/pdf-assets/social-content-pack-{industry}-cover.jpg"` on the pack manifest |
+| **Visual style** | Real environment (chair, tools, cup, job site) — per [`BRAND_GUIDELINES.md`](BRAND_GUIDELINES.md): atmospheric, grayscale or muted, no staged smiles, no text baked into the image, center-weighted for crop |
+| **License** | **Free-license photography only** — Unsplash, Pexels, or equivalent with commercial use. Log photographer, URL, and license in [`public/pdf-assets/ATTRIBUTION.md`](../public/pdf-assets/ATTRIBUTION.md). |
+| **Never** | **AI-generated images** (DALL·E, Midjourney, Stable Diffusion, Cursor image generation, etc.). If no suitable free photo exists, pick a closer comp or defer the SKU cover — do not synthesize. |
+| **Compression** | JPEG preferred. **Crop to the PDF cover viewport** — `612×644` pt in `generate-content-pack.mjs` (full Letter width × remaining page height). Export at **2×** (**1224×1288** px) or 1×; aspect **~0.95:1** (slightly wider than tall). **Do not** use legacy `485×1024` portrait — that aspect gets center-cropped in the PDF and often shows blank wall. Bottom-weight the crop for salon interiors (chairs, mirrors) so the subject survives `objectFit: 'cover'`. Target **150–250 KB** at quality **85–90**. |
+| **Avoid** | Phone mockups, Canva-style caption graphics, influencer stock, clipart, paid stock without a site-wide license, **neon signs / meme quotes**, visible business logos in frame, ornate or cluttered station shots |
+
+**Product-type vibe (same industry, different product)** — cover photo should match what the pack is *for*, not just the industry:
+
+| Product type | Salon example | Café example |
+|--------------|---------------|--------------|
+| **Social content pack** | Chair, mirror, salon floor — post-worthy, in-service energy | Counter, cup, morning light — something you'd photograph for the feed |
+| **Email blast pack** (future) | Consultation nook, product shelf, appointment book — quieter, “written to inbox” | Menu board edge, pastry case — still life, less “hero shot” |
+| **Promo & offer pack** (future) | Retail display, seasonal setup, gift-card moment | Special board, seasonal drink — offer-forward without text in the image |
+
+**KIT 01 (internal generic framework)** may use a neutral cover; **shippable industry SKUs (KIT 04+)** each get their own asset. Prefer `social-content-pack-{industry}-cover.jpg` over legacy `*-photos-collage-sample.png` collages.
+
+### PDF text constraints (social packs)
+
+- **No emoji or Unicode symbols** in template body text — they often fail to render in `@react-pdf/renderer` (e.g. swipe arrows). Use plain words: “Swipe to see the before,” not `➡️`.
+- **ASCII punctuation only** unless a symbol is verified in a generated PDF preview.
+
 ### File naming
 
-`[product-slug]-v[version].pdf` — example: `social-content-pack-v1.pdf`
+`[product-slug].pdf` — example: `social-content-pack-salon.pdf`. No version suffix in the deliverable filename; iterate the JSON manifest and regenerate in place.
+
+### Social pack intro (locked copy)
+
+All **social** content packs (`packType: "social"` or slug `social-content-pack*`) share the same page-2 hook stack and pivot from [`packages/pdf-shell-sample/content/shared/social-pack-intro.json`](../packages/pdf-shell-sample/content/shared/social-pack-intro.json). **Do not** duplicate or edit per SKU — only `hookDescription` (and instructions) vary by industry.
+
+**Locked lines (verbatim):**
+1. You know you should post this week.
+2. You open the app.
+3. Stare at the blank screen.
+4. Close it again.
+5. You just don't know what to say. *(pivot — Inter, same scale as stack)*
+
+Industry-specific value proposition follows in `hookDescription`.
+
+### Content pack PDF layout (standard)
+
+`generate-content-pack.mjs` is the **standard formatter** for $19–$29 template PDFs (social now; email/promo later with manifest tweaks). Cover → intro page → templates flow → footer chrome. Email packs may adjust intro structure later; social uses the shared hook above.
 
 ### Checklist before delivery
 
@@ -410,7 +607,7 @@ Each cell is one SKU. The Local Kits (Google/Yelp) and Identity Kit remain indus
 
 ---
 
-These are the first products planned for production. Each brief is at a "ready to enter Stage 3" level — research has been validated through the article candidate log and general market knowledge. A formal Stage 1 research pass should still be run before writing begins.
+These are the first products planned for production. Each brief is at a "ready to enter Stage 3" level — research has been validated through the article candidate log and general market knowledge. **Run the full Stage 1 pass (1a–1d) before writing begins.** Completed research lives in `docs/digital-product-research/`.
 
 ---
 
@@ -659,50 +856,59 @@ BUYER
                      Knows social media matters but freezes on what to say between
                      transformation posts. Has seen competitors posting more and wonders
                      what they're actually saying.
-  End state:         Has 30 captions for the situations that actually come up — a great
-                     client moment, a quiet Tuesday with open appointments, a before/after
-                     that deserves more than just the photo. Can post without writing from
-                     scratch.
+  End state:         Has 35 captions for the situations that actually come up — a great
+                     client moment, a quiet Tuesday with open appointments, a question for
+                     the feed, a before/after that deserves more than just the photo. Can
+                     post without writing from scratch.
 
 CONTENT SPEC
   Format:            Ready-to-post captions. Short (2–4 sentences). Social-first.
   Fill-in standard:  [your town], [your specialty or service], and one specific-detail fill
                      per customer moment template ([what they came in wanting], [the result]).
                      Owners in this industry have rich specific details — invite them in.
-  Template count:    30
-  Categories:
-    1. This is who we are (first impression, new follower, what kind of place this is)
-    2. We have availability (open chair, slow day, appointment reminder)
-    3. The work (behind the chair, what the process looks like, what care looks like here)
-    4. A client moment (transformation, a regular, someone who trusted you with something)
-    5. The community (neighborhood, regulars, the culture of the space)
-    6. A win this week (a transformation you're proud of, a milestone, a good week)
+  Template count:    35
+  Social rhythm:     [removed — do not use shape targets or pack quotas; see Stage 3
+                     Social caption packs short gate]
+  Categories:        [7 named scenario buckets × 5 templates each]
+    1. If you're new here (first impression)
+    2. Open chair this week (open slot, slow day, appointment reminder)
+    3. What you can expect (behind the chair, process, what care looks like here)
+    4. A client moment (transformation, result-first — photo does the work)
+    5. The regulars (salon vibe, team, personality — not a loyalty speech)
+    6. A win this week (transformation you're proud of, seasonal punch, hot take)
+    7. Start a conversation (poll/question posts — replies over reach, no fresh result)
 
 EXPRESSIVITY RANGE
-  Required registers: Warm, Confident, Real, Wry
-  1–2 Quiet per pack
-  Avoid: performative enthusiasm ("we LOVE our clients!") — this industry's worst
-         social media habit; every caption should feel like the stylist actually typed it
+  Social caption packs: no register quotas — short gate only (see Stage 3).
+  Tag registers in JSON after drafting if useful; do not plan mood rotation upfront.
+  Empty "we LOVE our clients!" is bad; real warmth, humor, promos, and `!` are fine when comps do it.
 
 CONSTRAINTS
   Industry-specific allowed vocabulary: "chair," "appointment," "the look," "the result,"
     "client," "transformation," "the color," "the cut" — these narrow to beauty but are
     correct for this pack.
-  Off-limits:        Marketing jargon, fake urgency, "book now before it's too late."
-                     Nothing that sounds like a Groupon ad or a franchise promotion.
+  Off-limits:        Invented claims (#1 in town, guaranteed results). Franchise/Groupon chain voice.
+                     Salon promos and comp-style urgency are **allowed** in templates.
+  Comp reference:    `docs/digital-product-research/KIT-04-competitor-caption-examples.md`
+                     (24+ Tier A lines — required before drafting)
   Standalone rule:   Works without Identity Kit. With Identity Kit voice playbook,
                      the owner can inject their salon's specific personality.
+  Perspective:       Use (I/we) notation **only** where solo stylist vs salon voice genuinely differs;
+                     default to **we** for team/salon/policy lines. Solo stylist swaps on marked templates only.
 
 QUALITY BAR
   A template ships when: a solo esthetician can grab it, add her town, and post it
                          in under 2 minutes and it sounds like her — not like a
                          social media manager wrote it.
   A template fails when: it could have been written by a chatbot about any beauty brand;
-                         OR it uses language a neighborhood nail studio would never say.
+                         OR it uses language a neighborhood nail studio would never say;
+                         OR it narrates the posting situation instead of leading with result/vibe;
+                         OR it repeats the same caption structure across the pack.
 
 STATUS
-  Brief pending — content not yet written.
-  Priority: FIRST to ship among industry-specific packs.
+  Stage 3 ship-ready in `packages/pdf-shell-sample/content/social-content-pack-salon.json` · `output/social-content-pack-salon.pdf`
+  Comp library: Tier A complete (June 2026)
+  Next: Stage 4 full-pack review (short gate only)
 ```
 
 ---
@@ -819,9 +1025,9 @@ STATUS
 
 | Stage | Done when |
 |-------|-----------|
-| **1 Research** | Demand signal confirmed, owner language collected, competitor gap named |
+| **1 Research** | Demand confirmed, owner language collected, competitive audit complete, pattern synthesis + template count locked |
 | **2 Brief** | All fields complete, quality bar defined in plain English |
-| **3 Content** | All templates written, walker checks applied, instructions drafted |
+| **3 Content** | All templates written; template gate passed (incl. rhythm for social packs); instructions drafted |
 | **4 Review** | All 6 checks passed: walker, owner use, customer read, distinctness, expressivity, voice |
 | **5 Format** | PDF complete, delivery checklist passed, file named and versioned |
 

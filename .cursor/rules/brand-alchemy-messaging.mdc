@@ -15,9 +15,18 @@ When adding or editing **user-facing copy**, **marketing content**, or **visual 
 6. **`docs/ARTICLE_RESEARCH_SYSTEM.md`** — **Article ideas only:** how to find topics, run research passes, fill out **candidate briefs**, and maintain the backlog (formats, awareness, homepage category, product adjacency). It does **not** govern deep fact-gathering or prose for a single shipped article.
 7. **`docs/ARTICLE_WRITING_SCHEMA.md`** — **One chosen topic, end-to-end:** after a brief exists, this doc governs **deeper research on that article** (e.g. Stage 2 stats and sources), structure, full draft, visuals, CTAs, and publish QA.
 8. **`docs/DIGITAL_PRODUCT_CONTENT_SCHEMA.md`** — **Digital product content creation:** research → brief → content writing → review → format and delivery for content packs and template products. Includes the first three kit briefs. Use this any time you are producing, reviewing, or expanding a content pack SKU.
+9. **`docs/product-platform/VOICE_SCOPE.md`** — **Which voice rules apply where** (Brand Alchemy marketing vs pack templates vs AI kit copy). Read before writing pack templates or mixing rulebooks.
 
 **Editorial articles (mandatory pair, in order):** **Ideas and briefs** → `ARTICLE_RESEARCH_SYSTEM.md`. **Writing that article** (including revising a draft or tightening a published piece) → `ARTICLE_WRITING_SCHEMA.md` **plus** the candidate brief from the research system. Do not use the research-system doc alone to write a full article, and do not skip writing-schema stages when producing long-form content. For `components/Articles.tsx` carousel-only edits, still match voice, categories, and adjacency from both docs plus the playbook where relevant.
 
-**Digital product content (mandatory):** Any time you are writing, reviewing, or expanding a content pack SKU (Social Content Pack, Email Blast Pack, Promo & Offer Pack, or any future template product) → use `DIGITAL_PRODUCT_CONTENT_SCHEMA.md`. Do not write templates without a complete brief. Do not ship without passing all six Stage 4 review checks.
+**Digital product content (mandatory):** Any time you are writing, reviewing, or expanding a content pack SKU → use `DIGITAL_PRODUCT_CONTENT_SCHEMA.md`. Do not write templates without a complete brief. Do not ship without passing Stage 4 review checks **for that product type**.
+
+**Three voices — do not merge:** [`docs/product-platform/VOICE_SCOPE.md`](docs/product-platform/VOICE_SCOPE.md) is canonical.
+
+- **Voice 1** — [`BRAND_PLAYBOOK.md`](docs/BRAND_PLAYBOOK.md): Brand Alchemy site, articles, how we pitch to owners.
+- **Voice 2** — Pack templates (captions, promos): owner's marketing to their customers. [`DIGITAL_PRODUCT_CONTENT_SCHEMA.md`](docs/DIGITAL_PRODUCT_CONTENT_SCHEMA.md) short gate + [`digital-product-research/`](docs/digital-product-research/) comp examples. **Not** voice 1 or 3.
+- **Voice 3** — [`CUSTOMER_VOICE_AND_PRODUCT_LINE.md`](docs/product-platform/CUSTOMER_VOICE_AND_PRODUCT_LINE.md): AI-generated Identity Kit copy from intake only.
+
+When editing `packages/pdf-shell-sample/content/*.json` or writing pack templates → **voice 2**. Read comp examples before drafting.
 
 Prefer plain language and concrete outcomes. If copy sounds aimed at SaaS founders, growth marketers, or agencies, reset using those docs. Keep new UI aligned with the guidelines doc so the site stays one system. This rule is **always applied** so you do not need a `.tsx` file open for brand context to load.
