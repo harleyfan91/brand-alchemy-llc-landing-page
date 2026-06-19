@@ -55,6 +55,32 @@ When unsure: **default to voice 1 only on `.tsx` pages and docs aimed at buyers.
 
 ---
 
+## Voice 1 bleed — the #1 pack failure mode (read this)
+
+Agents keep pasting **Brand Alchemy's rules about bad marketing** into **owner captions**. That causes churn and sounds nothing like real café/salon posts.
+
+### What bleeds (Voice 1 → Voice 2)
+
+| Voice 1 (internal — us talking to owners) | Wrong in pack templates |
+|-------------------------------------------|-------------------------|
+| "Owners hate marketing jargon" | Captions that mention marketing, jargon, or "corporate talk" |
+| Brief: *Avoid corporate chain voice* | *"Not a chain." / "None of the corporate talk."* |
+| Brief: *Avoid influencer aesthetics* | *"Not trying to go viral"* |
+| Differentiation vs Starbucks / SEO packs | Meta posts **about** authenticity instead of **showing** indie voice |
+
+Real comps never explain that they're anti-corporate. They post **the drink, the hours, the drop, the question**.
+
+### Hard rules for Voice 2 templates
+
+1. **Brief Avoid / Off-limits / Pattern synthesis "Avoid"** = filters while you draft. **Never ship them as caption text or category descriptions.**
+2. **Brand Alchemy marketing jargon ban** ([`BRAND_PLAYBOOK.md`](../BRAND_PLAYBOOK.md)) applies to **Voice 1 only** — not pack JSON. Do not "enforce" it in templates.
+3. **Show, don't comment** — match Tier A comp energy (specific menu lines, promos, polls). If you can't find comp ear for a slot, add Tier A lines — don't fill from the brief Avoid list.
+4. **Meta-language ban** in template `text` and category `description` unless verbatim in a Tier A comp: `corporate`, `chain`, `marketing`, `jargon`, `authentic`, `viral`, `content strategy`, `caption pack`, and similar self-aware marketing commentary.
+
+Cursor rule when editing pack JSON: [`.cursor/rules/pack-templates-voice2.mdc`](../../.cursor/rules/pack-templates-voice2.mdc).
+
+---
+
 ## Comp reference library (voice 2)
 
 **Before drafting pack templates**, source and save real examples. Do not write from memory or from rules alone.
@@ -75,5 +101,6 @@ See [`digital-product-research/README.md`](../digital-product-research/README.md
 
 | Date | Change |
 |------|--------|
+| 2026-06 | Voice 1 bleed section + meta-language ban — brief Avoid lists are internal only, never template copy |
 | 2026-06 | KIT 04 lesson: rules caused v1–v2 failure; short gate + comps win over punctuation/watchout/shape rules for social packs |
 | 2026-06 | Initial three-voice split after KIT 04 — rules were overlapping Brand Alchemy, pack templates, and kit walkers |

@@ -1,0 +1,62 @@
+---
+description: Voice 2 only — social/content pack templates (captions in PDF JSON). Overrides Brand Alchemy marketing rules.
+globs: packages/pdf-shell-sample/content/**/*.json,docs/digital-product-research/KIT-*-*.md
+alwaysApply: false
+---
+
+# Pack templates = Voice 2 ONLY
+
+You are writing **what the owner posts to their customers** — not how Brand Alchemy talks to owners.
+
+**Do not read or apply:** [`BRAND_PLAYBOOK.md`](docs/BRAND_PLAYBOOK.md) jargon ban, TARGET_AUDIENCE anti-marketer framing, or Identity Kit platform walkers.
+
+**Do read (in order):**
+1. [`docs/product-platform/VOICE_SCOPE.md`](docs/product-platform/VOICE_SCOPE.md) — Voice bleed section
+2. [`docs/DIGITAL_PRODUCT_CONTENT_SCHEMA.md`](docs/DIGITAL_PRODUCT_CONTENT_SCHEMA.md) — social short gate only
+3. `{SKU}-competitor-caption-examples.md` — Tier A comps for this SKU
+
+---
+
+## Hard rule: brief Avoid / Off-limits are INTERNAL FILTERS
+
+Stage 1 briefs list things like *avoid corporate chain voice* or *no "crafted with care."*
+
+Those lines are **for you while drafting**. They are **not caption ideas**.
+
+| Internal filter (never ship) | What to write instead |
+|------------------------------|------------------------|
+| Avoid corporate / chain voice | Name the drink, the counter, the neighborhood — like comps do |
+| Avoid marketing jargon | Don't mention marketing at all |
+| Avoid influencer voice | Match comp energy; don't comment on influencers |
+| Differentiate from Starbucks | Show indie voice; **never** say "not a chain" or "none of the corporate talk" |
+
+If a template **talks about** marketing, corporates, chains, going viral, or being authentic → **fail**. Rewrite from a Tier A comp.
+
+---
+
+## Meta-language ban (template `text` and category `description`)
+
+**Do not use** in pack JSON (unless the same phrase appears verbatim in a Tier A comp for this SKU):
+
+`corporate`, `chain`, `marketing`, `jargon`, `authentic`, `viral`, `content strategy`, `engagement` (as meta-commentary), `brand voice` (as self-description), `template`, `caption pack`
+
+**Category `description` fields ship in the PDF** — when-to-use guidance only. No writer watchouts ("not a corporate thank-you", "avoid mission statement").
+
+---
+
+## Short gate (only checks that matter)
+
+1. **Owner post test** — Would they post this verbatim this week?
+2. **Comps over rules** — Tier A ear wins over brief Avoid lists and salon-pack shape
+3. **No invented claims** — fake stats, fake reviews, #1 in town
+4. **Promos / CTAs / `!` allowed** when comps do it
+
+**No emojis in pack template `text`.** PDF output does not render them reliably. Strip from comps when adapting.
+
+**Café packs — "bar" wording:** Prefer **counter**, **espresso bar**, or **coffee bar** when context is clear. Bare **"the bar"** reads like a drinks bar unless coffee is in the same line (e.g. comp-verbatim *Meet me at the coffee bar*).
+
+**Avoid "drop" for menu launches** unless a Tier A comp uses it and the SKU owner would say it — it reads like streetwear. Prefer *new on the menu*, *just hit the menu*, *back on the board*.
+
+## Common failure (do not repeat)
+
+Turning Brand Alchemy's *"owners hate marketing jargon"* into owner captions like *"none of the corporate talk"* or *"not trying to go viral."* That is **Voice 1** leaking into **Voice 2**.

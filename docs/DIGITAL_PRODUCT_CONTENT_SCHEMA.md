@@ -84,7 +84,7 @@ Synthesize 1a–1c into decisions before writing:
 ```
 PATTERN SYNTHESIS
   Adopt:     [Post types, hooks, CTAs, promos, urgency patterns from comp examples file]
-  Avoid:     [Influencer/creator voice, corporate chain language, invented claims]
+  Avoid (INTERNAL — never paste into templates): [Influencer/creator voice, franchise chain style, invented claims]
   Differentiate: [What we ship that comps don't — specificity, voice, zero Canva dependency, etc.]
 
 TEMPLATE COUNT (confirm against price tier in PRODUCTS_PRICING_AND_INCLUDES.md)
@@ -101,6 +101,8 @@ TEMPLATE COUNT (confirm against price tier in PRODUCTS_PRICING_AND_INCLUDES.md)
 - Count changes require updating the brief **before** Stage 3 — not mid-draft.
 
 The gap from 1c plus the count decision from 1d become the quality bar for this product.
+
+**Avoid** in pattern synthesis = what not to imitate while drafting. **Not** caption copy. Show indie voice with specific menu/hours/drop lines like Tier A — never with meta lines about "corporate talk" or "not a chain."
 
 ### Stage 1 output
 
@@ -227,12 +229,18 @@ STATUS
 
 Re-read the brief in full. Specifically re-read:
 - Fill-in standard (these are the only brackets allowed)
-- Off-limits list (these are active constraints during writing, not post-hoc edits)
-- Quality bar (this is the internal test for every template before it moves to review)
+- Quality bar (internal test before review)
+
+**Social caption packs — brief Avoid / Off-limits / Pattern synthesis "Avoid":**
+- These are **internal drafting filters only** — things not to imitate from bad comps.
+- **Never paste them into template `text` or category `description`.** (No "not a chain," "corporate talk," "not trying to go viral," etc.)
+- If a line **comments on** marketing or corporates instead of posting like a real owner, delete it and draft from Tier A comps.
+
+**Generic / email packs:** Off-limits list remains an active writing constraint (different product type).
 
 Then calibrate — do not skip this even if the brief is complete:
 
-0. **Pattern synthesis** — Re-read Stage 1d (Adopt / Avoid / Differentiate). Hooks and CTAs from comps are allowed. Avoid creator/influencer voice and corporate chain language. **For social packs:** adopt comp urgency and promos when drafting voice 2 templates.
+0. **Pattern synthesis** — Re-read Stage 1d Adopt / Differentiate from comps. **Avoid** (internal filter only): creator/influencer voice, franchise chain *style*, invented claims. Do **not** write captions about avoiding those things — write captions that **sound like Tier A**. Adopt comp urgency, promos, and CTAs.
 1. **Comp examples on disk (required for social packs)** — Before Category 1, `{SKU}-comp-examples.md` must exist in [`digital-product-research/`](digital-product-research/) with **15+ verbatim lines** tagged by post type. Index in [`COMP_REFERENCE_LIBRARY.md`](digital-product-research/COMP_REFERENCE_LIBRARY.md). Draft within earshot of comps — do not write from rules alone.
 2. **Ear calibration (optional)** — Read comp lines aloud. Match **energy and post types**, not one repeated arc.
 3. **Category steering (brief/research only — not the PDF)** — In the product brief or research doc, note what situation the category covers **and** the angle trap to avoid (e.g. behind-the-scenes: not "the real work happens before you arrive"). Use this while drafting. **Do not paste steering or anti-pattern notes into the JSON `description` field** — that text ships in the PDF.
@@ -272,9 +280,10 @@ These packs failed when we optimized for **passing checklists** instead of **sou
 
 1. **Stylist post test** — Would a real owner post this verbatim after a normal week, without feeling like they're reading a template? If it sounds like a caption pack, rewrite.
 2. **Hard bans only** — No **invented claims** (guaranteed results, #1 in town, fabricated stats/reviews). **Salon-style urgency and promos are allowed** — limited spots, book this week, slots filling up, seasonal pushes — when comps and real salon posts use them. Write like real salon social: CTAs, link in bio, enthusiasm encouraged.
-3. **Variety by ear** — Read five templates in a row. If they share the same **structure** (not just topic), rewrite until the pack feels mixed.
-4. **Result-first, not scenario-first** — The **category description** tees the situation (when to use this section). The **caption** is the post: lead with vibe, service, result, or punch. Do not re-explain why you're posting — the photo and category already did that. (KIT 04 lesson: explaining the situation in every caption read stiff.)
-5. **Comps over rules** — Draft within earshot of Tier A lines in the comp file. If a global schema rule (punctuation, sentence count, watchout) conflicts with real comps, **comps win** for social packs.
+3. **No Voice 1 bleed** — Template must not mention marketing, corporates, chains, going viral, or "authentic" brand talk **unless a Tier A comp for this SKU uses that wording verbatim**. Brief Avoid lists are not caption ideas.
+4. **Variety by ear** — Read five templates in a row. If they share the same **structure** (not just topic), rewrite until the pack feels mixed.
+5. **Result-first, not scenario-first** — The **category description** tees the situation (when to use this section). The **caption** is the post: lead with vibe, service, result, or punch. Do not re-explain why you're posting — the photo and category already did that. (KIT 04 lesson: explaining the situation in every caption read stiff.)
+6. **Comps over rules** — Draft within earshot of Tier A lines in the comp file. If a global schema rule (punctuation, sentence count, watchout) conflicts with real comps, **comps win** for social packs.
 
 **Do not use while drafting social captions:** voice anchors, Story/Punchy/Hook shape plans, pack targets for `?` or `!`, staccato percentages, setup→turn→beat formulas, mandatory client quotes, register % caps, watchouts #3–#4/#8–#10, expressivity quotas, mirror-test formulas, or **scenario narration** in the caption body.
 
@@ -303,7 +312,8 @@ These packs failed when we optimized for **passing checklists** instead of **sou
 
 #### What does **not** apply to social caption packs
 
-- **Brand Alchemy marketing jargon ban** ([`BRAND_PLAYBOOK.md`](BRAND_PLAYBOOK.md)) — that governs how *we* talk to owners, not how owners talk to their customers
+- **Brand Alchemy marketing jargon ban** ([`BRAND_PLAYBOOK.md`](BRAND_PLAYBOOK.md)) — Voice 1 only. **Do not enforce it in pack templates** or export it as anti-marketing caption copy.
+- Brief **Avoid / Off-limits** lines about chain voice, influencer tone, etc. — **internal filters while drafting**, not phrases to put in captions
 - **Identity Kit voice walkers** ([`CUSTOMER_VOICE_AND_PRODUCT_LINE.md`](product-platform/CUSTOMER_VOICE_AND_PRODUCT_LINE.md)) — those govern AI-generated personalized copy from intake (claim-safe, no fabricated metrics), not static ready-to-post templates
 - Register quotas, shape targets, mirror-test formulas (see Removed rules table)
 
@@ -452,6 +462,7 @@ Read each template from the **customer's perspective** — not the owner's. This
 
 - For a social post: would a customer who sees this want to know more, visit, or feel warmly toward this business? Or does it read like background noise?
 - **Social caption packs only:** **Stylist post test** — would a real owner post this verbatim without cringing? Fail if it sounds like a template library (especially the *She came in / mirror / quoted line* formula repeated across the pack).
+- **Social caption packs only:** **Voice 1 bleed check** — fail if template or category description mentions marketing/corporate/chain/viral/authentic **as commentary** (unless Tier A comp uses that exact phrase). Examples of failure: *"none of the corporate talk," "not a chain," "not trying to go viral."*
 - For an email: would a customer who receives this read it, take action, or at least not unsubscribe?
 - For a promo post: does it communicate the offer clearly without sounding desperate or aggressive?
 
@@ -475,7 +486,7 @@ The goal is that a buyer reading through the pack can feel the range — some te
 
 ### Check 6: Voice check
 
-**Social caption packs:** skip Brand Alchemy voice check — use **stylist post test** (Check 3) only. Pack should sound like a stylist typed it, not like our marketing site.
+**Social caption packs:** skip Brand Alchemy voice check — use **stylist post test** + **Voice 1 bleed check** (Check 3) only. Pack should sound like a real owner post from comps, not like our marketing site or anti-marketing meta-commentary.
 
 **Generic / other template products:** Read the product as a whole and ask: does this feel like it came from Brand Alchemy's world? The signal is not polish — it is that it sounds like a knowledgeable friend who runs businesses and actually talks to owners. It should not sound like:
 
@@ -937,31 +948,33 @@ CONTENT SPEC
   Format:            Ready-to-post captions. Short. Social-first.
   Fill-in standard:  [your town], [the drink or item], [the specific detail].
                      Cafés have inherently specific details — lean into them.
-  Template count:    30
-  Categories:
-    1. Who we are (neighborhood café identity, what kind of place this is)
-    2. We're open / come in (morning presence, slow day, weekday invite)
-    3. The craft (what goes into the work, the prep, the care before the doors open)
-    4. A regular moment (a customer interaction, a returning face, a first-timer)
-    5. Local life (neighborhood energy, the block, the season)
-    6. This week (a win, a milestone, a good run of days)
+  Template count:    35
+  Categories:        [7 named scenario buckets × 5 templates each]
+    1. If you're new here (neighborhood café identity)
+    2. Open this week (morning, slow day, hours invite)
+    3. What goes into it (prep, the bar, craft)
+    4. A regular moment (familiar order, first-timer)
+    5. The regulars (vibe, team, personality)
+    6. A win this week (menu drop, seasonal, milestone)
+    7. Start a conversation (poll/question — no hero shot required)
 
 EXPRESSIVITY RANGE
   Required registers: Warm, Quiet, Real, Wry
-  Avoid: corporate coffee chain voice — no "crafted with care," no "hand-selected beans,"
-         no influencer language; should sound like the person behind the counter
+  Avoid (INTERNAL — never in template text): franchise chain style, influencer aesthetics, invented claims
+  Off-limits (INTERNAL — never in template text): Coffee chain clichés ("crafted with care," "hand-selected beans"); show indie voice via comps, not meta commentary
 
 CONSTRAINTS
   Industry-specific allowed vocabulary: "espresso," "the bar," "the regulars," "the cup,"
-    "the morning rush," "the prep list" — these narrow to cafés and are correct for this pack.
-  Off-limits:        Coffee chain vocabulary, influencer aesthetics, "cozy vibes."
+    "the morning rush," "the prep list" — correct for this pack.
 
 QUALITY BAR
   A template ships when: the person who opens at 6am reads it and thinks "yes, that's us."
   A template fails when: it could apply to any café chain or sounds like a lifestyle brand.
 
 STATUS
-  Brief pending — content not yet written.
+  Stage 1 complete (June 2026) — 35 Tier A comps in KIT-05-competitor-caption-examples.md
+  Stage 3 draft in packages/pdf-shell-sample/content/social-content-pack-cafe.json
+  Next: Stage 4 review + cover photo + PDF
 ```
 
 ---

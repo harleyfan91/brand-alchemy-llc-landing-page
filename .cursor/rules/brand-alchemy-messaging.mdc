@@ -5,6 +5,16 @@ alwaysApply: true
 
 # Brand Alchemy messaging & visuals
 
+## STOP — pack template JSON is NOT Voice 1
+
+If the task touches **`packages/pdf-shell-sample/content/*.json`** (Social Content Pack captions) or **Stage 3 template drafting** in `docs/digital-product-research/KIT-*`:
+
+- **Do not apply** this rule's playbook jargon ban, anti-marketer framing, or "plain expert" voice to template `text`.
+- **Follow** [`.cursor/rules/pack-templates-voice2.mdc`](pack-templates-voice2.mdc) + [`VOICE_SCOPE.md`](docs/product-platform/VOICE_SCOPE.md) + Tier A comps only.
+- Brief **Avoid / Off-limits** lists are **internal filters** — never paste them into captions (no "corporate talk," "not a chain," "not trying to go viral," etc.).
+
+---
+
 When adding or editing **user-facing copy**, **marketing content**, or **visual styling** (typography, color, buttons, cards, marks) for this project:
 
 1. **`docs/BRAND_SOURCE_OF_TRUTH.md`** — start here: goals, hub site model, articles/SEO role, product ladder summary; points to the rest.
@@ -27,6 +37,6 @@ When adding or editing **user-facing copy**, **marketing content**, or **visual 
 - **Voice 2** — Pack templates (captions, promos): owner's marketing to their customers. [`DIGITAL_PRODUCT_CONTENT_SCHEMA.md`](docs/DIGITAL_PRODUCT_CONTENT_SCHEMA.md) short gate + [`digital-product-research/`](docs/digital-product-research/) comp examples. **Not** voice 1 or 3.
 - **Voice 3** — [`CUSTOMER_VOICE_AND_PRODUCT_LINE.md`](docs/product-platform/CUSTOMER_VOICE_AND_PRODUCT_LINE.md): AI-generated Identity Kit copy from intake only.
 
-When editing `packages/pdf-shell-sample/content/*.json` or writing pack templates → **voice 2**. Read comp examples before drafting.
+**Pack templates (`packages/pdf-shell-sample/content/*.json`):** Voice 2 only — see [`pack-templates-voice2.mdc`](pack-templates-voice2.mdc). **Do not** reset pack captions using the playbook; reset using Tier A comps.
 
-Prefer plain language and concrete outcomes. If copy sounds aimed at SaaS founders, growth marketers, or agencies, reset using those docs. Keep new UI aligned with the guidelines doc so the site stays one system. This rule is **always applied** so you do not need a `.tsx` file open for brand context to load.
+**Site, articles, product pages:** Prefer plain language and concrete outcomes. If copy sounds aimed at SaaS founders, growth marketers, or agencies, reset using Voice 1 docs. Keep new UI aligned with the guidelines doc so the site stays one system.

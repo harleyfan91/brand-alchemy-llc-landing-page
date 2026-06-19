@@ -84,7 +84,7 @@ Phrases owners use (verbatim or close):
 - **Category mix** aligned to salon rhythm: availability, transformation/client moment, behind-the-chair, community, wins
 - Roughly **15–20%** of pack with clear energy/celebration (openings, proud results) — per schema hype guidance
 
-**Avoid:**
+**Avoid (INTERNAL — do not paste into templates):**
 - 5-hashtag blocks per caption as core value
 - "We LOVE our clients!" performative warmth
 - Beauty-influencer / lifestyle-brand adjectives

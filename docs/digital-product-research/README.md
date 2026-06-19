@@ -2,7 +2,9 @@
 
 Research and **comp reference** files for content pack SKUs. Stage 1 output lives here before templates are written.
 
-**Voice reminder:** Templates drafted from this research use **voice 2** (owner → their customers). See [`docs/product-platform/VOICE_SCOPE.md`](../product-platform/VOICE_SCOPE.md).
+**Voice reminder:** Templates = **voice 2** (owner → customers). See [`VOICE_SCOPE.md`](../product-platform/VOICE_SCOPE.md).
+
+**Brief Avoid / Off-limits in Stage 1 docs:** **INTERNAL ONLY** — never paste into pack templates. See [Voice 1 bleed](../product-platform/VOICE_SCOPE.md#voice-1-bleed--the-1-pack-failure-mode-read-this).
 
 ---
 

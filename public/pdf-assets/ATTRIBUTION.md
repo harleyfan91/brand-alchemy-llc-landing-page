@@ -5,5 +5,6 @@ Cover images for content packs use **free-license photography only** (Unsplash L
 | File | Photographer | Source | License |
 |------|--------------|--------|---------|
 | `social-content-pack-salon-cover.jpg` | [Tile Merchant Ireland](https://unsplash.com/@tilemerchant) | [Unsplash — hair salon interior](https://unsplash.com/photos/pb1Ajy_QUeE) | [Unsplash License](https://unsplash.com/license) |
+| `social-content-pack-cafe-cover.jpg` | [Adhitya Sibikumar](https://unsplash.com/@adhitya_2505) | [Unsplash — modern café counter](https://unsplash.com/photos/vePzWEyYmdk) | [Unsplash License](https://unsplash.com/license) |
 
 Legacy collage samples (`*-photos-collage-sample.png`) predate this log; replace with industry-specific JPEG covers when each SKU ships.

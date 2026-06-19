@@ -18,6 +18,6 @@ Identity Kit (`identity-kit` sibling repo) **implements** generation; it links h
 
 Parent **marketing** voice (voice 1): [BRAND_PLAYBOOK.md](./docs/BRAND_PLAYBOOK.md).
 
-**Three voices (canonical):** [VOICE_SCOPE.md](./docs/product-platform/VOICE_SCOPE.md) — pack templates (voice 2) and generated kit copy (voice 3) are **not** governed by the playbook.
+**Three voices (canonical):** [VOICE_SCOPE.md](./docs/product-platform/VOICE_SCOPE.md) — pack templates (voice 2) and generated kit copy (voice 3) are **not** governed by the playbook. Brief Avoid lists are **internal only** — see Voice 1 bleed section in VOICE_SCOPE.
 
 Pack template comp library: [digital-product-research/](./docs/digital-product-research/).
