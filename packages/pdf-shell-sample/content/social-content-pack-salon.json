@@ -4,12 +4,12 @@
   "title": "Social Content Pack",
   "subtitle": "35 ready-to-post captions for salons & beauty",
   "status": "ready",
-  "statusNote": "Ship-ready — 35 templates, 7 categories. Stage 4 review optional before listing.",
+  "statusNote": "Ship-ready — 35 templates, 7 categories, category photo hints. Stage 4 review optional before listing.",
   "coverStatement": "35 captions for salons & beauty. Ready to copy and post.",
   "coverPhoto": "../../public/pdf-assets/social-content-pack-salon-cover.jpg",
   "intro": {
     "hookDescription": "This pack has 35 captions for the moments that actually come up — open chairs, a result you're proud of, a slow Tuesday, a question for the feed, a new follower who needs a reason to book. Most are ready to copy and post.",
-    "howToUse": "Pick the category that matches your week — that's the scenario. The caption is the post: lead with the result, vibe, or hook. Most lines are written ready to post. A few marked with (I/my/me) vs we/our/us are for solo stylists — swap only on those. Fill [brackets] if needed.",
+    "howToUse": "Pick the category that matches your week — that's the scenario. Each section includes a photo idea; grab a shot that matches, then paste the caption. Most lines are ready to post. A few marked with (I/my/me) vs we/our/us are for solo stylists — swap only on those. Fill [brackets] if needed.",
     "fillInNote": "Only swap (I/we) or (my/our) or (me/us) where the template shows it — everything else is already in salon or neutral voice. Other fill-ins: [your town], [your specialty or service], [day].",
     "identityKitNote": "If you have an Identity Kit, swap in a line from your Voice and Content Playbook anywhere it fits. The pack works without it."
   },
@@ -18,6 +18,8 @@
       "id": "who-we-are",
       "title": "If you're new here",
       "description": "For when a new follower lands on your profile — referral energy, local pride, a reason to book.",
+      "photoPairing": "Your storefront, the welcome desk, or the team at the door — something that says who you are before they book.",
+      "photo": "../../public/pdf-assets/social-content-pack-salon/categories/who-we-are.jpg",
       "templates": [
         {
           "id": "01",
@@ -49,7 +51,9 @@
     {
       "id": "availability",
       "title": "Open chair this week",
-      "description": "For a slow day, an open slot, or room on the books — pair with a chair shot or calendar post.",
+      "description": "For a slow day, an open slot, or room on the books.",
+      "photoPairing": "Empty chair, cape on the station, or your booking link on screen.",
+      "photo": "../../public/pdf-assets/social-content-pack-salon/categories/availability.jpg",
       "templates": [
         {
           "id": "06",
@@ -82,6 +86,8 @@
       "id": "the-work",
       "title": "What you can expect",
       "description": "For a process shot, tool flat-lay, or consultation clip — name the service, not the backstory.",
+      "photoPairing": "Hands in hair, a formula bowl, or tools laid out — the work, not a manifesto.",
+      "photo": "../../public/pdf-assets/social-content-pack-salon/categories/the-work.jpg",
       "templates": [
         {
           "id": "11",
@@ -114,6 +120,8 @@
       "id": "client-moment",
       "title": "A client moment",
       "description": "For a before/after or finished look — lead with the result; the photo does the rest.",
+      "photoPairing": "The finished look, a swipeable before/after, or the moment they see it in the mirror.",
+      "photo": "../../public/pdf-assets/social-content-pack-salon/categories/client-moment.jpg",
       "templates": [
         {
           "id": "16",
@@ -146,6 +154,8 @@
       "id": "community",
       "title": "The regulars",
       "description": "For salon vibe, team, or personality posts — not a loyalty speech.",
+      "photoPairing": "Regulars in the chair, a busy Saturday floor, or familiar faces at the station.",
+      "photo": "../../public/pdf-assets/social-content-pack-salon/categories/community.jpg",
       "templates": [
         {
           "id": "21",
@@ -178,6 +188,8 @@
       "id": "win-this-week",
       "title": "A win this week",
       "description": "For a transformation or result you're proud of — seasonal punch, technique, or hot take.",
+      "photoPairing": "A result you're proud of, seasonal color, or a technique close-up.",
+      "photo": "../../public/pdf-assets/social-content-pack-salon/categories/win-this-week.jpg",
       "templates": [
         {
           "id": "26",
@@ -210,6 +222,8 @@
       "id": "conversation",
       "title": "Start a conversation",
       "description": "For when you want replies, not just likes — poll energy or a casual question, no fresh result required.",
+      "photoPairing": "Two finishes side by side, a this-or-that color comparison, or a split before/after for Stories.",
+      "photo": "../../public/pdf-assets/social-content-pack-salon/categories/conversation.jpg",
       "templates": [
         {
           "id": "31",

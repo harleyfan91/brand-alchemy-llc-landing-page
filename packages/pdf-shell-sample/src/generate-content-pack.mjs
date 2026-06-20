@@ -68,7 +68,10 @@ const coverPhotoPath = pack.coverPhoto
   ? join(__dirname, '..', pack.coverPhoto)
   : DEFAULT_COVER_PHOTO
 
-// ─── Colors ───────────────────────────────────────────────────────────────────
+// Category sidebar photos — 2:3 portrait; source assets are 480×720 JPEG (see prepare-category-photos.mjs)
+const CATEGORY_PHOTO_W_PT = 120
+const CATEGORY_PHOTO_H_PT = 180
+const CATEGORY_PHOTO_EDGE_INSET_PT = 20
 
 const CATEGORY_BAND_COLORS = BRAND_PDF_PARENT_UI.navSegmentRamp
 
@@ -231,16 +234,72 @@ const S = StyleSheet.create({
     color: '#FFFFFF',
     flex: 1,
   },
-  categoryDesc: {
+
+  // Full-width band, intro row, then templates + photo (alternating sides by category).
+  categorySectionOuter: {
+    flexDirection: 'column',
+  },
+  categoryIntroRow: {
     paddingHorizontal: 44,
-    paddingTop: 6,
+    paddingTop: 8,
     paddingBottom: 10,
+  },
+  categoryBodyRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  categoryCopyCol: {
+    flex: 1,
+    minWidth: 0,
+  },
+  categoryPhotoCol: {
+    width: CATEGORY_PHOTO_W_PT + 8,
+    flexShrink: 0,
+    alignSelf: 'stretch',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  categoryIntroBlock: {
+    paddingTop: 0,
+    paddingBottom: 0,
+  },
+  categoryScenario: {
     fontSize: 9.5,
     fontFamily: 'Inter',
     fontWeight: 300,
     fontStyle: 'italic',
     lineHeight: 1.55,
     color: BRAND_PDF_COLORS.subText,
+    marginBottom: 8,
+  },
+  categoryPhotoLabel: {
+    fontSize: 7,
+    fontFamily: 'Inter',
+    fontWeight: 700,
+    letterSpacing: 1.4,
+    color: BRAND_PDF_COLORS.subText,
+    marginBottom: 4,
+  },
+  categoryPhotoPairing: {
+    fontSize: 9,
+    fontFamily: 'Inter',
+    fontWeight: 300,
+    lineHeight: 1.55,
+    color: BRAND_PDF_COLORS.bodyText,
+  },
+  categoryPhotoFrame: {
+    padding: 4,
+    backgroundColor: '#F4F4F5',
+    borderWidth: 1,
+    borderColor: '#E4E4E7',
+    borderRadius: 3,
+  },
+  categoryPhoto: {
+    width: CATEGORY_PHOTO_W_PT,
+    height: CATEGORY_PHOTO_H_PT,
+    objectFit: 'cover',
+    objectPosition: 'center',
+    borderRadius: 2,
   },
 
   // ── Template blocks ─────────────────────────────────────────────────────────
@@ -249,7 +308,6 @@ const S = StyleSheet.create({
   // the Text so the number and text are always in the same element and can
   // never be split across a physical page boundary.
   templateBlock: {
-    paddingHorizontal: 44,
     paddingTop: 9,
     paddingBottom: 9,
   },
@@ -278,6 +336,116 @@ const S = StyleSheet.create({
 
 function padNum(n) {
   return String(n).padStart(2, '0')
+}
+
+function resolvePackAssetPath(relativePath) {
+  return join(__dirname, '..', relativePath)
+}
+
+function TemplateRow(catId, template, num) {
+  const parts = template.text.split(/(\[[^\]]+\])/)
+  return h(
+    View,
+    { key: `${catId}-${template.id}`, style: S.templateBlock },
+    h(
+      Text,
+      { style: S.templateText },
+      h(Text, { style: S.templateNumInline }, padNum(num) + '   '),
+      ...parts.map((part, i) =>
+        part.startsWith('[') && part.endsWith(']')
+          ? h(Text, { key: i, style: S.templateFill }, part)
+          : part,
+      ),
+    ),
+  )
+}
+
+function categoryBodyRowStyle(photoOnLeft) {
+  return {
+    ...S.categoryBodyRow,
+    paddingLeft: photoOnLeft ? CATEGORY_PHOTO_EDGE_INSET_PT : 0,
+    paddingRight: photoOnLeft ? 0 : CATEGORY_PHOTO_EDGE_INSET_PT,
+  }
+}
+
+function categoryCopyColStyle(photoOnLeft) {
+  return {
+    ...S.categoryCopyCol,
+    paddingLeft: photoOnLeft ? 14 : 44,
+    paddingRight: photoOnLeft ? 44 : 14,
+  }
+}
+
+function CategoryIntroCopy(cat) {
+  if (!cat.photoPairing) {
+    return h(Text, { key: `desc-${cat.id}`, style: S.categoryScenario }, cat.description)
+  }
+
+  return h(
+    View,
+    { key: `intro-${cat.id}`, style: S.categoryIntroBlock },
+    h(Text, { style: S.categoryScenario }, cat.description),
+    h(Text, { style: S.categoryPhotoLabel }, 'WHAT TO POST'),
+    h(Text, { style: S.categoryPhotoPairing }, cat.photoPairing),
+  )
+}
+
+function CategorySection(cat, catIdx, startNum) {
+  const bandColor = CATEGORY_BAND_COLORS[catIdx % CATEGORY_BAND_COLORS.length]
+  const photoPath = cat.photo ? resolvePackAssetPath(cat.photo) : null
+  const photoOnLeft = catIdx % 2 === 1
+  let num = startNum
+
+  const templateRows = cat.templates.map((template) => {
+    num += 1
+    return TemplateRow(cat.id, template, num)
+  })
+
+  const copyColumn = h(
+    View,
+    { key: `copy-${cat.id}`, style: categoryCopyColStyle(photoOnLeft) },
+    ...templateRows,
+  )
+
+  const photoColumn = photoPath
+    ? h(
+        View,
+        { key: `photo-col-${cat.id}`, style: S.categoryPhotoCol, wrap: false },
+        h(
+          View,
+          { key: `photo-frame-${cat.id}`, style: S.categoryPhotoFrame, wrap: false },
+          h(Image, { key: `photo-${cat.id}`, src: photoPath, style: S.categoryPhoto, wrap: false }),
+        ),
+      )
+    : null
+
+  const bodyChildren = photoOnLeft && photoColumn
+    ? [photoColumn, copyColumn]
+    : [copyColumn, photoColumn]
+
+  return {
+    node: h(
+      View,
+      { key: `section-${cat.id}`, style: S.categorySectionOuter, wrap: false },
+      catIdx > 0 ? h(View, { key: `gap-${cat.id}`, style: S.categorySectionGap }) : null,
+      h(
+        View,
+        { key: `strip-${cat.id}`, style: [S.categoryStrip, { backgroundColor: bandColor }], wrap: false },
+        h(Text, { style: S.categoryStripTitle }, cat.title.toUpperCase()),
+      ),
+      h(
+        View,
+        { key: `intro-row-${cat.id}`, style: S.categoryIntroRow },
+        CategoryIntroCopy(cat),
+      ),
+      h(
+        View,
+        { key: `body-${cat.id}`, style: categoryBodyRowStyle(photoOnLeft) },
+        ...bodyChildren,
+      ),
+    ),
+    nextNum: num,
+  }
 }
 
 // ─── Pages ────────────────────────────────────────────────────────────────────
@@ -384,40 +552,10 @@ function IntroPage() {
 function CategoryBlocks() {
   let globalNum = 0
 
-  return pack.categories.flatMap((cat, catIdx) => {
-    const bandColor = CATEGORY_BAND_COLORS[catIdx % CATEGORY_BAND_COLORS.length]
-
-    const header = [
-      catIdx > 0 ? h(View, { key: `gap-${cat.id}`, style: S.categorySectionGap }) : null,
-      h(
-        View,
-        { key: `strip-${cat.id}`, style: [S.categoryStrip, { backgroundColor: bandColor }], wrap: false },
-        h(Text, { style: S.categoryStripTitle }, cat.title.toUpperCase()),
-      ),
-      h(Text, { key: `desc-${cat.id}`, style: S.categoryDesc }, cat.description),
-    ]
-
-    const rows = cat.templates.map((template) => {
-      globalNum += 1
-      const num = globalNum
-      const parts = template.text.split(/(\[[^\]]+\])/)
-      return h(
-        View,
-        { key: `${cat.id}-${template.id}`, style: S.templateBlock },
-        h(
-          Text,
-          { style: S.templateText },
-          h(Text, { style: S.templateNumInline }, padNum(num) + '   '),
-          ...parts.map((part, i) =>
-            part.startsWith('[') && part.endsWith(']')
-              ? h(Text, { key: i, style: S.templateFill }, part)
-              : part,
-          ),
-        ),
-      )
-    })
-
-    return [...header, ...rows]
+  return pack.categories.map((cat, catIdx) => {
+    const { node, nextNum } = CategorySection(cat, catIdx, globalNum)
+    globalNum = nextNum
+    return node
   })
 }
 

@@ -1,0 +1,134 @@
+{
+  "spec": {
+    "widthPx": 480,
+    "heightPx": 720,
+    "maxBytes": 122880,
+    "jpegQualityStart": 84,
+    "jpegQualityMin": 70,
+    "jpegQualityStep": 3
+  },
+  "packs": {
+    "cafe": {
+      "outputDir": "public/pdf-assets/social-content-pack-cafe/categories",
+      "categories": {
+        "who-we-are": {
+          "bankAsset": "batch009_refined_environment_cafe",
+          "attribution": {
+            "photographer": "Unsplash contributor",
+            "sourcePageUrl": "https://unsplash.com/photos/cozy-cafe-interior-with-tables-and-counter-EFHS9YEiXFI",
+            "license": "Unsplash License"
+          }
+        },
+        "open-this-week": {
+          "sourceUrl": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&h=1800&q=80",
+          "attribution": {
+            "photographer": "Unsplash contributor",
+            "sourcePageUrl": "https://unsplash.com/photos/people-sitting-inside-cafe-1e0d58224f24",
+            "license": "Unsplash License"
+          }
+        },
+        "the-craft": {
+          "bankAsset": "batch001_espresso_still",
+          "attribution": {
+            "photographer": "Unsplash contributor",
+            "sourcePageUrl": "https://unsplash.com/photos/three-coffee-portafilters-on-stainless-steel-f8396924c348",
+            "license": "Unsplash License"
+          }
+        },
+        "regular-moment": {
+          "sourceUrl": "https://images.unsplash.com/photo-1774283119033-9a7c9d3e0fb8?auto=format&fit=crop&w=1200&h=1800&q=80",
+          "attribution": {
+            "photographer": "Unsplash contributor",
+            "sourcePageUrl": "https://unsplash.com/photos/young-woman-reading-a-book-at-an-outdoor-cafe-9a7c9d3e0fb8",
+            "license": "Unsplash License"
+          }
+        },
+        "the-regulars": {
+          "bankAsset": "batch001_cafe_night",
+          "attribution": {
+            "photographer": "Unsplash contributor",
+            "sourcePageUrl": "https://unsplash.com/photos/people-sitting-inside-a-coffee-shop-at-night-hSeSLSfPrl0",
+            "license": "Unsplash License"
+          }
+        },
+        "win-this-week": {
+          "sourceUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=1200&h=1800&q=80",
+          "attribution": {
+            "photographer": "Unsplash contributor",
+            "sourcePageUrl": "https://unsplash.com/photos/avocado-toast-with-fried-egg-7529414344d8",
+            "license": "Unsplash License"
+          }
+        },
+        "conversation": {
+          "sourceUrl": "https://images.unsplash.com/photo-1582557678431-d3b30ea0be05?auto=format&fit=crop&w=1200&h=1800&q=80",
+          "attribution": {
+            "photographer": "Unsplash contributor",
+            "sourcePageUrl": "https://unsplash.com/photos/black-and-white-coffee-shop-sign-d3b30ea0be05",
+            "license": "Unsplash License"
+          }
+        }
+      }
+    },
+    "salon": {
+      "outputDir": "public/pdf-assets/social-content-pack-salon/categories",
+      "categories": {
+        "who-we-are": {
+          "sourceUrl": "https://images.unsplash.com/photo-1637777277337-f114350fb088?auto=format&fit=crop&w=1200&h=1800&q=80",
+          "attribution": {
+            "photographer": "Unsplash contributor",
+            "sourcePageUrl": "https://unsplash.com/photos/a-beauty-salon-with-chairs-and-mirrors-f114350fb088",
+            "license": "Unsplash License"
+          }
+        },
+        "availability": {
+          "sourceUrl": "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&h=1800&q=80",
+          "attribution": {
+            "photographer": "Mostafa Meraji",
+            "sourcePageUrl": "https://unsplash.com/photos/black-and-gray-salon-chair-138dadb4c035",
+            "license": "Unsplash License"
+          }
+        },
+        "the-work": {
+          "sourceUrl": "https://images.unsplash.com/photo-1746723378067-83a345ff3160?auto=format&fit=crop&w=1200&h=1800&q=80",
+          "attribution": {
+            "photographer": "Unsplash contributor",
+            "sourcePageUrl": "https://unsplash.com/photos/a-person-is-getting-their-hair-done-at-a-salon-83a345ff3160",
+            "license": "Unsplash License"
+          }
+        },
+        "client-moment": {
+          "sourceUrl": "https://images.unsplash.com/photo-1695527081848-1e46c06e6458?auto=format&fit=crop&w=1200&h=1800&q=80",
+          "attribution": {
+            "photographer": "Unsplash contributor",
+            "sourcePageUrl": "https://unsplash.com/photos/a-woman-with-long-blonde-hair-is-getting-her-hair-done-1e46c06e6458",
+            "license": "Unsplash License"
+          }
+        },
+        "community": {
+          "sourceUrl": "https://images.unsplash.com/photo-1761931403671-d020a14928d9?auto=format&fit=crop&w=1200&h=1800&q=80",
+          "attribution": {
+            "photographer": "Unsplash contributor",
+            "sourcePageUrl": "https://unsplash.com/photos/clients-in-a-hair-salon-d020a14928d9",
+            "license": "Unsplash License"
+          }
+        },
+        "win-this-week": {
+          "sourceUrl": "https://images.unsplash.com/photo-1763741141049-352dfafcc64f?auto=format&fit=crop&w=1200&h=1800&q=80",
+          "attribution": {
+            "photographer": "Unsplash contributor",
+            "sourcePageUrl": "https://unsplash.com/photos/a-woman-with-blonde-hair-is-smiling-352dfafcc64f",
+            "license": "Unsplash License"
+          }
+        },
+        "conversation": {
+          "sourceUrl": "https://images.unsplash.com/photo-1554519934-e32b1629d9ee?auto=format&fit=crop&w=1200&h=1800&q=80",
+          "attribution": {
+            "photographer": "Unsplash contributor",
+            "sourcePageUrl": "https://unsplash.com/photos/woman-with-brown-and-blonde-hair-e32b1629d9ee",
+            "license": "Unsplash License"
+          }
+        }
+      }
+    }
+  }
+}

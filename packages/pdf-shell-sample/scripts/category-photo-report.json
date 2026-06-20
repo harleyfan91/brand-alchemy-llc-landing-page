@@ -1,0 +1,103 @@
+{
+  "generatedAt": "2026-06-20T15:54:17.425Z",
+  "assets": [
+    {
+      "pack": "cafe",
+      "categoryId": "who-we-are",
+      "file": "public/pdf-assets/social-content-pack-cafe/categories/who-we-are.jpg",
+      "kb": 61,
+      "quality": 84
+    },
+    {
+      "pack": "cafe",
+      "categoryId": "open-this-week",
+      "file": "public/pdf-assets/social-content-pack-cafe/categories/open-this-week.jpg",
+      "kb": 72,
+      "quality": 84
+    },
+    {
+      "pack": "cafe",
+      "categoryId": "the-craft",
+      "file": "public/pdf-assets/social-content-pack-cafe/categories/the-craft.jpg",
+      "kb": 45,
+      "quality": 84
+    },
+    {
+      "pack": "cafe",
+      "categoryId": "regular-moment",
+      "file": "public/pdf-assets/social-content-pack-cafe/categories/regular-moment.jpg",
+      "kb": 55,
+      "quality": 84
+    },
+    {
+      "pack": "cafe",
+      "categoryId": "the-regulars",
+      "file": "public/pdf-assets/social-content-pack-cafe/categories/the-regulars.jpg",
+      "kb": 48,
+      "quality": 84
+    },
+    {
+      "pack": "cafe",
+      "categoryId": "win-this-week",
+      "file": "public/pdf-assets/social-content-pack-cafe/categories/win-this-week.jpg",
+      "kb": 45,
+      "quality": 84
+    },
+    {
+      "pack": "cafe",
+      "categoryId": "conversation",
+      "file": "public/pdf-assets/social-content-pack-cafe/categories/conversation.jpg",
+      "kb": 37,
+      "quality": 84
+    },
+    {
+      "pack": "salon",
+      "categoryId": "who-we-are",
+      "file": "public/pdf-assets/social-content-pack-salon/categories/who-we-are.jpg",
+      "kb": 29,
+      "quality": 84
+    },
+    {
+      "pack": "salon",
+      "categoryId": "availability",
+      "file": "public/pdf-assets/social-content-pack-salon/categories/availability.jpg",
+      "kb": 48,
+      "quality": 84
+    },
+    {
+      "pack": "salon",
+      "categoryId": "the-work",
+      "file": "public/pdf-assets/social-content-pack-salon/categories/the-work.jpg",
+      "kb": 25,
+      "quality": 84
+    },
+    {
+      "pack": "salon",
+      "categoryId": "client-moment",
+      "file": "public/pdf-assets/social-content-pack-salon/categories/client-moment.jpg",
+      "kb": 46,
+      "quality": 84
+    },
+    {
+      "pack": "salon",
+      "categoryId": "community",
+      "file": "public/pdf-assets/social-content-pack-salon/categories/community.jpg",
+      "kb": 35,
+      "quality": 84
+    },
+    {
+      "pack": "salon",
+      "categoryId": "win-this-week",
+      "file": "public/pdf-assets/social-content-pack-salon/categories/win-this-week.jpg",
+      "kb": 67,
+      "quality": 84
+    },
+    {
+      "pack": "salon",
+      "categoryId": "conversation",
+      "file": "public/pdf-assets/social-content-pack-salon/categories/conversation.jpg",
+      "kb": 43,
+      "quality": 84
+    }
+  ]
+}

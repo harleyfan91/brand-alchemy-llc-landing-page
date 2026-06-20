@@ -14,7 +14,8 @@
     "generate:services-photos": "node src/generate-services-photos-pdf.mjs",
     "generate:spa": "node src/generate-spa-review-pdf.mjs",
     "generate:spa-photos": "node src/generate-spa-photos-pdf.mjs",
-    "generate:pack": "node src/generate-content-pack.mjs"
+    "generate:pack": "node src/generate-content-pack.mjs",
+    "prepare:category-photos": "node scripts/prepare-category-photos.mjs"
   },
   "dependencies": {
     "@brand-alchemy/pdf-layout-primitives": "file:../pdf-layout-primitives",
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
-    "@types/react": "^19.2.0"
+    "@types/react": "^19.2.0",
+    "sharp": "^0.34.2"
   }
 }
