@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import AlchemyMark from './AlchemyMark';
 import { scrollToSection } from '../utils/scrollToSection';
+import { saveStudioReturnTarget } from '../utils/studioReturnPath';
 
 /**
  * Nav: home uses in-page #anchors; `/identity-kit` and `/articles/:slug` are dedicated routes.
@@ -12,6 +13,7 @@ const Header: React.FC = () => {
   const navigate = useNavigate();
   const isHome = location.pathname === '/';
   const isIdentityKit = location.pathname === '/identity-kit' || location.pathname === '/identity-kit/select';
+  const isStudio = location.pathname === '/studio';
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -41,6 +43,15 @@ const Header: React.FC = () => {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+  };
+
+  const handleStudioNav = () => {
+    closeMenu();
+    saveStudioReturnTarget({
+      pathname: location.pathname,
+      hash: location.hash,
+      scrollY: window.scrollY,
+    });
   };
 
   return (
@@ -73,6 +84,14 @@ const Header: React.FC = () => {
           </Link>
           <a href={isHome ? '#articles' : '/#articles'} onClick={(e) => handleNavClick(e, 'articles')} className="hover:text-black transition-colors">Articles</a>
           <a href="mailto:info@brandalchemyllc.com" className="hover:text-black transition-colors">Contact</a>
+          <Link
+            to="/studio"
+            onClick={handleStudioNav}
+            className={`transition-colors hover:text-black ${isStudio ? 'text-black' : ''}`}
+            aria-current={isStudio ? 'page' : undefined}
+          >
+            Studio
+          </Link>
         </nav>
 
         {/* Mobile toggle */}
@@ -110,6 +129,14 @@ const Header: React.FC = () => {
           </Link>
           <a href={isHome ? '#articles' : '/#articles'} onClick={(e) => handleNavClick(e, 'articles')} className="hover:text-black transition-colors">Articles</a>
           <a href="mailto:info@brandalchemyllc.com" onClick={closeMenu} className="hover:text-black transition-colors">Contact</a>
+          <Link
+            to="/studio"
+            onClick={handleStudioNav}
+            className={`transition-colors hover:text-black ${isStudio ? 'text-black' : ''}`}
+            aria-current={isStudio ? 'page' : undefined}
+          >
+            Studio
+          </Link>
         </nav>
       </div>
     </header>

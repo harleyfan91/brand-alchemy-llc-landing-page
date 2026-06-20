@@ -1,0 +1,19 @@
+@keyframes ba-studio-glyph-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ba-studio-glyph {
+  animation: ba-studio-glyph-spin linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ba-studio-glyph {
+    animation: none;
+  }
+}
