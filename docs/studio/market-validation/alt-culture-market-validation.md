@@ -105,7 +105,7 @@ There is massive, vocal backlash within alternative subcultures — specifically
 
 `Client Intake → Vertical Consultation → Digital Deposit (min. $150) → Automated Reminders/Aftercare PDF`
 
-- **Target leads:** High-end urban studios with 5+ artists, custom work focus, charging $150+ shop minimum
+- **Target leads:** High-end urban studios with 5+ artists, custom work focus, charging $150+ shop minimum. Named candidates → [Outreach Target Candidates](#outreach-target-candidates)
 - **Working model:** Transition from 50/50 commission split to tiered booth-rental model ($600–$1,200/week in prime locations) — shifts marketing expenses to the artist, stabilizes studio's monthly recurring revenue
 - **System integrations:**
   - *Scheduling:* Lunacal or Bookedin for multi-artist real-time scheduling with custom buffer times
@@ -116,7 +116,7 @@ There is massive, vocal backlash within alternative subcultures — specifically
 
 `Micro-Teaser (socials/leaks) → Early Access SMS (68% conversion) → Drop Day (Thursday 11 AM) → Inventory Reconcile`
 
-- **Target leads:** Labels $1M–$5M DTC, founder-owned, no full-time marketing hire, at least one completed drop cycle
+- **Target leads:** Labels $1M–$5M DTC, founder-owned, no full-time marketing hire, at least one completed drop cycle. Named candidates → [Outreach Target Candidates](#outreach-target-candidates)
 - **Working model:** Strict calendarized drop model (Thursday 11 AM, pioneered by Supreme) — builds consumer habit, maintains cash-flow velocity
 - **System integrations:**
   - *Wholesale/tiered pricing:* BOLD Custom Pricing ($39.99/mo) or Wholesale Club ($24/mo) on Shopify for select boutique expansion
@@ -127,7 +127,7 @@ There is massive, vocal backlash within alternative subcultures — specifically
 
 `Sterile Piercing Service (low-margin traffic) → High-Margin Jewelry Retail (86%+ GM) → Stab Pad Form (compliance/ID) → Downsize Reminder (recurring income)`
 
-- **Target leads:** Sanctuary-model studios, solid gold/titanium inventory from verified suppliers (BVLA, Anatometal, Buddha Jewelry), appointment + retail hybrid
+- **Target leads:** Sanctuary-model studios, solid gold/titanium inventory from verified suppliers (BVLA, Anatometal, Buddha Jewelry), appointment + retail hybrid. Named candidates → [Outreach Target Candidates](#outreach-target-candidates)
 - **Working model:** Maintain strict 55% retail jewelry mix, 6–10x markup on premium inventory
 - **System integrations:**
   - *POS/Inventory:* Square for Retail with mandatory high-resolution product photos to eliminate inventory description errors
@@ -138,12 +138,70 @@ There is massive, vocal backlash within alternative subcultures — specifically
 
 `Ticketing Launch (Resident Advisor) → Event Production Checklist → High-Margin Upsells (AV/booths/vans) → Profit Allocation`
 
-- **Target leads:** Independent promoter brands hosting regular events on Resident Advisor, underground venues with 3+ regular events/month
+- **Target leads:** Independent promoter brands hosting regular events on Resident Advisor, underground venues with 3+ regular events/month. Named candidates → [Outreach Target Candidates](#outreach-target-candidates) _(tracked for market validation; not in current primary package lineup — see `strategy-current.md`)_
 - **Working model:** Low monthly fixed operating cost (~$1,480); rent venues for private corporate events during off-peak hours; keep DJs on variable commission until collective clears 150 events/year
 - **System integrations:**
   - *Operations:* Festival Pro for artists, sound engineers, volunteers, ticketing, and cashless payments
   - *Pre-show checklist:* Strict 72-to-24 hour pre-show protocol reconciling ticketing tiers, testing FOH/monitor rigs, verifying hospitality riders
   - *Legal/partnership:* Formal partnership contracts + LLC registration defining initial capital investments, equipment ownership, and profit-sharing terms
+
+---
+
+## Outreach Target Candidates
+
+_Research-derived businesses identified in market-validation follow-up (June 2026). Use as a **qualification starting list**, not a vetted pipeline. Before outreach, confirm: revenue tier ($1M–$5M where applicable), documented operational chaos signals, appetite for systems-level thinking, and category fit against `docs/studio/strategy-current.md`. Lead with subculture credibility; allow corporate rigor to emerge as the surprise validator._
+
+**Delivery note:** This research doc sometimes frames consulting as hands-on implementation. Active Studio delivery follows `strategy-current.md` — pure advisory, Notion checklists, hands-off-keyboards. Outreach should pitch infrastructure design and governance, not platform login or copywriting.
+
+### High-End Tattoo Studio Collectives
+
+| Business | Location | Why they fit | Outreach angle | Source |
+|---|---|---|---|---|
+| **IGLÀ Tattoo** (Daria Baione) | Midtown Manhattan | Female-owned; luxury fine-line and custom work; $150 shop minimum signals premium positioning | Capacity & Intake Strategy — vertical consultations, deposit enforcement, multi-artist scheduling without manual load-leveling | [iglatattoo.com](https://iglatattoo.com/) |
+| **Ink Centre** | Manhattan | Structured shared-booth rental model ($400–$1,100/mo per booth); ops-heavy studio economics | Drop & Allocation or Capacity — booth-rental revenue stabilization, artist utilization tracking, intake standardization | [inkcentretattoo.com](https://www.inkcentretattoo.com/) |
+| **Noble Art** | Manhattan (+ 10 global studios) | International brand with multi-location studio network; high-end positioning | Qualify carefully — may be above ICP or have internal ops; if fit, multi-location capacity governance and booking architecture | [nobleart.com](https://nobleart.com/en/our-studies/tattoo-studio-new-york) |
+
+**Qualification flags:** Confirm studio revenue band and whether founder/owner still feels operational pain. Booth-rental and multi-location models may already have partial systems in place.
+
+### Direct-to-Consumer Streetwear Labels
+
+| Business | Location | Why they fit | Outreach angle | Source |
+|---|---|---|---|---|
+| **Noah** (Brendon Babenzien) | Soho, NYC | Preppy-sustainable independent label; established DTC presence | Drop & Allocation Strategy — calendarized drops, SMS early-access flows, supply chain de-risking | [noahny.com](https://www.noahny.com/) |
+| **Brain Dead** (Kyle Ng) | Los Angeles (NYC retail presence) | Counterculture creative collective; drop-native brand identity | Drop & Allocation Strategy — scarcity mechanics, print grading QC, wholesale tier expansion | [wearebraindead.com](https://wearebraindead.com/) |
+| **Garmentory** (discovery channel) | Online marketplace | Curates contemporary fashion and emerging indie brands — useful for **prospecting**, not a client | Use to identify $1M–$5M founder-owned labels with drop mechanics and no obvious ops hire | [garmentory.com](https://www.garmentory.com/) |
+
+**Qualification flags:** Noah and Brain Dead may exceed $5M or have dedicated ops/marketing staff. Prioritize emerging labels surfaced via Garmentory and similar channels that match Category A criteria in `strategy-current.md`.
+
+### High-End Piercing Studios
+
+| Business | Location | Why they fit | Outreach angle | Source |
+|---|---|---|---|---|
+| **Nine Moons** (Starr) | Soho, NYC (Lafayette) | Elite studio; exclusive solid-gold BVLA inventory; luxury sanctuary model | Capacity & Intake Strategy — visual POS inventory, 55% jewelry mix governance, compliance workflow design | Reddit / NYC community recs |
+| **Love Adorned** | Soho, NYC | High-end jewelry and piercing retail hybrid; luxury positioning | Capacity & Intake Strategy — cross-subsidization pricing model, high-margin retail mix, ID/consent architecture | [loveadorned.com](https://loveadorned.com/) |
+| **Fountainhead New York** (Matt Beckerich, Phil Szlosek) | Huntington Village, LI | Craft-first studio; APP-aligned professionalism | Capacity & Intake Strategy — inventory cataloging, Stab Pad + POS integration specs, processor rate negotiation framework | [fountainheadny.com](https://fountainheadny.com/) |
+
+**Qualification flags:** Confirm owner revenue ($250K–$500K+ owner income is a proxy, not a substitute for studio-level qualification). Piercing studios with heavy CapEx may be cash-locked — frame ROI around jewelry margin capture and inventory error reduction.
+
+### Indie DJ and Music Collectives
+
+_Tracked for market validation and future vertical expansion. Not in the current primary package lineup (`strategy-current.md` Categories A and B). Outreach here is research-only unless/until a DJ/event package is defined._
+
+| Business | Location | Why they fit | Outreach angle | Source |
+|---|---|---|---|---|
+| **Signal** | East Williamsburg, NYC | Regular underground events; Resident Advisor promoter profile | Cash flow forecasting, pre-show operational checklists, ticketing tier architecture | [ra.co/promoters/157261](https://ra.co/promoters/157261) |
+| **Laylit** | NYC (Elsewhere, etc.) | SWANA-focused collective; recurring event programming | Partnership/LLC structure, promoter ROI tracking, seasonal cash flow modeling | [ra.co/events/2402998](https://ra.co/events/2402998) |
+| **QNCC** | NYC | Queer collective; subcultural authenticity + decentralized ops | Formal profit-allocation contracts, multi-artist rider standardization, Festival Pro-style ops dashboard specs | [ra.co/promoters/171104](https://ra.co/promoters/171104) |
+
+**Qualification flags:** Extreme seasonal volatility; milestone or project-based pricing may fit better than retainer. Confirm collective has revenue ambition and admin pain, not just creative collaboration.
+
+### Outreach workflow (from research → pipeline)
+
+1. **Screen** named candidate against ICP in `strategy-current.md` (revenue, chaos signals, category A/B fit).
+2. **Research** before DM — Matt's discovery prep standard applies: working hypothesis on primary operational gap.
+3. **Lead with credibility** — reference their specific model (booth rental, BVLA inventory, drop cadence, etc.), not generic "I help businesses grow."
+4. **Route to intake** — qualified interest → `/studio/intake` → manual review → $200 discovery call.
+5. **Phase 2 alpha goal** — first-client-rate advisory in Category A and Category B; use named Manhattan/Soho targets as high-priority local outreach pool for portfolio build.
 
 ---
 
@@ -169,7 +227,7 @@ Grade prevented from A solely due to extreme cultural defense mechanisms of targ
 | Phase | Timeline | Core Objectives | Key Activities | Success Metric |
 |---|---|---|---|---|
 | **1 — Authority Building** | Months 1–2 | Eliminate coaching skepticism; establish subcultural credibility | Publish high-value operational blueprints organically in target communities (e.g., "The Streetwear Print Grading Guide") | 3 qualified inquiry submissions without paid ads |
-| **2 — Alpha Client Acquisition** | Months 3–4 | Secure first-client-rate advisory in each core vertical | Pitch to reputable local shops; offer first-client pricing in exchange for case study rights | 2 active advisory packages with documented operational improvement |
+| **2 — Alpha Client Acquisition** | Months 3–4 | Secure first-client-rate advisory in each core vertical | Pitch to reputable local shops (see [Outreach Target Candidates](./alt-culture-market-validation.md#outreach-target-candidates)); offer first-client pricing in exchange for case study rights | 2 active advisory packages with documented operational improvement |
 | **3 — Service Optimization** | Months 5–6 | Refine delivery mechanics; build repeatable asset libraries | Automate client onboarding; assemble standardized Notion templates across all verticals | Client satisfaction >90%; referral rate ≥25% |
 | **4 — Scaling & Retainer Rollout** | Month 7+ | Transition to full-rate advisory packages and retainer model | Package case studies into pitch deck; roll out hybrid and virtual packages | Studio MRR of $15K+ |
 

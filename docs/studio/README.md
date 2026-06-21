@@ -12,7 +12,7 @@ Internal docs for the Studio consulting practice. See the root `docs/README.md` 
 | `strategy-v1.pdf` | Original strategy PDF (v1.0, June 2026). Archived as the directional source. |
 | `execution-model.md` | Delivery mechanics: Notion dashboard structure, execution infrastructure tiers (self-execute, managed layer, plumber roster), hands-off-keyboards guardrails. |
 | `intake-operations.md` | Intake flow, email templates (auto-confirm + full intake response), tooling stack, Supabase lead schema, and setup checklist. |
-| `market-validation/` | Research validating market viability, financial runway, pain points, and operational blueprints per vertical. |
+| `market-validation/` | Research validating market viability, financial runway, pain points, operational blueprints per vertical, and **named outreach target candidates**. |
 
 ## Open Setup Tasks
 
