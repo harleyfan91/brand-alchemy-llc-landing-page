@@ -3,7 +3,7 @@
 export const STUDIO_CONTACT_EMAIL = 'info@brandalchemyllc.com';
 
 /** Replace with live Instagram profile URL when available. */
-export const STUDIO_INSTAGRAM_URL = 'https://instagram.com/';
+export const STUDIO_INSTAGRAM_URL = 'https://instagram.com/brandalchemy_studio';
 
 /**
  * Intake form URL. Set this to your Tally, Typeform, or equivalent link before launch.
