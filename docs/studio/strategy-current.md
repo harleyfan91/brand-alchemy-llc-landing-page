@@ -294,7 +294,7 @@ North American body piercing jewelry market: $958M in 2025, 6.9% CAGR through 20
 | Notion | Client advisory dashboards | Free tier |
 | Google Workspace | Email via `info@brandalchemyllc.com` | $6/mo |
 
-**Pending setup:** Tally form → Supabase webhook → Cal.com + Stripe booking link. See `docs/studio-intake-operations.md` for full setup checklist.
+**Pending setup:** Tally form → Supabase webhook → Cal.com + Stripe booking link. See `docs/studio/intake-operations.md` for full setup checklist.
 
 ---
 
