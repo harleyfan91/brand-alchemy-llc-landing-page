@@ -245,9 +245,10 @@ const StudioPage: React.FC = () => {
           </div>
 
           {/* Bottom — subtitle with sheen + compact scroll cue */}
-          <div className="relative z-10 mb-8 flex flex-col items-center gap-3">
+          {/* mb-24 on mobile pushes above iOS Safari's floating tab bar (~50px) + safe area; sm:mb-10 on wider screens */}
+          <div className="relative z-10 mb-24 flex flex-col items-center gap-3 sm:mb-10">
             <p
-              className="studio-subtitle-shine text-[11px] font-light uppercase tracking-[0.28em]"
+              className="studio-subtitle-shine text-center text-[11px] font-light uppercase tracking-[0.28em]"
               style={{ color: 'var(--ba-studio-text-muted)' }}
             >
               Strategy consulting for independent brands
@@ -281,7 +282,7 @@ const StudioPage: React.FC = () => {
           style={{ scrollSnapAlign: 'none' }}
         >
           <p
-            className="font-serif text-2xl font-normal leading-snug md:text-3xl"
+            className="text-center font-serif text-2xl font-normal leading-snug md:text-3xl"
             style={{ color: 'var(--ba-studio-text)' }}
           >
             We solve the problems your business keeps seeing:
