@@ -138,27 +138,29 @@ One 60 min live walkthrough of the completed Notion dashboard. QA review of all 
 
 #### Strategic Services
 - Intake System Design
-- Local Intent Media Architecture
-- Subculture Sponsorship Governance
 - Deposit & No-Show Strategy
 - Chair Capacity Analysis
+- Local Intent Media Architecture
 - Local Trust & Referral Audit
 - Studio Asset Protection
 
 #### Tools & Frameworks Delivered
 - Client Assurance Intake Pipeline — inquiry-to-booked workflow with confirmation scripts, consultation guides, and expectation-setting copy
-- Hyper-Local Media Map — targeting parameters, geo-fencing structures, and negative keyword clusters optimized for local map and search intent (Google LSA)
-- Activation & Sponsorship Checklist — framework for evaluating regional event investments, enforcing category exclusivity, and capturing customer email data at venue
 - Tiered Non-Refundable Deposit Matrix — deposit structure by session type, duration, and artist tier with policy language to enforce it
 - No-Show Elimination Protocol — automated reminder cadence, waitlist logic, and rebooking scripts targeting sub-5% no-show rate
 - Chair Capacity Optimization Dashboard — weekly revenue-per-chair tracking framework and seasonal booking forecast
-- Studio Asset Protection Program — four-component framework for protecting studio revenue, brand equity, and client relationships against individual artist departure:
-  - *Artist Data Continuity Protocol* — studio-owned intake and client record system where style preferences, healing notes, previous work, and future plans are captured institutionally at every touchpoint. When an artist leaves, the client data and relationship history stays with the studio.
-  - *Studio Brand vs. Artist Brand Audit* — identifies where the studio's Instagram and content presence has been inadvertently built around individual artists rather than studio identity. Produces a content architecture framework that builds studio equity alongside (not dependent on) individual artist profiles.
-  - *Retention Intelligence System* — quarterly check-in template the owner runs with each artist. Consistent questions on workload, schedule satisfaction, equipment, and compensation perception. Gives the owner a documented feedback loop so artist dissatisfaction surfaces before a departure announcement, not after. Matt designs the template and cadence; the owner runs it.
-  - *Commission & Booth-Rental Benchmarking Framework* — market-rate context for commission splits and booth-rental tiers at different studio revenue levels. Gives the owner informed reference points when compensation conversations happen. This is research and framing — not split negotiation or mediation, which falls outside the hands-off guardrails.
+- Hyper-Local Media Map — targeting parameters, geo-fencing structures, and negative keyword clusters optimized for local map and search intent (Google LSA)
+- Referral & Word-of-Mouth Playbook — referral incentive structure, local partnership outreach framework, and review capture cadence for community-driven client acquisition
+- Studio Asset Protection Program — artist data continuity protocol, brand equity audit, owner-run retention check-in cadence, and commission/booth-rental benchmarking framework
 
-**On the artist departure risk framing:** A studio with 3+ artists and a strong booking system has built real capital value. But if that value is attached to an artist's personal following rather than the studio's institutional identity, it's partially at risk every time an artist posts a "big news" story. The Studio Asset Protection Program is the structural defense against that exposure — not an HR intervention, a capital efficiency play. This is the right frame to lead with in discovery calls, especially with owners who have already lost an artist.
+**Internal — Studio Asset Protection detail:**
+_Do not expand this into client-facing copy. The four components are:_
+- _Artist Data Continuity Protocol: studio-owned client record system capturing style preferences, healing notes, and session history institutionally — so client relationships survive artist departures._
+- _Studio Brand vs. Artist Brand Audit: identifies where Instagram/content equity is artist-dependent rather than studio-owned. Produces a content architecture framework to build studio equity alongside individual profiles._
+- _Retention Intelligence System: quarterly check-in template the owner runs with each artist — workload, schedule, equipment, compensation perception. A documented feedback loop so dissatisfaction surfaces before a departure announcement._
+- _Commission & Booth-Rental Benchmarking: market-rate reference data across studio revenue tiers. Research and framing for owner-led compensation conversations — not split design or mediation._
+
+_Discovery call framing: every dollar invested in intake, brand, and client experience is partially at risk if it's attached to an artist's personal following rather than the studio's institutional identity. That's a capital efficiency problem, which is the right lane. Lead with this for owners who have already lost an artist — that wound is usually fresh and specific._
 
 ---
 

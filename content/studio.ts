@@ -61,22 +61,21 @@ export const STUDIO_SPRINTS = [
     /** Strategic advisory work included in this advisory package. */
     advisory: [
       'Intake System Design',
-      'Local Intent Media Architecture',
-      'Subculture Sponsorship Governance',
       'Deposit & No-Show Strategy',
       'Chair Capacity Analysis',
+      'Local Intent Media Architecture',
       'Local Trust & Referral Audit',
       'Studio Asset Protection',
     ],
     /** Documented tools and frameworks you keep after the advisory package. */
     tools: [
       'Client Assurance Intake Pipeline',
-      'Hyper-Local Media Map',
-      'Activation & Sponsorship Checklist',
       'Tiered Non-Refundable Deposit Matrix',
       'No-Show Elimination Protocol',
       'Chair Capacity Optimization Dashboard',
-      'Studio Asset Protection Program — Artist Data Continuity Protocol, Studio Brand vs. Artist Brand Audit, Retention Intelligence System, Commission & Booth-Rental Benchmarking Framework',
+      'Hyper-Local Media Map',
+      'Referral & Word-of-Mouth Playbook',
+      'Studio Asset Protection Program',
     ],
     entryPoint:
       'Studio has 3+ artists, $750K+ gross annual revenue, is fully booked inconsistently, and has never systematized their intake or deposit process.',
