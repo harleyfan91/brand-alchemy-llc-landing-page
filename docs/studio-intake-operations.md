@@ -12,7 +12,7 @@ _Internal reference — intake flow, email templates, and tooling stack._
 4. **Manual intake response sent** by Matt — includes call context, prep questions, and payment/booking link
 5. **Lead pays $200 deposit + books 60-min discovery call** via calendar tool
 6. **Discovery call** — structured diagnostic, not a pitch
-7. **Decision** — proceed to engagement, defer, or decline. $200 credited toward engagement fee if they proceed.
+7. **Decision** — proceed to advisory package, defer, or decline. $200 credited toward the advisory package fee if they proceed.
 
 ---
 
@@ -24,7 +24,7 @@ _Internal reference — intake flow, email templates, and tooling stack._
 
 ---
 
-Thanks for reaching out. Your submission is in — we'll review it and follow up within 3 business days.
+Thanks for reaching out, your submission is in. We'll review it and follow up within 3 business days.
 
 — Brand Alchemy Studio
 
@@ -38,13 +38,13 @@ Thanks for reaching out. Your submission is in — we'll review it and follow up
 
 Hi [Name],
 
-Thanks for submitting — your situation looks like a fit for what we do here.
+Thanks for inquiring, your situation looks like a fit for what we do here.
 
-The next step is a 60-minute discovery call. This isn't a sales pitch — it's a structured diagnostic. We'll map your current setup, identify where the biggest operational leverage is, and determine whether one of the two advisory formats makes sense for your business right now.
+The next step is a 60-minute discovery call. This isn't a sales pitch, it's a structured diagnostic. We'll map your current setup, identify where the biggest operational leverage is, and determine whether one of our advisory formats makes sense for your business right now.
 
-To get the most out of the call, it helps to come in thinking about three things: where your revenue sits currently, the one problem that's costing you the most right now, and anything you've already tried that hasn't held.
+To get the most out of the call, it helps to come in thinking about three things: where your revenue sits currently, the one problem that's costing you the most right now, and anything you've already tried that hasn't worked.
 
-The call is $200, credited toward your engagement fee if we move forward. Use the link below to book a slot and complete payment — that locks in your time.
+Our fee for the discovery call is $200, credited toward your advisory package fee if we move forward. Use the link below to book a slot and complete payment, that locks in your time. From there, we'll do preliminary research on your business and provide a custom analysis of how we can work together.
 
 [CALENDAR + PAYMENT LINK]
 
@@ -110,7 +110,7 @@ create table studio_leads (
 
   -- Internal tracking
   status          text not null default 'submitted',
-                  -- submitted | reviewed | call_booked | engaged | declined | deferred
+                  -- submitted | reviewed | call_booked | active | declined | deferred
   notes           text,         -- Matt's internal notes
   call_booked_at  timestamptz,
   deposit_paid    boolean not null default false
@@ -121,7 +121,7 @@ create table studio_leads (
 - `submitted` — form received, not yet reviewed
 - `reviewed` — Matt has read it, intake response sent
 - `call_booked` — lead paid $200 and booked a slot
-- `engaged` — moved to full strategy engagement
+- `active` — moved to full strategy advisory package
 - `declined` — not a fit, politely declined
 - `deferred` — good fit but wrong timing, follow up later
 

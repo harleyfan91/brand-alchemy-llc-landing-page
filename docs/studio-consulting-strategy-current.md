@@ -20,7 +20,7 @@ The corporate marketing background (9 years, institutional level) is the credibi
 
 ### Operating Model
 
-All engagements are pure-advisory. Brand Alchemy designs frameworks, builds governance systems, maps workflows, and establishes repeatable operational infrastructure. Execution remains with the client's team, or an outsourced coordinator. This model protects founder time, prevents scope creep, and anchors value to capital efficiency and structural longevity — not arbitrary algorithmic metrics.
+All client work is pure-advisory. Brand Alchemy designs frameworks, builds governance systems, maps workflows, and establishes repeatable operational infrastructure. Execution remains with the client's team, or an outsourced coordinator. This model protects founder time, prevents scope creep, and anchors value to capital efficiency and structural longevity — not arbitrary algorithmic metrics.
 
 **The hands-off-keyboards rule is ironclad:**
 - Brand Alchemy never logs into client platforms (Shopify, Klaviyo, Boulevard, ServiceTitan, etc.)
@@ -59,9 +59,9 @@ All engagements are pure-advisory. Brand Alchemy designs frameworks, builds gove
 
 ### Discovery Call
 
-**$200 · 60 minutes · credited toward engagement fee**
+**$200 · 60 minutes · credited toward advisory package fee**
 
-A structured diagnostic call, not a sales pitch. Covers: current operational setup, identification of the highest-leverage problem, determination of whether one of the two advisory formats fits. The $200 deposit filters serious inquiries and is credited in full toward the engagement fee if the client proceeds. The call should feel qualitatively different from any conversation the client has had with a freelancer — it functions as a proof of value.
+A structured diagnostic call, not a sales pitch. Covers: current operational setup, identification of the highest-leverage problem, determination of which advisory package fits. The $200 deposit filters serious inquiries and is credited in full toward the advisory package fee if the client proceeds. The call should feel qualitatively different from any conversation the client has had with a freelancer — it functions as a proof of value.
 
 Matt completes preliminary research on the client's business before the call and arrives with a working hypothesis about their primary problem. The client is asked to come prepared with: current revenue range, the one problem costing them the most right now, and anything they've already tried that hasn't held.
 
@@ -191,12 +191,12 @@ Between monthly calls, the client submits questions, blockers, and decisions nee
 
 Strategy is not delivered as a theoretical PDF or slide deck. All frameworks are delivered as step-by-step, sequenced checklists inside a shared Notion dashboard. Deliverables are built so that a front-desk worker or warehouse assistant can execute them without strategic interpretation. The founder reviews and approves; a lower-level team member runs the checklist.
 
-**Notion Dashboard Structure (per engagement):**
-1. Engagement Overview — timeline, weekly check-in schedule, decision log
+**Notion Dashboard Structure (per advisory package):**
+1. Advisory Overview — timeline, weekly check-in schedule, decision log
 2. Strategic Services — working documents from each advisory session
 3. Frameworks & Tools — each deliverable as a standalone executable checklist
 4. QA Log — Brand Alchemy sign-offs at each phase gate
-5. Handoff Summary — end-of-engagement recap with 90-day action priorities
+5. Handoff Summary — end-of-package recap with 90-day action priorities
 
 ### Execution Infrastructure Tiers
 
@@ -221,7 +221,7 @@ For technical platform work the client cannot handle (Shopify configuration, Kla
 
 **No ROAS guarantees** — Value is anchored to capital efficiency and structural improvement, not outputs outside our control.
 
-**Capacity limit** — Maximum 2 concurrent strategy engagements (~8–10 hrs/week) plus 3 retainer clients (~30 hrs/month) alongside parallel product work. Growth beyond this requires either a strict client cap policy or a vetted subcontractor delivery layer.
+**Capacity limit** — Maximum 2 concurrent strategy packages (~8–10 hrs/week) plus 3 retainer clients (~30 hrs/month) alongside parallel product work. Growth beyond this requires either a strict client cap policy or a vetted subcontractor delivery layer.
 
 ---
 
@@ -251,16 +251,16 @@ Lead submits via `/studio/intake`. Auto-confirmation sent immediately. Matt revi
 Matt sends personalized response referencing their submission. Includes call context, three prep questions, and the Cal.com + Stripe booking link for the $200 discovery call.
 
 **Step 4 — Discovery Call**
-60-minute structured diagnostic. Maps primary panic, identifies operational gap. This call doubles as a demonstration of strategic thinking. Outcome: proceed, defer, or decline. $200 credited toward engagement fee if proceeding.
+60-minute structured diagnostic. Maps primary panic, identifies operational gap. This call doubles as a demonstration of strategic thinking. Outcome: proceed, defer, or decline. $200 credited toward the advisory package fee if proceeding.
 
-**Step 5 — Strategy Engagement**
-6-week strategy at full or first-client rate. Deliver above expectations. At Week 5, pitch the 90-day Baseline Retainer with the strategy-client discount ($500/mo off first block). Use the engagement deliverables as tangible evidence of what retainer-level strategy looks like month over month.
+**Step 5 — Strategy Advisory Package**
+6-week advisory package at full or first-client rate. Deliver above expectations. At Week 5, pitch the 90-day Baseline Retainer with the strategy-client discount ($500/mo off first block). Use the package deliverables as tangible evidence of what retainer-level strategy looks like month over month.
 
 **Step 6 — Retainer Conversion**
 90-day block at $3,000/mo ($2,500 for strategy converts). Review and renew quarterly. Upsell add-ons (Brand Asset Refresh, Execution Layer) when the operational foundation is solid and the client's appetite for execution support is visible.
 
 ### Portfolio Build Strategy
-First two clients (one Category A, one Category B) should be offered the first-client rate in exchange for full case study rights, a named testimonial, and willingness to be referenced in future outreach. These become the proof-of-concept assets that unlock full-rate engagements.
+First two clients (one Category A, one Category B) should be offered the first-client rate in exchange for full case study rights, a named testimonial, and willingness to be referenced in future outreach. These become the proof-of-concept assets that unlock full-rate advisory packages.
 
 ---
 
@@ -291,7 +291,7 @@ North American body piercing jewelry market: $958M in 2025, 6.9% CAGR through 20
 | Cal.com | Discovery call booking | Free tier |
 | Stripe | $200 discovery call payment | 2.9% + 30¢/transaction |
 | Supabase | Lead database (email, industry, status tracking) | Free tier |
-| Notion | Client engagement dashboards | Free tier |
+| Notion | Client advisory dashboards | Free tier |
 | Google Workspace | Email via `info@brandalchemyllc.com` | $6/mo |
 
 **Pending setup:** Tally form → Supabase webhook → Cal.com + Stripe booking link. See `docs/studio-intake-operations.md` for full setup checklist.

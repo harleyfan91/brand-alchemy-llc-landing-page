@@ -19,7 +19,7 @@ This does not violate the hands-off-keyboards rule. We design the checklist. The
 ## Execution Infrastructure Tiers
 
 ### Tier 1 — Client Self-Executes (default)
-Client uses their internal team (or themselves) to follow Notion checklists. Brand Alchemy provides QA check-ins at defined points in the 6-week engagement. No additional cost.
+Client uses their internal team (or themselves) to follow Notion checklists. Brand Alchemy provides QA check-ins at defined points in the 6-week advisory package. No additional cost.
 
 ### Tier 2 — Fully Managed Execution Layer (+$1,500/mo)
 For clients who completely lack internal execution capacity. Brand Alchemy sources and manages a trusted junior VA/coordinator:
@@ -38,19 +38,19 @@ For technical work that requires platform access the client cannot handle (e.g.,
 - We do not take a cut of the freelancer's fee — this is a value-add referral, not a revenue stream
 - Brand Alchemy is not responsible for the freelancer's execution quality beyond the QA review
 
-**Important constraint:** the General Contractor role must be scoped carefully in contracts to avoid scope creep. We are providing specifications and QA — not project management or ongoing oversight of the freelancer's work. If it becomes the latter, it should be priced as a separate engagement or added to the Execution Layer.
+**Important constraint:** the General Contractor role must be scoped carefully in contracts to avoid scope creep. We are providing specifications and QA — not project management or ongoing oversight of the freelancer's work. If it becomes the latter, it should be priced as a separate advisory package or added to the Execution Layer.
 
 ---
 
 ## Delivery Format — Notion Dashboard Structure
 
-Each engagement delivers a shared Notion workspace organized as:
+Each advisory package delivers a shared Notion workspace organized as:
 
-1. **Engagement Overview** — timeline, weekly check-in schedule, decision log
+1. **Advisory Overview** — timeline, weekly check-in schedule, decision log
 2. **Strategic Services** — working documents from each advisory session
 3. **Frameworks & Tools** — each deliverable as a standalone, executable checklist
 4. **QA Log** — Brand Alchemy sign-offs at each phase gate
-5. **Handoff Summary** — end-of-engagement recap with 90-day action priorities
+5. **Handoff Summary** — end-of-package recap with 90-day action priorities
 
 ---
 
@@ -62,4 +62,4 @@ The rule exists to protect time and premium positioning — not to prevent clien
 - The VA/coordinator is executing our checklists, not receiving open-ended direction
 - The plumber roster is a specifications-plus-QA relationship, not ongoing management
 
-If any engagement starts to blur these lines, flag it early and reprice or restructure — don't absorb it quietly.
+If any advisory package starts to blur these lines, flag it early and reprice or restructure — don't absorb it quietly.

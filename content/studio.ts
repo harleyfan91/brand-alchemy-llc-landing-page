@@ -28,7 +28,7 @@ export const STUDIO_SPRINTS = [
     launchPrice: '$4,000',
     duration: '6 weeks',
     format: '60-min discovery call · 6-week advisory',
-    /** Strategic advisory work included in this engagement. */
+    /** Strategic advisory work included in this advisory package. */
     advisory: [
       'CAC & Channel ROI Audit',
       'Paid Media Funnel Architecture',
@@ -37,7 +37,7 @@ export const STUDIO_SPRINTS = [
       'Drop Allocation Framework Design',
       'Post-Drop Debrief Facilitation',
     ],
-    /** Documented tools and frameworks you keep after the engagement. */
+    /** Documented tools and frameworks you keep after the advisory package. */
     tools: [
       'Multi-Channel Allocation Matrix',
       'Media Budget Pacing Matrix',
@@ -58,7 +58,7 @@ export const STUDIO_SPRINTS = [
     launchPrice: '$3,500',
     duration: '6 weeks',
     format: '60-min discovery call · 6-week advisory',
-    /** Strategic advisory work included in this engagement. */
+    /** Strategic advisory work included in this advisory package. */
     advisory: [
       'Intake System Design',
       'Local Intent Media Architecture',
@@ -67,7 +67,7 @@ export const STUDIO_SPRINTS = [
       'Chair Capacity Analysis',
       'Local Trust & Referral Audit',
     ],
-    /** Documented tools and frameworks you keep after the engagement. */
+    /** Documented tools and frameworks you keep after the advisory package. */
     tools: [
       'Client Assurance Intake Pipeline',
       'Hyper-Local Media Map',
