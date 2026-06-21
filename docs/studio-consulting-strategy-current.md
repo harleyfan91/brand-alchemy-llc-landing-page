@@ -63,6 +63,8 @@ All engagements are pure-advisory. Brand Alchemy designs frameworks, builds gove
 
 A structured diagnostic call, not a sales pitch. Covers: current operational setup, identification of the highest-leverage problem, determination of whether one of the two advisory formats fits. The $200 deposit filters serious inquiries and is credited in full toward the engagement fee if the client proceeds. The call should feel qualitatively different from any conversation the client has had with a freelancer — it functions as a proof of value.
 
+Matt completes preliminary research on the client's business before the call and arrives with a working hypothesis about their primary problem. The client is asked to come prepared with: current revenue range, the one problem costing them the most right now, and anything they've already tried that hasn't held.
+
 ---
 
 ### Strategy A — The Drop & Allocation Strategy
@@ -70,9 +72,21 @@ A structured diagnostic call, not a sales pitch. Covers: current operational set
 **$10,000 flat · 6-week advisory**
 First client rate: $4,000 (requires case study rights and named testimonial)
 
-**Format:** 60-min discovery call · 2 structured working sessions per week · all deliverables in shared Notion dashboard
-
 **Built for:** Brands that have completed at least one drop cycle with real revenue data. Chaos is documented, even if unsystematized.
+
+#### Weekly Schedule
+
+**Week 1 — Kickoff**
+One 60–90 min live call. Review discovery call findings, align on priorities, confirm scope, establish shared Notion workspace. Matt begins building framework drafts.
+
+**Weeks 2–5 — Working weeks (2 sessions/week)**
+- Session A: 30–45 min live video check-in. Review work in progress, answer questions, make direction decisions.
+- Session B: Async. Matt delivers a framework draft or checklist to the Notion workspace. Client reviews and leaves comments within 48 hours. Matt incorporates feedback before the next session.
+
+**Week 6 — Delivery**
+One 60 min live walkthrough of the completed Notion dashboard. QA review of all deliverables. 90-day action priorities documented. Retainer conversation if appropriate.
+
+**Total:** ~10–12 touchpoints over 6 weeks · ~5–6 hours live calls · remaining time in async build and review · approximately 4–5 hrs/week of Matt's advisory time
 
 #### Strategic Services
 - CAC & Channel ROI Audit
@@ -98,9 +112,23 @@ First client rate: $4,000 (requires case study rights and named testimonial)
 **$8,500 flat · 6-week advisory**
 First client rate: $3,500 (requires case study rights and named testimonial)
 
-**Format:** 60-min discovery call · 2 structured working sessions per week · all deliverables in shared Notion dashboard
-
 **Built for:** Studios with 3+ artists, inconsistently fully booked, that have never systematized their intake or deposit process.
+
+#### Weekly Schedule
+
+Same structure as Strategy A.
+
+**Week 1 — Kickoff**
+One 60–90 min live call. Review discovery call findings, align on priorities, confirm scope, establish shared Notion workspace. Matt begins building framework drafts.
+
+**Weeks 2–5 — Working weeks (2 sessions/week)**
+- Session A: 30–45 min live video check-in. Review work in progress, answer questions, make direction decisions.
+- Session B: Async. Matt delivers a framework draft or checklist to the Notion workspace. Client reviews and leaves comments within 48 hours. Matt incorporates feedback before the next session.
+
+**Week 6 — Delivery**
+One 60 min live walkthrough of the completed Notion dashboard. QA review of all deliverables. 90-day action priorities documented. Retainer conversation if appropriate.
+
+**Total:** ~10–12 touchpoints over 6 weeks · ~5–6 hours live calls · remaining time in async build and review · approximately 4–5 hrs/week of Matt's advisory time
 
 #### Strategic Services
 - Intake System Design
@@ -126,9 +154,19 @@ First client rate: $3,500 (requires case study rights and named testimonial)
 **$3,000/mo · 90-day minimum · ~10 hrs advisory access**
 Strategy clients: $2,500/mo for first 90-day block
 
-**Format:** Async-first via dedicated channel · monthly 60-minute structured call · all issues routed through weekly structured intake · no ad hoc requests
-
 **Capacity:** Maximum 3 concurrent retainer clients
+
+#### Monthly Schedule
+
+**Monthly structured call (60 min)**
+Held in the first week of each month. Covers the previous month's performance review, decisions needed for the coming month, and any strategic blockers. A written summary and decision log is delivered within 48 hours after the call.
+
+**Weekly async intake window**
+Between monthly calls, the client submits questions, blockers, and decisions needing input through a dedicated channel (Slack or Notion). Matt responds within 2 business days. This is the only route for between-call communication — no ad hoc calls, no real-time messaging.
+
+**What this means in plain terms:** the client does not get Matt on the phone whenever something comes up. Issues get routed through the weekly intake window on a schedule. This protects Matt's time and ensures the client's questions are batched and answered thoughtfully rather than reactively. It is not a lower level of service — it is a deliberate operating model that maintains the quality of the strategic relationship at scale.
+
+**Total:** ~10 hrs/month — 1 hr structured call + ~9 hrs async response, review, and preparation spread across the month
 
 #### Monthly Scope
 - Paid Media Budget Audit — monthly review of ad spend allocation, channel ROI, and waste identification
