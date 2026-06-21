@@ -422,7 +422,7 @@ const StudioPage: React.FC = () => {
                         className="mt-3 text-[10px] font-light italic"
                         style={{ color: 'var(--ba-studio-text-faint)' }}
                       >
-                        Delivered in Notion or Google Docs
+                        Delivered as actionable checklists in a shared Notion dashboard
                       </p>
                     </div>
 

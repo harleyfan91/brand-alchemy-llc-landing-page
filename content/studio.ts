@@ -31,6 +31,8 @@ export const STUDIO_SPRINTS = [
     /** Strategic advisory work included in this engagement. */
     advisory: [
       'CAC & Channel ROI Audit',
+      'Paid Media Funnel Architecture',
+      'Brand Alliance Blueprinting',
       'Anti-Bot & Scarcity Strategy',
       'Drop Allocation Framework Design',
       'Post-Drop Debrief Facilitation',
@@ -38,6 +40,8 @@ export const STUDIO_SPRINTS = [
     /** Documented tools and frameworks you keep after the engagement. */
     tools: [
       'Multi-Channel Allocation Matrix',
+      'Media Budget Pacing Matrix',
+      'Brand Alliance Pitch Ledger',
       '90-Day Backward Launch Timeline',
       'Anti-Bot & Scarcity Fairness Protocol',
       '3PL / Warehouse SLA Checklist',
@@ -57,6 +61,8 @@ export const STUDIO_SPRINTS = [
     /** Strategic advisory work included in this engagement. */
     advisory: [
       'Intake System Design',
+      'Local Intent Media Architecture',
+      'Subculture Sponsorship Governance',
       'Deposit & No-Show Strategy',
       'Chair Capacity Analysis',
       'Local Trust & Referral Audit',
@@ -64,6 +70,8 @@ export const STUDIO_SPRINTS = [
     /** Documented tools and frameworks you keep after the engagement. */
     tools: [
       'Client Assurance Intake Pipeline',
+      'Hyper-Local Media Map',
+      'Activation & Sponsorship Checklist',
       'Tiered Non-Refundable Deposit Matrix',
       'No-Show Elimination Protocol',
       'Artist Continuity Data Program',
