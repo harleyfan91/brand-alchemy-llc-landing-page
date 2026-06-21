@@ -14,6 +14,24 @@ All strategy is delivered as step-by-step, sequenced checklists in a shared Noti
 
 This does not violate the hands-off-keyboards rule. We design the checklist. They run it.
 
+**Known execution risk:** Most consulting strategies fail at the "messy middle" — the owner reverts to prior habits the moment the consultant leaves and the week gets busy. Notion checklist adoption is the structural mitigation, but it is a design assumption, not a proven outcome. This should be stress-tested with the first Category B portfolio client. If adoption is low, Tier 2 (managed execution layer) should become the default recommendation for all Category B engagements, not an optional add-on.
+
+## Category B — On-Site Diagnostic Anchor
+
+For Category B clients (tattoo, piercing, capacity-based studios), the sprint opens with a **2-day on-site diagnostic in Week 2**. This is baked into the package, not sold separately.
+
+**What on-site days produce:**
+- Live observation of intake flow — how clients contact the studio, what happens to that message, when it drops
+- Physical bottleneck mapping — booking handoffs, deposit collection, no-show handling in real time
+- Inventory reality check (piercing/hair) — how stock is tracked, what's manual, where errors occur
+- Staff pattern observation — what the front-desk coordinator actually does vs. what the owner believes they do
+
+**Why it matters:** Frameworks built from a discovery call are built from what the founder remembers and articulates. Frameworks built from on-site observation are built from what's actually happening. The gap between those two things is usually where the highest-leverage problems live.
+
+**What on-site is not:** Platform access, software configuration, or staff training. Matt observes and maps. The Notion frameworks are built afterward. The client implements.
+
+**T&E:** Travel and accommodation reimbursement required for studios outside NYC metro. Confirm before booking.
+
 ---
 
 ## Execution Infrastructure Tiers
@@ -28,7 +46,9 @@ For clients who completely lack internal execution capacity. Brand Alchemy sourc
 - VA follows our exact checklists; Brand Alchemy provides oversight and final QA
 - Keeps our hands off the keyboard while ensuring work gets done
 
-This is the existing add-on. The internal cost structure above should inform how it is pitched — it is a genuine service, not a passive referral fee.
+**Category B default routing:** The on-site diagnostic in Week 2 often confirms what the discovery call suspected — no internal team member has reliable bandwidth to run a Notion checklist week to week. When that's true, Tier 2 should be introduced at the discovery call as the expected default path, not surfaced later as an upsell. The Notion dashboard is only as useful as the person running it. This is not a judgment about the client — it's an honest assessment of what gets results. Raise it early.
+
+The internal cost structure above should inform how it is pitched — it is a genuine service, not a passive referral fee.
 
 ### Tier 3 — Vetted Plumber Roster (referral, not contracted)
 For technical work that requires platform access the client cannot handle (e.g., Shopify configuration, Klaviyo technical setup, ad account structure):

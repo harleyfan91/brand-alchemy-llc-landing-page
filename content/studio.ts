@@ -53,11 +53,11 @@ export const STUDIO_SPRINTS = [
   {
     id: 'capacity-intake',
     name: 'The Capacity & Intake Strategy',
-    price: '$8,500',
+    price: '$11,000',
     /** Reduced rate for first-time clients in this category. Set to null when filled. */
-    launchPrice: '$3,500',
+    launchPrice: '$4,500',
     duration: '6 weeks',
-    format: '60-min discovery call · 6-week advisory',
+    format: '60-min discovery call · 2-day on-site diagnostic · 6-week advisory',
     /** Strategic advisory work included in this advisory package. */
     advisory: [
       'Intake System Design',
@@ -66,6 +66,7 @@ export const STUDIO_SPRINTS = [
       'Deposit & No-Show Strategy',
       'Chair Capacity Analysis',
       'Local Trust & Referral Audit',
+      'Studio Asset Protection',
     ],
     /** Documented tools and frameworks you keep after the advisory package. */
     tools: [
@@ -74,11 +75,11 @@ export const STUDIO_SPRINTS = [
       'Activation & Sponsorship Checklist',
       'Tiered Non-Refundable Deposit Matrix',
       'No-Show Elimination Protocol',
-      'Artist Continuity Data Program',
       'Chair Capacity Optimization Dashboard',
+      'Studio Asset Protection Program — Artist Data Continuity Protocol, Studio Brand vs. Artist Brand Audit, Retention Intelligence System, Commission & Booth-Rental Benchmarking Framework',
     ],
     entryPoint:
-      'Studio has 3+ artists, is fully booked inconsistently, and has never systematized their intake or deposit process.',
+      'Studio has 3+ artists, $750K+ gross annual revenue, is fully booked inconsistently, and has never systematized their intake or deposit process.',
   },
 ] as const;
 
@@ -95,7 +96,7 @@ export const STUDIO_RETAINER = {
     'Monthly Strategic Briefing — 60-minute structured call with written summary and decision log',
   ],
   addOns: [
-    { name: 'Premium On-Site Upgrade', price: '+$2,500', note: '3–4 day on-site deep dive' },
+    { name: 'Premium On-Site Upgrade', price: '+$2,500', note: 'Additional on-site days for retainer clients (on-site diagnostic included in Strategy B sprint)' },
     { name: 'Brand Asset Refresh', price: '$2,500', note: 'Visual modernization with creative direction' },
     { name: 'Fully Managed Execution Layer', price: '+$1,500/mo', note: 'Dedicated coordinator for strategy execution' },
   ],

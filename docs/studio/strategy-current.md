@@ -1,6 +1,6 @@
 # Brand Alchemy Studio — Consulting Strategy
-### Version 2.0 · June 2026 · Active Build
-_Supersedes PDF v1.0. Reflects all package updates, delivery model refinements, and intake infrastructure decisions made through June 2026._
+### Version 2.1 · June 2026 · Active Build
+_Supersedes v2.0. Reflects model refinements based on market-validation review: Category B on-site diagnostic anchor, revenue floor tightening, Tier 2 default routing for capacity/intake clients._
 
 ---
 
@@ -20,11 +20,16 @@ The corporate marketing background (9 years, institutional level) is the credibi
 
 ### Operating Model
 
-All client work is pure-advisory. Brand Alchemy designs frameworks, builds governance systems, maps workflows, and establishes repeatable operational infrastructure. Execution remains with the client's team, or an outsourced coordinator. This model protects founder time, prevents scope creep, and anchors value to capital efficiency and structural longevity — not arbitrary algorithmic metrics.
+**Category A (drop/DTC brands):** Pure advisory. Brand Alchemy designs frameworks, builds governance systems, and maps workflows entirely through remote sessions and async Notion delivery. These clients are digitally native, have higher tolerance for async collaboration, and the operational problems — drop allocation, supply chain QC, launch calendars — are well-suited to framework delivery a founder can execute from a laptop.
 
-**The hands-off-keyboards rule is ironclad:**
+**Category B (tattoo, piercing, capacity-based studios):** Diagnostic-anchored advisory. The sprint opens with a 2-day on-site diagnostic in the client's physical studio (Week 2). Live workflow mapping in the actual space — observing intake friction, inventory handling, and booking patterns in real time — produces frameworks grounded in what's actually broken, not what the discovery call surfaced. This is not platform access or raw execution; it is structured fieldwork. The remaining five weeks are advisory and async delivery as normal. The on-site component is baked into the package price, not sold as an add-on.
+
+The on-site presence solves two problems at once: it produces more accurate frameworks, and it signals to alt-culture founders — who have a highly refined filter for consultants who don't actually know their world — that Brand Alchemy is different. Walking into their studio and understanding it from the inside is the access pass the cultural filter is looking for. No agency or coach does this.
+
+**The hands-off-keyboards rule applies to both categories:**
 - Brand Alchemy never logs into client platforms (Shopify, Klaviyo, Boulevard, ServiceTitan, etc.)
 - No individual marketing emails, social captions, or customer service responses are written
+- On-site work is observation and framework-building — not operating the POS, not reconfiguring software, not training staff
 - No mediation with factories, suppliers, landlords, or independent creative talent
 - No ROAS guarantees — value is anchored to structural improvement, not outputs outside our control
 
@@ -40,18 +45,18 @@ All client work is pure-advisory. Brand Alchemy designs frameworks, builds gover
 - Independent skate, board, and alt-lifestyle hardware (DTC + indie retail accounts, seasonal drops, sub-$5M)
 
 **Category B — Capacity & Experiential**
-- High-ticket tattoo collectives and elite studios ($500K–$2M+, 3+ resident artists, appointment-based)
+- High-ticket tattoo collectives and elite studios ($750K–$2M+ gross annual revenue, 3+ resident artists, appointment-based)
 - High-end luxury piercing clinics and fine body jewelry boutiques (sanctuary-model, implant-grade inventory, appointment + retail hybrid)
-- Alternative hair collectives and vivid color sanctuaries (studio model only — not booth rental — $600K+ owner revenue, booked 6–8 weeks out)
+- Alternative hair collectives and vivid color sanctuaries (studio model only — not booth rental — $750K+ gross revenue, booked 6–8 weeks out)
 
 **Emerging vertical worth tracking:** Independent fragrance and niche perfume labels — DTC-native, drop-mechanic-driven, aesthetic-first founders with significant operational gaps and near-zero consultant coverage.
 
 ### Qualification Criteria
-- Revenue: $1M–$5M annual
+- Revenue: $1M–$5M annual (Category B minimum: $750K gross — below this, cash flow is tight enough that even a clearly ROI-positive engagement will stall at "yes, but not this quarter")
 - Operational chaos signals are present and documented
 - Appetite for systems-level thinking (disqualify early-stage brands not yet generating consistent revenue)
 - Category A: has completed at least one drop cycle with real revenue data
-- Category B: 3+ artists, inconsistently fully booked, no systematized intake or deposit process
+- Category B: 3+ artists, inconsistently fully booked, no systematized intake or deposit process; studio must be at or approaching $750K gross to absorb a $11,000 sprint comfortably
 
 ---
 
@@ -109,26 +114,27 @@ One 60 min live walkthrough of the completed Notion dashboard. QA review of all 
 
 ### Strategy B — The Capacity & Intake Strategy
 
-**$8,500 flat · 6-week advisory**
-First client rate: $3,500 (requires case study rights and named testimonial)
+**$11,000 flat · 6-week advisory · includes on-site diagnostic**
+First client rate: $4,500 (requires case study rights and named testimonial)
 
-**Built for:** Studios with 3+ artists, inconsistently fully booked, that have never systematized their intake or deposit process.
+**Built for:** Studios with 3+ artists, $750K+ gross annual revenue, inconsistently fully booked, that have never systematized their intake or deposit process. The on-site diagnostic is the anchor of this engagement — frameworks are built from what's actually observed in the studio, not from a discovery call alone.
 
 #### Weekly Schedule
 
-Same structure as Strategy A.
-
 **Week 1 — Kickoff**
-One 60–90 min live call. Review discovery call findings, align on priorities, confirm scope, establish shared Notion workspace. Matt begins building framework drafts.
+One 60–90 min live call. Review discovery call findings, align on priorities, confirm scope, establish shared Notion workspace. Matt prepares on-site diagnostic protocol based on kickoff findings.
 
-**Weeks 2–5 — Working weeks (2 sessions/week)**
+**Week 2 — On-Site Diagnostic (2 days at client's studio)**
+Matt visits the studio in person. Live observation of intake flow, booking patterns, staff handoffs, and physical inventory handling. Real-time workflow mapping. This produces the exact friction inventory that every subsequent framework is built from. On-site days replace the standard two async/live sessions for that week. T&E reimbursement required for travel outside NYC metro.
+
+**Weeks 3–5 — Working weeks (2 sessions/week)**
 - Session A: 30–45 min live video check-in. Review work in progress, answer questions, make direction decisions.
 - Session B: Async. Matt delivers a framework draft or checklist to the Notion workspace. Client reviews and leaves comments within 48 hours. Matt incorporates feedback before the next session.
 
 **Week 6 — Delivery**
 One 60 min live walkthrough of the completed Notion dashboard. QA review of all deliverables. 90-day action priorities documented. Retainer conversation if appropriate.
 
-**Total:** ~10–12 touchpoints over 6 weeks · ~5–6 hours live calls · remaining time in async build and review · approximately 4–5 hrs/week of Matt's advisory time
+**Total:** ~10–12 touchpoints over 6 weeks · 2 on-site days (Week 2) · ~4–5 hours additional live calls · remaining time in async build and review · approximately 5–6 hrs/week of Matt's total time
 
 #### Strategic Services
 - Intake System Design
@@ -137,6 +143,7 @@ One 60 min live walkthrough of the completed Notion dashboard. QA review of all 
 - Deposit & No-Show Strategy
 - Chair Capacity Analysis
 - Local Trust & Referral Audit
+- Studio Asset Protection
 
 #### Tools & Frameworks Delivered
 - Client Assurance Intake Pipeline — inquiry-to-booked workflow with confirmation scripts, consultation guides, and expectation-setting copy
@@ -144,8 +151,14 @@ One 60 min live walkthrough of the completed Notion dashboard. QA review of all 
 - Activation & Sponsorship Checklist — framework for evaluating regional event investments, enforcing category exclusivity, and capturing customer email data at venue
 - Tiered Non-Refundable Deposit Matrix — deposit structure by session type, duration, and artist tier with policy language to enforce it
 - No-Show Elimination Protocol — automated reminder cadence, waitlist logic, and rebooking scripts targeting sub-5% no-show rate
-- Artist Continuity Data Program — per-artist client data capture so business value survives any individual artist departure
 - Chair Capacity Optimization Dashboard — weekly revenue-per-chair tracking framework and seasonal booking forecast
+- Studio Asset Protection Program — four-component framework for protecting studio revenue, brand equity, and client relationships against individual artist departure:
+  - *Artist Data Continuity Protocol* — studio-owned intake and client record system where style preferences, healing notes, previous work, and future plans are captured institutionally at every touchpoint. When an artist leaves, the client data and relationship history stays with the studio.
+  - *Studio Brand vs. Artist Brand Audit* — identifies where the studio's Instagram and content presence has been inadvertently built around individual artists rather than studio identity. Produces a content architecture framework that builds studio equity alongside (not dependent on) individual artist profiles.
+  - *Retention Intelligence System* — quarterly check-in template the owner runs with each artist. Consistent questions on workload, schedule satisfaction, equipment, and compensation perception. Gives the owner a documented feedback loop so artist dissatisfaction surfaces before a departure announcement, not after. Matt designs the template and cadence; the owner runs it.
+  - *Commission & Booth-Rental Benchmarking Framework* — market-rate context for commission splits and booth-rental tiers at different studio revenue levels. Gives the owner informed reference points when compensation conversations happen. This is research and framing — not split negotiation or mediation, which falls outside the hands-off guardrails.
+
+**On the artist departure risk framing:** A studio with 3+ artists and a strong booking system has built real capital value. But if that value is attached to an artist's personal following rather than the studio's institutional identity, it's partially at risk every time an artist posts a "big news" story. The Studio Asset Protection Program is the structural defense against that exposure — not an HR intervention, a capital efficiency play. This is the right frame to lead with in discovery calls, especially with owners who have already lost an artist.
 
 ---
 
@@ -179,7 +192,7 @@ Between monthly calls, the client submits questions, blockers, and decisions nee
 #### Add-Ons
 | Add-On | Price | Description |
 |---|---|---|
-| Premium On-Site Upgrade | +$2,500 | 3–4 day on-site deep dive at client's location. Live workflow mapping, whiteboard sessions, real-time systems audit. T&E reimbursement required for travel outside NYC metro. |
+| Premium On-Site Upgrade | +$2,500 | Additional on-site days for retainer clients requiring live workflow mapping or systems audit beyond the standard Category B sprint diagnostic. Not applicable to new sprint clients (on-site diagnostic is baked into Strategy B). T&E reimbursement required for travel outside NYC metro. |
 | Brand Asset Refresh | $2,500 one-time | Complete visual modernization: logo ecosystem, color and typography architecture, asset specifications for vehicle wraps, apparel, and digital. ~2 hrs creative direction. Manual vector work outsourced. |
 | Fully Managed Execution Layer | +$1,500/mo | Dedicated junior coordinator (sourced and managed by Brand Alchemy) who executes strategic checklists: social scheduling, email deployment, ad monitoring. Total retainer becomes $4,500/mo. |
 
@@ -206,6 +219,8 @@ Client uses their internal team to follow Notion checklists. Brand Alchemy provi
 **Tier 2 — Fully Managed Execution Layer (+$1,500/mo)**
 For clients without internal execution capacity. Brand Alchemy sources and manages a trusted junior VA/coordinator (~$800/mo cost) who executes checklists under Brand Alchemy oversight. Margin: ~$700/mo. Hands never touch the keyboard.
 
+**Category B default recommendation:** The on-site diagnostic in Week 2 frequently reveals that the studio has no internal team member with capacity to follow a Notion checklist consistently. When this is the case, Tier 2 should be raised at the discovery call as the expected path — not as an upsell. The Notion framework only produces results if someone runs it. For Category B clients, the discovery call outcome should include an honest assessment of whether they have that person in-house.
+
 **Tier 3 — Vetted Specialist Referrals (informal, no contracted fee)**
 For technical platform work the client cannot handle (Shopify configuration, Klaviyo setup, ad account structure). Brand Alchemy maintains a private network of trusted technical freelancers. We provide exact specifications; the client hires the specialist directly. Brand Alchemy reviews the output against spec. This is a value-add referral — not a contracted service or revenue stream. It does not supersede the hands-off-keyboards rule.
 
@@ -229,7 +244,7 @@ For technical platform work the client cannot handle (Shopify configuration, Kla
 
 | | Global/Mid-Size Agency | **Brand Alchemy** | Tactical Freelancer |
 |---|---|---|---|
-| Pricing | Prohibitively expensive for sub-$5M | $8.5K–$10K strategy, accessible/high-value | Cheap optically, expensive operationally |
+| Pricing | Prohibitively expensive for sub-$5M | $10K–$11K strategy, accessible/high-value | Cheap optically, expensive operationally |
 | Brand voice | Homogenizes immediately | Preserves and protects cultural equity | No brand governance |
 | Cultural fit | Culturally illegitimate to subculture clients | Native subculture fluency + corporate rigor | No enterprise-level frameworks |
 | Orientation | KPI-obsessed, ROAS-forward | Capital efficiency + structural longevity | No accountability systems |
@@ -251,7 +266,9 @@ Lead submits via `/studio/intake`. Auto-confirmation sent immediately. Matt revi
 Matt sends personalized response referencing their submission. Includes call context, three prep questions, and the Cal.com + Stripe booking link for the $200 discovery call.
 
 **Step 4 — Discovery Call**
-60-minute structured diagnostic. Maps primary panic, identifies operational gap. This call doubles as a demonstration of strategic thinking. Outcome: proceed, defer, or decline. $200 credited toward the advisory package fee if proceeding.
+60-minute structured diagnostic. Maps primary pain, identifies operational gap. This call doubles as a demonstration of strategic thinking. Outcome: proceed, defer, or decline. $200 credited toward the advisory package fee if proceeding.
+
+For Category B clients: explicitly assess whether an internal team member exists who can execute Notion checklists week to week. If not, introduce Tier 2 (Managed Execution Layer) at this stage as the recommended path, not as a later upsell. The package only produces durable results if the frameworks get used.
 
 **Step 5 — Strategy Advisory Package**
 6-week advisory package at full or first-client rate. Deliver above expectations. At Week 5, pitch the 90-day Baseline Retainer with the strategy-client discount ($500/mo off first block). Use the package deliverables as tangible evidence of what retainer-level strategy looks like month over month.
@@ -280,6 +297,12 @@ North American body piercing jewelry market: $958M in 2025, 6.9% CAGR through 20
 
 **Independent Streetwear**
 "The rise of independent streetwear represents a shift in how cultural influence is built — no longer defined by marketing budgets or legacy hierarchies, influence in 2025 is shaped by clarity, sincerity, and consistency." This disqualifies traditional agencies and validates the cultural-fluency moat. — _PAUSE Magazine, Jan 2026_
+
+**Fractional Advisory Market**
+The fractional executive market has grown 57% since 2020. 73% of PE firms now recommend fractional executives to portfolio companies, up from 31% in 2020. The model has structural tailwind. The gap is that traditional fractional CMO firms serve companies with internal marketing staff — Brand Alchemy serves founder-operators who are the only person in the room. That segment is underserved by the existing fractional infrastructure. — _Fractional Leadership Research, 2025_
+
+**Consulting Execution Risk**
+Most strategies fail at the "messy middle" — middle managers (or in a tattoo studio, the owner themselves) revert to prior routines once the consultant leaves. This is a documented pattern across all consulting engagements. The on-site diagnostic and Notion checklist format are the structural mitigations: frameworks built from live observation, delivered in a format a front-desk worker can follow without interpretation. But Notion checklist adoption should be stress-tested with the first Category B portfolio client before treating it as solved. — _Entrepreneur, 2026; validated against delivery model_
 
 ---
 
