@@ -27,7 +27,7 @@ export const STUDIO_SPRINTS = [
     /** Reduced rate for first-time clients in this category. Set to null when filled. */
     launchPrice: '$4,000',
     duration: '6 weeks',
-    format: '30-min consultation, then ~4–5 hrs/week',
+    format: '60-min discovery call · 6-week advisory',
     /** Strategic advisory work included in this engagement. */
     advisory: [
       'CAC & Channel ROI Audit',
@@ -53,7 +53,7 @@ export const STUDIO_SPRINTS = [
     /** Reduced rate for first-time clients in this category. Set to null when filled. */
     launchPrice: '$3,500',
     duration: '6 weeks',
-    format: '30-min consultation, then ~4–5 hrs/week',
+    format: '60-min discovery call · 6-week advisory',
     /** Strategic advisory work included in this engagement. */
     advisory: [
       'Intake System Design',
