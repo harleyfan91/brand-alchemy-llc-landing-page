@@ -217,7 +217,7 @@ const StudioPage: React.FC = () => {
         >
           {!heroImageFailed ? (
             <img
-              src="/studio-assets/hero.jpg"
+              src="/studio-assets/hero-laocoonte-front.png"
               alt=""
               className="absolute inset-0 h-full w-full object-cover object-center"
               style={{

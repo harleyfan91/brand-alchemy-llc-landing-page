@@ -6,7 +6,8 @@ Images for the `/studio` consulting page.
 
 | File | Spec | Used in |
 |------|------|---------|
-| `hero.jpg` | Full-bleed hero, min 1920×1080, dark creative workspace / subculture atmosphere | Panel 1 — hero snap section |
+| `hero-laocoonte-front.png` | Full-bleed hero — Fabio Viale *Laocoonte* (front) | Panel 1 — hero snap section (active test) |
+| `hero-laocoonte-back.png` | Full-bleed hero — Fabio Viale *Laocoonte* (back) | Alternate hero — swap `src` in `StudioPage.tsx` to test |
 | `panel-2.jpg` | Full-bleed mid-page break, min 1920×1080, textural / editorial (no people) | Panel 3 — image break snap section |
 | `sprint-a.jpg` | Card header band, min 1200×400, drop / release-day logistics mood | Drop & Allocation sprint card |
 | `sprint-b.jpg` | Card header band, min 1200×400, elevated appointment / studio space | Capacity & Intake sprint card |
