@@ -45,9 +45,85 @@ The standalone social caption pack ($19 PDF) model was deprecated after strategi
 
 ---
 
-## 2. Business Model
+## 2. Competitive Landscape
 
-### 2.1 Subscription tiers
+This section exists to sharpen scope decisions and ensure the DEE is differentiated before a line of code is written. Read before finalizing milestones.
+
+### 2.1 Tools doing overlapping pieces
+
+The following tools are actively used by hospitality and small-business owners. They are grouped by which part of the DEE workflow they address.
+
+---
+
+**Photo → branded visual post (closest to DEE's canvas layer)**
+
+| Tool | What it does | Pricing | Hospitality focus? | Key gap vs DEE |
+|------|-------------|---------|-------------------|----------------|
+| **Feedo AI** (feedoai.com) | Upload a food photo → AI removes background, applies brand logo/colors, generates a publish-ready poster and caption. ~20 seconds per post. | ~$9–49/mo | ✅ Restaurant-only | No brand DNA from intake — brand kit is self-entered colors/logo only. Copy is generic, not register-aware. No Identity Kit handoff. |
+| **Pebblely** (pebblely.com) | Product photo → AI replaces background with a styled scene (40+ themes or custom prompt). Multiple aspect ratios. | $19–39/mo (200–500 images/mo) | ❌ E-commerce focused | No caption generation. No brand kit logic. Primarily for product catalog photography, not daily social posts. |
+| **Adpicto** (adpicto.com) | Upload logo, colors, 10–30 reference photos → AI generates images that derive from your brand references (not just overlays). Copy tied to same project. Uses GPT-image-2 + Google Nano Banana 2. | ~$14.99/mo | ❌ General SMB | Brand kit is manual. No structured brand DNA, no prohibited words, no register system, no Identity Kit connection. |
+
+---
+
+**AI copy / brand voice (closest to DEE's copy generation layer)**
+
+| Tool | What it does | Pricing | Key gap vs DEE |
+|------|-------------|---------|----------------|
+| **Flick — Iris** (flick.social) | Brand Hub: set brand voice, content pillars, prohibited words, products/services. AI (Iris) generates captions and a content calendar from your Brand Hub. Brand voice can be pulled from linked Instagram or website URL. | From £11/mo | No photo compositing. Brand Hub is manually entered — not imported from a brand DNA intake. No situation taxonomy or register system. |
+| **Predis.ai** | Brand kit (colors, fonts, logo) + AI image/carousel/video generation + caption writing + scheduling. Credit-based. | $19–212/mo | Brand kit is visual only (no voice profile, prohibitions, or tone registers). Generates volume at the cost of brand specificity. |
+
+---
+
+**All-in-one for restaurants / hospitality (closest to DEE's intended audience)**
+
+| Tool | What it does | Pricing | Key gap vs DEE |
+|------|-------------|---------|----------------|
+| **Feedo AI** | (see above) | $9–49/mo | (see above) |
+| **SocialChef** (socialchef.ai) | AI writes copy, selects/generates images, creates platform-optimized posts, auto-publishes. Brand kit auto-applied to all designs. Built for restaurants, local service businesses. | Not public | Full content lifecycle management — scheduling and auto-posting included. The DEE (v1) is export-only, which is simpler but leaves scheduling to the owner. |
+| **Mavic AI** (mavic.ai) | Brand AI learns your F&B brand once. Generates food lifestyle imagery from a product photo (no photographer needed), writes captions, schedules. Uses Gemini, GPT, Claude. | Not public | AI-generated food imagery (stylized, not a composite of the owner's real photo). The DEE uses the owner's actual photo — more authentic for hospitality where regulars recognize the space. |
+| **Skenly** (skenly.ai) | Extracts brand kit from existing site/socials. Connects to POS (Square, Toast) — generates posts driven by actual sales/menu data. Auto-publishes 3 posts + 1 story + 1 ad per week. WhatsApp approvals. Claude + fal.ai + Remotion stack. Pilot running May 2026. | ~€29–199/mo (est.) | Most sophisticated in this category. POS integration and auto-pilot mode are features the DEE is explicitly not building in v1. Skenly does not have Identity Kit–depth brand DNA — it scrapes the surface from existing online presence. |
+| **NGAZE.AI** (ngaze.ai) | Multi-location restaurant social: brand-approved templates, content calendar, publishing. HQ controls with location-level customization. Template-based, not AI-generative. | Not public | Template-based content, not AI-generated. Built for chains and multi-location operators, not a single café or salon. |
+
+---
+
+### 2.2 Where the DEE is differentiated
+
+None of these tools do all three things the DEE does together:
+
+1. **Brand DNA from a structured intake** — not scraped from a website, not manually entered colors. The Identity Kit produced a voice profile, tone preset, prohibited words, content pillars, and caption starters through a deliberate intake process. That depth is the DEE's primary moat.
+
+2. **Situation taxonomy + register system** — the 7 situations and 7 registers are not just prompt helpers; they are the constraint architecture that prevents the model from regressing to generic marketing copy. No current competitor structures copy generation this way.
+
+3. **Owner's real photo, not AI-generated imagery** — Feedo, Mavic, and Skenly either composite or generate the photo. The DEE applies brand design to the owner's actual photo. For a café or salon where regulars recognize the space and the food, this is the more authentic and trustworthy output.
+
+### 2.3 Where competitors are ahead (be honest about this)
+
+| Area | Who's ahead | Implication |
+|------|------------|-------------|
+| Auto-publishing | SocialChef, Skenly, Feedo | DEE v1 is export-only. This is a real gap if owners want zero manual steps. Defer to v2 if usage data shows friction. |
+| AI food photography | Mavic AI | If owner photos are consistently poor quality, Mavic's generative imagery may outperform a composite of a bad photo. The DEE's quality gate (Section 5) becomes important here. |
+| POS / operational data | Skenly | Daily specials driven by real inventory/sales data is a compelling hook the DEE doesn't attempt. Could be explored as a v2 integration if Identity Kit customers request it. |
+| Scheduling + calendar | Flick, Predis.ai, SocialChef | Not in DEE scope v1. The tradeoff is simplicity; the risk is that owners still need another tool for scheduling, which adds friction to the overall workflow. |
+| Volume output | Predis.ai | For owners who want to post 30+ times/month across platforms, Predis.ai at $19/mo is a better fit. DEE is not trying to win on volume. |
+
+### 2.4 Pricing context
+
+| Tool | Entry price | What you get | Notes |
+|------|------------|-------------|-------|
+| Feedo AI | ~$9/mo | ~15 posts/mo, brand logo/colors applied | Most direct v1 competitor |
+| Adpicto | $14.99/mo | Brand-reference AI image + caption | General SMB |
+| Predis.ai | $19/mo | 1,300 credits, 1 brand kit, no auto-posting | Volume-focused |
+| Flick | £11/mo (~$14) | Brand Hub, caption AI, scheduling | Copy-focused |
+| SocialChef | ~$29/mo (est.) | Full content lifecycle, hospitality-focused | Auto-publishing included |
+| **DEE (planned)** | **$25/mo** | Brand DNA handoff, situation picker, register copy, brand canvas | **Identity Kit integration is the price justifier** |
+
+At $25/mo the DEE is priced above Feedo and Flick. That premium needs to be earned by the Identity Kit handoff and copy quality — which are invisible until the user experiences the first generation. This reinforces the importance of a low-friction trial path for Kit customers.
+
+---
+
+## 3. Business Model
+
+### 3.1 Subscription tiers
 
 **One plan. No watermarks. No locked features.**
 
@@ -58,13 +134,13 @@ The standalone social caption pack ($19 PDF) model was deprecated after strategi
 
 Rationale for annual-first pricing: predictable revenue, lower churn, and the per-month equivalent undercuts Canva Pro ($15/mo) on a value-per-feature basis once Brand DNA integration is factored in.
 
-### 2.2 AI credit budget
+### 3.2 AI credit budget
 
 Every account receives **150 AI generation credits/month** for copy generation. Image processing, resizing, color overlays, logo stamping, and background removal are **not** credit-consuming — they run client-side with no API cost.
 
 **Overage:** $5 for 50 additional credits. Single-click purchase, no new plan required.
 
-### 2.3 Cost structure
+### 3.3 Cost structure
 
 | Operation | Cost | Processing location |
 |-----------|------|-------------------|
@@ -77,11 +153,11 @@ Storage: logos and Brand DNA profiles stored in S3-compatible bucket. Cost negli
 
 ---
 
-## 3. The Identity Kit Integration (Critical Path)
+## 4. The Identity Kit Integration (Critical Path)
 
 This is the feature that makes the DEE a Brand Alchemy product rather than a generic tool. It must be built before or alongside the core canvas features.
 
-### 3.1 What already exists
+### 4.1 What already exists
 
 The `brand-context.v1.schema.json` (at `docs/product-platform/schemas/`) defines a machine-readable output format for fulfilled Identity Kit orders. It includes:
 
@@ -91,7 +167,7 @@ The `brand-context.v1.schema.json` (at `docs/product-platform/schemas/`) defines
 
 This schema is the data bridge. When a Kit order is fulfilled, the `brand-context.json` file is the artifact the DEE reads from.
 
-### 3.2 Auto-population flow
+### 4.2 Auto-population flow
 
 ```
 Kit purchase → fulfillment → brand-context.json generated
@@ -108,7 +184,7 @@ Kit purchase → fulfillment → brand-context.json generated
 
 The user should never have to manually enter what the Identity Kit already produced. The onboarding for a Kit customer is: connect your order → confirm your logo upload → done.
 
-### 3.3 Cold-start fallback (non-Kit users)
+### 4.3 Cold-start fallback (non-Kit users)
 
 For users who have not purchased an Identity Kit, provide archetype-based onboarding:
 - Pick your business type (café, salon, home services, retail shop, etc.)
@@ -119,15 +195,15 @@ This produces a provisional Brand DNA profile sufficient to generate decent outp
 
 ---
 
-## 4. Copy Quality Architecture
+## 5. Copy Quality Architecture
 
 This section documents how the DEE avoids the most common AI copy failure mode: generic, enthusiasm-heavy marketing language that the business owner immediately recognizes as not sounding like them.
 
-### 4.1 The failure mode
+### 5.1 The failure mode
 
 Default gpt-4o-mini output, given minimal context, regresses toward its training distribution — which is dominated by generic marketing copy. "Your coffee, your way! ☕✨ Swing by today!" Owners recognize this on the second or third use and stop trusting the tool.
 
-### 4.2 The situation taxonomy (from pack work)
+### 5.2 The situation taxonomy (from pack work)
 
 Never let users generate from a blank prompt. The situation picker anchors the copy before the model generates anything. The 7 situations from the social content pack work map directly to prompt contexts:
 
@@ -143,7 +219,7 @@ Never let users generate from a blank prompt. The situation picker anchors the c
 
 User selects a situation, adds a 3-5 word note ("new latte on the menu"), and the model generates against that specific context. This is the most important quality lever.
 
-### 4.3 The register system (from pack work)
+### 5.3 The register system (from pack work)
 
 Brand DNA `tonePreset` maps to a named register that constrains model output:
 
@@ -157,7 +233,7 @@ Brand DNA `tonePreset` maps to a named register that constrains model output:
 | Energetic | Up, forward, movement — not hype |
 | Light | Easy, low-stakes, playful |
 
-### 4.4 Few-shot examples in system prompts
+### 5.4 Few-shot examples in system prompts
 
 The tested captions from the social pack work are not wasted — they become the few-shot examples that teach the model what each register actually looks like for these business types:
 
@@ -168,7 +244,7 @@ The tested captions from the social pack work are not wasted — they become the
 
 3-5 examples per register per business type, injected into the system prompt. This is dramatically more reliable than describing the tone in prose.
 
-### 4.5 Hard prohibitions in system prompt
+### 5.5 Hard prohibitions in system prompt
 
 Injected as explicit rules, not suggestions:
 
@@ -182,7 +258,7 @@ Injected as explicit rules, not suggestions:
 
 Any prohibited words from the owner's Brand DNA Voice Playbook (`sections.voice.prohibitedWords`) are appended to this list.
 
-### 4.6 Two outputs, user selects and edits
+### 5.6 Two outputs, user selects and edits
 
 Every generation produces:
 1. **Short and punchy** — 1-2 sentences, designed for feed posts with a strong image
@@ -192,15 +268,15 @@ The user selects one, edits inline if needed, and exports. The edit step is a qu
 
 ---
 
-## 5. Visual Context and Photo Intelligence
+## 6. Visual Context and Photo Intelligence
 
-### 5.1 The gap the PRD does not address (by design — read before building)
+### 6.1 The gap the PRD does not address (by design — read before building)
 
 The current copy generation architecture relies entirely on the user to select the right situation. The system has no understanding of what is actually in the photo. This is an intentional v1 simplification, but it carries a real risk: if owners pick situations that don't match the photo, the caption will feel off. That erodes trust in the tool faster than weak copy does.
 
 This section documents the decision explicitly so it is not skipped by accident.
 
-### 5.2 Comparison to Camentra's model problem
+### 6.2 Comparison to Camentra's model problem
 
 Camentra's AI coach required a vision model to perform nuanced photographic judgment across multiple categories (food, product, real estate) — quality tier, sharpness, blur type, composition, professional vs casual presentation — all in a single call with a long, rule-heavy prompt. Getting a model that could do this reliably, at acceptable cost, took weeks of testing and eventually revealed a large gap between a general-purpose model's training distribution and the actual use case.
 
@@ -216,7 +292,7 @@ The DEE's visual intelligence requirement is structurally simpler:
 
 The DEE can avoid the weeks-long model search because the domain is narrow, the task is lighter, and running a cloud API per photo is straightforward in a PWA context.
 
-### 5.3 Options
+### 6.3 Options
 
 **Option A — User-driven only (v1 scope, recommended to ship first)**
 
@@ -246,7 +322,7 @@ Implementation: one Next.js edge function, same pattern as the copy generation c
 
 Before compositing, run a basic quality check: is the image blurry, severely underexposed, or too dark to use? Return a soft warning ("This photo might be hard to read with an overlay — want to try a different one?") rather than blocking export. Do not attempt the level of quality coaching Camentra does — that is a different product.
 
-### 5.4 Decision
+### 6.4 Decision
 
 | Decision | Status | Notes |
 |----------|--------|-------|
@@ -257,9 +333,9 @@ Before compositing, run a basic quality check: is the image blurry, severely und
 
 ---
 
-## 6. Technical Architecture
+## 7. Technical Architecture
 
-### 6.1 Stack
+### 7.1 Stack
 
 | Layer | Technology | Rationale |
 |-------|-----------|-----------|
@@ -272,7 +348,7 @@ Before compositing, run a basic quality check: is the image blurry, severely und
 | Logo / asset storage | S3-compatible bucket | Existing pattern in Identity Kit fulfillment |
 | Billing | Stripe (subscriptions + one-time credit top-ups) | Consistent with Identity Kit payment docs |
 
-### 6.2 Architecture diagram
+### 7.2 Architecture diagram
 
 ```
 [ PWA: Next.js + Tailwind ]
@@ -286,7 +362,7 @@ Before compositing, run a basic quality check: is the image blurry, severely und
   Asset stamping    brand-context.json import
 ```
 
-### 6.3 Canvas engine — two layout modes
+### 7.3 Canvas engine — two layout modes
 
 **1:1 Grid Post**
 - Centres or offsets isolated product image
@@ -302,7 +378,7 @@ Before compositing, run a basic quality check: is the image blurry, severely und
 
 Design guardrails are automatic — the owner cannot accidentally choose an off-brand color or font because the system only exposes their Brand DNA options.
 
-### 6.4 Background removal — known limitations and mitigations
+### 7.4 Background removal — known limitations and mitigations
 
 The `@imgly` model is ~40MB, downloaded once and cached in IndexedDB. On first use this creates a meaningful delay, especially on mobile over spotty connections (café basement, retail floor). Mitigations:
 
@@ -315,7 +391,7 @@ WebGPU is not universally supported on iOS Safari. WASM fallback is the default 
 
 **Do not** make background removal the first experience. Let the user do a simple layout (photo + brand overlay + logo stamp) first, then introduce background removal as an enhancement. This avoids the 40MB download becoming a first-impression problem.
 
-### 6.5 Mobile performance requirements
+### 7.5 Mobile performance requirements
 
 - Compress phone camera images (5–12MB) client-side to max 2048px before any processing layer
 - Canvas layouts and saved design palettes must remain interactive without connectivity (offline-capable UI)
@@ -324,9 +400,9 @@ WebGPU is not universally supported on iOS Safari. WASM fallback is the default 
 
 ---
 
-## 7. Feature Scope
+## 8. Feature Scope
 
-### 7.1 Milestone 1 — Brand DNA storage and Next.js core
+### 8.1 Milestone 1 — Brand DNA storage and Next.js core
 
 - Next.js project setup, PWA manifest, Tailwind + Shadcn
 - Supabase schema for user accounts and Brand DNA profiles
@@ -335,7 +411,7 @@ WebGPU is not universally supported on iOS Safari. WASM fallback is the default 
 - Logo upload to S3-compatible storage
 - Stripe subscription setup (monthly + annual plans)
 
-### 7.2 Milestone 2 — HTML5 Canvas engine
+### 8.2 Milestone 2 — HTML5 Canvas engine
 
 - 1:1 post layout: image placement, brand color overlay, logo stamp
 - 9:16 story layout: background image, opacity overlay, text containers
@@ -343,7 +419,7 @@ WebGPU is not universally supported on iOS Safari. WASM fallback is the default 
 - Export to JPEG/PNG, no watermark
 - CORS-safe asset loading for logos from bucket
 
-### 7.3 Milestone 3 — Background removal
+### 8.3 Milestone 3 — Background removal
 
 - `@imgly/background-removal-web` integration
 - IndexedDB model caching with two-state loading UX
@@ -351,7 +427,7 @@ WebGPU is not universally supported on iOS Safari. WASM fallback is the default 
 - Model pre-warm during onboarding
 - Manual crop fallback
 
-### 7.4 Milestone 4 — Copy generation engine
+### 8.4 Milestone 4 — Copy generation engine
 
 - Situation picker UI (7 situations, 3-5 word user note)
 - System prompt construction from Brand DNA:
@@ -363,7 +439,7 @@ WebGPU is not universally supported on iOS Safari. WASM fallback is the default 
 - Two-output display (punchy / story), inline edit, copy to clipboard
 - Credit tracking and overage UI
 
-### 7.5 Milestone 5 — Billing and credit management
+### 8.5 Milestone 5 — Billing and credit management
 
 - Stripe subscription webhooks
 - Monthly credit reset
@@ -373,7 +449,7 @@ WebGPU is not universally supported on iOS Safari. WASM fallback is the default 
 
 ---
 
-## 8. Open Decisions
+## 9. Open Decisions
 
 These need resolution before or during development — they are not blocked, but they carry downstream consequences.
 
@@ -389,7 +465,7 @@ These need resolution before or during development — they are not blocked, but
 
 ---
 
-## 9. What Success Looks Like (v1)
+## 10. What Success Looks Like (v1)
 
 A sole-proprietor café or salon owner who has an Identity Kit:
 
@@ -406,7 +482,7 @@ A sole-proprietor café or salon owner who has an Identity Kit:
 
 ---
 
-## 10. Relationship to Existing Docs
+## 11. Relationship to Existing Docs
 
 | Doc | Relationship |
 |-----|-------------|
