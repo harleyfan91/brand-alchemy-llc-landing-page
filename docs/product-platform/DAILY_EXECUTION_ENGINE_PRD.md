@@ -8,6 +8,71 @@
 
 **Pre-build / strategic validation.** No code exists yet. This document governs architecture, scope, and open decisions before development begins. Review against `ACQUISITION_FUNNEL_AND_SKU_MAP.md` before each milestone.
 
+All pre-build blocking items are tracked in [`DEE_PREBUILD_CHECKLIST.md`](DEE_PREBUILD_CHECKLIST.md) in this folder. That file is the task tracker; this PRD is the stable spec.
+
+---
+
+## Identity Kit Verification Requirements
+
+**This section is written to be handed to an agent working in the Identity Kit repo.** The DEE's primary differentiator — and the feature that justifies its price above competitors — depends entirely on the Identity Kit generating a specific machine-readable output at fulfillment. Before any DEE development begins, the Identity Kit repo must confirm or implement the following.
+
+### What the DEE needs from the Identity Kit
+
+The DEE reads a file called `brand-context.json` (schema at `docs/product-platform/schemas/brand-context.v1.schema.json` in this repo) when a customer connects their Kit order. The DEE uses this file to pre-populate the owner's entire Brand DNA profile — colors, fonts, voice tone, content pillars, prohibited words, CTA style, and caption starters — so the owner never enters this information manually.
+
+**The DEE cannot function as a differentiated product without this file.** Without it, the DEE becomes a generic tool that asks owners to manually describe their brand, which is exactly what competitors like Flick and Predis.ai already do at a lower price point.
+
+### Required fields (DEE will break or degrade without these)
+
+| Field path in `brand-context.json` | What the DEE uses it for | Required for |
+|------------------------------------|--------------------------|-------------|
+| `voiceProfile.tonePreset` | Maps to one of 7 copy registers (Wry, Real, Confident, Quiet, Warm, Energetic, Light) | Copy generation — core feature |
+| `voiceProfile.narratorId` | Sets first/second/third person voice for captions | Copy generation |
+| `voiceProfile.ctaType` | Selects CTA style (invite, direct, soft) for caption endings | Copy generation |
+| `voiceProfile.contentPillarNames` | Pre-populates situation picker labels with owner's own language | Copy generation UX |
+| `visualProfile.paletteId` | Maps to brand color set for canvas overlay and logo tinting | Canvas engine — core feature |
+| `visualProfile.paletteDisplayName` | Human-readable color palette name shown in the UI | Canvas engine |
+| `visualProfile.selectedStyle` | Informs layout style selection (minimal, bold, warm, etc.) | Canvas engine |
+| `sections.voice.prohibitedWords` | Appended to the hard prohibition list in every system prompt | Copy quality |
+| `sections.csp.captionStarters` | Injected as few-shot examples in the system prompt | Copy quality |
+| `sections.csp.contentPillars` | Used to label and contextualize the situation picker | Copy generation UX |
+| `sections.brief.idealCustomer` | Injected as audience context in the system prompt | Copy generation |
+
+### Font requirements (canvas engine depends on these)
+
+The canvas engine renders text overlays in the owner's brand fonts. The DEE needs to know which fonts to load for each Kit customer.
+
+**Questions for the Identity Kit repo to answer:**
+
+1. Does `brand-context.json` currently include any font references (font family names, Google Fonts slugs, or custom upload paths)?
+2. If yes: are these fonts available as Google Web Fonts, or are they paid/custom fonts the owner may not have a license to redistribute?
+3. If no: the DEE needs either (a) a font field added to the `brand-context.v1` schema, or (b) a mapping table from Identity Kit palette/style IDs to recommended web-safe font pairings that the DEE can maintain independently.
+
+A canvas that renders the wrong font — or falls back to a generic system font — is one of the most immediately noticeable failures for an owner who just spent $79–149 on a brand document.
+
+### Data transfer mechanism (unresolved — needs a decision)
+
+The PRD's preferred approach is a **fulfillment webhook**: when an Identity Kit order is fulfilled, the `brand-context.json` is pushed to the DEE's Supabase instance automatically. The owner opens the DEE app and their brand is already loaded.
+
+The fallback is **user-initiated import via order ID**: the owner enters their Kit order number in the DEE app and it fetches the file on demand.
+
+**Questions for the Identity Kit repo:**
+
+1. Is there currently a fulfillment webhook or API endpoint that fires when a Kit order is completed?
+2. If yes: what does the payload look like, and can `brand-context.json` be attached or referenced from it?
+3. If no: what is the current fulfillment process, and what would it take to add a webhook call?
+4. Are `brand-context.json` files currently stored somewhere accessible by an external service (S3, Supabase storage, a CDN path per order)?
+
+### Supabase infrastructure question
+
+The DEE plans to use Supabase for user accounts and Brand DNA storage. The Identity Kit likely uses Supabase already.
+
+**Question for the Identity Kit repo:** Is there a shared Supabase project that both the Identity Kit and the DEE should write to, or should the DEE have a separate Supabase project? Using the same project simplifies the Brand DNA handoff (no cross-service transfer needed) but couples the two products at the database level.
+
+### Schema version
+
+The DEE is built against `brand-context.v1.schema.json`. If the Identity Kit plans to update the schema, the DEE needs to be notified before that change ships. Please flag any planned schema changes to this repo before implementing them.
+
 ---
 
 ## 1. Product Overview & Strategic Position
