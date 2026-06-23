@@ -192,9 +192,74 @@ The user selects one, edits inline if needed, and exports. The edit step is a qu
 
 ---
 
-## 5. Technical Architecture
+## 5. Visual Context and Photo Intelligence
 
-### 5.1 Stack
+### 5.1 The gap the PRD does not address (by design — read before building)
+
+The current copy generation architecture relies entirely on the user to select the right situation. The system has no understanding of what is actually in the photo. This is an intentional v1 simplification, but it carries a real risk: if owners pick situations that don't match the photo, the caption will feel off. That erodes trust in the tool faster than weak copy does.
+
+This section documents the decision explicitly so it is not skipped by accident.
+
+### 5.2 Comparison to Camentra's model problem
+
+Camentra's AI coach required a vision model to perform nuanced photographic judgment across multiple categories (food, product, real estate) — quality tier, sharpness, blur type, composition, professional vs casual presentation — all in a single call with a long, rule-heavy prompt. Getting a model that could do this reliably, at acceptable cost, took weeks of testing and eventually revealed a large gap between a general-purpose model's training distribution and the actual use case.
+
+The DEE's visual intelligence requirement is structurally simpler:
+
+| Factor | Camentra | DEE |
+|--------|----------|-----|
+| Domain | Food, product, real estate, people | Hospitality only (food/drink, interiors, salon, team) |
+| Task | Nuanced coaching (quality tier, blur type, tool names) | Basic classification (what category is this photo?) + optional quality gate |
+| Inference location | On-device (React Native, no reliable network assumed) | Cloud (PWA, network assumed) |
+| Label space needed | Broad — multiple photography categories | Narrow — 4–5 hospitality content types |
+| Quantization required | Yes — on-device model had to be quantized for mobile | No — cloud API call, no on-device model |
+
+The DEE can avoid the weeks-long model search because the domain is narrow, the task is lighter, and running a cloud API per photo is straightforward in a PWA context.
+
+### 5.3 Options
+
+**Option A — User-driven only (v1 scope, recommended to ship first)**
+
+Do not add any photo intelligence layer in v1. The situation picker is intentional, not a gap. The owner knows what they just photographed. Owners who pick the wrong situation are rare; most know whether they're posting a new menu item or a quiet Tuesday moment.
+
+- No additional AI cost per photo
+- No model selection work
+- Validate whether users actually pick wrong situations before building the solution to a problem that may not exist
+- Defer Option B to v2 if session data shows repeated caption mismatches or low edit rates
+
+**Option B — Lightweight visual context (v2 scope)**
+
+Add one Gemini 2.0 Flash vision call per photo — classify against 5 hospitality labels and flag obvious quality issues. Pre-select the most likely situation in the picker and surface a soft quality warning if needed.
+
+Labels (narrow by design — do not expand without evidence):
+1. Food or drink (plated dish, cup, glass, baked item)
+2. Café or restaurant interior (room, counter, seating, ambience)
+3. Salon or spa (chair, mirror, workstation, styling tools)
+4. Team or people (staff, client, owner, candid moment)
+5. Exterior or signage (storefront, entrance, window, sign)
+
+Cost: ~$0.0015 per photo (Gemini 2.0 Flash). At 30 photos/month per active user, that is $0.045/user/month — negligible against the subscription margin.
+
+Implementation: one Next.js edge function, same pattern as the copy generation call. The model already recognizes hospitality content without custom training. No quantization, no label sifting.
+
+**Quality gate (optional addition to Option B):**
+
+Before compositing, run a basic quality check: is the image blurry, severely underexposed, or too dark to use? Return a soft warning ("This photo might be hard to read with an overlay — want to try a different one?") rather than blocking export. Do not attempt the level of quality coaching Camentra does — that is a different product.
+
+### 5.4 Decision
+
+| Decision | Status | Notes |
+|----------|--------|-------|
+| Ship v1 with user-driven situation picker only | **Recommended** | Validate usage before adding vision layer |
+| Add Gemini Flash visual context call | **v2 — defer** | Build if session data shows situation mismatches or if users ask for it |
+| On-device photo intelligence | **Not recommended** | Adds quantization complexity with no benefit in a PWA context; use cloud |
+| Full quality coaching (Camentra-style) | **Out of scope** | Different product; do not let this creep into DEE scope |
+
+---
+
+## 6. Technical Architecture
+
+### 6.1 Stack
 
 | Layer | Technology | Rationale |
 |-------|-----------|-----------|
@@ -207,7 +272,7 @@ The user selects one, edits inline if needed, and exports. The edit step is a qu
 | Logo / asset storage | S3-compatible bucket | Existing pattern in Identity Kit fulfillment |
 | Billing | Stripe (subscriptions + one-time credit top-ups) | Consistent with Identity Kit payment docs |
 
-### 5.2 Architecture diagram
+### 6.2 Architecture diagram
 
 ```
 [ PWA: Next.js + Tailwind ]
@@ -221,7 +286,7 @@ The user selects one, edits inline if needed, and exports. The edit step is a qu
   Asset stamping    brand-context.json import
 ```
 
-### 5.3 Canvas engine — two layout modes
+### 6.3 Canvas engine — two layout modes
 
 **1:1 Grid Post**
 - Centres or offsets isolated product image
@@ -237,7 +302,7 @@ The user selects one, edits inline if needed, and exports. The edit step is a qu
 
 Design guardrails are automatic — the owner cannot accidentally choose an off-brand color or font because the system only exposes their Brand DNA options.
 
-### 5.4 Background removal — known limitations and mitigations
+### 6.4 Background removal — known limitations and mitigations
 
 The `@imgly` model is ~40MB, downloaded once and cached in IndexedDB. On first use this creates a meaningful delay, especially on mobile over spotty connections (café basement, retail floor). Mitigations:
 
@@ -250,7 +315,7 @@ WebGPU is not universally supported on iOS Safari. WASM fallback is the default 
 
 **Do not** make background removal the first experience. Let the user do a simple layout (photo + brand overlay + logo stamp) first, then introduce background removal as an enhancement. This avoids the 40MB download becoming a first-impression problem.
 
-### 5.5 Mobile performance requirements
+### 6.5 Mobile performance requirements
 
 - Compress phone camera images (5–12MB) client-side to max 2048px before any processing layer
 - Canvas layouts and saved design palettes must remain interactive without connectivity (offline-capable UI)
@@ -259,9 +324,9 @@ WebGPU is not universally supported on iOS Safari. WASM fallback is the default 
 
 ---
 
-## 6. Feature Scope
+## 7. Feature Scope
 
-### 6.1 Milestone 1 — Brand DNA storage and Next.js core
+### 7.1 Milestone 1 — Brand DNA storage and Next.js core
 
 - Next.js project setup, PWA manifest, Tailwind + Shadcn
 - Supabase schema for user accounts and Brand DNA profiles
@@ -270,7 +335,7 @@ WebGPU is not universally supported on iOS Safari. WASM fallback is the default 
 - Logo upload to S3-compatible storage
 - Stripe subscription setup (monthly + annual plans)
 
-### 6.2 Milestone 2 — HTML5 Canvas engine
+### 7.2 Milestone 2 — HTML5 Canvas engine
 
 - 1:1 post layout: image placement, brand color overlay, logo stamp
 - 9:16 story layout: background image, opacity overlay, text containers
@@ -278,7 +343,7 @@ WebGPU is not universally supported on iOS Safari. WASM fallback is the default 
 - Export to JPEG/PNG, no watermark
 - CORS-safe asset loading for logos from bucket
 
-### 6.3 Milestone 3 — Background removal
+### 7.3 Milestone 3 — Background removal
 
 - `@imgly/background-removal-web` integration
 - IndexedDB model caching with two-state loading UX
@@ -286,7 +351,7 @@ WebGPU is not universally supported on iOS Safari. WASM fallback is the default 
 - Model pre-warm during onboarding
 - Manual crop fallback
 
-### 6.4 Milestone 4 — Copy generation engine
+### 7.4 Milestone 4 — Copy generation engine
 
 - Situation picker UI (7 situations, 3-5 word user note)
 - System prompt construction from Brand DNA:
@@ -298,7 +363,7 @@ WebGPU is not universally supported on iOS Safari. WASM fallback is the default 
 - Two-output display (punchy / story), inline edit, copy to clipboard
 - Credit tracking and overage UI
 
-### 6.5 Milestone 5 — Billing and credit management
+### 7.5 Milestone 5 — Billing and credit management
 
 - Stripe subscription webhooks
 - Monthly credit reset
@@ -308,7 +373,7 @@ WebGPU is not universally supported on iOS Safari. WASM fallback is the default 
 
 ---
 
-## 7. Open Decisions
+## 8. Open Decisions
 
 These need resolution before or during development — they are not blocked, but they carry downstream consequences.
 
@@ -324,7 +389,7 @@ These need resolution before or during development — they are not blocked, but
 
 ---
 
-## 8. What Success Looks Like (v1)
+## 9. What Success Looks Like (v1)
 
 A sole-proprietor café or salon owner who has an Identity Kit:
 
@@ -341,7 +406,7 @@ A sole-proprietor café or salon owner who has an Identity Kit:
 
 ---
 
-## 9. Relationship to Existing Docs
+## 10. Relationship to Existing Docs
 
 | Doc | Relationship |
 |-----|-------------|
