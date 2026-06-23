@@ -1,6 +1,5 @@
 import React from 'react';
 import ArticleProductCallout from '../components/ArticleProductCallout';
-import { GUIDES_AND_KITS_PATH } from '../content/guidesAndKitsRoutes';
 
 /**
  * Inline Pattern A product copy for shipped articles (keeps CTA out of markdown for styled callout).
@@ -28,14 +27,14 @@ export function renderArticleInlineCta(slug: string | undefined): React.ReactNod
     return (
       <ArticleProductCallout
         tabLabel="When the caption stalls you"
-        primaryHref={GUIDES_AND_KITS_PATH}
-        primaryLabel="View guides & kits"
+        primaryHref="/identity-kit"
+        primaryLabel="View Identity Kit"
       >
         <p>
           The{' '}
-          <span className="font-serif text-lg font-normal leading-snug text-gray-900 sm:text-xl">Social Content Pack</span>{' '}
-          bundles short lines, starters, and fill-in-the-blank ideas for feed and stories so your weekly rhythm does not
-          depend on a blank text box.
+          <span className="font-serif text-lg font-normal leading-snug text-gray-900 sm:text-xl">Identity Kit</span>{' '}
+          gives you a defined voice, visual direction, and a repeatable way to describe what you do — so every post starts
+          from a consistent place instead of a blank screen.
         </p>
       </ArticleProductCallout>
     );

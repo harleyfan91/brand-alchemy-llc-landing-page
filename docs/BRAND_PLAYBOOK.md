@@ -55,18 +55,20 @@ The homepage **System** block (`#services`, `components/Services.tsx`) explains 
 
 | Offering | Who it’s for | Promise in one line | Notes / boundaries |
 |----------|----------------|---------------------|-------------------|
-| **System — Brand foundation** (site story, not a SKU name) | Owner-operated businesses | Voice and look on paper first, so nothing else feels pieced together | Leads with **Identity Kit**; eyebrow label **System** on the homepage |
-| **System — Marketing tools & kits** | DIY operators and busy owners | Practical kits, guides, and templates without a marketing background | **Products** catalog: local kits, content packs, bundles — `components/Products.tsx` |
-| **System — Visibility & growth** | Anyone building local or digital presence | Show up more clearly and build momentum over time | Outcome layer; reinforced by local kits, articles, and **Camentra** |
-| Identity Kit (Core / Pro) | Owners who want brand voice + look on paper | Guided intake → PDFs by email | Core **$79** / Pro **$149**; funnel role in [ACQUISITION_FUNNEL_AND_SKU_MAP.md](ACQUISITION_FUNNEL_AND_SKU_MAP.md) |
-| Google Core / Pro kits; Yelp Core / Pro kits; **Google + Yelp Pro bundle** | Local businesses on those platforms | **Local launch kits:** walkthrough, review templates, plain-language listing tips, worksheets—not a generic “paid setup” pitch | Core **$39** / Pro **$79**; bundle **$129**; SKUs in [PRODUCTS_PRICING_AND_INCLUDES.md](PRODUCTS_PRICING_AND_INCLUDES.md); page pattern below |
-| Content packs (**Core Content Pack**, **Holidays & Events Content Pack**, **Social Content Pack**, **Email Content Pack**) | Owners creating their own content | Templates and easy to use guides; Core pack is year-round routine content, not social-only or email-only | **Standalone** purchases unless checkout offers a bump; **photo framing / angles → Camentra**, not a competing PDF |
-| Camentra (app) | Owners taking business photos | Templates, guidance, AI coach (Pro) | Subscription via app store; optional post-kit Pro promo — see funnel map |
-| **Articles** (editorial) | Same audience as the site | Plain, practical explainers that answer real owner questions | Supports **trust and SEO** when index/detail pages ship; see *Content, articles, and SEO* below |
+| **System — Brand foundation** (site story, not a SKU name) | Hospitality business owners | Voice and look on paper first, so nothing else feels pieced together | Leads with **Identity Kit**; eyebrow label **System** on the homepage |
+| **System — Local execution** | Cafés, restaurants, salons needing stronger local presence | Practical kits that set up and strengthen Google and Yelp listings | **Products** catalog: local kits — `components/Products.tsx` |
+| **System — Consistency & growth** | Owners with brand and listings in place | Tools and content support to show up consistently over time | Outcome layer; **Daily Execution Engine (DEE)** is the planned product here — not yet live |
+| Identity Kit (Core / Pro) | Hospitality owners who want brand voice + look on paper | Guided intake → PDFs by email | Core **$79** / Pro **$149**; funnel role in [ACQUISITION_FUNNEL_AND_SKU_MAP.md](ACQUISITION_FUNNEL_AND_SKU_MAP.md) |
+| Google Core / Pro kits; Yelp Core / Pro kits; **Google + Yelp Pro bundle** | Local hospitality businesses on those platforms | **Local kits:** walkthrough, review templates, plain-language listing tips, worksheets—not a generic “paid setup” pitch | Core **$39** / Pro **$79**; bundle **$129**; SKUs in [PRODUCTS_PRICING_AND_INCLUDES.md](PRODUCTS_PRICING_AND_INCLUDES.md); page pattern below |
+| Daily Execution Engine (DEE) *(planned)* | Owners with Identity Kit brand DNA who need consistent posting/promo | Brand-aware copy and daily execution support without a marketing background | Not yet live; see `docs/product-platform/DAILY_EXECUTION_ENGINE_PRD.md` |
+| **Articles** (editorial) | Same hospitality audience as the site | Plain, practical explainers that answer real owner questions | Supports **trust and SEO** when index/detail pages ship; see *Content, articles, and SEO* below |
 
+**Archived SKUs (not in active catalog):**
+- Content packs (PDF caption packs) — paused; competed poorly on price/volume vs. Etsy alternatives
+- Camentra (iOS app) — paused; code preserved in `components/Products.tsx` comment
 Add a row for **each new SKU or service line** so the table stays the checklist before publishing copy.
 
-**`/guides-and-kits` (Guides & kits)** — Catalog hub for marketing execution products; implementation `pages/GuidesAndKitsPage.tsx`. **Page header:** compact `<header>` with breadcrumb + sans H1 and one serif subline (not a full content section). **Section eyebrows:** Local launch kits, Content packs. **Headlines:** H1 *Guides & kits*; section H2s include *Set up your local listings with ease.*, *Content starters for what you publish*. **Lead magnet:** **free launch kit sample pack** — three industry-matched PDFs (review reply templates, photo upload tips, Google/Yelp listing checklist). Opens from the **local launch kits** section via click-triggered modal. Generated assets live in `packages/pdf-shell-sample/output/` (see `npm run pdf:*` scripts in root `package.json`). **Future:** industry-specific catalogs at `/guides-and-kits/:industry` (e.g. `/guides-and-kits/salon`) when the pack matrix grows. Content pack **card blurbs:** `content/contentPacks.ts`. **Route constant:** `content/guidesAndKitsRoutes.ts`. **Pricing and what’s inside each SKU:** [PRODUCTS_PRICING_AND_INCLUDES.md](PRODUCTS_PRICING_AND_INCLUDES.md)—not page layout.
+**`/local-kits` (Local kits)** — Dedicated page for local ranking kits (Google, Yelp, bundle). Implementation: `pages/GuidesAndKitsPage.tsx`. **Page header:** compact H1 *Local kits* with a one-line serif sub-headline. **Section:** Local launch kits matrix (Core / Pro / Bundle tiers via `OfferMatrixPrimitive`). **Lead magnet:** **free launch kit sample pack** — three industry-matched PDFs (review reply templates, photo upload tips, Google/Yelp listing checklist). Opens from the local launch kits section via click-triggered modal. Generated assets in `packages/pdf-shell-sample/output/` (see `npm run pdf:*`). **Route constant:** `content/guidesAndKitsRoutes.ts`. **Pricing and what’s inside each SKU:** [PRODUCTS_PRICING_AND_INCLUDES.md](PRODUCTS_PRICING_AND_INCLUDES.md). **Future:** industry-specific paths at `/local-kits/:industry` when the matrix grows.
 
 ---
 
@@ -133,4 +135,4 @@ When you’re ready, add new pages or sections here or as linked docs:
 
 ---
 
-*Sanity check (tone + audience): “Would a tired shop owner understand this in one pass?” — if yes, ship; if no, simplify.*
+*Sanity check (tone + audience): “Would a café owner who has never hired a marketer understand this in one pass?” — if yes, ship; if no, simplify.*

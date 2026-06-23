@@ -15,17 +15,18 @@
 
 ## Who we serve
 
-We speak to **small, real-world business operators** who run the business day to day and feel branding and marketing are important but overwhelming or unfamiliar.
+We speak to **hospitality business owners** who run the place themselves — and want to show up clearly online without hiring a marketing team.
 
-**Examples (not exhaustive):**
+**Our primary audience:**
 
-- Small business owners (local shops, services, trades)
-- Solo entrepreneurs and one-person businesses
-- Etsy sellers and similar marketplace sellers
-- Restaurant and hospitality owners
-- Other **owner-operated** businesses where the owner wears many hats
+- Café and coffee shop owners
+- Restaurant, bar, and bakery owners
+- Salon, spa, and beauty service owners
+- Closely related: boutique hospitality and service businesses (e.g. a small inn, a massage studio) where the owner is also the operator
 
-These people are **experts in their craft or business**, not in marketing tech or brand theory.
+These people are **experts at what they do** — making coffee, running a kitchen, building a client book — not in marketing tech or brand theory. They are typically the only person making decisions about their online presence.
+
+**Why this audience:** Hospitality businesses are highly visual, have strong local search intent, and are already creating content (menus, specials, ambience) that just needs a consistent brand wrapper to work online. The product ladder — Identity Kit → local kits → execution tools — maps directly to how they actually grow.
 
 ## Who this is **not** for
 
@@ -33,18 +34,20 @@ Be explicit so we do not drift toward the wrong tone or promises:
 
 | Not our primary audience | Why it matters |
 |--------------------------|----------------|
-| **Technical audiences** (developers, IT, “builder” personas) | Copy should not assume comfort with tools, APIs, stacks, or jargon. |
+| **Technical audiences** (developers, IT, "builder" personas) | Copy should not assume comfort with tools, APIs, stacks, or jargon. |
 | **Professional marketers** | We do not need to prove advanced marketing credentials or speak in channel-acronym soup. |
-| **Agencies or freelancers shopping for white-label** | Positioning is B2SMB / owner-operated, not B2B agency resale. |
+| **Agencies or freelancers shopping for white-label** | Positioning is owner-operated, not B2B agency resale. |
+| **General small businesses** (trades, e-commerce, SaaS) | We serve them indirectly through broad articles but do not optimize products or copy for them. The tools are calibrated for hospitality and the depth we can deliver there. |
 
 If copy sounds like it is for SaaS founders, growth hackers, or marketing departments, **reset** using this doc.
 
 ## Implications for messaging
 
-- Prefer **plain language**, concrete outcomes, and reassurance over theory.
+- Use **concrete, recognizable examples**: a café, a restaurant, a salon. Not abstract "your business."
 - Explain **what they get** and **how it helps customers find or remember them** without assuming prior brand vocabulary.
-- Avoid assuming they enjoy “doing marketing”; frame help as **clarity, direction, and done-with-you or done-for-you** support as appropriate to the offer.
+- Avoid assuming they enjoy "doing marketing"; frame help as **clarity, direction, and done-with-you or done-for-you** support.
+- Do not overpromise on scope: honest language about what each kit or tool delivers and what it does not.
 
 ---
 
-*When in doubt, ask: “Would a busy restaurant owner or Etsy seller immediately get this without a marketing background?” If not, simplify.*
+*When in doubt, ask: "Would a café owner who has never hired a marketer immediately understand this?" If not, simplify.*

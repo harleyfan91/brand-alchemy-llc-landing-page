@@ -15,6 +15,23 @@ Future AI sessions should read this document before conducting a new research pa
 
 ---
 
+## Next research pass — TODO (not yet started)
+
+**Session 2 goal: Reorient the article backlog toward the hospitality audience.**
+
+The Session 1 candidate log (below) was researched for a broad "small business" audience. The product and audience strategy has since narrowed to **cafés, restaurants, bars, bakeries, salons, and spas** (see [`TARGET_AUDIENCE.md`](TARGET_AUDIENCE.md)).
+
+Before briefing or writing any new articles, run a new research pass with the following scope:
+
+1. **Audit Session 1 candidates** — mark each as: (a) still relevant to hospitality as-is, (b) worth reframing for hospitality, or (c) deprioritize/archive (e.g. Etsy-specific, trades-specific).
+2. **New topic discovery** — repeat the research methodology (Google autocomplete, Reddit, "People also ask") but anchor searches in hospitality language: "my café," "restaurant Google profile," "salon Instagram," "how do I get more reviews for my restaurant," etc.
+3. **Product adjacency** — candidates should map to Identity Kit, local kits, or the planned DEE. Remove any adjacency notes pointing to content packs or Camentra.
+4. **Format and awareness** — same schema (Explainer / How-to / Decision guide × awareness stage). Hospitality owners tend to be mid-action — they have a Google profile but have not optimized it; they are posting but not consistently. Weight toward "know the problem" and "mid-action" candidates.
+
+Do not start this work in the current session. Log it here when Session 2 begins.
+
+---
+
 ## Part 1: Research Methodology
 
 ### Who this content is for

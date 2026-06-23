@@ -209,7 +209,7 @@ const Hero: React.FC = () => {
 
         <div className={blockClass(2)} style={blockStyle(2)}>
           <p className="mx-auto mb-8 max-w-2xl px-1 text-[clamp(1.02rem,4.2vw,1.15rem)] font-light leading-relaxed text-gray-500 md:mb-16 md:text-xl">
-            Simple tools, practical guides, and a clear starting point for small businesses that want to promote themselves with confidence.
+            Practical tools and step-by-step guides for restaurants, cafés, and salons that want to show up clearly — without hiring a marketing team.
           </p>
 
           <div className="flex justify-center">

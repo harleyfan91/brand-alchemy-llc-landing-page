@@ -8,7 +8,7 @@
 
 ## Who we serve (brand-level)
 
-We exist for **small, owner-operated businesses**: local shops and services, trades, solo operators, marketplace sellers, hospitality, and similar. They are **experts in their craft**, not in marketing tech, brand theory, or agency jargon. We **do not** optimize copy for developers, professional growth marketers, or agencies shopping white-label. Full exclusions and messaging implications: [TARGET_AUDIENCE.md](TARGET_AUDIENCE.md).
+We exist for **hospitality business owners**: cafés, restaurants, bars, bakeries, salons, and spas — owner-operated businesses that are highly visual, rely on local discovery, and need a consistent brand without a marketing department. They are **experts in their craft**, not in marketing tech, brand theory, or agency jargon. We **do not** optimize copy for developers, professional growth marketers, or agencies shopping white-label. Full exclusions and messaging implications: [TARGET_AUDIENCE.md](TARGET_AUDIENCE.md).
 
 ---
 
@@ -28,7 +28,7 @@ We exist for **small, owner-operated businesses**: local shops and services, tra
 
 - **Homepage (`/`)** is the **umbrella**: hero, **System** (`#services`), **Products** catalog, **Articles**, contact—not a single-offer funnel. Primary hero action stays **See the system** → explain the model before the catalog.
 - **Identity Kit** has a dedicated offer path: **`/identity-kit`** sells the tiers; high-intent traffic can land there. Intake/checkout may live on a subdomain or subpath per deployment; messaging still reads as one site.
-- **Guides & kits** (`/guides-and-kits`) group **local launch kits** (Google / Yelp / bundle) and **content packs** on one page: execution modules that plug into a defined brand, not a separate “strategy.” Future industry catalogs will live at paths like `/guides-and-kits/salon`. Page pattern and copy rules: [BRAND_PLAYBOOK.md](BRAND_PLAYBOOK.md) (*`/guides-and-kits`*). SKU prices and deliverables: [PRODUCTS_PRICING_AND_INCLUDES.md](PRODUCTS_PRICING_AND_INCLUDES.md).
+- **Local kits** (`/local-kits`) group **local launch kits** (Google / Yelp / bundle) and **content packs** on one page: execution modules that plug into a defined brand, not a separate “strategy.” Future industry catalogs will live at paths like `/local-kits/salon`. Page pattern and copy rules: [BRAND_PLAYBOOK.md](BRAND_PLAYBOOK.md) (*`/local-kits`*). SKU prices and deliverables: [PRODUCTS_PRICING_AND_INCLUDES.md](PRODUCTS_PRICING_AND_INCLUDES.md).
 - **Implementation** wiring: `App.tsx`, `components/HomePage.tsx`, `pages/IdentityKitPage.tsx`, `components/Products.tsx`, `components/Services.tsx`, `components/Articles.tsx`, `components/Hero.tsx`.
 
 ---
@@ -50,9 +50,10 @@ This mirrors the internal **Brain → Megaphone → Engine** framing in the acqu
 | Layer | Customer-facing idea | Primary SKUs (see pricing doc for includes) |
 |-------|------------------------|---------------------------------------------|
 | Foundation | Brand on paper | Identity Kit **Core $79** / **Pro $149** |
-| Local execution | **Local launch kits** for Google and Yelp (step-by-step listings, templates, worksheets) | Core **$39** / Pro **$79** per platform; **Google + Yelp Pro bundle $129** |
-| Ongoing creative | Photos aligned to kit guidance | **Camentra** Free / Pro (~**$9.99/mo** or ~**$79.99/yr**—confirm in store) |
-| Add-ons / standalone | Copy and seasonal support | Content packs per [PRODUCTS_PRICING_AND_INCLUDES.md](PRODUCTS_PRICING_AND_INCLUDES.md) |
+| Local execution | **Local kits** for Google and Yelp (step-by-step listings, review templates, worksheets) | Core **$39** / Pro **$79** per platform; **Google + Yelp Pro bundle $129** |
+| Ongoing execution | Daily posting and promotion tools (planned) | Daily Execution Engine (DEE) — integrates Identity Kit brand DNA; not yet live |
+
+**Archived / paused SKUs:** Content packs (PDF caption packs) and Camentra (iOS app) are not actively promoted. See `components/Products.tsx` for archived code comments.
 
 **Source of numeric truth in code:** `components/Products.tsx` (and env-driven Identity Kit URLs). When prices or bundle rules change, update **[PRODUCTS_PRICING_AND_INCLUDES.md](PRODUCTS_PRICING_AND_INCLUDES.md)** and **[ACQUISITION_FUNNEL_AND_SKU_MAP.md](ACQUISITION_FUNNEL_AND_SKU_MAP.md)** in the **same change** and re-check bundle savings math.
 

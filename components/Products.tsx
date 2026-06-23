@@ -18,6 +18,23 @@ type Product = {
 
 const START_HERE_TAB_LABEL = 'Start here';
 
+/*
+ * ARCHIVED — Camentra iOS app card (removed from homepage Jun 2026).
+ * Camentra is paused as an active product recommendation while strategy
+ * shifts to Identity Kit + local ranking kits + Daily Execution Engine (DEE).
+ * Restore or adapt when Camentra re-enters the product ladder.
+ *
+ * {
+ *   eyebrow: 'iOS App',
+ *   title: 'Camentra',
+ *   body: 'When you are ready for stronger visuals, Camentra helps you take more polished business photos right from your phone. See the site for current pricing.',
+ *   ctaLabel: 'Visit site',
+ *   href: 'https://www.camentra.com',
+ *   watermarkSrc: '/product-card-watermarks/camentra-lens.png',
+ *   external: true,
+ * }
+ */
+
 const products: Product[] = [
   {
     eyebrow: 'Brand foundation',
@@ -30,22 +47,13 @@ const products: Product[] = [
     showStartHereTab: true,
   },
   {
-    eyebrow: 'Marketing tools & kits',
-    title: 'Guides & kits',
-    body: 'Once your brand is clear, choose practical guides, local launch kits, and industry content packs that help you publish, respond, and show up online.',
-    priceLine: 'From $19 · Launch kits from $39',
-    ctaLabel: 'View guides & kits',
+    eyebrow: 'Local visibility',
+    title: 'Local kits',
+    body: 'Once your brand is clear, local launch kits for Google and Yelp help you set up and maintain listings that show up when customers search nearby.',
+    priceLine: 'Launch kits from $39',
+    ctaLabel: 'View local kits',
     href: GUIDES_AND_KITS_PATH,
     watermarkSrc: '/product-card-watermarks/guides-kits-stack.png',
-  },
-  {
-    eyebrow: 'iOS App',
-    title: 'Camentra',
-    body: 'When you are ready for stronger visuals, Camentra helps you take more polished business photos right from your phone. See the site for current pricing.',
-    ctaLabel: 'Visit site',
-    href: 'https://www.camentra.com',
-    watermarkSrc: '/product-card-watermarks/camentra-lens.png',
-    external: true,
   },
 ];
 
@@ -74,7 +82,7 @@ const Products = () => {
           <h2 className="ba-section-eyebrow text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Products</h2>
         </div>
 
-        <div className="mx-auto grid max-w-7xl items-stretch gap-4 md:grid-cols-3 lg:gap-5">
+        <div className="mx-auto grid max-w-4xl items-stretch gap-4 md:grid-cols-2 lg:gap-5">
           {products.map((product, i) => {
             const showTab = Boolean(product.showStartHereTab);
 

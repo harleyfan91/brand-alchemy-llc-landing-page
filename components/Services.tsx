@@ -3,19 +3,19 @@ import { useInViewOnce } from '../utils/useInViewOnce';
 
 const solutions = [
   {
-    title: 'Create your brand identity guide',
+    title: 'Define your brand',
     description:
-      'Start with Identity Kit so your voice, look, and direction are clear before you make more marketing decisions.',
+      'Start with Identity Kit. Answer a focused set of questions and receive your brand voice, visual direction, and a clear starting point — on paper, ready to use.',
   },
   {
-    title: 'Choose the tools you need',
+    title: 'Get found locally',
     description:
-      'Pick easy-to-use content packs, setup guides, and practical resources that match your business and your pace.',
+      'Local launch kits for Google and Yelp walk you through setup step by step, with review templates and listing tips built in. Most businesses set this up once and benefit for years.',
   },
   {
-    title: 'Promote with confidence',
+    title: 'Show up consistently',
     description:
-      'Show up more consistently online, save time, and spend less energy second-guessing what to say or make next.',
+      'With your brand defined and your listings in place, the hard part is posting and promoting without losing the thread. More tools are coming to make that easier.',
   },
 ];
 
@@ -61,8 +61,7 @@ const Services: React.FC = () => {
             Promote your brand like the pros.
           </h3>
           <p className="ba-section-support text-sm font-light leading-relaxed text-gray-500 md:text-base">
-            Most small businesses do not need more marketing noise. They need a clear brand identity and
-            easy-to-use tools, so they can show up consistently.
+            Most cafés, restaurants, and salons already do something worth talking about. What&apos;s missing is a consistent way to show it — a brand voice, a strong listing, and tools that do not require a marketing background.
           </p>
         </div>
 
