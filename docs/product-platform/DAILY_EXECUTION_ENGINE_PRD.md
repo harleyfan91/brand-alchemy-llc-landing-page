@@ -30,9 +30,9 @@ The DEE reads a file called `brand-context.json` (schema at `docs/product-platfo
 | `voiceProfile.narratorId` | Sets first/second/third person voice for captions | Copy generation |
 | `voiceProfile.ctaType` | Selects CTA style (invite, direct, soft) for caption endings | Copy generation |
 | `voiceProfile.contentPillarNames` | Pre-populates situation picker labels with owner's own language | Copy generation UX |
-| `visualProfile.paletteId` | Maps to brand color set for canvas overlay and logo tinting | Canvas engine — core feature |
-| `visualProfile.paletteDisplayName` | Human-readable color palette name shown in the UI | Canvas engine |
-| `visualProfile.selectedStyle` | Informs layout style selection (minimal, bold, warm, etc.) | Canvas engine |
+| `visualProfile.paletteId` | Maps to brand color set — used to generate the 4 named style presets (Warm, Bold, Natural, Studio) | Style gallery — core feature |
+| `visualProfile.paletteDisplayName` | Human-readable color palette name shown in the UI | Style gallery |
+| `visualProfile.selectedStyle` | Informs which style preset is shown first in the gallery (minimal → Natural, bold → Brand Bold, warm → Brand Warm) | Style gallery default |
 | `sections.voice.prohibitedWords` | Appended to the hard prohibition list in every system prompt | Copy quality |
 | `sections.csp.captionStarters` | Injected as few-shot examples in the system prompt | Copy quality |
 | `sections.csp.contentPillars` | Used to label and contextualize the situation picker | Copy generation UX |
@@ -79,13 +79,17 @@ The DEE is built against `brand-context.v1.schema.json`. If the Identity Kit pla
 
 ### 1.1 What it is
 
-A mobile-first progressive web app (PWA) that takes the Brand DNA an owner defined in their Identity Kit and turns it into a usable daily content workflow — specifically: snap a photo, apply brand design guardrails, generate on-brand copy, export a ready-to-post social asset.
+A mobile-first PWA that turns any photo from a hospitality owner's phone into a polished, on-brand social asset. Point at the new latte, the counter, the team — the app applies brand color treatments, image enhancements, and typography automatically. Background removal, subtle brightness and warmth adjustments, and text overlays for promotions are all built in. Caption generation is integrated at the end, powered by the same Brand DNA that drives the visual output.
 
-The core loop targets 60 seconds or less. It does not require design skill, copywriting knowledge, or any decisions about "what sounds good" — the Identity Kit already made those decisions. This tool executes them.
+**The product is the visual.** The caption supports it. An owner opens this app because they want their posts to look like their brand without hiring a designer — not because they want AI to write for them.
+
+The core loop targets 60 seconds or less. It does not require design skill, copywriting knowledge, or any decisions about colors or fonts — the Identity Kit already made those decisions. This tool executes them.
 
 ### 1.2 Why it exists (the implementation gap)
 
-Business owners who buy Identity Kits receive a Voice & Content Playbook, Style Guide, and Brand Brief. Most do not use them consistently. Not because they lack motivation — because the gap between "here is your brand strategy document" and "here is today's Instagram post" is still enormous. This app closes that gap.
+Business owners who buy Identity Kits receive a Voice & Content Playbook, Style Guide, and Brand Brief. Most do not use them consistently. Not because they lack motivation — because the gap between "here are your brand colors and fonts" and "here is today's Instagram post that actually uses them" is still enormous.
+
+Generic tools like Canva are too open-ended — owners stare at a blank canvas and reach for the wrong template. Competitors like Feedo and Pebblely apply visual treatments but without the Identity Kit's depth: they use manually-entered logo and color, with no voice profile, no prohibited words, no typography system. The DEE closes the gap by applying the owner's full Brand DNA automatically — visuals first, copy integrated.
 
 ### 1.3 Where it sits in the product ladder
 
@@ -155,11 +159,11 @@ The following tools are actively used by hospitality and small-business owners. 
 
 None of these tools do all three things the DEE does together:
 
-1. **Brand DNA from a structured intake** — not scraped from a website, not manually entered colors. The Identity Kit produced a voice profile, tone preset, prohibited words, content pillars, and caption starters through a deliberate intake process. That depth is the DEE's primary moat.
+1. **Brand DNA from a structured intake drives the visual output** — color treatments, typography, and text overlay styles all come from the Identity Kit's `visualProfile` and `voiceProfile`. Competitors use manually-entered logo + colors. The DEE uses a full brand system. That depth is visible in the first post the owner exports.
 
-2. **Situation taxonomy + register system** — the 7 situations and 7 registers are not just prompt helpers; they are the constraint architecture that prevents the model from regressing to generic marketing copy. No current competitor structures copy generation this way.
+2. **Owner's real photo, not AI-generated imagery** — Feedo, Mavic, and Skenly either composite or generate the photo. The DEE applies brand design to the owner's actual photo. For a café or salon where regulars recognize the space and the food, this is the more authentic and trustworthy output. Authenticity is a competitive advantage at the local level.
 
-3. **Owner's real photo, not AI-generated imagery** — Feedo, Mavic, and Skenly either composite or generate the photo. The DEE applies brand design to the owner's actual photo. For a café or salon where regulars recognize the space and the food, this is the more authentic and trustworthy output.
+3. **Situation taxonomy + register system for copy** — the 7 situations and 7 registers are not just prompt helpers; they are the constraint architecture that prevents the model from regressing to generic marketing copy. No current competitor structures copy generation this way. This makes the caption quality clearly different — owners feel it on the second use.
 
 ### 2.3 Where competitors are ahead (be honest about this)
 
@@ -251,10 +255,12 @@ The user should never have to manually enter what the Identity Kit already produ
 
 ### 4.3 Cold-start fallback (non-Kit users)
 
-For users who have not purchased an Identity Kit, provide archetype-based onboarding. Match the 3 active Identity Kit industries exactly (post-sprint narrowing):
-- Pick your business type: **Café / Coffee Shop**, **Restaurant / Bar**, **Salon / Beauty**
+For users who have not purchased an Identity Kit, provide archetype-based onboarding. Match the 4 active Identity Kit industries:
+- Pick your business type: **Café / Coffee Shop**, **Restaurant / Bar**, **Salon / Beauty**, **Boutique / Gift Shop / Maker Goods**
 - Pick your brand tone from 3 plain-language options that map to the Kit's presets: "Warm and welcoming" (→ Warm register), "Confident and direct" (→ Confident register), "Bold and full of energy" (→ Energetic register)
 - Upload your logo and pick 1-2 brand colors
+
+The boutique/maker category is photographically distinct from hospitality: owners are regularly photographing physical products (jewellery, candles, ceramics, packaged goods) against whatever background is available. This category benefits most from background removal and studio-style preset backgrounds — factor this into the preset library design (see Section 7.3).
 
 Do not include industry types the Identity Kit no longer supports — DEE cold-start archetypes must stay in sync with the active Kit industry catalog.
 
@@ -443,6 +449,7 @@ Before compositing, run a basic quality check: is the image blurry, severely und
 | Copy generation | OpenAI API (gpt-4o-mini) via Next.js edge functions | Low cost, fast, constrained output |
 | Brand DNA storage | Supabase (consistent with Identity Kit infrastructure) | Matches existing deployment docs |
 | Logo / asset storage | S3-compatible bucket | Existing pattern in Identity Kit fulfillment |
+| Background preset assets | CDN (Cloudflare or Vercel edge) | Static images (studio white, bokeh, marble, linen, wood) — small library, served at edge for fast compositing |
 | Billing | Stripe (subscriptions + one-time credit top-ups) | Consistent with Identity Kit payment docs |
 
 ### 7.2 Architecture diagram
@@ -450,30 +457,100 @@ Before compositing, run a basic quality check: is the image blurry, severely und
 ```
 [ PWA: Next.js + Tailwind ]
            │
-    ┌──────┴───────┐
-    ▼              ▼
-[ Client-side ]   [ Server-side (Next.js edge) ]
-  HTML5 Canvas      OpenAI API (gpt-4o-mini)
-  ONNX Runtime      Brand DNA prompt injection
-  Background rm     Stripe webhook handling
-  Asset stamping    brand-context.json import
+    ┌──────┴──────────────┐
+    ▼                     ▼
+[ Client-side ]           [ Server-side (Next.js edge) ]
+  HTML5 Canvas              OpenAI API (gpt-4o-mini)
+  ONNX Runtime (BG rm)      Brand DNA prompt injection
+  Style preset pipeline     Stripe webhook handling
+  Auto-enhance              brand-context.json import
+  Text overlay rendering
+  Static BG asset compositing
 ```
 
-### 7.3 Canvas engine — two layout modes
+### 7.3 Canvas engine — swipe gallery UX and visual features
 
-**1:1 Grid Post**
-- Centres or offsets isolated product image
-- Overlays brand secondary color as tint matrix
-- Stamps logo in a restricted quadrant (configurable: top-right, bottom-left)
-- Applies brand font to any overlay text
+The canvas engine is the primary product surface. The core interaction model is a **swipe gallery**: the owner takes or uploads a photo, the app instantly renders it with a default style applied, and they swipe through named presets to find the look they want. No dropdowns, no sliders, no technical decisions. Everything runs client-side — no server media processing, no API cost per style, photo pixels never leave the device.
 
-**9:16 Story Overlay**
-- Full-bleed image background
-- Opacity overlay using brand primary or secondary color
-- Structural text containers drawn natively using brand header font
-- Caption text rendered in brand body font
+**Interaction model**
 
-Design guardrails are automatic — the owner cannot accidentally choose an off-brand color or font because the system only exposes their Brand DNA options.
+```
+Photo selected → auto-enhance applied instantly
+                        │
+            Full-size preview of current style
+                        │
+       Scrollable thumbnail row below (5–6 named presets)
+       Tap or swipe to switch — preview updates immediately
+                        │
+       Format picker (1:1 · 4:5 · 9:16)
+                        │
+       Optional: Add text overlay
+                        │
+       Next → Caption + export
+```
+
+The owner makes one meaningful choice: which style feels right. Everything else — colors, font, treatment strength — comes from Brand DNA automatically.
+
+**Named style presets**
+
+Presets are combinations of background treatment + color treatment. They have friendly names, not technical labels. The active preset library is split by industry because the photography needs differ significantly.
+
+| Preset | Background | Color treatment | Best for |
+|--------|-----------|-----------------|---------|
+| **Studio Clean** | BG removed → neutral white/off-white | Minimal brand tint | Product shots, salon results, food on clean surface |
+| **Bokeh** | BG removed → softly blurred version of original | Warm brand tint | Any subject — keeps organic feel |
+| **Brand Warm** | Original photo | Warm brand palette overlay, low opacity | Interior shots, team moments, atmosphere |
+| **Brand Bold** | Original photo | Stronger brand primary color overlay | Promotional, announcement-style posts |
+| **Natural** | Original photo | Auto-enhance only (brightness, contrast, warmth) | Candid moments, already-good photos |
+| **Lifestyle** *(boutique/maker only)* | BG removed → textured background (marble, linen, wood grain) | Minimal brand color accent | Product photography — physical goods on a surface |
+
+The Lifestyle preset and Studio Clean preset both require background removal. The ONNX model is pre-warmed during onboarding so it is not a first-use delay when the owner reaches the style gallery.
+
+**Background replacement assets (no AI generation — static library)**
+
+For presets that replace the background, the DEE uses a curated static asset library. No generative AI is required for v1 — background removal (client-side) is composited over a high-quality static image:
+
+| Background | Used by | Description |
+|-----------|--------|-------------|
+| Studio white | Studio Clean | Clean neutral — works for any subject |
+| Soft bokeh blur | Bokeh | Blurred version of the original background |
+| Warm marble | Lifestyle | Cream/warm marble slab — jewellery, candles, ceramics |
+| Linen texture | Lifestyle | Neutral fabric — packaged goods, gift items |
+| Dark wood grain | Lifestyle | Rich warm surface — coffee products, leather goods |
+| Muted outdoor | Bokeh variant | Soft green/neutral outdoor bokeh |
+
+These are static image assets stored in the app bundle or CDN. Compositing is: remove BG → resize/crop to format → composite subject over background → apply brand color treatment. All Canvas API.
+
+**Auto-enhance (fires on every photo, before style is chosen — user-toggleable)**
+- Brightness normalisation: lift underexposed phone photos to a consistent baseline
+- Contrast stretch: recover flat images
+- Warmth adjustment: slight warm push for food and interior photos (can be tuned by brand)
+- Sharpening: light unsharp mask for slightly soft phone camera output
+- Runs in under 200ms client-side. The owner sees a noticeably better version of their photo before they pick a style.
+- A visible On/Off toggle on the style gallery screen lets the owner disable it per photo if they prefer the original. Default is On.
+
+**Text overlay (optional promotional layer)**
+- Template presets: New Today, Sale, Hours, Event, Custom
+- Owner writes the text; brand font applied automatically from Identity Kit font spec
+- **Text color picker**: owner cycles through their 3 brand palette colors (Primary, Secondary, Accent) via circular swatches — they are not picking hex codes, just choosing which of their brand colors the text renders in. Default is Primary.
+- Position: 3×3 dot grid — covers all 9 positions (corners, edges, center)
+- Single line for v1 — multi-line is v2
+- Rendered natively in Canvas using brand font (Google Web Font or system fallback)
+
+**Important — palette hex values required at runtime:** The Canvas text and overlay rendering needs actual hex color values, not palette IDs. `visualProfile.paletteId` is a reference key; the DEE must resolve it to hex values at render time. This requires either (a) the Identity Kit to include resolved hex values in `brand-context.json`, or (b) the DEE to maintain a palette lookup table keyed on `paletteId`. This is a concrete open item — see checklist IK-1.
+
+**Format picker**
+- 1:1 — standard feed post
+- 4:5 — portrait feed post, more screen area in feed
+- 9:16 — story / reel full-bleed format
+
+**What is not in v1 (generative — v2 scope)**
+- AI-generated backgrounds from a text prompt
+- Generative additions (steam on a cup, props, product styling elements)
+- Perspective correction
+- AI-generated lifestyle scenes from reference photos
+
+These are real features worth building — they are deferred because the static preset library covers the core need at zero per-image cost, and generative AI backgrounds ($0.04–0.10 per image) require a separate credit model and processing time that adds friction to a flow designed to complete in under 2 minutes.
 
 ### 7.4 Background removal — known limitations and mitigations
 
@@ -486,7 +563,7 @@ The `@imgly` model is ~40MB, downloaded once and cached in IndexedDB. On first u
 
 WebGPU is not universally supported on iOS Safari. WASM fallback is the default path for a significant portion of the target audience. WASM on an older iPhone is slower but functional — do not treat WebGPU as a required dependency.
 
-**Do not** make background removal the first experience. Let the user do a simple layout (photo + brand overlay + logo stamp) first, then introduce background removal as an enhancement. This avoids the 40MB download becoming a first-impression problem.
+**Do not** trigger background removal before it is needed. Pre-warm the model during onboarding, but do not run it until the owner selects a preset that requires it (Studio Clean, Bokeh, or Lifestyle). The Natural and Brand Warm/Bold presets work on the original photo — these are good first-load styles that keep the UI feeling instant while the ONNX model finishes warming.
 
 ### 7.5 Mobile performance requirements
 
@@ -494,6 +571,13 @@ WebGPU is not universally supported on iOS Safari. WASM fallback is the default 
 - Canvas layouts and saved design palettes must remain interactive without connectivity (offline-capable UI)
 - PWA installable — add to home screen, standalone display mode
 - Zero media logging — product images never touch Brand Alchemy servers
+
+**Export to camera roll — iOS PWA caveat:** Standard PWA export (`canvas.toBlob()` → object URL → programmatic download) saves to the Files app on iOS, not directly to the Photos/camera roll. Options:
+- **Web Share API** (`navigator.share({ files: [file] })`) — supported on iOS 15.1+ Safari. Triggers the native share sheet, owner can choose Photos. This is the correct v1 path.
+- **Fallback**: direct download to Files app with a clear label ("Saved to Files — move to Photos manually"). Not ideal but functional.
+- Do not attempt a native camera roll write without a proper iOS wrapper — PWA cannot access the Photos library directly. If a native shell (Capacitor, Expo) is ever added in v2, this becomes trivial.
+
+"Save to camera roll" in the UI should be labeled "Share / Save" to set accurate expectations on iOS. Test on physical iOS hardware before launch — simulator behavior differs.
 
 ---
 
@@ -508,13 +592,40 @@ WebGPU is not universally supported on iOS Safari. WASM fallback is the default 
 - Logo upload to S3-compatible storage
 - Stripe subscription setup (monthly + annual plans)
 
-### 8.2 Milestone 2 — HTML5 Canvas engine
+### 8.2 Milestone 2 — HTML5 Canvas engine (primary product surface)
 
-- 1:1 post layout: image placement, brand color overlay, logo stamp
-- 9:16 story layout: background image, opacity overlay, text containers
-- Brand font loading (safe Google Web Fonts + custom upload path)
-- Export to JPEG/PNG, no watermark
-- CORS-safe asset loading for logos from bucket
+This is the core milestone. The visual tool is the reason owners open the app.
+
+**Swipe gallery**
+- Full-size photo preview with active style applied
+- Scrollable thumbnail row of 5–6 named presets — tap to switch, preview updates immediately
+- Dot indicator showing current position in the preset sequence
+- Presets are industry-aware: hospitality set vs boutique/maker set loaded based on business type
+
+**Style presets**
+- Studio Clean: BG removal → neutral white composite → minimal brand tint
+- Bokeh: BG removal → blurred original background → warm brand tint
+- Brand Warm: original photo → low-opacity brand palette overlay
+- Brand Bold: original photo → stronger brand primary color treatment
+- Natural: auto-enhance only
+- Lifestyle (boutique/maker): BG removal → static textured background (marble, linen, wood) from asset library
+
+**Auto-enhance**
+- Fires on every photo before the gallery renders
+- Brightness normalisation, contrast stretch, warmth adjustment, light sharpening
+- All Canvas API — under 200ms, no server call
+
+**Text overlay**
+- Template presets: New Today, Sale, Hours, Event, Custom
+- Brand font rendering (Google Web Font or fallback)
+- Position: Top / Center / Bottom
+- Single line, v1
+
+**Format picker**: 1:1, 4:5, 9:16
+
+**Export**: save to camera roll, JPEG/PNG, no watermark, no server upload
+
+**Background asset library**: static images bundled or CDN-served — neutral white, bokeh blur, marble, linen, dark wood, soft outdoor. No generative AI in v1.
 
 ### 8.3 Milestone 3 — Background removal
 
@@ -564,18 +675,20 @@ These need resolution before or during development — they are not blocked, but
 
 ## 10. What Success Looks Like (v1)
 
-A sole-proprietor café or salon owner who has an Identity Kit:
+A sole-proprietor café owner who has an Identity Kit:
 
 1. Opens the DEE app on their phone
 2. Brand DNA is already loaded from their Kit
-3. Takes a photo of their new drink or workspace
-4. Picks "A win this week" from the situation menu
-5. Types "new seasonal latte"
-6. Sees two caption options that sound like their voice, not generic marketing copy
-7. Edits one word, taps export
-8. Posts to Instagram directly from camera roll
+3. Takes a photo of their new seasonal latte
+4. Picks the "Warm" treatment — one tap, photo looks on-brand instantly
+5. Adds a text overlay: "New today: Oat Cardamom Latte" in their brand font
+6. Picks "A win this week," types "new seasonal latte," taps generate
+7. Sees a caption that sounds like them, not a template
+8. Saves to camera roll — photo and caption ready to post
 
-**Total time: under 3 minutes.** No design decisions. No copywriting. No brand guide reference. The strategy they bought is working.
+**Total time: under 2 minutes.** No Canva. No design decisions. No copywriting. The brand document they bought is doing its job — invisibly, every day.
+
+The visual output is what stops the scroll. The caption is what makes them come back tomorrow.
 
 ---
 
