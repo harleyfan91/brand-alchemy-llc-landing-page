@@ -251,10 +251,12 @@ The user should never have to manually enter what the Identity Kit already produ
 
 ### 4.3 Cold-start fallback (non-Kit users)
 
-For users who have not purchased an Identity Kit, provide archetype-based onboarding:
-- Pick your business type (café, salon, home services, retail shop, etc.)
-- Pick your brand tone from 4-5 plain-language options ("Warm and neighborhoody," "Confident and direct," "Wry and a bit different," etc.)
-- Upload your logo and pick brand colors
+For users who have not purchased an Identity Kit, provide archetype-based onboarding. Match the 3 active Identity Kit industries exactly (post-sprint narrowing):
+- Pick your business type: **Café / Coffee Shop**, **Restaurant / Bar**, **Salon / Beauty**
+- Pick your brand tone from 3 plain-language options that map to the Kit's presets: "Warm and welcoming" (→ Warm register), "Confident and direct" (→ Confident register), "Bold and full of energy" (→ Energetic register)
+- Upload your logo and pick 1-2 brand colors
+
+Do not include industry types the Identity Kit no longer supports — DEE cold-start archetypes must stay in sync with the active Kit industry catalog.
 
 This produces a provisional Brand DNA profile sufficient to generate decent output on day one. Quality climbs when they connect or purchase an Identity Kit. This becomes a natural upsell trigger within the app: "Your Brand DNA is estimated — get an Identity Kit for captions that actually sound like you."
 
@@ -331,19 +333,35 @@ Every generation produces:
 
 The user selects one, edits inline if needed, and exports. The edit step is a quality safety valve and, if edit behavior is logged, provides signal for prompt refinement over time. Output is never auto-published — there is always a human review moment.
 
-### 5.7 Core vs. Pro Kit copy quality tiers
+### 5.7 Three copy quality tiers (Core, Pro, cold-start)
 
-**Finding from Identity Kit audit (Jun 2026):** The `csp.captionStarters` and `csp.contentPillars` fields — which enable the richest few-shot injection — are Pro-only in the Identity Kit. They are not generated for Core Kit customers. This creates two copy quality tiers in the DEE that must be handled explicitly.
+**Finding from Identity Kit field audit (Jun 2026):** The gap between Core and Pro is quality, not viability. Core Kit customers have real, usable data — narrator, tone preset, content pillars, palette, ideal customer snapshot, industry avoid-terms, and deterministic caption scaffolds. All of it is already computed during PDF assembly; it just needs to be serialized into `brand-context.json` at fulfillment (see checklist IK-1). Pro adds AI-rewritten caption starters that make output sound like the specific owner, not just their business type.
 
-| Kit tier | What's available | DEE copy quality |
-|----------|-----------------|-----------------|
-| **Core Kit** ($79) | `voiceProfile`, `visualProfile`, `brief.idealCustomer` | Voice profile + situation taxonomy + DEE's generic few-shot library (captions written for the business type, not the specific owner). Still better than a blank prompt. |
-| **Pro Kit** ($149) | Everything above + `csp.captionStarters`, `csp.contentPillars`, `voice.prohibitedWords` | Full injection: owner's actual caption starters as few-shot examples + their content pillar language + their prohibited words. Highest quality; the owner's voice, not a template. |
-| **No Kit** (cold-start) | Archetype picker, manual logo/colors | Generic few-shots for the chosen business type + archetype register. Weakest output. Natural upsell moment. |
+| Tier | What DEE receives | Copy quality |
+|------|-------------------|-------------|
+| **No Kit** (cold-start) | Archetype + tone picker selection, logo, colors | Generic — sounds like a business of this type |
+| **Core Kit** ($79) | Narrator ID, tone preset, content pillar names, palette, style, ideal customer snapshot, industry avoid-terms, deterministic caption scaffolds | Good — sounds like this kind of business with this voice |
+| **Pro Kit** ($149) | Everything above + AI-rewritten caption starters (`csp.captionStarters`), richer content pillar one-liners | Best — sounds like this specific owner |
 
-**In-app upsell for Core Kit customers:** After the first 3 generations, surface a soft prompt — "Your captions are good. Pro Kit customers get copy trained on their exact voice, starters, and the words they never use." Link to Identity Kit Pro upgrade. Do not block generation; make it aspirational.
+**Core is not a fallback.** A Core Kit customer connecting to the DEE gets a voice-profile-constrained, situation-anchored, prohibited-words-filtered output that is already better than anything a competitor produces from manual brand entry. The tier ladder should be framed as improvement, not as "you need Pro to use this properly."
 
-**Implementation note:** The DEE's system prompt builder must branch on which fields are present in the incoming `brand-context.json`. Build for absence gracefully — if `csp.captionStarters` is missing, fall through to the generic few-shot library without error.
+**In-app upsell for Core Kit customers:** After the first 3 generations, surface a soft prompt — "Your captions sound like your kind of café. Pro Kit customers get copy trained on your exact starters and the words you never use." Link to Identity Kit Pro upgrade. Do not block generation; make it aspirational.
+
+**In-app upsell for cold-start users:** After 3 generations — "You're working from a general profile. An Identity Kit gives DEE your actual voice, colors, and the words that sound like you." Link to `/identity-kit`.
+
+**Implementation note:** The DEE's system prompt builder must branch gracefully on which fields are present in `brand-context.json`. If `csp.captionStarters` is absent, fall through to the generic few-shot library. If `voice.prohibitedWords` is absent, use the DEE's hard prohibition list only. No field should be required at runtime.
+
+### 5.8 Tone → register mapping (DEE-side, no Kit schema change needed)
+
+The Identity Kit produces 3 tone presets. The DEE uses 7 registers. The mapping is DEE's responsibility.
+
+| Kit `tonePreset` | Primary DEE register | Character |
+|------------------|---------------------|-----------|
+| `friendly` | Warm | Genuine, neighborhoody, not saccharine |
+| `professional` | Confident | Says something specific, doesn't hedge |
+| `bold` | Energetic | Up, forward, movement — not hype |
+
+The remaining 4 registers (Wry, Real, Quiet, Light) are not directly mappable from a 3-option picker. In v1, they are available as a manual override in the situation picker for users who know their voice. A secondary register nudge (e.g. `friendly + Quiet` for a slower-paced café) is a v2 consideration.
 
 ---
 

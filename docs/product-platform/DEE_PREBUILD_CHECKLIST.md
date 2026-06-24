@@ -10,45 +10,57 @@
 
 ### IK-1 — Identity Kit `brand-context.json` verification
 **Owner:** Identity Kit repo agent  
-**Status:** `IN PROGRESS` — initial audit complete Jun 2026  
-**Blocking:** Milestone 4 specifically (Milestones 1–2 can proceed; see sequencing note below)
+**Status:** `IN PROGRESS` — field-level audit complete Jun 2026 (see IK-2)  
+**Blocking:** Milestone 4 / Kit handoff. Milestones 1–2 are independent — proceed in parallel.
 
-**Audit findings (Jun 2026):**
+**Corrected understanding after full audit:**
 
-| Assumption in PRD | Identity Kit today | Action needed |
-|-------------------|--------------------|--------------|
-| `brand-context.v1.schema.json` exists | ✅ Exists in umbrella repo (`docs/product-platform/schemas/`) | None |
-| `brand-context.json` generated at fulfillment | ❌ Not implemented — no generation code in identity-kit repo | Must be built in Identity Kit before DEE Milestone 4 |
-| Fulfillment webhook / order API | ❌ Stub only — `/checkout`, `/fulfillment/:sessionId` return placeholder data | Must be built in Identity Kit |
-| Pro CSP sections (`csp.captionStarters`, `csp.contentPillars`) | ❌ Pro-only, not shipped — Core is deterministic; CSP is future Pro work | CSP data will not be available for Core Kit customers in v1 |
-| `voiceProfile.ctaType`, `contentPillarNames` | ⚠️ Schema defined; assembly from Kit fulfillment TBD | Depends on fulfillment build |
-| Fonts in `brand-context` | ❌ Schema has no font fields | Font field must be added to schema OR DEE builds its own palette→font mapping |
+The gap is **export and API, not generation**. The data DEE needs for Core customers is already computed during PDF assembly — it is just never serialized into `brand-context.json` or exposed via API. Identity Kit needs one assembler function and a real fulfillment storage + lookup layer; it does not need to rebuild how the Kit generates its outputs.
 
-**Items still open:**
-- [ ] Identity Kit to build `brand-context.json` generation at fulfillment (Core fields first; Pro/CSP fields in a later pass)
-- [ ] Identity Kit to build a real fulfillment API endpoint (webhook or order ID lookup) — current endpoints are stubs
-- [ ] Font field decision: Identity Kit adds font refs to schema, OR DEE maintains a palette/style → Google Fonts mapping table independently (see UX-3)
-- [ ] Confirm whether Identity Kit has a Supabase project and whether it should be shared (see BD-2)
-- [ ] Identity Kit to flag any planned schema changes to this repo before shipping
+| Assumption in original PRD | Reality after audit | Action |
+|----------------------------|---------------------|--------|
+| `brand-context.v1.schema.json` exists | ✅ Confirmed | None |
+| `brand-context.json` generated at fulfillment | ❌ Not serialized — but **inputs already exist** in assembly code | Identity Kit adds `buildBrandContext(form)` using existing functions |
+| Fulfillment webhook / order API | ❌ Stubs only | Identity Kit adds real persistence + `GET /fulfillment/:orderId/brand-context` |
+| CSP sections (`csp.captionStarters`) | ⚠️ Pro path only — but **Core scaffolds exist** (`buildCaptionStarterStubs`) | Core stubs are usable; Pro adds AI-rewritten versions |
+| `voiceProfile.ctaType`, `contentPillarNames` | ⚠️ Data exists in narrator profiles, not exported | Include in `buildBrandContext()` export |
+| `sections.voice.prohibitedWords` | ⚠️ Schema mismatch — data is at `industryProfiles.avoidTerms` | Export avoidTerms as `sections.voice.prohibitedWords`, or rename schema field |
+| Fonts in `brand-context` | ❌ Typography resolved in `typographyRecipes.ts` but not exported | Add `primaryFontFamily`, `secondaryFontFamily` to `visualProfile` from existing recipe |
 
-**Sequencing implication (important):** DEE Milestones 1 and 2 (Brand DNA storage, canvas engine) do not depend on Identity Kit fulfillment being live. DEE should build the cold-start onboarding path first (archetype picker → tone → logo/colors) so the product works independently. The Kit integration layer slots in on top once Identity Kit ships fulfillment. Do not block the entire DEE build waiting for IK-1 — run them in parallel.
+**Open items for Identity Kit repo:**
+- [ ] Build `buildBrandContext(form)` — deterministic assembler mapping intake + generation outputs → `brand-context.v1` shape. Reuse existing functions; don't re-derive.
+- [ ] Add real fulfillment persistence: `{ orderId, tier, brand-context.json, pdfUrls }` in Supabase or S3 (resolve with BD-2)
+- [ ] Build `GET /fulfillment/:orderId/brand-context` endpoint (order ID lookup minimum; webhook is optional)
+- [ ] Add `primaryFontFamily`, `secondaryFontFamily` to `visualProfile` from `getRecipeForProfile(form)`
+- [ ] Map `industryProfiles.avoidTerms` → `sections.voice.prohibitedWords` in export
+- [ ] Wire `voiceProfile.ctaType` from `NarratorProfile.cta_type` (not from Core PDF CTA body)
+- [ ] Flag any breaking schema changes to this repo before shipping
 
-**Core vs. Pro distinction for copy quality:** The richest prompt data (`csp.captionStarters`, `csp.contentPillars`) is Pro-only in the Identity Kit. This means:
-- Core Kit customers → DEE uses voice profile + situation taxonomy + few-shot library only (still good, but generic few-shots rather than the owner's own starters)
-- Pro Kit customers → DEE injects the owner's actual caption starters as few-shot examples (highest quality, true differentiation)
-
-This should be documented as a copy quality tier in the PRD and surfaced as an upsell moment inside the DEE for Core customers.
-
+**Recommended first spike (both repos):** Identity Kit builds `buildBrandContext(form)` returning JSON → paste into a DEE prototype. Validates the full integration before any Supabase/webhook infrastructure.
 ---
 
 ### IK-2 — Identity Kit full field audit against DEE requirements
 **Owner:** Identity Kit repo agent  
-**Status:** `OPEN`  
-**Blocking:** Milestone 4
+**Status:** `DONE` — Jun 2026  
 
-The initial audit confirmed the high-level picture. Before Milestone 4 (copy engine), the Identity Kit agent should do a field-by-field audit: for each field in the PRD required-fields table, confirm whether it is (a) generated and populated in fulfillment, (b) schema-defined but not yet generated, or (c) missing from the schema entirely. Output should be a completed version of the PRD requirements table with current status per field.
+Full field-by-field audit complete. Results incorporated into IK-1. Summary:
 
-Ask the Identity Kit agent: *"Audit identity-kit against the required fields table in the DEE PRD's 'Identity Kit Verification Requirements' section. For each field, confirm: generated at fulfillment, schema-only, or missing entirely."*
+| Field | Status |
+|-------|--------|
+| `voiceProfile.tonePreset` | Data exists (`step3.tonePreset`), not exported |
+| `voiceProfile.narratorId` | Data exists (`step1.brandNarrator`), not exported |
+| `voiceProfile.ctaType` | Data exists on narrator profile, not exported (wrong path in Core PDFs) |
+| `voiceProfile.contentPillarNames` | Data exists on narrator, not exported |
+| `visualProfile.paletteId` | Data exists (`step6.selectedPalette`), not exported |
+| `visualProfile.paletteDisplayName` | Data exists in catalog, not exported |
+| `visualProfile.selectedStyle` | Data exists (`step6.selectedStyle`), not exported |
+| `sections.voice.prohibitedWords` | Schema mismatch — data at `industryProfiles.avoidTerms` |
+| `sections.csp.captionStarters` | Core: deterministic scaffolds exist. Pro: AI-rewritten, not shipped |
+| `sections.csp.contentPillars` | Core: names real, one-liners templated. Pro: enhanced |
+| `sections.brief.idealCustomer` | Core-ready via `idealCustomerSnapshotFromIntake()`, not exported |
+| Fonts | `typographyRecipes.ts` resolves Google Font names for PDFs — not in schema |
+
+**Conclusion:** All Core fields exist. The entire gap is serialization into `brand-context.json` and a real export/API layer. See IK-1 for action items.
 
 ---
 
@@ -63,6 +75,42 @@ The audit revealed that `csp.captionStarters` and `csp.contentPillars` are Pro-o
 - **Pro Kit customer** → DEE additionally injects the owner's own caption starters as few-shot examples (highest quality; the owner's voice, not a template)
 
 **Action:** Update PRD Section 5 (Copy Quality Architecture) to document both tiers explicitly, and add a note on surfacing the Pro Kit upsell inside the DEE for Core customers ("Your captions are good — Pro Kit customers get copy trained on their exact voice").
+
+---
+
+### DEE-1 — Tone → register mapping (DEE-side work, no Kit change needed)
+**Owner:** Matt / DEE build  
+**Status:** `OPEN`  
+**Blocking:** Milestone 4 (copy engine)
+
+The Identity Kit produces 3 tone presets (`friendly`, `professional`, `bold`). The DEE uses 7 registers. The mapping lives entirely in DEE — no schema change needed.
+
+Confirmed base map (from audit):
+
+| Kit tone preset | Primary DEE register | Notes |
+|-----------------|---------------------|-------|
+| `friendly` | Warm | Neighborhoody, genuine |
+| `professional` | Confident | Direct, specific |
+| `bold` | Energetic | Forward, movement |
+
+**Open:** Define "nudge" logic — should `professional` owners be able to slide toward Quiet or Real? Should `friendly` be able to go Light? A simple secondary register option in the situation picker (or derived from business type + situation combination) would add quality without complicating the UI. Decide before Milestone 4.
+
+- [ ] Document the full 3→7 mapping in the DEE copy engine spec (or PRD Section 5.3)
+- [ ] Decide on secondary register nudges (yes/no/how)
+
+---
+
+### DEE-2 — Cold-start archetypes: align with current hospitality focus
+**Owner:** Matt / DEE build  
+**Status:** `OPEN`  
+**Blocking:** Milestone 1 (onboarding UI)
+
+The PRD's cold-start fallback (Section 4.3) lists "café, salon, home services, retail shop, etc." — this predates the narrowing to hospitality. The Identity Kit is being narrowed to 3 industries this sprint. DEE cold-start onboarding should match exactly:
+
+- [ ] Confirm the 3 active Identity Kit industries post-sprint (café / beauty / restaurant — or similar)
+- [ ] Update DEE cold-start archetype picker to show only those 3
+- [ ] Update PRD Section 4.3 to reflect the 3 industries
+- [ ] Each archetype needs a pre-loaded register, a set of industry-appropriate situation anchors, and a few-shot library subset — map these before Milestone 1 UI is built
 
 ---
 
