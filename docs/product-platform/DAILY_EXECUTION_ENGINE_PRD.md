@@ -331,6 +331,20 @@ Every generation produces:
 
 The user selects one, edits inline if needed, and exports. The edit step is a quality safety valve and, if edit behavior is logged, provides signal for prompt refinement over time. Output is never auto-published — there is always a human review moment.
 
+### 5.7 Core vs. Pro Kit copy quality tiers
+
+**Finding from Identity Kit audit (Jun 2026):** The `csp.captionStarters` and `csp.contentPillars` fields — which enable the richest few-shot injection — are Pro-only in the Identity Kit. They are not generated for Core Kit customers. This creates two copy quality tiers in the DEE that must be handled explicitly.
+
+| Kit tier | What's available | DEE copy quality |
+|----------|-----------------|-----------------|
+| **Core Kit** ($79) | `voiceProfile`, `visualProfile`, `brief.idealCustomer` | Voice profile + situation taxonomy + DEE's generic few-shot library (captions written for the business type, not the specific owner). Still better than a blank prompt. |
+| **Pro Kit** ($149) | Everything above + `csp.captionStarters`, `csp.contentPillars`, `voice.prohibitedWords` | Full injection: owner's actual caption starters as few-shot examples + their content pillar language + their prohibited words. Highest quality; the owner's voice, not a template. |
+| **No Kit** (cold-start) | Archetype picker, manual logo/colors | Generic few-shots for the chosen business type + archetype register. Weakest output. Natural upsell moment. |
+
+**In-app upsell for Core Kit customers:** After the first 3 generations, surface a soft prompt — "Your captions are good. Pro Kit customers get copy trained on their exact voice, starters, and the words they never use." Link to Identity Kit Pro upgrade. Do not block generation; make it aspirational.
+
+**Implementation note:** The DEE's system prompt builder must branch on which fields are present in the incoming `brand-context.json`. Build for absence gracefully — if `csp.captionStarters` is missing, fall through to the generic few-shot library without error.
+
 ---
 
 ## 6. Visual Context and Photo Intelligence

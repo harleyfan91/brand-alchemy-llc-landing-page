@@ -10,19 +10,59 @@
 
 ### IK-1 — Identity Kit `brand-context.json` verification
 **Owner:** Identity Kit repo agent  
+**Status:** `IN PROGRESS` — initial audit complete Jun 2026  
+**Blocking:** Milestone 4 specifically (Milestones 1–2 can proceed; see sequencing note below)
+
+**Audit findings (Jun 2026):**
+
+| Assumption in PRD | Identity Kit today | Action needed |
+|-------------------|--------------------|--------------|
+| `brand-context.v1.schema.json` exists | ✅ Exists in umbrella repo (`docs/product-platform/schemas/`) | None |
+| `brand-context.json` generated at fulfillment | ❌ Not implemented — no generation code in identity-kit repo | Must be built in Identity Kit before DEE Milestone 4 |
+| Fulfillment webhook / order API | ❌ Stub only — `/checkout`, `/fulfillment/:sessionId` return placeholder data | Must be built in Identity Kit |
+| Pro CSP sections (`csp.captionStarters`, `csp.contentPillars`) | ❌ Pro-only, not shipped — Core is deterministic; CSP is future Pro work | CSP data will not be available for Core Kit customers in v1 |
+| `voiceProfile.ctaType`, `contentPillarNames` | ⚠️ Schema defined; assembly from Kit fulfillment TBD | Depends on fulfillment build |
+| Fonts in `brand-context` | ❌ Schema has no font fields | Font field must be added to schema OR DEE builds its own palette→font mapping |
+
+**Items still open:**
+- [ ] Identity Kit to build `brand-context.json` generation at fulfillment (Core fields first; Pro/CSP fields in a later pass)
+- [ ] Identity Kit to build a real fulfillment API endpoint (webhook or order ID lookup) — current endpoints are stubs
+- [ ] Font field decision: Identity Kit adds font refs to schema, OR DEE maintains a palette/style → Google Fonts mapping table independently (see UX-3)
+- [ ] Confirm whether Identity Kit has a Supabase project and whether it should be shared (see BD-2)
+- [ ] Identity Kit to flag any planned schema changes to this repo before shipping
+
+**Sequencing implication (important):** DEE Milestones 1 and 2 (Brand DNA storage, canvas engine) do not depend on Identity Kit fulfillment being live. DEE should build the cold-start onboarding path first (archetype picker → tone → logo/colors) so the product works independently. The Kit integration layer slots in on top once Identity Kit ships fulfillment. Do not block the entire DEE build waiting for IK-1 — run them in parallel.
+
+**Core vs. Pro distinction for copy quality:** The richest prompt data (`csp.captionStarters`, `csp.contentPillars`) is Pro-only in the Identity Kit. This means:
+- Core Kit customers → DEE uses voice profile + situation taxonomy + few-shot library only (still good, but generic few-shots rather than the owner's own starters)
+- Pro Kit customers → DEE injects the owner's actual caption starters as few-shot examples (highest quality, true differentiation)
+
+This should be documented as a copy quality tier in the PRD and surfaced as an upsell moment inside the DEE for Core customers.
+
+---
+
+### IK-2 — Identity Kit full field audit against DEE requirements
+**Owner:** Identity Kit repo agent  
 **Status:** `OPEN`  
-**Blocking:** Milestones 1, 2, 4 (core DEE features depend on this data)
+**Blocking:** Milestone 4
 
-Full requirements written in the PRD under **"Identity Kit Verification Requirements"**. Summary of what needs to be confirmed or built:
+The initial audit confirmed the high-level picture. Before Milestone 4 (copy engine), the Identity Kit agent should do a field-by-field audit: for each field in the PRD required-fields table, confirm whether it is (a) generated and populated in fulfillment, (b) schema-defined but not yet generated, or (c) missing from the schema entirely. Output should be a completed version of the PRD requirements table with current status per field.
 
-- [ ] Does the Identity Kit currently generate a machine-readable `brand-context.json` at fulfillment?
-- [ ] Does it include all required fields? (See PRD table: `voiceProfile.tonePreset`, `visualProfile.paletteId`, `sections.voice.prohibitedWords`, `sections.csp.captionStarters`, `sections.brief.idealCustomer`, etc.)
-- [ ] Does `brand-context.json` include font references? If yes, are they Google Web Fonts or paid fonts?
-- [ ] Is there a fulfillment webhook or API endpoint the DEE can hook into?
-- [ ] Where are fulfilled `brand-context.json` files stored? (S3, Supabase storage, other?)
-- [ ] Is there a shared Supabase project, or should the DEE have a separate one?
+Ask the Identity Kit agent: *"Audit identity-kit against the required fields table in the DEE PRD's 'Identity Kit Verification Requirements' section. For each field, confirm: generated at fulfillment, schema-only, or missing entirely."*
 
-**How to use:** Copy the "Identity Kit Verification Requirements" section from the PRD and hand it to the Identity Kit repo agent as a standalone brief.
+---
+
+### IK-3 — Core vs. Pro copy quality tier (DEE PRD update needed)
+**Owner:** Matt  
+**Status:** `OPEN`  
+**Blocking:** Milestone 4, and PRD Section 5 copy quality architecture
+
+The audit revealed that `csp.captionStarters` and `csp.contentPillars` are Pro-only in the Identity Kit — they are not shipped for Core customers. This creates two distinct copy quality tiers in the DEE that are not currently documented in the PRD:
+
+- **Core Kit customer** → DEE injects voice profile + situation taxonomy + generic few-shot library (captions written for the business type, not the specific owner)
+- **Pro Kit customer** → DEE additionally injects the owner's own caption starters as few-shot examples (highest quality; the owner's voice, not a template)
+
+**Action:** Update PRD Section 5 (Copy Quality Architecture) to document both tiers explicitly, and add a note on surfacing the Pro Kit upsell inside the DEE for Core customers ("Your captions are good — Pro Kit customers get copy trained on their exact voice").
 
 ---
 
