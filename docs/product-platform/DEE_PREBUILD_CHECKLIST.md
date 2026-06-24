@@ -1,4 +1,5 @@
-# DEE Pre-Build Checklist
+# Frame — Pre-Build Checklist
+*Internal codename: DEE*
 
 **Purpose:** Track every blocking item that must be resolved before or alongside each build milestone. This is the task tracker — the PRD (`DAILY_EXECUTION_ENGINE_PRD.md`) is the stable spec. Update status here as items are resolved; do not modify the PRD to reflect task progress.
 

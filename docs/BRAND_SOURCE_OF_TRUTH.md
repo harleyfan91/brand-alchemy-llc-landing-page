@@ -51,7 +51,7 @@ This mirrors the internal **Brain → Megaphone → Engine** framing in the acqu
 |-------|------------------------|---------------------------------------------|
 | Foundation | Brand on paper | Identity Kit **Core $79** / **Pro $149** |
 | Local execution | **Local kits** for Google and Yelp (step-by-step listings, review templates, worksheets) | Core **$39** / Pro **$79** per platform; **Google + Yelp Pro bundle $129** |
-| Ongoing execution | Daily posting and promotion tools (planned) | Daily Execution Engine (DEE) — integrates Identity Kit brand DNA; not yet live |
+| Ongoing execution | Daily posting and promotion tools (planned) | **Frame** — visual-first branded post creator; integrates Identity Kit brand DNA; not yet live |
 
 **Archived / paused SKUs:** Content packs (PDF caption packs) and Camentra (iOS app) are not actively promoted. See `components/Products.tsx` for archived code comments.
 

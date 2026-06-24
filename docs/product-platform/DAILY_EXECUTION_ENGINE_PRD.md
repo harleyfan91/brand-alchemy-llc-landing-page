@@ -1,6 +1,6 @@
 # Product Requirement Document
-## Brand Alchemy: Daily Execution Engine (Codename: DEE)
-### Version 1.1 — Updated from v1 PRD after strategic review
+## Brand Alchemy: Frame
+### Internal codename: DEE · Version 1.1 — Updated from v1 PRD after strategic review
 
 ---
 
