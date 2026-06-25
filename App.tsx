@@ -3,7 +3,6 @@ import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-route
 import Header from './components/Header';
 import HomePage from './components/HomePage';
 import IdentityKitPage from './pages/IdentityKitPage';
-import IdentityKitSelectorPage from './pages/IdentityKitSelectorPage';
 import DigitalProductTemplatePreviewPage from './pages/DigitalProductTemplatePreviewPage';
 import LocalKitsPage from './pages/GuidesAndKitsPage';
 import ArticlePage from './pages/ArticlePage';
@@ -50,7 +49,7 @@ const AppRoutes: React.FC = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/identity-kit" element={<IdentityKitPage />} />
-            <Route path="/identity-kit/select" element={<IdentityKitSelectorPage />} />
+            <Route path="/identity-kit/select" element={<Navigate to="/identity-kit" replace />} />
             <Route path="/local-business" element={<Navigate to={GUIDES_AND_KITS_PATH} replace />} />
             <Route path="/guides-and-kits" element={<Navigate to={GUIDES_AND_KITS_PATH} replace />} />
             <Route path={GUIDES_AND_KITS_PATH} element={<LocalKitsPage />} />

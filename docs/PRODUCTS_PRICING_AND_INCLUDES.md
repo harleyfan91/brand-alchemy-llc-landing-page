@@ -8,9 +8,11 @@
 
 ## Identity Kit
 
-### Identity Kit Core
-- Price: $79
+- Price: **$149**
+- Single offer — personalized, AI-enhanced synthesis (formerly sold as Identity Kit Pro; Core tier archived from the marketing site)
 - Includes:
+
+### Brand foundation (4 PDFs)
   - Brand Brief (1-page PDF)
     - Brand anchor sentence (north-star positioning line)
     - Brand overview
@@ -38,10 +40,7 @@
     - Week 3: visual rollout
     - Week 4: consistency checks
 
-### Identity Kit Pro
-- Price: $149
-- Includes:
-  - Everything in Identity Kit Core, with deeper synthesis/personalization across audience, tone, story, and differentiation
+### Personalized messaging (included in every kit)
   - Content Starter Pack (practical copy asset), including:
     - Brand summary options (three one-liner angles + elevator pitch + paragraph)
     - Homepage messaging directions
@@ -49,8 +48,11 @@
     - Caption starters
     - Content pillar prompts
     - CTA variations per channel (shared with Voice Playbook)
-  - Pro-only **email voice templates** on Voice Playbook page 3 (not inside the Content Starter Pack PDF)
-  - Practical difference vs Core: Core is strategy + direction + implementation checklist; Pro adds reusable, ready-to-adapt messaging and copy assets
+  - **Email voice templates** on Voice Playbook page 3 (not inside the Content Starter Pack PDF)
+  - Deeper synthesis across audience, tone, story, and differentiation vs. generic templates
+
+### Archived — Identity Kit Core ($79)
+- No longer sold on the marketing site. Historical reference only; kit app may retain tier logic internally until retired.
 
 ## Local Business Kits
 

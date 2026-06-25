@@ -1,25 +1,36 @@
-import type { MarketingComparisonCard } from '../components/MarketingComparisonCards';
-
-export const IDENTITY_KIT_CORE_DELIVERABLES = [
+/** Four foundation PDFs — included in every Identity Kit. */
+export const IDENTITY_KIT_FOUNDATION_DELIVERABLES = [
   'Brand Brief',
   'Style Guide',
   'Voice & Content Playbook',
   '30-Day Quick Start Checklist',
 ] as const;
 
-export const IDENTITY_KIT_PRO_ADD_ONS = [
-  'Custom brand summaries (one-liners, elevator pitch, paragraph)',
+/** Personalized messaging assets — Pro synthesis, now the standard kit. */
+export const IDENTITY_KIT_MESSAGING_DELIVERABLES = [
   'Content Starter Pack',
+  'Custom brand summaries (one-liners, elevator pitch, paragraph)',
   'Homepage messaging directions',
   'Social bios (short profile + long About)',
   'Caption starters and content pillar prompts',
   'CTA variations per channel',
+  'Email voice templates',
 ] as const;
+
+/** @deprecated Use IDENTITY_KIT_FOUNDATION_DELIVERABLES */
+export const IDENTITY_KIT_CORE_DELIVERABLES = IDENTITY_KIT_FOUNDATION_DELIVERABLES;
+
+/** @deprecated Use IDENTITY_KIT_MESSAGING_DELIVERABLES */
+export const IDENTITY_KIT_PRO_ADD_ONS = IDENTITY_KIT_MESSAGING_DELIVERABLES;
+
+export const IDENTITY_KIT_PRICE = '$149';
+
+export const IDENTITY_KIT_BADGE = 'AI-enhanced';
 
 export const IDENTITY_KIT_VALUE_POINTS = [
   'Brand voice that feels like you',
   'Visual direction you can follow',
-  'Content guidance for everyday marketing',
+  'Ready-to-use messaging for everyday marketing',
   'Clear next steps instead of guessing',
 ] as const;
 
@@ -32,7 +43,7 @@ export const IDENTITY_KIT_PROCESS_STEPS = [
   {
     step: '02',
     title: 'Get your kit delivered',
-    description: 'Receive clear, usable documents that put your brand voice and look on paper.',
+    description: 'Receive personalized documents that put your brand voice, look, and messaging on paper.',
   },
   {
     step: '03',
@@ -48,27 +59,11 @@ export const IDENTITY_KIT_OUTCOMES = [
   'Stop piecing your business identity together one post at a time',
 ] as const;
 
-export const identityKitComparisonCards: MarketingComparisonCard[] = [
-  {
-    name: 'Core',
-    price: '$79',
-    icon: 'check',
-    summary: 'A clear brand foundation with practical documents and next steps you can use right away.',
-    features: [...IDENTITY_KIT_CORE_DELIVERABLES],
-  },
-  {
-    name: 'Pro',
-    price: '$149',
-    tabLabel: 'AI Enhanced',
-    emphasis: true,
-    icon: 'spark',
-    summary:
-      'Our flagship kit for a more tailored brand foundation, plus extra content and messaging tools for day-to-day use.',
-    features: [
-      IDENTITY_KIT_PRO_ADD_ONS[0],
-      IDENTITY_KIT_PRO_ADD_ONS[1],
-      IDENTITY_KIT_PRO_ADD_ONS[2],
-      IDENTITY_KIT_PRO_ADD_ONS[4],
-    ],
-  },
-] as const;
+export const identityKitOffer = {
+  price: IDENTITY_KIT_PRICE,
+  badge: IDENTITY_KIT_BADGE,
+  summary:
+    'One complete kit: your brand foundation on paper, plus personalized messaging you can paste into posts, bios, and your site.',
+  foundationFeatures: [...IDENTITY_KIT_FOUNDATION_DELIVERABLES],
+  messagingFeatures: [...IDENTITY_KIT_MESSAGING_DELIVERABLES],
+} as const;

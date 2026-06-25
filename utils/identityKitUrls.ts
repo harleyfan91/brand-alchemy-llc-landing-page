@@ -1,9 +1,9 @@
 /**
  * Identity Kit URLs for marketing site CTAs.
  *
- * - `VITE_IDENTITY_KIT_START_URL` — full URL to begin the intake app (e.g. same-domain path after Cloudflare routing, or kit subdomain).
- * - `VITE_IDENTITY_KIT_URL` — fallback base when START is unset (default: kit subdomain root).
- * - `VITE_IDENTITY_KIT_CORE_START_URL` / `VITE_IDENTITY_KIT_PRO_START_URL` — optional direct tier URLs for the selector page.
+ * - `VITE_IDENTITY_KIT_PRO_START_URL` — preferred direct checkout / intake URL.
+ * - `VITE_IDENTITY_KIT_START_URL` — fallback base; `?tier=pro` is appended when needed.
+ * - `VITE_IDENTITY_KIT_URL` — base when START is unset (default: kit subdomain root).
  */
 export type IdentityKitTier = 'core' | 'pro';
 
@@ -12,13 +12,35 @@ function trimmedEnvValue(value: string | undefined): string | undefined {
   return trimmed ? trimmed.replace(/\/$/, '') : undefined;
 }
 
-export function getIdentityKitStartUrl(): string {
+function getIdentityKitBaseUrl(): string {
   const start = trimmedEnvValue(import.meta.env.VITE_IDENTITY_KIT_START_URL as string | undefined);
   if (start) return start;
 
   return trimmedEnvValue(import.meta.env.VITE_IDENTITY_KIT_URL as string | undefined) || 'https://kit.brandalchemyllc.com';
 }
 
+function withTierParam(url: string, tier: IdentityKitTier): string {
+  const baseForResolution = typeof window !== 'undefined' ? window.location.href : 'https://brandalchemyllc.com';
+
+  try {
+    const parsed = new URL(url, baseForResolution);
+    parsed.searchParams.set('tier', tier);
+    if (/^https?:\/\//.test(url)) return parsed.toString();
+    return `${parsed.pathname}${parsed.search}${parsed.hash}`;
+  } catch {
+    return url;
+  }
+}
+
+/** Checkout / intake URL for the single Identity Kit offer (Pro tier in the kit app). */
+export function getIdentityKitStartUrl(): string {
+  const proDirect = trimmedEnvValue(import.meta.env.VITE_IDENTITY_KIT_PRO_START_URL as string | undefined);
+  if (proDirect) return proDirect;
+
+  return withTierParam(getIdentityKitBaseUrl(), 'pro');
+}
+
+/** Tier-specific URLs — Core is archived on the marketing site; only Pro is sold. */
 export function getIdentityKitTierStartUrl(tier: IdentityKitTier): string {
   const directTierUrl =
     tier === 'core'
@@ -26,17 +48,7 @@ export function getIdentityKitTierStartUrl(tier: IdentityKitTier): string {
       : trimmedEnvValue(import.meta.env.VITE_IDENTITY_KIT_PRO_START_URL as string | undefined);
   if (directTierUrl) return directTierUrl;
 
-  const startUrl = getIdentityKitStartUrl();
-  const baseForResolution = typeof window !== 'undefined' ? window.location.href : 'https://brandalchemyllc.com';
-
-  try {
-    const url = new URL(startUrl, baseForResolution);
-    url.searchParams.set('tier', tier);
-    if (/^https?:\/\//.test(startUrl)) return url.toString();
-    return `${url.pathname}${url.search}${url.hash}`;
-  } catch {
-    return startUrl;
-  }
+  return withTierParam(getIdentityKitBaseUrl(), tier);
 }
 
 export function isExternalToCurrentOrigin(url: string): boolean {

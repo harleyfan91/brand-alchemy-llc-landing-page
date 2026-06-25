@@ -40,7 +40,7 @@ const products: Product[] = [
     eyebrow: 'Brand foundation',
     title: 'Identity Kit',
     body: 'A personalized guide that defines your brand voice, look, and next steps, so your website, posts, and marketing stop feeling pieced together.',
-    priceLine: 'Core $79 · Pro $149',
+    priceLine: '$149',
     ctaLabel: 'Start with Identity Kit',
     href: '/identity-kit',
     watermarkSrc: '/product-card-watermarks/identity-kit-foundation.png',

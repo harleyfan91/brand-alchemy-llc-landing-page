@@ -8,7 +8,7 @@
 
 - Homepage product cards: `components/Products.tsx`
 - Local kits + content packs (full detail): `pages/GuidesAndKitsPage.tsx`, `content/contentPacks.ts`
-- Site routing (homepage + `/identity-kit`): `App.tsx`, `components/HomePage.tsx`, `components/ScrollToTop.tsx` (scroll-to-top on route change), `pages/IdentityKitPage.tsx`, `components/MarketingComparisonCards.tsx` (marketing-first Core/Pro comparison for offer pages); optional kit URLs: `utils/identityKitUrls.ts`, `.env.example`
+- Site routing (homepage + `/identity-kit`): `App.tsx`, `components/HomePage.tsx`, `components/ScrollToTop.tsx` (scroll-to-top on route change), `pages/IdentityKitPage.tsx` (single-offer marketing page); optional kit URLs: `utils/identityKitUrls.ts`, `.env.example`
 - Identity Kit tiers and deliverables: `identity-kit` repo — `README.md`, `IDENTITY_KIT_PRD.md`, `apps/web/src/data/tiers.ts`
 - Camentra subscription model: `Camentra` repo — `docs/features/subscription/SUBSCRIPTION_SYSTEM_COMPLETE_GUIDE.md`, `app/screens/PaywallScreen.tsx`
 
@@ -20,7 +20,7 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
 
 | Phase | Name (internal) | Role | Hook (customer-facing) | Prices |
 |-------|------------------|------|------------------------|--------|
-| **1** | The Brain | Foundation | Stop guessing how your brand should sound and look. | Identity Kit **Core $79** / **Pro $149** |
+| **1** | The Brain | Foundation | Stop guessing how your brand should sound and look. | Identity Kit **$149** |
 | **2** | The Megaphone | Local execution | Don’t sell “Google setup”—sell **local launch kits**: walkthrough, review templates, listing tips, worksheets. | Google/Yelp **Core $39** / **Pro $79**; **Both (2× Pro) bundle $129** |
 | **3** | The Engine | Ongoing execution | **Business photos on your phone:** line up shots, retouch, AI coach. | Camentra **~$9.99/mo** or **~$79.99/yr** (set in App Store / RevenueCat; confirm live) |
 
@@ -55,12 +55,11 @@ Treat everything after the Identity Kit as **execution modules** that plug into 
 
 ### Phase 1 — Identity Kit (`identity-kit`)
 
-| Tier | Price | Summary |
+| SKU | Price | Summary |
 |------|--------|---------|
-| **Core** | **$79** | Brand Brief, Style Guide, Voice & Content Playbook, 30-Day Quick Start (4 PDFs). |
-| **Pro** | **$149** | Core + deeper synthesis + Pro-only PDFs: **Content Starter Pack**, **Brand Strategy Memo**, conditional **Brand Audit** (when existing-brand inputs provided), Pro Visual Reference Spread on Style Guide, and Voice Playbook page 3 extensions. Content Starter Pack = paste-ready applied copy (`06-content-starter-pack.pdf`). |
+| **Identity Kit** | **$149** | Brand foundation (4 PDFs) + personalized messaging: Content Starter Pack, bios, caption starters, pillar prompts, CTA variations, email voice templates. AI-enhanced synthesis from intake. |
 
-**Primary ad/lander SKU:** Identity Kit **Core ($79)**.
+**Primary ad/lander SKU:** Identity Kit **$149**.
 
 ### Phase 2 — Local kits (marketing site)
 
@@ -113,9 +112,9 @@ Photo execution and on-phone framing stay with **Camentra**; we do not sell a se
 
 | Stage | Goal | SKU(s) |
 |-------|------|--------|
-| **Land** | Brand foundation | Identity Kit **Core** $79 |
-| **Bump** | Apply voice + local templates | **Social Content Pack** $19 **or** **Google/Yelp Core** $39 (one default per test) |
-| **Ascend** | Deeper brand or local Pro | Identity Kit **Pro** $149; **Google/Yelp Pro** $79; **2× Pro bundle** $129 |
+| **Land** | Brand foundation | Identity Kit **$149** |
+| **Bump** | Apply voice + local templates | **Google/Yelp Core** $39 (one default per test) |
+| **Ascend** | Local Pro or bundle | **Google/Yelp Pro** $79; **2× Pro bundle** $129 |
 | **Retain** | Photos + coach | Camentra **Pro** subscription; optional subsidized trial after kit |
 
 ---
@@ -132,7 +131,7 @@ Photo execution and on-phone framing stay with **Camentra**; we do not sell a se
 - [x] Added the **Identity Kit → local kits** and **local kits → Camentra** integration language to the site catalog copy.
 - [x] Linked this doc into the broader brand/product documentation so it can act as the working reference.
 - [x] Shipped **client-side routes** for `/` and `/identity-kit`, Identity Kit **marketing page**, and **nav** link; fixed production issues (**no** incompatible `ScrollRestoration` on `BrowserRouter`; **no** catch-all `_redirects` on Cloudflare Pages).
-- [x] Refined the `/identity-kit` page into a clearer **marketing comparison** pattern for mobile: **Pro first**, concise card summaries, anchored CTA below the cards, and a subtle **AI Enhanced** peek tab on the featured Pro card instead of faux selection UI.
+- [x] Refined the `/identity-kit` page into a **single-offer** marketing page: **$149**, AI-enhanced badge, full deliverable list, direct checkout CTA. `/identity-kit/select` redirects to `/identity-kit`.
 
 ### Next steps
 

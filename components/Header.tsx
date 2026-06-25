@@ -12,7 +12,7 @@ const Header: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const isHome = location.pathname === '/';
-  const isIdentityKit = location.pathname === '/identity-kit' || location.pathname === '/identity-kit/select';
+  const isIdentityKit = location.pathname === '/identity-kit';
   const isStudio = location.pathname === '/studio';
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);

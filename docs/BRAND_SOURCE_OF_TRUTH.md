@@ -49,7 +49,7 @@ This mirrors the internal **Brain → Megaphone → Engine** framing in the acqu
 
 | Layer | Customer-facing idea | Primary SKUs (see pricing doc for includes) |
 |-------|------------------------|---------------------------------------------|
-| Foundation | Brand on paper | Identity Kit **Core $79** / **Pro $149** |
+| Foundation | Brand on paper | Identity Kit **$149** |
 | Local execution | **Local kits** for Google and Yelp (step-by-step listings, review templates, worksheets) | Core **$39** / Pro **$79** per platform; **Google + Yelp Pro bundle $129** |
 | Ongoing execution | Daily posting and promotion tools (planned) | **Frame** — visual-first branded post creator; integrates Identity Kit brand DNA; not yet live |
 

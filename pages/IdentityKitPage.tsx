@@ -1,16 +1,51 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import CheckIcon from '../components/CheckIcon';
+import ProFeatureSparkIcon from '../components/ProFeatureSparkIcon';
 import {
-  IDENTITY_KIT_CORE_DELIVERABLES,
+  IDENTITY_KIT_BADGE,
+  IDENTITY_KIT_FOUNDATION_DELIVERABLES,
+  IDENTITY_KIT_MESSAGING_DELIVERABLES,
   IDENTITY_KIT_OUTCOMES,
+  IDENTITY_KIT_PRICE,
   IDENTITY_KIT_PROCESS_STEPS,
   IDENTITY_KIT_VALUE_POINTS,
 } from '../content/identityKit';
+import { getIdentityKitStartUrl, isExternalToCurrentOrigin } from '../utils/identityKitUrls';
 
 /** Wide shallow arc: each sheet’s bottom-center pivot sits on a horizontal baseline (spread in `rem`), then rotates. */
 const KIT_PAPER_FAN_PIVOT_REM = 6.25;
 const KIT_PAPER_FAN_ROTATE_DEG = 10;
+
+const checkoutUrl = getIdentityKitStartUrl();
+const checkoutOpensNewTab = isExternalToCurrentOrigin(checkoutUrl);
+
+const primaryCtaClassName =
+  'inline-flex items-center justify-center rounded-full bg-black px-8 py-3.5 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-gray-800 sm:px-10 sm:py-4 sm:text-sm';
+
+const IdentityKitCta: React.FC<{ className?: string; children: React.ReactNode; variant?: 'primary' | 'inverse' }> = ({
+  className = '',
+  children,
+  variant = 'primary',
+}) => {
+  const inverseClassName =
+    'inline-flex items-center justify-center rounded-full bg-white px-8 py-3.5 text-xs font-bold uppercase tracking-widest text-gray-900 transition-colors hover:bg-gray-100 sm:px-10 sm:py-4 sm:text-sm';
+  const combined = `${variant === 'inverse' ? inverseClassName : primaryCtaClassName} ${className}`.trim();
+
+  if (checkoutOpensNewTab) {
+    return (
+      <a href={checkoutUrl} className={combined} target="_blank" rel="noopener noreferrer">
+        {children}
+      </a>
+    );
+  }
+
+  return (
+    <a href={checkoutUrl} className={combined}>
+      {children}
+    </a>
+  );
+};
 
 const IdentityKitPage: React.FC = () => {
   return (
@@ -33,14 +68,18 @@ const IdentityKitPage: React.FC = () => {
         </nav>
 
         <section className="mx-auto max-w-4xl text-center">
-          <h1 className="font-sans text-3xl font-bold uppercase leading-[1.02] tracking-tight text-gray-900 sm:text-4xl md:text-5xl">
+          <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-gray-400 sm:text-xs">{IDENTITY_KIT_BADGE}</p>
+          <h1 className="mt-3 font-sans text-3xl font-bold uppercase leading-[1.02] tracking-tight text-gray-900 sm:text-4xl md:text-5xl">
             Stop guessing how your business
             <span className="mt-1 block text-gray-500">should sound and look</span>
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-sm font-light leading-relaxed text-gray-600 sm:text-base">
-            The Identity Kit gives you your brand voice, visual direction, and practical next steps on paper, so your
+            The Identity Kit gives you your brand voice, visual direction, and personalized messaging on paper — so your
             website, posts, and marketing stop feeling pieced together.
           </p>
+          <div className="mt-8 flex justify-center">
+            <IdentityKitCta>Start your Identity Kit — {IDENTITY_KIT_PRICE}</IdentityKitCta>
+          </div>
         </section>
 
         <p className="mx-auto mt-10 max-w-3xl text-center text-[10px] font-bold uppercase leading-relaxed tracking-[0.18em] text-gray-500 sm:text-xs sm:tracking-[0.22em]">
@@ -119,9 +158,9 @@ const IdentityKitPage: React.FC = () => {
             <div className="group/papers relative mx-auto mt-6 h-[11rem] w-full max-w-[26rem] motion-safe:transition motion-safe:duration-300 motion-safe:ease-out sm:mt-8 sm:h-[12rem] sm:max-w-[33rem] motion-safe:hover:-translate-y-1 motion-reduce:hover:translate-y-0">
               <ul
                 className="relative isolate m-0 h-full list-none overflow-visible p-0"
-                aria-label="Documents included in the Core kit"
+                aria-label="Foundation documents in the Identity Kit"
               >
-                {IDENTITY_KIT_CORE_DELIVERABLES.map((name, i) => {
+                {IDENTITY_KIT_FOUNDATION_DELIVERABLES.map((name, i) => {
                   const spread = i - 1.5;
                   const pivotRem = spread * KIT_PAPER_FAN_PIVOT_REM;
                   const rotate = spread * KIT_PAPER_FAN_ROTATE_DEG;
@@ -158,12 +197,26 @@ const IdentityKitPage: React.FC = () => {
             </div>
 
             <h3 className="mt-10 font-serif text-3xl font-normal text-gray-900 md:mt-12 md:text-4xl">
-              Your core brand documents, ready to use.
+              Your brand foundation, ready to use.
             </h3>
             <p className="mt-4 max-w-xl text-sm font-light leading-relaxed text-gray-600 sm:text-base">
-              This is not vague strategy. It is a set of practical files you can reference whenever you write, post,
-              update your site, or make a visual decision.
+              Four practical documents for voice, look, and rollout — plus personalized messaging you can paste into
+              posts, bios, and your site.
             </p>
+
+            <div className="mt-8">
+              <h4 className="text-xs font-bold uppercase tracking-[0.28em] text-gray-400">Personalized messaging</h4>
+              <ul className="mt-4 space-y-3">
+                {IDENTITY_KIT_MESSAGING_DELIVERABLES.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-0.5 shrink-0 text-gray-400" aria-hidden>
+                      <ProFeatureSparkIcon />
+                    </span>
+                    <span className="text-sm font-light leading-relaxed text-gray-700">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           <div className="lg:border-l lg:border-gray-100 lg:pl-12">
@@ -185,19 +238,19 @@ const IdentityKitPage: React.FC = () => {
         <section className="mx-auto mt-16 max-w-3xl border-t border-gray-100 pt-16 text-center md:mt-20 md:pt-20">
           <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Next step</span>
           <h2 className="mt-2 font-serif text-3xl font-normal text-gray-900 md:text-4xl">
-            Choose the level of support that fits where you are.
+            One kit. Everything you need to sound and look like your business.
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm font-light leading-relaxed text-gray-600 sm:text-base">
-            When you are ready, compare Core and Pro side by side. Core keeps it lean and self-directed. Pro adds more
-            tailored guidance if you want extra help shaping how your brand sounds in the real world.
+            Go through the guided intake and leave with a clearer voice, look, and messaging you can use the same week.
           </p>
-          <div className="mt-8 flex justify-center">
-            <Link
-              to="/identity-kit/select"
-              className="inline-flex items-center justify-center rounded-full bg-black px-8 py-3.5 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-gray-800 sm:px-10 sm:py-4 sm:text-sm"
-            >
-              Compare Core and Pro
-            </Link>
+          <div className="mt-8 flex flex-col items-center gap-4">
+            <IdentityKitCta>Start your Identity Kit — {IDENTITY_KIT_PRICE}</IdentityKitCta>
+            <p className="text-xs font-light text-gray-400">
+              Already have your brand sorted?{' '}
+              <Link to="/local-kits" className="text-gray-600 underline-offset-2 hover:text-gray-900 hover:underline">
+                See local kits
+              </Link>
+            </p>
           </div>
         </section>
 
@@ -205,16 +258,10 @@ const IdentityKitPage: React.FC = () => {
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="font-serif text-3xl font-normal md:text-4xl">Ready to stop building your brand piecemeal?</h2>
             <p className="mx-auto mt-4 max-w-2xl text-sm font-light leading-relaxed text-gray-200 sm:text-base">
-              Choose your kit, go through the guided intake, and leave with a clearer voice, look, and plan for how to
-              show up.
+              Answer a short guided quiz and receive your personalized brand documents by email.
             </p>
             <div className="mt-8 flex justify-center">
-              <Link
-                to="/identity-kit/select"
-                className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3.5 text-xs font-bold uppercase tracking-widest text-gray-900 transition-colors hover:bg-gray-100 sm:px-10 sm:py-4 sm:text-sm"
-              >
-                Choose Core or Pro
-              </Link>
+              <IdentityKitCta variant="inverse">Start your Identity Kit — {IDENTITY_KIT_PRICE}</IdentityKitCta>
             </div>
           </div>
         </section>
