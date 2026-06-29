@@ -19,6 +19,9 @@ type Product = {
 const START_HERE_TAB_LABEL = 'Start here';
 
 /*
+ * Two-card grid (Jun 2026): Camentra archived — was md:grid-cols-3 max-w-7xl.
+ * min-h on innerCard prevents wide two-up cards from reading vertically compressed.
+ *
  * ARCHIVED — Camentra iOS app card (removed from homepage Jun 2026).
  * Camentra is paused as an active product recommendation while strategy
  * shifts to Identity Kit + local ranking kits + Daily Execution Engine (DEE).
@@ -82,13 +85,13 @@ const Products = () => {
           <h2 className="ba-section-eyebrow text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Products</h2>
         </div>
 
-        <div className="mx-auto grid max-w-4xl items-stretch gap-4 md:grid-cols-2 lg:gap-5">
+        <div className="mx-auto grid max-w-3xl items-stretch gap-4 md:grid-cols-2 md:gap-5 lg:max-w-4xl lg:gap-6">
           {products.map((product, i) => {
             const showTab = Boolean(product.showStartHereTab);
 
             const innerCard = (
               <div
-                className={`relative flex min-h-0 flex-1 flex-col overflow-hidden rounded-2xl bg-white text-left shadow-[0_16px_40px_-18px_rgba(0,0,0,0.18)] ${
+                className={`relative flex min-h-[19rem] flex-1 flex-col overflow-hidden rounded-2xl bg-white text-left shadow-[0_16px_40px_-18px_rgba(0,0,0,0.18)] sm:min-h-[20rem] md:min-h-[21rem] ${
                   showTab
                     ? 'border border-black group-hover:shadow-[0_24px_55px_-22px_rgba(0,0,0,0.22)]'
                     : 'border border-gray-100 group-hover:shadow-[0_24px_60px_-40px_rgba(15,23,42,0.24)]'
@@ -114,7 +117,7 @@ const Products = () => {
                   style={sheenStyle(250 + i * 120)}
                   aria-hidden
                 />
-                <div className="relative z-10 flex min-h-0 flex-1 flex-col bg-white/50 p-6 transition-colors duration-500 group-hover:bg-white/58 backdrop-blur-[1px] md:p-7">
+                <div className="relative z-10 flex flex-1 flex-col bg-white/50 p-6 transition-colors duration-500 group-hover:bg-white/58 backdrop-blur-[1px] md:p-8">
                   <div className="min-w-0">
                     <span className="mb-2 block text-xs font-bold uppercase tracking-widest text-gray-400">
                       {product.eyebrow}
@@ -137,7 +140,7 @@ const Products = () => {
             );
 
             const cardContent = showTab ? (
-              <div className="relative flex min-h-0 flex-1 flex-col pt-6">
+              <div className="relative flex flex-1 flex-col pt-6">
                 <span
                   className="pointer-events-none absolute inset-x-0 top-0 z-0 h-9 rounded-t-2xl bg-black"
                   aria-hidden
@@ -153,10 +156,10 @@ const Products = () => {
             );
 
             const wrapperClasses =
-              `group relative z-20 flex h-full min-h-0 flex-col rounded-2xl text-inherit no-underline transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${sectionEnterClass}`;
+              `group relative z-20 flex h-full flex-col rounded-2xl text-inherit no-underline transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${sectionEnterClass}`;
 
             const hoverScaleInner = (
-              <div className="flex h-full w-full min-h-0 min-w-0 origin-center flex-col transition-transform duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-[1.025] motion-reduce:transition-none motion-reduce:group-hover:scale-100">
+              <div className="flex h-full w-full min-w-0 flex-col transition-transform duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-[1.025] motion-reduce:transition-none motion-reduce:group-hover:scale-100">
                 {cardContent}
               </div>
             );

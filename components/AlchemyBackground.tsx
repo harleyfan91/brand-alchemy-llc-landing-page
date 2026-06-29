@@ -94,7 +94,7 @@ const Earth: React.FC = () => (
 // ─── Sequence Configuration ───────────────────────────────────────────────────
 
 // Matches identity-kit left strip arm toward center: leftSide[21]…leftSide[12]
-// (earth → sulfur → mercury → fire → sun → air → salt → earth → sulfur → mercury) ×2
+// (earth → sulfur → mercury → fire → sun → air → salt → earth → sulfur → mercury) ×N
 const oneCycle = [
   Earth,
   Sulfur,
@@ -108,13 +108,63 @@ const oneCycle = [
   Mercury,
 ] as const;
 
-const sequence = [...oneCycle, ...oneCycle];
+/** Repeat cycles so the pan can keep marching through the pattern for the full scroll range. */
+const TRAIN_CYCLE_COUNT = 4;
+const sequence = Array.from({ length: TRAIN_CYCLE_COUNT }, () => [...oneCycle]).flat();
 
 const SYMBOL_SPACING = 'clamp(36vw, 56vmin, 72vw)';
-const SCROLL_PAN_MAX_VW = 180; 
+const PAN_START_VW = 25;
+
+const TRI_PHASE_END = 0.3;
+const TRAIN_FADE_START = 0.25;
+
+/** Icon slots advanced per viewport-height scrolled after rotation lock (not page-bottom endpoint). */
+const PAN_SLOTS_PER_VH = { mobile: 2.4, desktop: 3.2 } as const;
+
+/** Mirrors SYMBOL_SPACING `clamp(36vw, 56vmin, 72vw)` for pan-rate math. */
+const estimateSymbolSlotVw = (): number => {
+  const vw = Math.max(window.innerWidth, 1);
+  const vmin = Math.min(window.innerWidth, window.innerHeight);
+  return clamp((56 * vmin) / vw, 36, 72);
+};
 
 // Master target opacity
 const MAX_OPACITY = 0.06;
+
+/** Scroll Y where triangle rotation completes — tied to #services on all breakpoints. */
+const getRotationLockScrollY = (
+  scrollY: number,
+  maxScroll: number,
+  narrow: boolean
+): number => {
+  const services = document.getElementById('services');
+  const vh = window.innerHeight;
+  let anchorScrollY = maxScroll * TRI_PHASE_END;
+  if (services) {
+    const topDoc = services.getBoundingClientRect().top + scrollY;
+    const vhFactor = narrow ? 0.14 : 0.18;
+    anchorScrollY = Math.max(160, topDoc - vh * vhFactor);
+    anchorScrollY = Math.min(anchorScrollY, maxScroll * 0.98);
+  }
+  return anchorScrollY;
+};
+
+/**
+ * Constant-rate pan after rotation lock — measured in symbol slots per viewport-height.
+ * No endpoint at page bottom; rate scales with actual glyph spacing on each device.
+ */
+const getTrainPan = (
+  scrollY: number,
+  rotationLockScrollY: number,
+  narrow: boolean
+): number => {
+  if (scrollY <= rotationLockScrollY) return PAN_START_VW;
+
+  const vhScrolled = (scrollY - rotationLockScrollY) / Math.max(window.innerHeight, 1);
+  const slotsPerVh = narrow ? PAN_SLOTS_PER_VH.mobile : PAN_SLOTS_PER_VH.desktop;
+  const vwPerVh = estimateSymbolSlotVw() * slotsPerVh;
+  return PAN_START_VW + vhScrolled * vwPerVh;
+};
 
 // ─── Background Layer Component ───────────────────────────────────────────────
 
@@ -127,68 +177,42 @@ const AlchemyBackground: React.FC = () => {
     const tick = () => {
       const scrollY = window.scrollY;
       const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-      const pRaw = scrollY / maxScroll; // 0 = top, 1 = bottom
-
-      // Mobile: advance triangle/train/beta timing with pAnim so layers stay in sync vs page scroll.
+      const pRaw = scrollY / maxScroll;
       const narrow = window.matchMedia('(max-width: 767px)').matches;
-      const MOBILE_ANIM_BOOST = 2.75;
 
-      const triPhaseEnd = 0.3;
+      const rotationLockScrollY = getRotationLockScrollY(scrollY, maxScroll, narrow);
+      const pAnim =
+        scrollY <= rotationLockScrollY
+          ? (scrollY / Math.max(rotationLockScrollY, 1)) * TRI_PHASE_END
+          : TRI_PHASE_END;
 
-      // Desktop: tie the triangle + symbol-train phase to #services (not to % of total scroll).
-      // Longer pages shrink pRaw at a given section, so fixed thresholds (e.g. 0.25) drift late
-      // into Products unless we anchor to the section pixel position.
-      let pAnim: number;
-      if (narrow) {
-        pAnim = Math.min(1, pRaw * MOBILE_ANIM_BOOST);
-      } else {
-        const services = document.getElementById('services');
-        const vh = window.innerHeight;
-        let anchorScrollY = maxScroll * triPhaseEnd;
-        if (services) {
-          const topDoc = services.getBoundingClientRect().top + scrollY;
-          // Smaller vh factor → larger anchorScrollY → triangle / train phase completes later.
-          anchorScrollY = Math.max(160, topDoc - vh * 0.18);
-          anchorScrollY = Math.min(anchorScrollY, maxScroll * 0.98);
-        }
-        if (scrollY <= anchorScrollY) {
-          pAnim = (scrollY / Math.max(anchorScrollY, 1)) * triPhaseEnd;
-        } else {
-          pAnim =
-            triPhaseEnd +
-            ((scrollY - anchorScrollY) / Math.max(1, maxScroll - anchorScrollY)) * (1 - triPhaseEnd);
-        }
-      }
+      // Pan after rotation locks — rotation timing unchanged; pan rate is breakpoint-specific.
+      const baseX = getTrainPan(scrollY, rotationLockScrollY, narrow);
 
-      const trainFadeStart = 0.25;
+      const triRot =
+        pAnim < TRI_PHASE_END ? mapRange(pAnim, 0, TRI_PHASE_END, 0, 90) : 90;
 
-      // ── Beta Symbol (fade on pAnim so it stays synced with triangle + train on all breakpoints) ──
       const betaOpacity =
         pAnim < 0.05
           ? MAX_OPACITY
           : mapRange(pAnim, 0.05, 0.22, MAX_OPACITY, 0);
 
+      const triOpacity = pRaw < 0.85 ? MAX_OPACITY : mapRange(pRaw, 0.85, 0.95, MAX_OPACITY, 0);
+
+      const trainOpacity =
+        pAnim < TRAIN_FADE_START
+          ? 0
+          : pAnim < TRI_PHASE_END
+            ? mapRange(pAnim, TRAIN_FADE_START, TRI_PHASE_END, 0, MAX_OPACITY)
+            : MAX_OPACITY;
+
       if (betaRef.current) {
-        betaRef.current.style.transform = `translate(calc(-50% - 25vw), -50%)`; 
+        betaRef.current.style.transform = `translate(calc(-50% - 25vw), -50%)`;
         betaRef.current.style.opacity = String(clamp(betaOpacity, 0, MAX_OPACITY));
       }
 
-      // ── Triangle & Train (use pAnim so mobile can finish rotation + pan sooner) ──
-      const baseX =
-        pAnim < triPhaseEnd ? 25 : mapRange(pAnim, triPhaseEnd, 1.0, 25, SCROLL_PAN_MAX_VW);
-      const triRot = pAnim < triPhaseEnd ? mapRange(pAnim, 0, triPhaseEnd, 0, 90) : 90;
-
-      // Triangle Opacity (Holds steady until 85% down the page, then fades out into contact section)
-      const triOpacity = pRaw < 0.85 ? MAX_OPACITY : mapRange(pRaw, 0.85, 0.95, MAX_OPACITY, 0);
-
-      // Train Opacity (fades in early, then holds through the bottom of the page)
-      const trainOpacity =
-        pAnim < trainFadeStart ? 0 :
-        pAnim < triPhaseEnd ? mapRange(pAnim, trainFadeStart, triPhaseEnd, 0, MAX_OPACITY) :
-        MAX_OPACITY;
-
       if (triRef.current) {
-        triRef.current.style.transform = 
+        triRef.current.style.transform =
           `translate(calc(-50% + ${baseX}vw), -50%) rotate(${triRot}deg)`;
         triRef.current.style.opacity = String(clamp(triOpacity, 0, MAX_OPACITY));
       }
@@ -253,7 +277,7 @@ const AlchemyBackground: React.FC = () => {
         style={{
           top: '50%',
           left: '50%',
-          width: 0, 
+          width: 0,
           height: 0,
           opacity: 0,
           willChange: 'transform, opacity',
@@ -266,7 +290,7 @@ const AlchemyBackground: React.FC = () => {
             style={{
               width: '72vmin',
               height: '72vmin',
-              transform: `translate(calc(-50% - ${index + 1} * ${SYMBOL_SPACING}), -50%)`
+              transform: `translate(calc(-50% - ${index + 1} * ${SYMBOL_SPACING}), -50%)`,
             }}
           >
             <Symbol />

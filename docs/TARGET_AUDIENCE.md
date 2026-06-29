@@ -15,18 +15,20 @@
 
 ## Who we serve
 
-We speak to **hospitality business owners** who run the place themselves — and want to show up clearly online without hiring a marketing team.
+We speak to **hospitality and boutique retail owners** who run the place themselves — and want to show up clearly online without hiring a marketing team.
 
 **Our primary audience:**
 
 - Café and coffee shop owners
 - Restaurant, bar, and bakery owners
 - Salon, spa, and beauty service owners
-- Closely related: boutique hospitality and service businesses (e.g. a small inn, a massage studio) where the owner is also the operator
+- Boutique, gift shop, and maker-goods retail owners (owner-operated shops with a physical presence and visual brand)
 
-These people are **experts at what they do** — making coffee, running a kitchen, building a client book — not in marketing tech or brand theory. They are typically the only person making decisions about their online presence.
+Closely related: boutique hospitality and service businesses (e.g. a small inn, a massage studio) where the owner is also the operator.
 
-**Why this audience:** Hospitality businesses are highly visual, have strong local search intent, and are already creating content (menus, specials, ambience) that just needs a consistent brand wrapper to work online. The product ladder — Identity Kit → local kits → execution tools — maps directly to how they actually grow.
+These people are **experts at what they do** — making coffee, running a kitchen, building a client book, curating a shop floor — not in marketing tech or brand theory. They are typically the only person making decisions about their online presence.
+
+**Why this audience:** These businesses are highly visual, have strong local search intent, and are already creating content (menus, specials, products on display, in-chair results) that just needs a consistent brand wrapper to work online. The product ladder — Identity Kit → local kits → execution tools — maps directly to how they actually grow.
 
 ## Who this is **not** for
 
@@ -43,11 +45,11 @@ If copy sounds like it is for SaaS founders, growth hackers, or marketing depart
 
 ## Implications for messaging
 
-- Use **concrete, recognizable examples**: a café, a restaurant, a salon. Not abstract "your business."
+- Use **concrete, recognizable examples**: a café, a restaurant, a salon, a boutique. Not abstract "your business."
 - Explain **what they get** and **how it helps customers find or remember them** without assuming prior brand vocabulary.
 - Avoid assuming they enjoy "doing marketing"; frame help as **clarity, direction, and done-with-you or done-for-you** support.
 - Do not overpromise on scope: honest language about what each kit or tool delivers and what it does not.
 
 ---
 
-*When in doubt, ask: "Would a café owner who has never hired a marketer immediately understand this?" If not, simplify.*
+*When in doubt, ask: "Would a café, salon, or boutique owner who has never hired a marketer immediately understand this?" If not, simplify.*

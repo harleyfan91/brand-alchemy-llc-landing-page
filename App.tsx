@@ -8,6 +8,7 @@ import LocalKitsPage from './pages/GuidesAndKitsPage';
 import ArticlePage from './pages/ArticlePage';
 import StudioPage from './pages/StudioPage';
 import StudioIntakePage from './pages/StudioIntakePage';
+import SystemSectionMocksPage from './pages/SystemSectionMocksPage';
 import { GUIDES_AND_KITS_PATH } from './content/guidesAndKitsRoutes';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -56,6 +57,7 @@ const AppRoutes: React.FC = () => {
             {/* Future: <Route path={`${GUIDES_AND_KITS_PATH}/:industry`} element={<LocalKitsIndustryPage />} /> */}
             <Route path="/articles/:slug" element={<ArticlePage />} />
             <Route path="/product-page-primitives" element={<DigitalProductTemplatePreviewPage />} />
+            {import.meta.env.DEV ? <Route path="/system-section-mocks" element={<SystemSectionMocksPage />} /> : null}
             <Route path="/studio" element={<StudioPage />} />
             <Route path="/studio/intake" element={<StudioIntakePage />} />
           </Routes>

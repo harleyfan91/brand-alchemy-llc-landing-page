@@ -165,8 +165,8 @@ Shipped as **`/favicon.ico`**. Regeneration settings for a consistent mark are d
 
 ### Homepage hierarchy patterns
 
-- **System (`Services.tsx`)**: keep this section compact with a horizontal three-step track (`01 → 02 → 03`) that sets sequence quickly without heavy containers or long editorial stacks.
-- **Products (`Products.tsx`)**: use an equal three-card row on desktop (`md:grid-cols-3`) with `Identity Kit` as the entry via the black `Start here` peek tab and matching black border.
+- **System (`Services.tsx`)**: full-bleed hero band carries the section intro (eyebrow, title, support) on a photo with gradient scrub; three text-only steps below (`01 → 02 → 03`, step `02` right-aligned). Hero band uses **muted** image treatment (desaturated, product-card watermark tone) — `SYSTEM_SECTION_IMAGE_TREATMENT` in `content/systemSection.ts`.
+- **Products (`Products.tsx`)**: two-card row on desktop (`md:grid-cols-2`, `max-w-3xl` / `lg:max-w-4xl`); `Identity Kit` uses the black `Start here` peek tab and matching black border. Cards use a minimum height so the two-up layout does not read flat after the third card was archived.
 - **Homepage product visual interest**: prefer subtle monochrome sculptural watermark motifs in each card over extra chips, symbol clutter, or large color blocks.
 
 ### Mobile section rhythm (hybrid standard)
