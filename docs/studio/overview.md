@@ -6,51 +6,53 @@ _Short reference for the consulting offer. For full detail see [`strategy-curren
 
 ## What it is
 
-Brand Alchemy Studio is **revenue operations consulting with a marketing architecture lens** for founder-led, culturally-specific businesses doing roughly **$750K–$5M** in annual revenue.
+Brand Alchemy Studio is **paid media strategy and marketing architecture consulting** for founder-led, culturally-specific businesses doing roughly **$750K–$5M** in annual revenue.
 
-These businesses have outgrown gut-instinct operations but are too small, too niche, and too independent for a traditional agency. Studio sits in the gap between **DIY chaos** and **a full agency** — designing the systems, frameworks, and governance tools that make marketing effective and operations repeatable.
+These businesses are spending real money on growth with no one who has genuine media experience looking at the full picture. They are too small and too independent for a traditional agency. Studio sits in the gap between **DIY chaos** and **a full agency** — diagnosis, frameworks, and decision tools handed off so the team (or their media buyer) can act.
 
-**Not:** general business coaching, media buying, creative execution, or platform configuration.
+**Not:** general business coaching, media buying execution, creative production, or platform configuration.
 
 ---
 
 ## Who it's for
 
 ### Category A — Drop & scarcity economy
-Independent streetwear labels, designer toys, vinyl collectibles, skate/alt-lifestyle hardware. Digitally native brands running drop cycles with documented chaos but no systematic allocation, launch, or channel logic.
+Independent streetwear labels, designer toys, vinyl collectibles, skate/alt-lifestyle hardware. Digitally native brands already spending on paid media, with broken campaign architecture, reactive launches, and gut-instinct collabs.
 
-**Minimum:** At least one completed drop cycle with real revenue data.
+**Minimum:** $1M+ annual revenue, at least one completed drop or launch cycle, **active paid media spend of $3K–$5K/month or more**. Zero-spend brands are future clients, not current ones.
 
 ### Category B — Capacity & experiential
-High-ticket tattoo collectives, piercing clinics, alternative hair studios. Multi-artist, appointment-based businesses losing revenue to intake friction, no-shows, and unstructured booking.
+High-ticket tattoo collectives, piercing clinics, alternative hair studios. Multi-artist, appointment-based businesses where craft quality outpaces how the business acquires clients.
 
-**Minimum:** 3+ artists, **$750K+ gross annual revenue**, inconsistently fully booked, no systematized intake or deposit process.
+**Minimum:** 3+ artists, **$750K+ gross annual revenue**, appointment-based model. Below this floor an $11,000 sprint is often too large a cash event even when the need is real.
 
 ---
 
 ## How it works
 
 ```
-Inquiry → Manual review → $200 discovery call → 6-week strategy → Optional retainer
+Inquiry → Manual review → $200 discovery call → 6-week sprint → Optional retainer
 ```
 
 1. **Inquiry** — Lead submits via `/studio/intake`.
-2. **Review** — Matt responds within 3 business days with prep questions and a booking link.
-3. **Discovery call** — **$200 · 60 min · credited toward package fee** if they proceed. Structured diagnostic, not a sales pitch.
-4. **Strategy package** — 6-week advisory at full or first-client rate. Deliverables live in a shared Notion dashboard.
-5. **Retainer** — Optional ongoing access after the strategy. Strategy clients get **$2,500/mo** for the first 90-day block (vs. $3,000/mo standard).
+2. **Review** — Matt responds within 3 business days with a personalized observation, prep questions, and a booking link.
+3. **Discovery call** — **$200 · 60 min · credited toward sprint fee** if they proceed. Structured diagnostic, not a sales pitch.
+4. **Sprint** — 6-week advisory at full or portfolio rate. Deliverables live in a shared Notion dashboard.
+5. **Retainer** — Optional ongoing strategic access after the sprint. Sprint converts get **$500/mo off** for the first 90-day block ($2,500/mo vs. $3,000/mo).
 
-First-client rates ($4,000 / $4,500) require **case study rights and a named testimonial**.
+Portfolio rates ($3,500 / $4,500) require **case study rights and a named testimonial**.
 
 ---
 
 ## Packages at a glance
 
-| Package | Price | First client | Duration | Format |
-|---------|-------|--------------|----------|--------|
-| **Drop & Allocation Strategy** | $10,000 | $4,000 | 6 weeks | Discovery call + remote advisory |
-| **Capacity & Intake Strategy** | $11,000 | $4,500 | 6 weeks | Discovery call + **2-day on-site diagnostic (Week 2)** + advisory |
-| **Baseline Retainer** | $3,000/mo | $2,500/mo (strategy converts) | 90-day min · ~10 hrs/mo | Monthly briefing + weekly async intake window |
+| Package | Price | Portfolio rate | Duration | Format |
+|---------|-------|----------------|----------|--------|
+| **Campaign & Growth Architecture Sprint** | $8,500 | $3,500 | 6 weeks | Discovery call + remote advisory |
+| **Visibility & Client Acquisition Sprint** | $11,000 | $4,500 | 6 weeks | Discovery call + **2-day on-site diagnostic (Week 2)** + advisory |
+| **Baseline Retainer** | $3,000/mo | $2,500/mo (sprint converts) | 90-day min · ~10 hrs/mo | Monthly briefing + weekly async intake window |
+
+After first two portfolio retainer clients, raise standard retainer to **$3,500/mo**.
 
 **Category B on-site:** Baked into the package price — not an add-on. Travel outside NYC metro requires T&E reimbursement.
 
@@ -62,34 +64,48 @@ First-client rates ($4,000 / $4,500) require **case study rights and a named tes
 
 It starts with a discovery call to learn about your business. Six weeks inside the business: map what is broken, build the tools and frameworks to fix it, hand them off ready for the team to run. Real systems, not a word document in a folder. Optional **Baseline Retainer** after for ongoing monthly access (~10 hrs/mo).
 
+---
+
 ## Package inclusions (summary)
 
 Full item lists live in [`content/studio.ts`](../../content/studio.ts) and on `/studio`.
 
-### Drop & Allocation Strategy — strategic services
-CAC & Channel ROI Audit · Paid Media Funnel Architecture · Brand Alliance Blueprinting · Anti-Bot & Scarcity Strategy · Drop Allocation Framework Design · Post-Drop Debrief Facilitation
+### Campaign & Growth Architecture Sprint — strategic services
+Paid Media Diagnostic · Launch Campaign Planning · Partnership & Co-Marketing Readiness · Brand & Channel Audit
 
-**Key deliverables:** Multi-Channel Allocation Matrix · Media Budget Pacing Matrix · Brand Alliance Pitch Ledger · 90-Day Backward Launch Timeline · Anti-Bot & Scarcity Fairness Protocol · 3PL / Warehouse SLA Checklist · Post-Drop Debrief Template
+**Key deliverables:** Paid Media Diagnostic Report · Launch Campaign Framework · Partnership Readiness Assessment · Brand & Channel Audit
 
-### Capacity & Intake Strategy — strategic services
-Intake System Design · Deposit & No-Show Strategy · Chair Capacity Analysis · Local Intent Media Architecture · Local Trust & Referral Audit · Studio Asset Protection
+### Visibility & Client Acquisition Sprint — strategic services
+Local Visibility Audit · Client Acquisition Channel Map · Paid Media Foundation · Content & Community Strategy · Partnership & Referral Architecture
 
-**Key deliverables:** Client Assurance Intake Pipeline · Tiered Non-Refundable Deposit Matrix · No-Show Elimination Protocol · Chair Capacity Optimization Dashboard · Hyper-Local Media Map · Referral & Word-of-Mouth Playbook · Studio Asset Protection Program
+**Key deliverables:** Local Visibility Audit & Action Plan · Client Acquisition Channel Map · Paid Media Foundation Brief · Content & Community Strategy Framework · Partnership & Referral Architecture
 
 ### Baseline Retainer — monthly scope
-Paid Media Budget Audit · Lifecycle Email & SMS Strategy · Launch Calendar Governance · Vendor & Supplier Interception · Brand Equity Protection · Monthly Strategic Briefing
+Paid Media Budget Review · Launch Calendar & Campaign Readiness · Partnership Opportunity Evaluation · Brand Equity Protection · Monthly Strategic Briefing
 
-**Add-ons:** Premium On-Site Upgrade (+$2,500) · Brand Asset Refresh ($2,500) · Fully Managed Execution Layer (+$1,500/mo)
+**Add-on:** Fully Managed Execution Layer (+$1,500/mo)
+
+---
+
+## Pricing justification (client-facing)
+
+**Category A:** A $1.5M DTC brand spending ~15.6% of budget on marketing is at ~$150K–$230K annually. The $8,500 sprint is less than 6% of that spend. The audit alone typically surfaces waste that dwarfs the fee within one drop cycle.
+
+**Category B:** Studios lose $12,000–$60,000 annually to no-shows and inconsistent client flow. 68% of owners report $1,000–$5,000 monthly loss to this alone. The $11,000 sprint pays for itself from that fix in under 12 months — before media and visibility gains.
+
+**Retainer:** A full-time marketing hire costs $270K–$320K annually in total employer cost. $3,000/mo is $36K/year — roughly 11–13% of that, with no benefits, equity, or long-term lock beyond 90 days.
+
+Client language: you are losing money you do not have to lose, and I can show you exactly where it is going and how to stop it.
 
 ---
 
 ## What we don't do (guardrails)
 
-- **No platform configuration** — never log into Shopify, Klaviyo, Boulevard, etc.
+- **No platform configuration** — never log into Shopify, Klaviyo, Meta Ads, Boulevard, etc.
 - **No raw execution** — no individual emails, captions, or customer service responses
 - **No mediation** — no negotiating with factories, suppliers, landlords, or creative talent
-- **No ROAS guarantees** — value is structural improvement, not outputs outside our control
-- **On-site is observation, not operation** — map workflows; don't run the POS or reconfigure software
+- **No ROAS guarantees** — value is measurable marketing and acquisition improvement
+- **On-site is observation, not operation** — map how clients find you and how marketing decisions get made; don't run the POS or reconfigure software
 
 ---
 

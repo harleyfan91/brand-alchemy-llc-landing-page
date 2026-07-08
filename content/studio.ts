@@ -21,64 +21,56 @@ export const STUDIO_INQUIRY_IS_EXTERNAL = STUDIO_INQUIRY_HREF.startsWith('http')
 
 export const STUDIO_SPRINTS = [
   {
-    id: 'drop-allocation',
-    name: 'The Drop & Allocation Strategy',
-    price: '$10,000',
-    /** Reduced rate for first-time clients in this category. Set to null when filled. */
-    launchPrice: '$4,000',
+    id: 'campaign-growth',
+    name: 'The Campaign & Growth Architecture Sprint',
+    price: '$8,500',
+    /** Portfolio rate for first two clients. Set to null when filled. */
+    launchPrice: '$3,500',
     duration: '6 weeks',
     format: '60-min discovery call · 6-week advisory',
-    /** Strategic advisory work included in this advisory package. */
+    /** Strategic advisory work included in this sprint. */
     advisory: [
-      'CAC & Channel ROI Audit',
-      'Paid Media Funnel Architecture',
-      'Brand Alliance Blueprinting',
-      'Anti-Bot & Scarcity Strategy',
-      'Drop Allocation Framework Design',
-      'Post-Drop Debrief Facilitation',
+      'Paid Media Diagnostic',
+      'Launch Campaign Planning',
+      'Partnership & Co-Marketing Readiness',
+      'Brand & Channel Audit',
     ],
-    /** Documented tools and frameworks you keep after the advisory package. */
+    /** Documented tools and frameworks you keep after the sprint. */
     tools: [
-      'Multi-Channel Allocation Matrix',
-      'Media Budget Pacing Matrix',
-      'Brand Alliance Pitch Ledger',
-      '90-Day Backward Launch Timeline',
-      'Anti-Bot & Scarcity Fairness Protocol',
-      '3PL / Warehouse SLA Checklist',
-      'Post-Drop Debrief Template',
+      'Paid Media Diagnostic Report',
+      'Launch Campaign Framework',
+      'Partnership Readiness Assessment',
+      'Brand & Channel Audit',
     ],
     entryPoint:
-      'Brand has completed at least one drop cycle and has real revenue data. Chaos is documented, even if unsystematized.',
+      'DTC or omnichannel brand at $1M–$5M revenue, at least one completed drop or launch cycle, and active paid media spend of $3K–$5K/month or more.',
   },
   {
-    id: 'capacity-intake',
-    name: 'The Capacity & Intake Strategy',
+    id: 'visibility-acquisition',
+    name: 'The Visibility & Client Acquisition Sprint',
     price: '$11,000',
-    /** Reduced rate for first-time clients in this category. Set to null when filled. */
+    /** Portfolio rate for first two clients. Set to null when filled. */
     launchPrice: '$4,500',
     duration: '6 weeks',
     format: '60-min discovery call · 2-day on-site diagnostic · 6-week advisory',
-    /** Strategic advisory work included in this advisory package. */
+    /** Strategic advisory work included in this sprint. */
     advisory: [
-      'Intake System Design',
-      'Deposit & No-Show Strategy',
-      'Chair Capacity Analysis',
-      'Local Intent Media Architecture',
-      'Local Trust & Referral Audit',
-      'Studio Asset Protection',
+      'Local Visibility Audit',
+      'Client Acquisition Channel Map',
+      'Paid Media Foundation',
+      'Content & Community Strategy',
+      'Partnership & Referral Architecture',
     ],
-    /** Documented tools and frameworks you keep after the advisory package. */
+    /** Documented tools and frameworks you keep after the sprint. */
     tools: [
-      'Client Assurance Intake Pipeline',
-      'Tiered Non-Refundable Deposit Matrix',
-      'No-Show Elimination Protocol',
-      'Chair Capacity Optimization Dashboard',
-      'Hyper-Local Media Map',
-      'Referral & Word-of-Mouth Playbook',
-      'Studio Asset Protection Program',
+      'Local Visibility Audit & Action Plan',
+      'Client Acquisition Channel Map',
+      'Paid Media Foundation Brief',
+      'Content & Community Strategy Framework',
+      'Partnership & Referral Architecture',
     ],
     entryPoint:
-      'Studio has 3+ artists, $750K+ gross annual revenue, is fully booked inconsistently, and has never systematized their intake or deposit process.',
+      'Tattoo studio, piercing boutique, or alternative hair collective with $750K+ gross revenue, 3+ artists, and a clear gap between craft quality and how the business acquires clients.',
   },
 ] as const;
 
@@ -87,20 +79,20 @@ export const STUDIO_RETAINER = {
   price: '$3,000 / mo',
   terms: '90-day minimum · ~10 hrs access',
   scope: [
-    'Paid Media Budget Audit — monthly review of ad spend allocation, channel ROI, and waste identification',
-    'Lifecycle Email & SMS Strategy — content architecture and send cadence recommendations',
-    'Launch Calendar Governance — quarterly roadmap reviews, launch gate decisions, and timing recommendations',
-    'Vendor & Supplier Interception — contract review, SLA accountability, and escalation frameworks',
+    'Paid Media Budget Review — monthly review of ad spend allocation, channel performance, and waste identification',
+    'Launch Calendar & Campaign Readiness — quarterly roadmap reviews, launch gate decisions, and creative readiness checks',
+    'Partnership Opportunity Evaluation — structured review of incoming collabs, sponsorships, and co-marketing deals',
     'Brand Equity Protection — flagging decisions that risk cultural authenticity or long-term positioning',
     'Monthly Strategic Briefing — 60-minute structured call with written summary and decision log',
   ],
   addOns: [
-    { name: 'Premium On-Site Upgrade', price: '+$2,500', note: 'Additional on-site days for retainer clients (on-site diagnostic included in Strategy B sprint)' },
-    { name: 'Brand Asset Refresh', price: '$2,500', note: 'Visual modernization with creative direction' },
-    { name: 'Fully Managed Execution Layer', price: '+$1,500/mo', note: 'Dedicated coordinator for strategy execution' },
+    {
+      name: 'Fully Managed Execution Layer',
+      price: '+$1,500/mo',
+      note: 'Dedicated coordinator for strategy execution — social scheduling, email deployment, ad monitoring under Brand Alchemy oversight',
+    },
   ],
 } as const;
-
 
 /** Zoomed-out delivery model — shown above package cards on /studio. */
 export const STUDIO_HOW_IT_WORKS = {

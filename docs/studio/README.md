@@ -9,7 +9,7 @@ Internal docs for the Studio consulting practice. See the root `docs/README.md` 
 | File | Purpose |
 |---|---|
 | `overview.md` | **Start here.** One-page summary: concept, who it's for, pricing, package inclusions, guardrails, conversion path. |
-| `strategy-current.md` | Living strategy document (v2.1, June 2026). Full service architecture, package details, schedules, competitive position, market evidence, and conversion path. |
+| `strategy-current.md` | Living strategy document (v3.0, July 2026). Full service architecture, package details, schedules, competitive position, market evidence, and conversion path. |
 | `strategy-v1.pdf` | Original strategy PDF (v1.0, June 2026). Archived — superseded by `strategy-current.md`. |
 | `execution-model.md` | Delivery mechanics: Notion dashboard structure, execution infrastructure tiers (self-execute, managed layer, plumber roster), hands-off-keyboards guardrails. |
 | `intake-operations.md` | Intake flow, email templates (auto-confirm + full intake response), tooling stack, Supabase lead schema, and setup checklist. |

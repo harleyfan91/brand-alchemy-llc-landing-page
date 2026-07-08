@@ -10,7 +10,7 @@ Subculture founders in the $1M–$5M tier consistently lack the corporate person
 
 **Solution: Paint-by-Numbers Delivery**
 
-All strategy is delivered as step-by-step, sequenced checklists in a shared Notion dashboard — not as a strategy deck or memo. Frameworks are built so that a front-desk worker or warehouse assistant can follow them without needing strategic interpretation. The founder reviews and approves; a lower-level team member executes.
+All strategy is delivered as step-by-step, sequenced checklists in a shared Notion dashboard — not as a strategy deck or memo. Frameworks are built so that a front-desk worker or team member can follow them without needing strategic interpretation. The founder reviews and approves; a lower-level team member executes.
 
 This does not violate the hands-off-keyboards rule. We design the checklist. They run it.
 
@@ -21,10 +21,10 @@ This does not violate the hands-off-keyboards rule. We design the checklist. The
 For Category B clients (tattoo, piercing, capacity-based studios), the sprint opens with a **2-day on-site diagnostic in Week 2**. This is baked into the package, not sold separately.
 
 **What on-site days produce:**
-- Live observation of intake flow — how clients contact the studio, what happens to that message, when it drops
-- Physical bottleneck mapping — booking handoffs, deposit collection, no-show handling in real time
-- Inventory reality check (piercing/hair) — how stock is tracked, what's manual, where errors occur
-- Staff pattern observation — what the front-desk coordinator actually does vs. what the owner believes they do
+- Live observation of how new clients find and contact the studio — discovery paths, first contact, what happens to that inquiry
+- How marketing decisions are actually made day to day vs. what the owner believes is happening
+- What the digital presence looks like from the outside (Google, Instagram, booking links) vs. the owner's perception of it
+- Where craft quality outpaces client acquisition sophistication — the highest-leverage gap for Visibility & Client Acquisition frameworks
 
 **Why it matters:** Frameworks built from a discovery call are built from what the founder remembers and articulates. Frameworks built from on-site observation are built from what's actually happening. The gap between those two things is usually where the highest-leverage problems live.
 

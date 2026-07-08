@@ -9,8 +9,8 @@ Images for the `/studio` consulting page.
 | `hero-laocoonte-front.png` | Full-bleed hero — Fabio Viale *Laocoonte* (front) | Panel 1 — hero snap section (active test) |
 | `hero-laocoonte-back.png` | Full-bleed hero — Fabio Viale *Laocoonte* (back) | Alternate hero — swap `src` in `StudioPage.tsx` to test |
 | `panel-2.jpg` | Full-bleed mid-page break, min 1920×1080, textural / editorial (no people) | Panel 3 — image break snap section |
-| `sprint-a.jpg` | Card header band, min 1200×400, drop / release-day logistics mood | Drop & Allocation sprint card |
-| `sprint-b.jpg` | Card header band, min 1200×400, elevated appointment / studio space | Capacity & Intake sprint card |
+| `sprint-a.jpg` | Card header band, min 1200×400, drop / release-day mood | Campaign & Growth Architecture sprint card |
+| `sprint-b.jpg` | Card header band, min 1200×400, elevated appointment / studio space | Visibility & Client Acquisition sprint card |
 | `founder.jpg` | Portrait crop, min 400×400 (future editorial layout — not used on page yet) | Reserved; replace with your photo |
 
 If a file is missing, the page falls back to dark gradients (hero, panel-2) or surface color bands (sprint cards).

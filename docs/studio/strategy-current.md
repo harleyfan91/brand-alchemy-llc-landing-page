@@ -1,6 +1,6 @@
 # Brand Alchemy Studio — Consulting Strategy
-### Version 2.1 · June 2026 · Active Build
-_Supersedes v2.0. Reflects model refinements based on market-validation review: Category B on-site diagnostic anchor, revenue floor tightening, Tier 2 default routing for capacity/intake clients._
+### Version 3.0 · July 2026 · Active Build
+_Supersedes v2.1. Full reposition onto the founder's genuine expertise: paid media strategy, launch campaign planning, partnership deal structuring, brand and channel auditing, local visibility, and creative consultation. Purges operational deliverables the practice cannot authentically own._
 
 _For a one-page summary, see [`overview.md`](overview.md)._
 
@@ -10,30 +10,30 @@ _For a one-page summary, see [`overview.md`](overview.md)._
 
 ### The Gap
 
-There is an underserved market of founder-led, culturally-specific businesses doing $1M–$5M in annual revenue. They have outgrown gut-instinct operations but are too small, too niche, and too authentically independent to benefit from a traditional agency relationship.
+There is an underserved market of founder-led, culturally-specific businesses doing $1M–$5M in annual revenue. They are spending real money on paid media, organic content, and growth — with no one who has genuine media experience looking at the full picture. They are too small, too niche, and too authentically independent for a traditional agency. A tactical freelancer executes tasks without strategic architecture.
 
-Brand Alchemy operates in the space between DIY chaos and a full agency — solving the operational and marketing infrastructure problems that sit directly upstream of growth working. For clients in the subculture economy, brand equity and operational chaos are the same problem. The practice is built on that insight.
+Brand Alchemy sits in that gap: paid media strategy and marketing architecture for the subculture economy.
 
 ### Positioning
 
-**Revenue operations consulting with a marketing architecture lens.** Not general business strategy. Not media buying or creative execution. Not generic operations consulting. The deliverable is infrastructure — systems, frameworks, and governance tools that make marketing effective and operations repeatable.
+**Paid media strategy and marketing architecture consulting for founder-led subculture brands.** Not general business coaching. Not media buying or creative execution. Not operations consulting. The deliverable is diagnosis, frameworks, and decision tools — handed off so the client's team (or their media buyer) can act.
 
-The corporate marketing background (9 years, institutional level) is the credibility signal. Cultural fluency in the subculture economy — tattoo shops, independent labels, drop-model brands, alt-lifestyle businesses — is the access pass. That combination cannot be fabricated or replicated quickly. It is the core competitive moat.
+The access pass is cultural fluency: tattoo shops, independent labels, drop-model brands, alt-lifestyle businesses. The credentials that follow are institutional: 8+ years spanning GroupM (buy-side media agency), Vox Media (solutions planning and commercial strategy), and Amazon (enterprise account management, $100M+ automotive book, supply-side advertising). Lead with the culture. Let the pedigree validate.
 
 ### Operating Model
 
-**Category A (drop/DTC brands):** Pure advisory. Brand Alchemy designs frameworks, builds governance systems, and maps workflows entirely through remote sessions and async Notion delivery. These clients are digitally native, have higher tolerance for async collaboration, and the operational problems — drop allocation, supply chain QC, launch calendars — are well-suited to framework delivery a founder can execute from a laptop.
+**Category A (drop/DTC brands):** Pure advisory. Remote sessions and async Notion delivery. Focus: paid media structure, launch campaign systems, partnership readiness, brand and channel coherence. Clients are digitally native and already spending on ads — often without anyone who has seen how media budgets get allocated from inside a major agency.
 
-**Category B (tattoo, piercing, capacity-based studios):** Diagnostic-anchored advisory. The sprint opens with a 2-day on-site diagnostic in the client's physical studio (Week 2). Live workflow mapping in the actual space — observing intake friction, inventory handling, and booking patterns in real time — produces frameworks grounded in what's actually broken, not what the discovery call surfaced. This is not platform access or raw execution; it is structured fieldwork. The remaining five weeks are advisory and async delivery as normal. The on-site component is baked into the package price, not sold as an add-on.
+**Category B (tattoo, piercing, capacity-based studios):** Diagnostic-anchored advisory. The sprint opens with a 2-day on-site diagnostic in the client's physical studio (Week 2). Observation of how clients find and contact the studio, how marketing decisions are made, and where craft quality outpaces acquisition sophistication. This is structured fieldwork, not platform access or raw execution. The remaining weeks are advisory and async delivery. On-site is baked into the package price — not an add-on.
 
-The on-site presence solves two problems at once: it produces more accurate frameworks, and it signals to alt-culture founders — who have a highly refined filter for consultants who don't actually know their world — that Brand Alchemy is different. Walking into their studio and understanding it from the inside is the access pass the cultural filter is looking for. No agency or coach does this.
+The on-site presence produces more accurate frameworks and signals to alt-culture founders that Brand Alchemy is different. Walking into their studio and understanding it from the inside is the access pass the cultural filter is looking for. No agency or coach does this.
 
 **The hands-off-keyboards rule applies to both categories:**
-- Brand Alchemy never logs into client platforms (Shopify, Klaviyo, Boulevard, ServiceTitan, etc.)
+- Brand Alchemy never logs into client platforms (Shopify, Klaviyo, Boulevard, Meta Ads Manager, Google Ads, etc.)
 - No individual marketing emails, social captions, or customer service responses are written
 - On-site work is observation and framework-building — not operating the POS, not reconfiguring software, not training staff
 - No mediation with factories, suppliers, landlords, or independent creative talent
-- No ROAS guarantees — value is anchored to structural improvement, not outputs outside our control
+- No ROAS guarantees — value is anchored to measurable marketing and acquisition improvement, not outputs outside our control
 
 ---
 
@@ -43,22 +43,21 @@ The on-site presence solves two problems at once: it produces more accurate fram
 
 **Category A — Drop & Scarcity Economy**
 - Independent streetwear and apparel labels ($1M–$5M DTC/omnichannel, founder-owned, no full-time marketing hire)
-- Designer toys and vinyl art collectibles ($500K–$2M GMV, production-cycle-driven cash flow, DTC-primary)
+- Designer toys and vinyl art collectibles ($500K–$2M GMV where paid spend exists, DTC-primary)
 - Independent skate, board, and alt-lifestyle hardware (DTC + indie retail accounts, seasonal drops, sub-$5M)
 
 **Category B — Capacity & Experiential**
 - High-ticket tattoo collectives and elite studios ($750K–$2M+ gross annual revenue, 3+ resident artists, appointment-based)
-- High-end luxury piercing clinics and fine body jewelry boutiques (sanctuary-model, implant-grade inventory, appointment + retail hybrid)
-- Alternative hair collectives and vivid color sanctuaries (studio model only — not booth rental — $750K+ gross revenue, booked 6–8 weeks out)
+- High-end luxury piercing clinics and fine body jewelry boutiques (sanctuary-model, appointment + retail hybrid)
+- Alternative hair collectives and vivid color sanctuaries (studio model only — not booth rental — $750K+ gross revenue)
 
-**Emerging vertical worth tracking:** Independent fragrance and niche perfume labels — DTC-native, drop-mechanic-driven, aesthetic-first founders with significant operational gaps and near-zero consultant coverage.
+**Emerging vertical worth tracking:** Independent fragrance and niche perfume labels — DTC-native, drop-mechanic-driven, aesthetic-first founders with paid media gaps and near-zero consultant coverage.
 
 ### Qualification Criteria
-- Revenue: $1M–$5M annual (Category B minimum: $750K gross — below this, cash flow is tight enough that even a clearly ROI-positive engagement will stall at "yes, but not this quarter")
-- Operational chaos signals are present and documented
-- Appetite for systems-level thinking (disqualify early-stage brands not yet generating consistent revenue)
-- Category A: has completed at least one drop cycle with real revenue data
-- Category B: 3+ artists, inconsistently fully booked, no systematized intake or deposit process; studio must be at or approaching $750K gross to absorb a $11,000 sprint comfortably
+- Category A: $1M+ annual revenue, at least one completed drop or product launch cycle, **active paid media spend of at least $3,000–$5,000 per month**. A brand with zero ad spend is a future client, not a current one — they need something broken before there is something to fix.
+- Category B: $750K+ gross annual revenue, 3+ artists or service providers, appointment-based model. Below this floor, owner income is often $60K–$90K; an $11,000 sprint is a significant cash event and may stall mid-conversation even when the need is real.
+- Marketing and acquisition chaos signals are present (wrong campaign objectives, no launch system, invisible locally, gut-instinct collabs)
+- Appetite for systems-level thinking; disqualify early-stage brands not yet generating consistent revenue
 
 ---
 
@@ -66,139 +65,124 @@ The on-site presence solves two problems at once: it produces more accurate fram
 
 ### Discovery Call
 
-**$200 · 60 minutes · credited toward advisory package fee**
+**$200 · 60 minutes · credited toward sprint fee**
 
-A structured diagnostic call, not a sales pitch. Covers: current operational setup, identification of the highest-leverage problem, determination of which advisory package fits. The $200 deposit filters serious inquiries and is credited in full toward the advisory package fee if the client proceeds. The call should feel qualitatively different from any conversation the client has had with a freelancer — it functions as a proof of value.
+A structured diagnostic call, not a sales pitch. Covers: how the business currently spends and acquires, identification of the highest-leverage marketing problem, determination of which sprint fits. The $200 deposit filters serious inquiries and is credited in full toward the sprint fee if the client proceeds.
 
-Matt completes preliminary research on the client's business before the call and arrives with a working hypothesis about their primary problem. The client is asked to come prepared with: current revenue range, the one problem costing them the most right now, and anything they've already tried that hasn't held.
+Matt completes preliminary research before the call and arrives with a working hypothesis. The client comes prepared with: current revenue range, the one problem costing them the most right now, and anything already tried that hasn't held.
 
 ---
 
-### Strategy A — The Drop & Allocation Strategy
+### Category A — The Campaign & Growth Architecture Sprint
 
-**$10,000 flat · 6-week advisory**
-First client rate: $4,000 (requires case study rights and named testimonial)
+**$8,500 flat · 6-week advisory · ~4–5 hrs/week advisory time**
+Portfolio rate (first two clients): $3,500 (requires case study rights and named testimonial)
 
-**Built for:** Brands that have completed at least one drop cycle with real revenue data. Chaos is documented, even if unsystematized.
+**Built for:** A DTC or omnichannel brand in streetwear, apparel, designer toys, collectibles, or adjacent subculture verticals at $1M–$5M revenue. Must have run at least one drop cycle and be spending something on paid media already — even $3–5K/month.
+
+**The problem:** These founders spend real money on paid social and organic content with no strategic architecture behind it. Campaign objectives are wrong. Audience structures are misconfigured. Creative is not matched to platform mechanics. Launches happen reactively. Collabs get evaluated by gut instinct. Nobody with genuine media experience has ever looked at the full picture.
 
 #### Weekly Schedule
 
 **Week 1 — Kickoff**
-One 60–90 min live call. Review discovery call findings, align on priorities, confirm scope, establish shared Notion workspace. Matt begins building framework drafts.
+One 60–90 min live call. Review discovery findings, align on priorities, confirm scope, establish shared Notion workspace. Matt begins diagnostic drafts.
 
 **Weeks 2–5 — Working weeks (2 sessions/week)**
 - Session A: 30–45 min live video check-in. Review work in progress, answer questions, make direction decisions.
-- Session B: Async. Matt delivers a framework draft or checklist to the Notion workspace. Client reviews and leaves comments within 48 hours. Matt incorporates feedback before the next session.
+- Session B: Async. Matt delivers a framework draft or checklist to Notion. Client reviews and leaves comments within 48 hours.
 
 **Week 6 — Delivery**
-One 60 min live walkthrough of the completed Notion dashboard. QA review of all deliverables. 90-day action priorities documented. Retainer conversation if appropriate.
+One 60 min live walkthrough of the completed Notion dashboard. QA of all deliverables. 90-day action priorities documented. Retainer conversation if appropriate.
 
 **Total:** ~10–12 touchpoints over 6 weeks · ~5–6 hours live calls · remaining time in async build and review · approximately 4–5 hrs/week of Matt's advisory time
 
-#### Strategic Services
-- CAC & Channel ROI Audit
-- Paid Media Funnel Architecture
-- Brand Alliance Blueprinting
-- Anti-Bot & Scarcity Strategy
-- Drop Allocation Framework Design
-- Post-Drop Debrief Facilitation
+#### Strategic Services & Tools Delivered
 
-#### Tools & Frameworks Delivered
-- Multi-Channel Allocation Matrix — unit split between DTC, wholesale, and secondary channel by SKU tier
-- Media Budget Pacing Matrix — pre-heat, drop-day, and post-drop ad spend blueprint for the client's existing ad buyer
-- Brand Alliance Pitch Ledger — vetted outreach frameworks, capsule collection split-deal structures, and asset-exchange checklists for cross-promotional drops
-- 90-Day Backward Launch Timeline — from drop date back to production lock, with decision gates at each phase
-- Anti-Bot & Scarcity Fairness Protocol — queue logic, purchase limits, and community-first access windows
-- 3PL / Warehouse SLA Checklist — vendor accountability framework covering pick-pack, kitting, and return handling
-- Post-Drop Debrief Template — repeatable structured retrospective to compound learnings across seasons
+**Paid Media Diagnostic.** Structural audit of how the brand is currently spending across paid channels. Identifies misconfigured campaign objectives, wrong audience structures, attribution errors, and budget allocation problems. Output: written diagnosis and prioritized fix list — a brief the client or their media buyer can act on. Draws on buy-side agency and platform account management experience.
+
+**Launch Campaign Framework.** Repeatable system for how a drop or product launch campaign is built from ~8 weeks out to post-drop debrief. Channel sequencing, budget allocation logic, decision gates, creative briefing structure, post-launch retrospective. Built from enterprise campaign project management, applied to the drop brand context. Not a calendar — a system for every launch going forward.
+
+**Partnership & Co-Marketing Readiness Assessment.** Evaluation of whether the brand is positioned to attract and negotiate collaborations effectively. Media kit structure, audience data worth presenting, what to ask for in a collab deal, how to evaluate incoming opportunities. Built from negotiating co-marketing arrangements from both buy side and publisher side.
+
+**Brand & Channel Audit.** Strategic review of how the brand communicates across paid, organic, and content. Assesses visual identity and content voice coherence, channel mix fit for audience and business model, and whether creative is matched to platform mechanics. Output: written audit with specific recommendations. Not a rebrand — a readiness assessment.
+
+**Pricing justification (client-facing):** A streetwear or DTC brand at $1.5M revenue spending ~15.6% of budget on marketing is at approximately $150K–$230K annually. The $8,500 sprint is less than 6% of that annual spend. The audit alone typically surfaces waste that dwarfs the engagement fee within a single drop cycle.
 
 ---
 
-### Strategy B — The Capacity & Intake Strategy
+### Category B — The Visibility & Client Acquisition Sprint
 
-**$11,000 flat · 6-week advisory · includes on-site diagnostic**
-First client rate: $4,500 (requires case study rights and named testimonial)
+**$11,000 flat · 6-week advisory · includes 2-day on-site diagnostic**
+Portfolio rate (first two clients): $4,500 (requires case study rights and named testimonial)
 
-**Built for:** Studios with 3+ artists, $750K+ gross annual revenue, inconsistently fully booked, that have never systematized their intake or deposit process. The on-site diagnostic is the anchor of this engagement — frameworks are built from what's actually observed in the studio, not from a discovery call alone.
+**Built for:** High-ticket tattoo studio, luxury piercing boutique, or alternative hair collective with $750K+ gross annual revenue, 3+ artists, owner still the primary marketing decision-maker, never had genuine media or advertising experience assess the situation.
+
+**The problem:** These studios are exceptional at their craft and weak at systematic client acquisition. 73% struggle with inconsistent client flow. 68% lose $1,000–$5,000 monthly to no-shows and cancellations. 61% feel overwhelmed by digital marketing. 54% cannot track which marketing efforts bring in clients. A generic marketing consultant without subculture fluency would be culturally illegitimate.
+
+**On-site diagnostic (Week 2):** Not optional and not an add-on. Two days inside the studio observing how new clients find and contact the business, how marketing decisions get made, what the digital presence looks like from the outside vs. the owner's perception, and where craft quality outpaces acquisition sophistication. Frameworks from a discovery call alone are built from what the founder remembers. Frameworks from on-site observation are built from what is actually happening. NYC metro included; T&E reimbursement required outside NYC metro.
 
 #### Weekly Schedule
 
 **Week 1 — Kickoff**
-One 60–90 min live call. Review discovery call findings, align on priorities, confirm scope, establish shared Notion workspace. Matt prepares on-site diagnostic protocol based on kickoff findings.
+One 60–90 min live call. Align on priorities, establish Notion workspace. Matt prepares on-site diagnostic protocol.
 
-**Week 2 — On-Site Diagnostic (2 days at client's studio)**
-Matt visits the studio in person. Live observation of intake flow, booking patterns, staff handoffs, and physical inventory handling. Real-time workflow mapping. This produces the exact friction inventory that every subsequent framework is built from. On-site days replace the standard two async/live sessions for that week. T&E reimbursement required for travel outside NYC metro.
+**Week 2 — On-Site Diagnostic (2 days)**
+Live observation and mapping as above. On-site days replace the standard two sessions that week.
 
 **Weeks 3–5 — Working weeks (2 sessions/week)**
-- Session A: 30–45 min live video check-in. Review work in progress, answer questions, make direction decisions.
-- Session B: Async. Matt delivers a framework draft or checklist to the Notion workspace. Client reviews and leaves comments within 48 hours. Matt incorporates feedback before the next session.
+Same live / async pattern as Category A.
 
 **Week 6 — Delivery**
-One 60 min live walkthrough of the completed Notion dashboard. QA review of all deliverables. 90-day action priorities documented. Retainer conversation if appropriate.
+60 min Notion walkthrough, QA, 90-day priorities, retainer conversation if appropriate.
 
-**Total:** ~10–12 touchpoints over 6 weeks · 2 on-site days (Week 2) · ~4–5 hours additional live calls · remaining time in async build and review · approximately 5–6 hrs/week of Matt's total time
+**Total:** ~10–12 touchpoints · 2 on-site days · ~4–5 hours additional live calls · approximately 5–6 hrs/week of Matt's total time
 
-#### Strategic Services
-- Intake System Design
-- Deposit & No-Show Strategy
-- Chair Capacity Analysis
-- Local Intent Media Architecture
-- Local Trust & Referral Audit
-- Studio Asset Protection
+#### Strategic Services & Tools Delivered
 
-#### Tools & Frameworks Delivered
-- Client Assurance Intake Pipeline — inquiry-to-booked workflow with confirmation scripts, consultation guides, and expectation-setting copy
-- Tiered Non-Refundable Deposit Matrix — deposit structure by session type, duration, and artist tier with policy language to enforce it
-- No-Show Elimination Protocol — automated reminder cadence, waitlist logic, and rebooking scripts targeting sub-5% no-show rate
-- Chair Capacity Optimization Dashboard — weekly revenue-per-chair tracking framework and seasonal booking forecast
-- Hyper-Local Media Map — targeting parameters, geo-fencing structures, and negative keyword clusters optimized for local map and search intent (Google LSA)
-- Referral & Word-of-Mouth Playbook — referral incentive structure, local partnership outreach framework, and review capture cadence for community-driven client acquisition
-- Studio Asset Protection Program — artist data continuity protocol, brand equity audit, owner-run retention check-in cadence, and commission/booth-rental benchmarking framework
+**Local Visibility Audit & Action Plan.** Assessment of Google Business Profile, review velocity and response quality, local search ranking signals, booking platform presence and accuracy. Output: prioritized action list with instructions the client's team can execute. Assessment and clarity on what good looks like — not software configuration.
 
-**Internal — Studio Asset Protection detail:**
-_Do not expand this into client-facing copy. The four components are:_
-- _Artist Data Continuity Protocol: studio-owned client record system capturing style preferences, healing notes, and session history institutionally — so client relationships survive artist departures._
-- _Studio Brand vs. Artist Brand Audit: identifies where Instagram/content equity is artist-dependent rather than studio-owned. Produces a content architecture framework to build studio equity alongside individual profiles._
-- _Retention Intelligence System: quarterly check-in template the owner runs with each artist — workload, schedule, equipment, compensation perception. A documented feedback loop so dissatisfaction surfaces before a departure announcement._
-- _Commission & Booth-Rental Benchmarking: market-rate reference data across studio revenue tiers. Research and framing for owner-led compensation conversations — not split design or mediation._
+**Client Acquisition Channel Map.** For this studio type, in this market: which acquisition channels make sense, and at what budget levels they are worth testing. Paid local search, organic social, creator and community partnerships, referral program architecture, event or flash promotion strategy.
 
-_Discovery call framing: every dollar invested in intake, brand, and client experience is partially at risk if it's attached to an artist's personal following rather than the studio's institutional identity. That's a capital efficiency problem, which is the right lane. Lead with this for owners who have already lost an artist — that wound is usually fresh and specific._
+**Paid Media Foundation Brief.** If the studio is not yet running paid media: a strategic brief for what to run, on which platform, with what objective, targeting, and creative approach — ready to hand to a media buyer or execute internally. If they are already spending: diagnoses what is structurally wrong with the current setup.
+
+**Content & Community Strategy Framework.** Not a content calendar. How this studio should build a following that converts to bookings — content types for their audience, how platform algorithms reward consistency and format, relationship between organic content and paid amplification.
+
+**Partnership & Referral Architecture.** Structured approach to relationships with complementary local businesses and communities. How to identify partners, what referral agreements should look like, how to negotiate value. Draws on co-marketing experience.
+
+**Pricing justification (client-facing):** The average tattoo studio loses $12,000–$60,000 annually to no-shows and inconsistent client flow. 68% of studio owners report losing $1,000–$5,000 monthly to this problem alone. The $11,000 sprint pays for itself from that single fix in under 12 months — before paid media, local visibility, or partnership revenue improvements are factored in.
 
 ---
 
 ### Ongoing — The Baseline Retainer
 
 **$3,000/mo · 90-day minimum · ~10 hrs advisory access**
-Strategy clients: $2,500/mo for first 90-day block
+Sprint converts: $500/mo off first 90-day block ($2,500/mo). After first two portfolio retainer clients, raise standard rate to $3,500/mo.
 
 **Capacity:** Maximum 3 concurrent retainer clients
 
+This is ongoing strategic access — not ongoing execution. The client has a senior advisor to pressure-test decisions against, not someone who makes the decisions for them.
+
 #### Monthly Schedule
 
-**Monthly structured call (60 min)**
-Held in the first week of each month. Covers the previous month's performance review, decisions needed for the coming month, and any strategic blockers. A written summary and decision log is delivered within 48 hours after the call.
+**Monthly structured call (60 min)** — first week of each month. Performance review, decisions for the coming month, strategic blockers. Written summary and decision log within 48 hours.
 
-**Weekly async intake window**
-Between monthly calls, the client submits questions, blockers, and decisions needing input through a dedicated channel (Slack or Notion). Matt responds within 2 business days. This is the only route for between-call communication — no ad hoc calls, no real-time messaging.
+**Weekly async intake window** — dedicated channel (Slack or Notion). Questions and decisions needing input only. Response within 2 business days. No ad hoc calls, no real-time messaging.
 
-**What this means in plain terms:** the client does not get Matt on the phone whenever something comes up. Issues get routed through the weekly intake window on a schedule. This protects Matt's time and ensures the client's questions are batched and answered thoughtfully rather than reactively. It is not a lower level of service — it is a deliberate operating model that maintains the quality of the strategic relationship at scale.
-
-**Total:** ~10 hrs/month — 1 hr structured call + ~9 hrs async response, review, and preparation spread across the month
+**Total:** ~10 hrs/month — 1 hr structured call + ~9 hrs async response, review, and preparation
 
 #### Monthly Scope
-- Paid Media Budget Audit — monthly review of ad spend allocation, channel ROI, and waste identification
-- Lifecycle Email & SMS Strategy — content architecture and send cadence recommendations
-- Launch Calendar Governance — quarterly roadmap reviews, launch gate decisions, and timing recommendations
-- Vendor & Supplier Interception — contract review, SLA accountability, and escalation frameworks
-- Brand Equity Protection — flagging decisions that risk cultural authenticity or long-term positioning
+- Paid Media Budget Review — ad spend allocation, channel performance, waste identification
+- Launch Calendar & Campaign Readiness — quarterly roadmap reviews, launch gates, creative readiness
+- Partnership Opportunity Evaluation — incoming collabs, sponsorships, co-marketing deals
+- Brand Equity Protection — decisions that risk cultural authenticity or long-term positioning
 - Monthly Strategic Briefing — 60-minute structured call with written summary and decision log
 
 #### Add-Ons
 | Add-On | Price | Description |
 |---|---|---|
-| Premium On-Site Upgrade | +$2,500 | Additional on-site days for retainer clients requiring live workflow mapping or systems audit beyond the standard Category B sprint diagnostic. Not applicable to new sprint clients (on-site diagnostic is baked into Strategy B). T&E reimbursement required for travel outside NYC metro. |
-| Brand Asset Refresh | $2,500 one-time | Complete visual modernization: logo ecosystem, color and typography architecture, asset specifications for vehicle wraps, apparel, and digital. ~2 hrs creative direction. Manual vector work outsourced. |
-| Fully Managed Execution Layer | +$1,500/mo | Dedicated junior coordinator (sourced and managed by Brand Alchemy) who executes strategic checklists: social scheduling, email deployment, ad monitoring. Total retainer becomes $4,500/mo. |
+| Fully Managed Execution Layer | +$1,500/mo | Junior coordinator sourced and managed by Brand Alchemy (~$800/mo cost) who executes Notion checklists: social scheduling, email deployment, ad monitoring. Total becomes $4,500/mo. Raise at discovery if no internal bandwidth to run frameworks — expected path, not a later upsell. |
+
+**Pricing justification (client-facing):** A full-time marketing hire at this level costs $270,000–$320,000 annually in total employer cost. The retainer at $3,000/month is $36,000 annually — roughly 11–13% of that cost, with no benefits, equity, recruiting fee, or commitment beyond the 90-day block.
 
 ---
 
@@ -206,9 +190,9 @@ Between monthly calls, the client submits questions, blockers, and decisions nee
 
 ### Paint-by-Numbers Execution
 
-Strategy is not delivered as a theoretical PDF or slide deck. All frameworks are delivered as step-by-step, sequenced checklists inside a shared Notion dashboard. Deliverables are built so that a front-desk worker or warehouse assistant can execute them without strategic interpretation. The founder reviews and approves; a lower-level team member runs the checklist.
+Strategy is not delivered as a theoretical PDF or slide deck. All frameworks are delivered as step-by-step, sequenced checklists inside a shared Notion dashboard. Deliverables are built so a front-desk worker or team member can execute them without strategic interpretation. The founder reviews and approves; a lower-level team member runs the checklist.
 
-**Notion Dashboard Structure (per advisory package):**
+**Notion Dashboard Structure (per sprint):**
 1. Advisory Overview — timeline, weekly check-in schedule, decision log
 2. Strategic Services — working documents from each advisory session
 3. Frameworks & Tools — each deliverable as a standalone executable checklist
@@ -223,24 +207,24 @@ Client uses their internal team to follow Notion checklists. Brand Alchemy provi
 **Tier 2 — Fully Managed Execution Layer (+$1,500/mo)**
 For clients without internal execution capacity. Brand Alchemy sources and manages a trusted junior VA/coordinator (~$800/mo cost) who executes checklists under Brand Alchemy oversight. Margin: ~$700/mo. Hands never touch the keyboard.
 
-**Category B default recommendation:** The on-site diagnostic in Week 2 frequently reveals that the studio has no internal team member with capacity to follow a Notion checklist consistently. When this is the case, Tier 2 should be raised at the discovery call as the expected path — not as an upsell. The Notion framework only produces results if someone runs it. For Category B clients, the discovery call outcome should include an honest assessment of whether they have that person in-house.
+**Category B default recommendation:** The on-site diagnostic frequently reveals no internal team member has capacity to follow a Notion checklist consistently. When that is the case, Tier 2 should be raised at the discovery call as the expected path — not as an upsell.
 
 **Tier 3 — Vetted Specialist Referrals (informal, no contracted fee)**
-For technical platform work the client cannot handle (Shopify configuration, Klaviyo setup, ad account structure). Brand Alchemy maintains a private network of trusted technical freelancers. We provide exact specifications; the client hires the specialist directly. Brand Alchemy reviews the output against spec. This is a value-add referral — not a contracted service or revenue stream. It does not supersede the hands-off-keyboards rule.
+For technical platform work the client cannot handle (Shopify configuration, Klaviyo setup, ad account structure). Brand Alchemy maintains a private network of trusted technical freelancers. We provide exact specifications; the client hires the specialist directly. Brand Alchemy reviews output against spec. Value-add referral — not a revenue stream. Does not supersede hands-off-keyboards.
 
 ---
 
 ## 05 — Operating Guardrails
 
-**No platform configuration** — Brand Alchemy never logs into Shopify, Klaviyo, ServiceTitan, Boulevard, or any CRM to configure, change settings, or execute clicks. We design the system. They build it.
+**No platform configuration** — Brand Alchemy never logs into Shopify, Klaviyo, Meta Ads, Google Ads, Boulevard, or any CRM to configure, change settings, or execute clicks. We design the system. They build it.
 
-**No raw execution** — No individual day-to-day marketing emails, social captions, or customer service responses. We write blueprints and copy architecture, not copy itself.
+**No raw execution** — No individual day-to-day marketing emails, social captions, or customer service responses. We write blueprints and brief architecture, not copy itself.
 
 **No interpersonal mediation** — No mediation with factories, suppliers, landlords, or independent creative talent. We provide the frameworks; they navigate the relationships.
 
-**No ROAS guarantees** — Value is anchored to capital efficiency and structural improvement, not outputs outside our control.
+**No ROAS guarantees** — Value is anchored to measurable marketing and acquisition improvement, not outputs outside our control.
 
-**Capacity limit** — Maximum 2 concurrent strategy packages (~8–10 hrs/week) plus 3 retainer clients (~30 hrs/month) alongside parallel product work. Growth beyond this requires either a strict client cap policy or a vetted subcontractor delivery layer.
+**Capacity limit** — Maximum 2 concurrent strategy packages (~8–10 hrs/week) plus 3 retainer clients (~30 hrs/month) alongside parallel product work. Growth beyond this requires a client cap or a vetted subcontractor delivery layer.
 
 ---
 
@@ -248,65 +232,68 @@ For technical platform work the client cannot handle (Shopify configuration, Kla
 
 | | Global/Mid-Size Agency | **Brand Alchemy** | Tactical Freelancer |
 |---|---|---|---|
-| Pricing | Prohibitively expensive for sub-$5M | $10K–$11K strategy, accessible/high-value | Cheap optically, expensive operationally |
+| Pricing | Prohibitively expensive for sub-$5M | $8.5K–$11K sprint, accessible/high-value | Cheap optically, expensive without strategy |
 | Brand voice | Homogenizes immediately | Preserves and protects cultural equity | No brand governance |
-| Cultural fit | Culturally illegitimate to subculture clients | Native subculture fluency + corporate rigor | No enterprise-level frameworks |
-| Orientation | KPI-obsessed, ROAS-forward | Capital efficiency + structural longevity | No accountability systems |
-| Relationship | Account manager layer dilutes quality | Direct founder relationship at all times | Disappears when scope expands |
+| Cultural fit | Culturally illegitimate to subculture clients | Native fluency first; pedigree as validator | Rarely enterprise-level pattern recognition |
+| Expertise | Broad, diluted, account-manager mediated | Genuine paid media + partnership deal experience from both sides of the table | Executes without media buying experience or deal architecture |
+| Relationship | Account manager layer dilutes quality | Direct founder access at all times | Disappears when scope expands |
+| Path | Retainers that never end | Sprint-to-retainer pathway with clear handoff | No durable frameworks left behind |
 
-**Outreach approach:** Lead with subculture credibility. Allow the corporate background to emerge as the surprise validator — not the opening move. Clients in these verticals distrust corporate signals as the first move. They open the door for someone who clearly understands their world, then trust the credentials that follow.
+**The moat:** The only person in this market who has seen how media budgets get allocated from inside a major agency, who understands platform mechanics from managing $100M+ accounts, who has negotiated co-marketing deals from both sides of the table, and who can walk into a tattoo studio or streetwear label and be culturally credible from the first conversation. That combination does not exist elsewhere in this price range.
+
+**Outreach approach:** Lead with subculture credibility. Allow the corporate background to emerge as the surprise validator — not the opening move.
 
 ---
 
 ## 07 — Client Conversion Path
 
 **Step 1 — Outreach & Qualification**
-Instagram DMs or warm intro. Lead with subculture credibility. Qualify on revenue tier ($1M–$5M), operational chaos signals, and appetite for systems-level thinking. Disqualify early-stage brands.
+Instagram DMs or warm intro. Lead with subculture credibility. Qualify on revenue tier, active paid spend (Category A) or acquisition chaos signals (Category B), and appetite for systems-level thinking. Disqualify early-stage brands and zero-spend brands (Category A).
 
 **Step 2 — Inquiry Submission**
 Lead submits via `/studio/intake`. Auto-confirmation sent immediately. Matt reviews within 3 business days.
 
 **Step 3 — Manual Intake Response**
-Matt sends personalized response referencing their submission. Includes call context, three prep questions, and the Cal.com + Stripe booking link for the $200 discovery call.
+Personalized response referencing their submission and a specific observation from pre-call research. Names the relevant sprint type (paid media and campaign strategy sprint / visibility and client acquisition sprint). Includes call context, prep questions, and Cal.com + Stripe booking link for the $200 discovery call.
 
 **Step 4 — Discovery Call**
-60-minute structured diagnostic. Maps primary pain, identifies operational gap. This call doubles as a demonstration of strategic thinking. Outcome: proceed, defer, or decline. $200 credited toward the advisory package fee if proceeding.
+60-minute structured diagnostic. Maps primary marketing/acquisition pain. Outcome: proceed, defer, or decline. $200 credited toward sprint fee if proceeding.
 
-For Category B clients: explicitly assess whether an internal team member exists who can execute Notion checklists week to week. If not, introduce Tier 2 (Managed Execution Layer) at this stage as the recommended path, not as a later upsell. The package only produces durable results if the frameworks get used.
+For Category B: assess whether an internal team member can execute Notion checklists week to week. If not, introduce Tier 2 at this stage as the recommended path.
 
-**Step 5 — Strategy Advisory Package**
-6-week advisory package at full or first-client rate. Deliver above expectations. At Week 5, pitch the 90-day Baseline Retainer with the strategy-client discount ($500/mo off first block). Use the package deliverables as tangible evidence of what retainer-level strategy looks like month over month.
+**Step 5 — Sprint**
+6-week sprint at full or portfolio rate. At Week 5, pitch the 90-day Baseline Retainer with the sprint-to-retainer discount ($500/mo off first block).
 
 **Step 6 — Retainer Conversion**
-90-day block at $3,000/mo ($2,500 for strategy converts). Review and renew quarterly. Upsell add-ons (Brand Asset Refresh, Execution Layer) when the operational foundation is solid and the client's appetite for execution support is visible.
+90-day block at $3,000/mo ($2,500 for sprint converts). Review and renew quarterly. Introduce Execution Layer when appetite for execution support is visible.
 
 ### Portfolio Build Strategy
-First two clients (one Category A, one Category B) should be offered the first-client rate in exchange for full case study rights, a named testimonial, and willingness to be referenced in future outreach. These become the proof-of-concept assets that unlock full-rate advisory packages.
+First two clients (one Category A, one Category B) offered portfolio rates in exchange for full case study rights, named testimonial, and willingness to be referenced in future outreach.
 
 ---
 
 ## 08 — Market Evidence
 
 **Tattoo Studios**
-Client acquisition and marketing is the #1 reported challenge for tattoo studio owners in 2026 despite growing demand. No-show rates of 20–30% drop to under 5% with a structured deposit system. Almost no studio has one architected properly. US tattoo artist industry: $1.3B market, 10.9% CAGR 2020–2025. — _TattooBizGuide 2026, IBISWorld 2026_
+US tattoo artist industry: $1.3B market size in 2026, 10.9% CAGR 2020–2025. 73% of studio owners struggle with inconsistent client flow. 68% lose $1,000–$5,000 monthly to no-shows and cancellations. 61% feel overwhelmed by social media and digital marketing. 54% cannot track which marketing efforts bring in clients. Client acquisition and marketing is the #1 reported challenge in 2026 despite growing demand. — _TattooBizGuide 2026, IBISWorld 2026_
 
-**Streetwear**
-66% of streetwear industry respondents view the drops model as core to their strategy — but almost none have a systematic allocation or anti-bot framework behind it. The chaos is structural, not incidental. — _Hypebeast Industry Report via Shopify_
+**Streetwear / DTC**
+66% of streetwear industry respondents view the drops model as core to their strategy. Businesses with less than $10M in revenue allocate an average of 15.6% of total budget to marketing. 59% of ecommerce companies allocate over 30% of revenue to advertising at the growth stage. A streetwear brand at $1.5M is therefore spending ~$150K–$230K annually on marketing; the $8,500 sprint is less than 6% of that spend. Influence in independent streetwear in 2025 is shaped by clarity, sincerity, and consistency — not marketing budgets or legacy hierarchies — which structurally disqualifies traditional agencies and validates cultural fluency as the access requirement. — _Hypebeast/Shopify; PAUSE Magazine, Jan 2026_
 
 **Piercing / Fine Body Jewelry**
-North American body piercing jewelry market: $958M in 2025, 6.9% CAGR through 2034. 67% of US employers now have no formal policy against visible piercings vs. 41% in 2018. The client base is expanding; studios are not equipped to market to it. — _DataIntelo 2026_
+North American body piercing jewelry market: $958M in 2025, 6.9% CAGR through 2034. 67% of US employers now have no formal policy against visible piercings vs. 41% in 2018. The client base is expanding; studios are not equipped to market to it systematically. — _DataIntelo 2026_
 
 **Subculture Economy**
-61% of US adults say there is no such thing as mainstream pop culture anymore — a +15% sentiment increase since 2023. Subculture fragmentation is the structural reason $1M–$5M subculture businesses are viable, and why generalist advisors cannot serve them. — _Horizon Media Subculture Field Guide 2025_
-
-**Independent Streetwear**
-"The rise of independent streetwear represents a shift in how cultural influence is built — no longer defined by marketing budgets or legacy hierarchies, influence in 2025 is shaped by clarity, sincerity, and consistency." This disqualifies traditional agencies and validates the cultural-fluency moat. — _PAUSE Magazine, Jan 2026_
+61% of US adults say there is no such thing as mainstream pop culture anymore — a +15 percentage point increase since 2023. Fragmentation is why $1M–$5M subculture businesses are viable, and why generalist advisors cannot serve them. — _Horizon Media Subculture Field Guide 2025_
 
 **Fractional Advisory Market**
-The fractional executive market has grown 57% since 2020. 73% of PE firms now recommend fractional executives to portfolio companies, up from 31% in 2020. The model has structural tailwind. The gap is that traditional fractional CMO firms serve companies with internal marketing staff — Brand Alchemy serves founder-operators who are the only person in the room. That segment is underserved by the existing fractional infrastructure. — _Fractional Leadership Research, 2025_
+Global fractional executive market has grown 57% since 2020. 73% of PE firms now recommend fractional executives to portfolio companies (up from 31% in 2020). 47% of startups rely on fractional marketing leadership. Companies using fractional CMOs report 29% higher revenue growth on average. Advisory-only fractional retainers start at $3,500/month in 2026; embedded engagements run $8,000–$15,000/month. Project-based sprint work for a defined 6-week engagement typically runs $8,000–$30,000+. Traditional fractional CMO firms serve companies with internal marketing staff — Brand Alchemy serves founder-operators who are the only person in the room. — _Fractional Leadership Research, 2025–2026_
+
+**Creative and Media Balance**
+Leading marketing strategists in 2026 argue the ratio should be 40% creative investment, 40% media investment, 20% content — with most small brands dramatically underfunding the message relative to the megaphone. Brand Alchemy's combined media expertise and creative consultation is designed for that imbalance.
 
 **Consulting Execution Risk**
-Most strategies fail at the "messy middle" — middle managers (or in a tattoo studio, the owner themselves) revert to prior routines once the consultant leaves. This is a documented pattern across all consulting engagements. The on-site diagnostic and Notion checklist format are the structural mitigations: frameworks built from live observation, delivered in a format a front-desk worker can follow without interpretation. But Notion checklist adoption should be stress-tested with the first Category B portfolio client before treating it as solved. — _Entrepreneur, 2026; validated against delivery model_
+Most strategies fail at the "messy middle" — owners revert to prior routines once the consultant leaves. The on-site diagnostic and Notion checklist format are structural mitigations. Notion checklist adoption should be stress-tested with the first Category B portfolio client before treating it as solved. — _Entrepreneur, 2026_
 
 ---
 
@@ -326,5 +313,5 @@ Most strategies fail at the "messy middle" — middle managers (or in a tattoo s
 ---
 
 _Brand Alchemy LLC — Internal Strategy Document_
-_Version 2.1 — June 2026_
+_Version 3.0 — July 2026_
 _For internal use and prospective client conversations_

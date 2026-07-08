@@ -40,11 +40,13 @@ Hi [Name],
 
 Thanks for inquiring, your situation looks like a fit for what we do here.
 
-The next step is a 60-minute discovery call. This isn't a sales pitch, it's a structured diagnostic. We'll map your current setup, identify where the biggest operational leverage is, and determine whether one of our advisory formats makes sense for your business right now.
+[PERSONALIZED OBSERVATION — reference their last drop, their current Instagram strategy, their booking situation, or something specific you noticed before reaching out]
+
+The next step is a 60-minute discovery call. This isn't a sales pitch, it's a structured diagnostic. We'll map how you're currently spending and acquiring, identify where the biggest leverage is, and determine whether a paid media strategy sprint or a visibility and client acquisition sprint makes sense for your business right now.
 
 To get the most out of the call, it helps to come in thinking about three things: where your revenue sits currently, the one problem that's costing you the most right now, and anything you've already tried that hasn't worked.
 
-Our fee for the discovery call is $200, credited toward your advisory package fee if we move forward. Use the link below to book a slot and complete payment, that locks in your time. From there, we'll do preliminary research on your business and provide a custom analysis of how we can work together.
+Our fee for the discovery call is $200, credited toward your sprint fee if we move forward. Use the link below to book a slot and complete payment, that locks in your time. From there, we'll do preliminary research on your business and provide a custom analysis of how we can work together.
 
 [CALENDAR + PAYMENT LINK]
 
@@ -121,7 +123,7 @@ create table studio_leads (
 - `submitted` — form received, not yet reviewed
 - `reviewed` — Matt has read it, intake response sent
 - `call_booked` — lead paid $200 and booked a slot
-- `active` — moved to full strategy advisory package
+- `active` — moved to full strategy sprint package
 - `declined` — not a fit, politely declined
 - `deferred` — good fit but wrong timing, follow up later
 

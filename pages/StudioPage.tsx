@@ -48,8 +48,8 @@ const SNAP_PANEL: React.CSSProperties = {
 const DARK_GRADIENT = 'linear-gradient(135deg, #0d0d0d 0%, #1a1816 40%, #0d0d0d 100%)';
 
 const SPRINT_CARD_IMAGES: Record<(typeof STUDIO_SPRINTS)[number]['id'], string> = {
-  'drop-allocation': '/studio-assets/sprint-a.jpg',
-  'capacity-intake': '/studio-assets/sprint-b.jpg',
+  'campaign-growth': '/studio-assets/sprint-a.jpg',
+  'visibility-acquisition': '/studio-assets/sprint-b.jpg',
 };
 
 // ─── Reusable full-bleed panel with bottom-left text overlay ─────────────────
@@ -295,7 +295,7 @@ const StudioPage: React.FC = () => {
           src="/studio-assets/panel-2.jpg"
           eyebrow="Streetwear · Drops · Collectibles · Independent Labels"
           headline="A launch system your next drop can actually run on."
-          subline="Allocation strategy, backward timelines, anti-bot protocols, and channel logic — documented and repeatable before the next release."
+          subline="Paid media architecture, launch campaign sequencing, and partnership deal structuring — built so your next release runs on a plan, not gut instinct."
         />
 
         {/* Panel 3 — Tattoo studios / service collectives */}
@@ -303,7 +303,7 @@ const StudioPage: React.FC = () => {
           src="/studio-assets/panel-3.jpg"
           eyebrow="Tattoo Studios · Piercing Clinics · Body Art Collectives"
           headline="Stop losing revenue to empty chairs."
-          subline="Intake pipelines, tiered deposit systems, and booking infrastructure built for multi-artist studios that run on reputation."
+          subline="Local visibility, client acquisition strategy, and paid media foundations built for multi-artist studios that run on reputation."
         />
 
         {/* Offers — free-scroll content starts here */}
@@ -571,12 +571,12 @@ const StudioPage: React.FC = () => {
                 className="mt-3 text-base font-bold uppercase tracking-[0.1em] md:text-lg"
                 style={{ color: 'var(--ba-studio-text)' }}
               >
-                Corporate training.<br />Anti-corporate instincts.
+                Subculture fluent.<br />Agency trained.
               </h2>
               <ul className="mt-6 space-y-3">
                 {[
-                  'Nine years running marketing strategy inside corporate environments.',
-                  'Grew up in tattoo shops, followed independent labels and small brands long before this was a career.',
+                  'Grew up in tattoo shops and followed independent labels long before this was a career.',
+                  '8+ years in paid media and campaign strategy at GroupM, Vox Media, and Amazon — including a $100M+ automotive book.',
                   'Knows the difference between a brand that\'s built and one that\'s manufactured.',
                 ].map((item) => (
                   <li
