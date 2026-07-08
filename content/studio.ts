@@ -102,8 +102,10 @@ export const STUDIO_RETAINER = {
 } as const;
 
 
-export const STUDIO_WHAT_YOU_RECEIVE = [
-  'Frameworks and governance systems delivered as living documents — allocation matrices, intake pipelines, launch timelines',
-  'Structured working sessions — two per week during your strategy, monthly briefings on retainer',
-  'A decision log that stays with the business — every recommendation documented so your team can execute without you on the call',
-] as const;
+/** Zoomed-out delivery model — shown above package cards on /studio. */
+export const STUDIO_HOW_IT_WORKS = {
+  eyebrow: 'How we get you there',
+  headline: ['Six weeks alongside you.', 'Systems your team keeps.'],
+  body:
+    'It starts with a discovery call to learn about your business. Then we spend six weeks inside your business: we map what is broken, build the tools and frameworks to fix it, and hand them off ready for your team to run. Real systems, not a word document that sits in a folder.',
+} as const;

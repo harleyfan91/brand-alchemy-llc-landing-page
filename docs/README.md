@@ -32,7 +32,7 @@ Documentation for the Studio 1:1 consulting offer targeting alt-culture business
 
 | File / Folder | Purpose |
 |---|---|
-| `studio/` | All Studio-specific docs. See `studio/README.md` for full index. |
+| `studio/` | All Studio-specific docs. Start at `studio/overview.md` or `studio/README.md`. |
 
 ---
 

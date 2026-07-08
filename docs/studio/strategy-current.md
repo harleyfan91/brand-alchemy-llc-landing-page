@@ -2,6 +2,8 @@
 ### Version 2.1 · June 2026 · Active Build
 _Supersedes v2.0. Reflects model refinements based on market-validation review: Category B on-site diagnostic anchor, revenue floor tightening, Tier 2 default routing for capacity/intake clients._
 
+_For a one-page summary, see [`overview.md`](overview.md)._
+
 ---
 
 ## 01 — Core Thesis
@@ -324,5 +326,5 @@ Most strategies fail at the "messy middle" — middle managers (or in a tattoo s
 ---
 
 _Brand Alchemy LLC — Internal Strategy Document_
-_Version 2.0 — June 2026_
+_Version 2.1 — June 2026_
 _For internal use and prospective client conversations_

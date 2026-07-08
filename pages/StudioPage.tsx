@@ -8,6 +8,7 @@ import {
   STUDIO_INQUIRY_HREF,
   STUDIO_INQUIRY_IS_EXTERNAL,
   STUDIO_INSTAGRAM_URL,
+  STUDIO_HOW_IT_WORKS,
   STUDIO_RETAINER,
   STUDIO_SPRINTS,
 } from '../content/studio';
@@ -308,6 +309,32 @@ const StudioPage: React.FC = () => {
         {/* Offers — free-scroll content starts here */}
         <section className="relative z-10 px-4 py-16 sm:px-6 md:py-20 lg:px-8">
           <div className="mx-auto max-w-7xl">
+
+            {/* How it works — zoomed-out model before package detail */}
+            <div
+              className="mx-auto mb-14 max-w-4xl border-b pb-14 md:pb-16"
+              style={{ borderColor: 'var(--ba-studio-border)' }}
+            >
+              <p
+                className="text-[10px] font-bold uppercase tracking-[0.3em]"
+                style={{ color: 'var(--ba-studio-text-muted)' }}
+              >
+                {STUDIO_HOW_IT_WORKS.eyebrow}
+              </p>
+              <h2
+                className="mt-5 font-serif text-[clamp(1.85rem,4.5vw,3rem)] font-normal leading-[1.12]"
+                style={{ color: 'var(--ba-studio-text)' }}
+              >
+                {STUDIO_HOW_IT_WORKS.headline[0]}
+                <span className="mt-1 block opacity-55">{STUDIO_HOW_IT_WORKS.headline[1]}</span>
+              </h2>
+              <p
+                className="mt-6 max-w-xl text-sm font-light leading-relaxed md:text-base"
+                style={{ color: 'var(--ba-studio-text-muted)' }}
+              >
+                {STUDIO_HOW_IT_WORKS.body}
+              </p>
+            </div>
 
             {/* Strategy cards */}
             <div className="grid gap-8 md:grid-cols-2 lg:gap-10">
