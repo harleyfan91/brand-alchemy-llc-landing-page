@@ -35,9 +35,10 @@ const SystemSectionHeroBand: React.FC<SystemSectionHeroBandProps> = ({
             src={SYSTEM_SECTION_IMAGE.src}
             alt=""
             aria-hidden
-            className={`absolute inset-0 h-full w-full object-cover object-center transition-[filter] duration-500 ${
-              mutedImage ? 'brightness-[0.9] contrast-[1.08] saturate-50' : ''
+            className={`absolute inset-0 h-full w-full object-cover transition-[filter] duration-500 ${
+              mutedImage ? 'brightness-[0.88] contrast-[1.12] saturate-50' : ''
             }`}
+            style={{ objectPosition: SYSTEM_SECTION_IMAGE.objectPosition }}
             onError={() => setImageFailed(true)}
           />
         ) : (
@@ -47,7 +48,7 @@ const SystemSectionHeroBand: React.FC<SystemSectionHeroBandProps> = ({
           className="absolute inset-0"
           style={{
             background: mutedImage
-              ? 'linear-gradient(to bottom, rgba(255,255,255,0.08) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.82) 100%)'
+              ? 'linear-gradient(to bottom, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.45) 35%, rgba(0,0,0,0.9) 100%)'
               : 'linear-gradient(to bottom, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.42) 45%, rgba(0,0,0,0.78) 100%)',
           }}
           aria-hidden

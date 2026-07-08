@@ -125,7 +125,7 @@ Used for Google vs Yelp column styling in `Products.tsx` — values also live as
 ## Imagery
 
 - **Product / card images:** `aspect-[16/10]`, `rounded` inside `rounded-2xl` cards, `bg-gray-100` while loading or empty.
-- **Mood:** Real-world, warm, owner-operated businesses — natural light, believable contexts. Avoid cliché “handshake in boardroom” stock when possible.
+- **Mood:** Real-world, owner-operated spaces — believable contexts (café, salon, boutique). Brand-facing bands use **angular, editorial** environments and **muted** treatment, not cozy lifestyle warmth. Avoid cliché “handshake in boardroom” stock when possible.
 - **Treatment:** Prefer full-bleed within the frame, no heavy filters; let borders (`border-gray-100`) and whitespace carry the premium feel.
 - **Alt text:** Descriptive, plain language (matches [TARGET_AUDIENCE.md](TARGET_AUDIENCE.md)).
 - **Product watermark motifs:** For homepage product cards, use monochrome sculptural still-life imagery (stone, paper material, glass/lens) as decorative ambient marks. Keep opacity very low (about `0.03` mobile to `0.05` desktop), offset off the lower-right edge, and mark as decorative (`alt=""`, `aria-hidden`). Store files in `public/product-card-watermarks/`.

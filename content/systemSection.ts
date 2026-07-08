@@ -1,7 +1,9 @@
 /** Homepage System section — intro copy, hero band image, and three text steps. */
 export const SYSTEM_SECTION_IMAGE = {
-  src: '/pdf-assets/social-content-pack-cafe-cover.jpg',
-  alt: 'Independent café counter — warm, owner-operated hospitality or retail space',
+  src: '/homepage-assets/system-section-hero.jpg',
+  alt: 'Modern independent café interior — geometric wood counter and angular light',
+  /** Crop anchor for `object-cover` — keeps counter depth in frame for text overlay. */
+  objectPosition: 'center 55%',
 } as const;
 
 /** `full` = natural color. `muted` = toned like product-card watermarks (grayscale, softer). Chosen: muted. */

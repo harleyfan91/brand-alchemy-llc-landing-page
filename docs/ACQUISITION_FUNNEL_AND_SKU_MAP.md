@@ -154,6 +154,17 @@ Photo execution and on-phone framing stay with **Camentra**; we do not sell a se
   Current soft-trust CTA: email contact in `Contact.tsx`.
   Current intended conversion CTAs that are **not fully wired yet**: `Buy now`, `Buy bundle`, `Get sample`. Identity Kit: product card links to **`/identity-kit`** (offer page); primary conversion on that page is **Start my Identity Kit** → kit app URL from env / default subdomain.
   Conclusion: the site currently behaves as a **hub with browse CTAs**, not as a true funnel. Keep it that way at the homepage level, and move high-intent conversion into dedicated offer pages and real checkout flows.
+
+**CTA taxonomy (Jun 2026 — locked for copy):**
+
+| Type | Label pattern | Price in button? | Example |
+|------|----------------|------------------|---------|
+| **Browse** | View / Start with… | No | Homepage card → `/identity-kit` |
+| **Start intake** | `IDENTITY_KIT_CTA_LABEL` — **Start my Identity Kit** | No — show `One-time · $149` on page | `/identity-kit` hero + final band → kit app |
+| **Buy now** | Buy now | No — price on tier tile | Local kits matrix when checkout URLs live |
+
+Identity Kit flow: marketing CTA → guided quiz → Stripe Checkout → instant download. Button names the **next step** (intake), not payment.
+
 - [ ] Decide whether the **bundle** should remain a Pro-only two-platform offer or whether a separate two-platform Core offer is needed later.
 - [ ] Confirm the **live checkout / payment links** match the new prices before promoting the revised tiers.
 - [ ] Decide what the first **post-purchase add-on test** should be: **Social Content Pack ($19)** or **Google/Yelp Core ($39)**.
